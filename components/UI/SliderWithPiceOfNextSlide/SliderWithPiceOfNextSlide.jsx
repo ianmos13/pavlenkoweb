@@ -1,13 +1,13 @@
 "use client";
 
-import CardItem from "@/components/UI/CardItem/CardItem";
+import CardItem from "@/components/UI/Cards/CardItem/CardItem";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlider";
 import styles from "./SliderWithPiceOfNextSlide.module.scss";
 
-const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, cardType }) => {
+const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, imageCover }) => {
   const initialSlideIndex = slideData.length > 1 ? 1 : 0
 
   return (
@@ -22,7 +22,7 @@ const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, cardType }) => {
               body={slide.body}
               category={slide.category}
               link={slide.link}
-              cardType={cardType}
+              imageCover={imageCover}
             />
           ))}
         </div>
@@ -41,7 +41,8 @@ const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, cardType }) => {
                 body={slide.body}
                 category={slide.category}
                 link={slide.link}
-                cardType={cardType}
+                imageCover={imageCover}
+                target={'_blank'}
               />
             </SwiperSlide>
           ))}

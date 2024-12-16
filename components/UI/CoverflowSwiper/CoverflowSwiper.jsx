@@ -16,6 +16,7 @@ export default function CoverflowSwiper(props) {
                 effect={'coverflow'}
                 centeredSlides={true}
                 loop={true}
+                initialSlide={1}
                 slidesPerView={"auto"}
                 modules={[EffectCoverflow]}
                 coverflowEffect={{

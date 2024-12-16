@@ -1,6 +1,6 @@
 @import "/styles/variables";
 
-.staffаContainer {
+.staffContainer {
   display: flex;
   flex-direction: column;
   gap: 48px;
@@ -18,9 +18,13 @@
     }
 
     @media (max-width: 1024px) {
+      gap: 40px;
       grid-template-columns: repeat(2, 1fr); 
     }
-     @media (max-width: 500px) {
+    @media (max-width: 739px) {
+      gap: 16px;
+    }
+    @media (max-width: 624px) {
       grid-template-columns: 1fr; 
       margin: 0 auto;
     }

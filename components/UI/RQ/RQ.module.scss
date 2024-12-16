@@ -43,11 +43,20 @@
 					border-radius: 100px;
 					width: fit-content;
 
+					.link {
+						line-height: 0;
+						font-size: 0;
+					}
+
 					.image {
 						width: 24px;
 						height: 24px;
 					}
 				}
+			}
+
+			.mediaContainer {
+				flex-direction: row;
 			}
 		}
 	}

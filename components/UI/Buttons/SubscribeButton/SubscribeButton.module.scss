@@ -27,6 +27,7 @@
 	&:hover {
 		background-color: $neutral-white;
 		border-width: 1px;
+		border-style: solid;
 		border-color: $secondary-lite-red-1;
 		.buttonText {
 			color: $primary-red;

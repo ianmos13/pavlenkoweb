@@ -19,14 +19,14 @@ const PersonItem = ({ name, position, biography, avatar, photo }) => {
     <div>
    
       <div className={styles.personItem}>
-        <div className={styles.personSection}>
+        <div className={styles.personSection} onClick={handleModalOpen}>
           <div className={styles.personContent}>
             <div className={styles.personName}>
               <h5>{name}</h5>
             </div>
             <p className={styles.personPosition}>{position}</p>
           </div>
-          <div className={styles.icon} onClick={handleModalOpen}>
+          <div className={styles.icon}>
             <img
               src={"/images/icons/right-arrow-bold.svg"}
               alt="Bold Arrow Icon"

@@ -6,18 +6,33 @@ import CompletedSetsSlider from '@/components/AboutUs/CompletedSets/CompletedSet
 import InterestingForSurgeons from '@/components/UI/InterestingForSurgeons/InterestingForSurgeons'
 import Subscribe from '@/components/UI/Subscribe/Subscribe'
 import SliderWithPopup from "@/components/UI/SliderWithPopup/SliderWithPopup";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function page() {
 	return (
 		<>
 			<AboutUsHeader />
-			<AboutProgramm />
-			<AboutPavlenko />
-			<InterestingForSurgeons theme={'blue'} data={interestingData} />
-			<CompletedSetsSlider />
-			<SliderWithPopup  />
-			<Subscribe />
-			<AboutAdministration />
+			<AnimatedComponent>
+				<AboutProgramm />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<AboutPavlenko />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<InterestingForSurgeons theme={'blue'} data={interestingData} />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<CompletedSetsSlider />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<SliderWithPopup />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<Subscribe />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<AboutAdministration />
+			</AnimatedComponent>
 		</>
 	)
 }

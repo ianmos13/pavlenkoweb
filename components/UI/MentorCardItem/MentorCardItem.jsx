@@ -5,11 +5,9 @@ const MentorCardItem = ({ avatar, name, biography, location, specialty }) => {
   return (
     <div className={styles.mentorCard}>
       <div className={styles.imageWrapper}>
-        <Image
+        <img
           src={avatar}
           alt={`${name}'s photo`}
-          width={100}
-          height={100}
           className={styles.image}
         />
       </div>

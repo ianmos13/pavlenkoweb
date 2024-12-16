@@ -22,7 +22,7 @@ const AboutUsSlider = () => {
         : "/images/default-image.svg",
       body: item.body,
       category: item.publication_categorie?.category || "Без категории",
-      link: `/${item.link}`,
+      link: `${item.link}`,
     }));
   }, [publicationsData]);
 
@@ -39,7 +39,6 @@ const AboutUsSlider = () => {
         <SliderWithPiceOfNextSlide
           slideData={slideData}
           titleOptions={titleOptions}
-          cardType={cartType}
         />
       </Loader>
     </>

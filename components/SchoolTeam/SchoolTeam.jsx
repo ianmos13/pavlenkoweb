@@ -57,18 +57,15 @@ const SchoolTeam = () => {
   }, [categoriesData, staffData]);
 
   return (
-    <>
-      <h2 className={styles.header}>Команда школы</h2>
-      <div className={styles.staffContainer}>
-        <Loader loading={loading}>
-          <ContainerWithSidebar
-            data={teamData}
-            type={"SchoolTeam"}
-            showAllCategoriesFilters={false}
-          />
-        </Loader>
-      </div>
-    </>
+    <div className={styles.staffContainer}>
+      <Loader loading={loading}>
+        <ContainerWithSidebar
+          data={teamData}
+          type={"SchoolTeam"}
+          showAllCategoriesFilters={false}
+        />
+      </Loader>
+    </div>
   );
 };
 

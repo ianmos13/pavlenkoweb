@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import styles from './VideoPlayer.module.scss';
 
-const VideoPlayer = ({ caption, preview, videoPath }) => {  
+const VideoPlayer = ({ caption, preview, videoPath, newsVideo }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayVideo = () => {
@@ -10,18 +10,20 @@ const VideoPlayer = ({ caption, preview, videoPath }) => {
   };
 
   return (
-    <section className={`${styles.videoContainer} container`}>
+    <section className={`${styles.videoContainer} ${newsVideo ? styles.newsVideoContainer : ''}`}>
    
       {!isPlaying ? (
         <div className={styles.previewContainer}>
-          <img
-            src={preview}
-            alt="Video Preview"
-            className={styles.previewImage}
-          />
-          <button className={styles.playButton} onClick={handlePlayVideo}>
-            <span className={styles.playIcon}>▶</span>
-          </button>
+          <div className={styles.previewImageContainer}>
+            <img
+              src={preview}
+              alt="Video Preview"
+              className={styles.previewImage}
+            />
+            <button className={styles.playButton} onClick={handlePlayVideo}>
+              <span className={styles.playIcon}>▶</span>
+            </button>
+          </div>
           <p className={styles.caption}>
             {caption}
           </p>

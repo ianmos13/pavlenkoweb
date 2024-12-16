@@ -57,7 +57,7 @@
         .headerBody {
             position: relative;
             padding: 24px 32px;
-            z-index: 1000;
+            z-index: 1002;
 
             .menu {
                 display: none;
@@ -85,7 +85,7 @@
                 visibility 1s linear,
                 top 1s ease;
             left: 0;
-            z-index: 10;
+            z-index: 1001;
             width: 100%;
 
             &.active {

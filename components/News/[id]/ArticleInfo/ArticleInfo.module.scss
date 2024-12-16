@@ -5,10 +5,17 @@
     margin: 0 auto;
     padding: 16px 56px 24px 56px;
     justify-content: space-between;
-   
-  
+
+    @media (max-width: 1024px) {
+        padding: 24px 32px 0 32px;
+    }
+
+    @media (max-width: 739px) {
+        padding: 16px 16px 0 16px;
+    }
+
     h4 {
         color: #717780;
     }
-  }
+}
   

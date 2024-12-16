@@ -111,7 +111,7 @@
 
     .swiperContainer {
       max-width: unset;
-      max-height: 602px;
+      max-height: 658px;
       --swiper-pagination-bottom: 24px;
     }
   }
@@ -122,6 +122,19 @@
     .swiperContainer {
       max-height: unset;
       border-radius: 0;
+      --swiper-pagination-bottom: 24px;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .container {
+    .swiperContainer {
+      max-height: 658px;
+    }
+  }
+
+  .mediumContainer {
+    .swiperContainer {
       --swiper-pagination-bottom: 24px;
     }
   }

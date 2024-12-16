@@ -23,6 +23,7 @@
 	&:hover {
 		background-color: $secondary-blue-2;
 		border-width: 1px;
+		border-style: solid;
 		border-color: $primary-blue;
 		.buttonText {
 			color: $neutral-white;

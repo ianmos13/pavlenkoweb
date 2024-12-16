@@ -9,36 +9,36 @@ import React from "react";
 
 export default function CoverflowCardSwiper(props) {
     const { data, titleOptions } = props
+    const initialSlideIndex = data.length / 2
 
     return (
         <div className={styles.container}>
             <SectionWithSlider titleOptions={titleOptions}>
-                <>
-                    <Swiper
-                        className={styles.swiperContainer}
-                        effect={"coverflow"}
-                        centeredSlides={true}
-                        slidesPerView={"auto"}
-                        modules={[EffectCoverflow]}
-                        coverflowEffect={{
-                            rotate: 0,
-                            slideShadows: false,
-                        }}
-                        breakpoints={{
-                            320: {
-                                coverflowEffect: { stretch: 0, depth: 0, modifier: 0 },
-                            },
-                            740: {
-                                coverflowEffect: { stretch: -50, depth: 200, modifier: 2 },
-                            }
-                        }}>
-                        {data && data?.map((card, idx) => (
-                            <SwiperSlide key={idx} className={styles.swiperSlide}>
-                                <CardSlide data={card} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </>
+                <Swiper
+                    className={styles.swiperContainer}
+                    effect={"coverflow"}
+                    centeredSlides={true}
+                    slidesPerView={"auto"}
+                    initialSlide={initialSlideIndex}
+                    modules={[EffectCoverflow]}
+                    coverflowEffect={{
+                        rotate: 0,
+                        slideShadows: false,
+                    }}
+                    breakpoints={{
+                        320: {
+                            coverflowEffect: { stretch: 0, depth: 0, modifier: 0 },
+                        },
+                        740: {
+                            coverflowEffect: { stretch: -50, depth: 200, modifier: 2 },
+                        }
+                    }}>
+                    {data && data?.map((card, idx) => (
+                        <SwiperSlide key={idx} className={styles.swiperSlide}>
+                            <CardSlide data={card} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </SectionWithSlider>
         </div>
     );

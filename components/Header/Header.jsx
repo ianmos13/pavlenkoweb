@@ -16,9 +16,10 @@ import useIsPath501 from "@/services/hook/useIsPath501";
 
 import styles from "./Header.module.scss";
 const darkPages = [
-  "/about",
+  "/about-us",
   "/training-application-form",
   "/specialization-and-program",
+    "/information-about-educational-organization"
 ];
 const greyPages = ["/4surgeonsclub", "/video-atlas", "/for-partners", "/intelligent-volunteers"];
 

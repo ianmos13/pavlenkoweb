@@ -7,7 +7,10 @@
   flex-direction: column;
   gap: 24px;
   padding: 16px 56px 24px 56px;
-  
+
+  h1 {
+    color: $neutral_black;
+  }
 }
 
 .baсkButton {
@@ -34,12 +37,6 @@
           line-height: 26px;
           color: #0F384A;
         }
-      }
-    }
-    div {
-      h1 {
-        font-size: 32px;
-        line-height: 48px;
       }
     }
   }

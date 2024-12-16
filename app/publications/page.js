@@ -1,8 +1,9 @@
-import PublicationLibrary from '@/components/Publications/PublicationLibrary/PublicationLibrary'
+	import PublicationLibrary from '@/components/Publications/PublicationLibrary/PublicationLibrary'
 
 import BannerSlider from "@/components/UI/BannerSlider/BannerSlider";
 import RunningLines from "@/components/UI/RunningLines/RunningLines";
 import HeaderText from "@/components/UI/HeaderText/HeaderText";
+	import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 export default function page() {
 	return (
 		<>
@@ -12,11 +13,15 @@ export default function page() {
 				size={'medium'}
 				theme={"light"}
 			/>
-			<RunningLines
-				data={linesData}
-				isImages={true}
-			/>
-			<PublicationLibrary />
+			<AnimatedComponent>
+				<RunningLines
+					data={linesData}
+					isImages={true}
+				/>
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<PublicationLibrary />
+			</AnimatedComponent>
 		</>
 	)
 }

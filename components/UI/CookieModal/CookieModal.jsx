@@ -4,12 +4,12 @@ import CookieButton from "@/components/UI/Buttons/CookieButton/CookieButton";
 import styles from "./CookieModal.module.scss";
 
 export default function CookieModal() {
-  const [isCookieAccepted, setIsCookieAccepted] = useState(false);
+  const [isCookieAccepted, setIsCookieAccepted] = useState(true);
 
   useEffect(() => {
     const accepted = localStorage.getItem("cookiesAccepted");
-    if (accepted) {
-      setIsCookieAccepted(true);
+    if (!accepted) {
+      setIsCookieAccepted(false);
     }
   }, []);
 

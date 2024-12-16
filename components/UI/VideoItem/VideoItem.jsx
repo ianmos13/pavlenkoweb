@@ -2,11 +2,15 @@ import React from "react";
 import Link from "next/link";
 import styles from "./VideoItem.module.scss";
 
-const VideoItem = ({ id, title, authors, category, link }) => {
+const VideoItem = ({ id, title, authors, category, link, target }) => {
   const authorList = authors.length > 0 ? authors.join(" | ") : "Автор не указан";
 
   return (
-    <Link href={link || "#"} key={id}> {/* Добавлено значение по умолчанию для link */}
+    <Link
+        href={link || "#"}
+        key={id}
+        target={target ? target : undefined}
+    >
       <div className={styles.videoItem}>
         <div className={styles.content}>
           <div className={styles.header}>

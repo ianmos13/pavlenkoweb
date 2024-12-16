@@ -27,7 +27,11 @@ const CompletedSetsSlider = () => {
 
   return (
     <Loader loading={loading}>
-      <SliderWithPiceOfNextSlide slideData={slideData} titleOptions={titleOptions} />
+      <SliderWithPiceOfNextSlide
+          slideData={slideData}
+          titleOptions={titleOptions}
+          imageCover={true}
+      />
     </Loader>
   );
 };

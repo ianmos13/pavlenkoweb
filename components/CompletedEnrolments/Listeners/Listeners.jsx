@@ -5,7 +5,7 @@ import "swiper/css";
 
 const Listeners = ({graduates}) => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} container`}>
       <h2>Слушатели</h2>
       <div className={styles.gridGraduates}>
         {graduates.map((graduate, index) => (

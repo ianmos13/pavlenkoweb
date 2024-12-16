@@ -109,7 +109,8 @@
 	}
 
 	&.expanded {
-		min-height: fit-content;
+		//min-height: fit-content;
+		max-height: 700px;
 		opacity: 1;
 	}
 }

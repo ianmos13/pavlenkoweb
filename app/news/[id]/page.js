@@ -19,6 +19,7 @@ import TopLeft from "@/public/images/news_images/top-left-filter.svg";
 import TopRight from "@/public/images/news_images/top-right-filter.svg";
 import ImageWithDescription from "@/components/UI/ImageWithDescription/ImageWithDescription";
 import ArticleInfo from "@/components/News/[id]/ArticleInfo/ArticleInfo";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 export default function Page() {
   const { id } = useParams();
   const {
@@ -35,78 +36,106 @@ export default function Page() {
     switch (component.component_name) {
       case "VideoComponent":
         return (
-          <VideoComponent
-            key="VideoComponent"
-            videoCaption={component.additional_text}
-            preview={
-              articleData?.VideoComponentPreviw
-                ? `${API_URL}${articleData.VideoComponentPreviw.url}`
-                : ""
-            }
-          />
+          <AnimatedComponent>
+            <VideoComponent
+              key="VideoComponent"
+              videoCaption={component.additional_text}
+              videoPath={
+                  articleData?.VideoComponent
+                      ? `${API_URL}${articleData.VideoComponent.url}`
+                      : ""
+              }
+              preview={
+                articleData?.VideoComponentPreviw
+                  ? `${API_URL}${articleData.VideoComponentPreviw.url}`
+                  : ""
+              }
+            />
+          </AnimatedComponent>
         );
       case "ImageWithDescription":
         return (
-          <ImageWithDescription
-            key="ImageWithDescription"
-            imgPath={
-              articleData?.ImageWithDescription
-                ? `${API_URL}${articleData.ImageWithDescription.url}`
-                : ""
-            }
-            textOverlay={component.additional_text}
-          />
+          <AnimatedComponent>
+            <ImageWithDescription
+              key="ImageWithDescription"
+              imgPath={
+                articleData?.ImageWithDescription
+                  ? `${API_URL}${articleData.ImageWithDescription.url}`
+                  : ""
+              }
+              textOverlay={component.additional_text}
+            />
+          </AnimatedComponent>
         );
       case "Text":
         return (
-          <Text
-            key={`Text-${Math.random()}`}
-            text1={component.texts?.[0] || ""}
-            text2={component.texts?.[1] || ""}
-          />
+          <AnimatedComponent>
+            <Text
+              key={`Text-${Math.random()}`}
+              text1={component.texts?.[0] || ""}
+              text2={component.texts?.[1] || ""}
+            />
+          </AnimatedComponent>
         );
       case "List": {
         const listData = articleData?.ListsData?.[listIndex] || {};
         listIndex += 1;
         return (
-          <List
-            key={`List-${listIndex}`}
-            headerText={listData.headerText || ""}
-            arrayList={listData.arrayList || []}
-          />
+          <AnimatedComponent>
+            <List
+              key={`List-${listIndex}`}
+              headerText={listData.headerText || ""}
+              arrayList={listData.arrayList || []}
+            />
+          </AnimatedComponent>
         );
       }
       case "ImageBox":
         return (
-          <ImageBox
-            key="ImageBox"
-            TopLeft={TopLeft}
-            TopRight={TopRight}
-            BottomLeft={BottomLeft}
-            BottomRight={BottomRight}
-          />
+          <AnimatedComponent>
+            <ImageBox
+              key="ImageBox"
+              TopLeft={TopLeft}
+              TopRight={TopRight}
+              BottomLeft={BottomLeft}
+              BottomRight={BottomRight}
+            />
+          </AnimatedComponent>
         );
       case "CoverflowSwiper":
         return (
-          <CoverflowSwiper
-            key="CoverflowSwiper"
-            data={
-              articleData?.CoverflowSwiperImages?.map(
-                (image) => `${API_URL}${image.url}`
-              ) || []
-            }
-          />
+          <AnimatedComponent>
+            <CoverflowSwiper
+              key="CoverflowSwiper"
+              data={
+                articleData?.CoverflowSwiperImages?.map(
+                  (image) => `${API_URL}${image.url}`
+                ) || []
+              }
+            />
+          </AnimatedComponent>
         );
       case "Subscribe":
-        return <Subscribe key="Subscribe" />;
+        return (
+          <AnimatedComponent>
+            <Subscribe key="Subscribe" />
+          </AnimatedComponent>
+        );
       case "EducationApplication":
-        return <EducationApplication key="EducationApplication" />;
+        return (
+            <AnimatedComponent>
+              <EducationApplication key="EducationApplication" />
+            </AnimatedComponent>
+        );
       case "TeachingStaff": {
         const categories =
           articleData?.TeachingStaffCategory?.map((staff) => staff.category) ||
           [];
-
-        return <TeachingStaff key="TeachingStaff" showonly={categories} />;
+        return (
+            <AnimatedComponent>
+              <TeachingStaff key="TeachingStaff" showonly={categories} />
+            </AnimatedComponent>
+        );
       }
       default:
         return null;

@@ -3,15 +3,24 @@ import Header from "@/components/ForPartners/Header/Header";
 import Partnership from "@/components/ForPartners/Partnership/Partnership";
 import FAQ from "@/components/UI/FAQ/FAQ";
 import RunningLines from "@/components/UI/RunningLines/RunningLines";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function page() {
   return (
     <>
       <Header />
-      <Partnership />
-      <RunningLines data={linesData} isImages={true} />
-      <Donation />
-      <FAQ />
+      <AnimatedComponent>
+        <Partnership />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <RunningLines data={linesData} isImages={true} />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <Donation />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <FAQ />
+      </AnimatedComponent>
     </>
   );
 }

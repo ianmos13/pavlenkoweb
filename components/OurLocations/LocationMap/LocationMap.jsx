@@ -37,7 +37,7 @@ const MapCenter = ({ center, zoom }) => {
   return null;
 };
 
-const LocationMap = ({ mapCenter, zoomLevel, locationsData, onMarkerClick }) => {
+const LocationMap = ({ mapCenter, zoomLevel, locationsData, onMarkerClick, extraClass }) => {
   const [selectedClinic, setSelectedClinic] = useState(null);
  
   useEffect(() => {
@@ -54,7 +54,7 @@ const LocationMap = ({ mapCenter, zoomLevel, locationsData, onMarkerClick }) => 
   };
 
   return (
-    <MapContainer center={mapCenter} zoom={zoomLevel} className={styles.map}>
+    <MapContainer center={mapCenter} zoom={zoomLevel} className={`${styles.map} ${styles[`${extraClass}Container`]}`} >
       <MapCenter center={mapCenter} zoom={zoomLevel} />
 
       {selectedClinic && (

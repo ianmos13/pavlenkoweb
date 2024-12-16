@@ -73,7 +73,6 @@ const TeachingStaff = ({ bottom, top, showonly }) => {
         ${top ? styles.top : ""}
       `}
     >
-      <h1>Преподавательский состав</h1>
       <h2>Наставники</h2>
       <Loader loading={loading}>
         <ContainerWithSidebar

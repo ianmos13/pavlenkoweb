@@ -5,21 +5,34 @@ import TeachingStaff from '@/components/TeachingStaff/TeachingStaff'
 import BannerSlider from '@/components/UI/BannerSlider/BannerSlider'
 import EducationApplication from '@/components/UI/EducationApplication/EducationApplication'
 import InterestingForSurgeons from '@/components/UI/InterestingForSurgeons/InterestingForSurgeons'
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function page() {
 	return (
 		<>
 			<HeaderText>Стать резидентом</HeaderText>
-			<BannerSlider data={bannersData} size={'medium'} theme={'light'} />
-			<Line data={firstLine} />
-			<TrainingProgram />
-			<TeachingStaff />
-			<EducationApplication />
-			<InterestingForSurgeons
-				theme={'white'}
-				data={interestingData}
-				bottom={true}
-			/>
+			<AnimatedComponent>
+				<BannerSlider data={bannersData} size={'medium'} theme={'light'} />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<Line data={firstLine} />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<TrainingProgram />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<TeachingStaff />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<EducationApplication />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<InterestingForSurgeons
+					theme={'white'}
+					data={interestingData}
+					bottom={true}
+				/>
+			</AnimatedComponent>
 		</>
 	)
 }
@@ -81,6 +94,6 @@ const bannersData = [
 		image: '/images/banners/banner-5.png',
 		body: 'В феврале проходит набор на специализацию колопроктология. Подайте заявку уже сейчас, чтобы начать обучение в октябре 2024.',
 		buttonText: 'Подать заявку',
-		buttonLink: '/contacts',
+		buttonLink: '/training-application-form',
 	},
 ]

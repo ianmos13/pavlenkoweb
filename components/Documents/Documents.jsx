@@ -4,6 +4,7 @@ import styles from "./Documents.module.scss";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const Documents = () => {
   const {
@@ -48,15 +49,17 @@ const Documents = () => {
   return (
     <section className={'container'}>
       <h2 className={styles.header}>Документы и отчеты</h2>
-      <div className={styles.documentContainer}>
-        <Loader loading={loading}>
-          <ContainerWithSidebar
-            data={documentData}
-            type={"Documents"}
-            showAllCategoriesFilters={false}
-          />
-        </Loader>
-      </div>
+      <AnimatedComponent>
+        <div className={styles.documentContainer}>
+          <Loader loading={loading}>
+            <ContainerWithSidebar
+              data={documentData}
+              type={"Documents"}
+              showAllCategoriesFilters={false}
+            />
+          </Loader>
+        </div>
+      </AnimatedComponent>
     </section>
   );
 };

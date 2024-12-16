@@ -130,6 +130,7 @@ const OurLocations = () => {
             zoomLevel={zoomLevel}
             locationsData={clinicDetails}
             onMarkerClick={handleMarkerClick}
+            extraClass={'hidden'}
           />
 
           {selectedClinic && (

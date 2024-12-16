@@ -40,6 +40,7 @@ const VideoLibrary = ({ video = [] }) => {
 						authors={video.authors}
 						category={video.category}
 						link={video.link}
+						target={'_blank'}
 					/>
 				))}
 			</div>

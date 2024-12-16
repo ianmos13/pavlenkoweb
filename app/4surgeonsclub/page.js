@@ -4,15 +4,27 @@ import InterestingForSurgeons from '@/components/UI/InterestingForSurgeons/Inter
 import RunningLines from '@/components/UI/RunningLines/RunningLines'
 import Subscribe from '@/components/UI/Subscribe/Subscribe'
 import MostInteresting from "@/components/4surgeonsclub/MostInteresting/MostInteresting";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+
 export default function page() {
 	return (
 		<>
 			<SurgeonsClubHeader />
-			<MostInteresting />
-			<RunningLines data={linesData} isImages={true} />
-			<InterestingForSurgeons theme={'blue'} data={interestingData} />
-			<CoverflowSwiper data={swiperData} />
-			<Subscribe />
+			<AnimatedComponent>
+				<MostInteresting />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<RunningLines data={linesData} isImages={true} />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<InterestingForSurgeons theme={'blue'} data={interestingData} />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<CoverflowSwiper data={swiperData} />
+			</AnimatedComponent>
+			<AnimatedComponent>
+				<Subscribe />
+			</AnimatedComponent>
 		</>
 	)
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import ButtonBox from '@/components/UI/Buttons/ButtonBox/ButtonBox'
 import LearnMoreButton from '@/components/UI/Buttons/LearnMoreButton/LearnMoreButton'
 import ImageBlock from '@/components/UI/ImageBlock/ImageBlock'
@@ -6,8 +8,14 @@ import BottomRight from '@/public/images/image_box/bottom-right-filter.svg'
 import TopLeft from '@/public/images/image_box/top-left-filter.svg'
 import TopRight from '@/public/images/image_box/top-right-filter.svg'
 import styles from './ImageBox.module.scss'
+import {useRouter} from "next/navigation";
 
 export default function ImageBox() {
+	const router = useRouter();
+	const goToPage = () => {
+		router.push("/specialization-and-program");
+	};
+
 	return (
 		<section className={`${styles.block} container`}>
 			<div className={styles.container}>
@@ -38,7 +46,7 @@ export default function ImageBox() {
 						</div>
 					</div>
 					<ButtonBox>
-						<LearnMoreButton text={'Узнать больше'} />
+						<LearnMoreButton text={'Узнать больше'} onClick={goToPage} />
 					</ButtonBox>
 				</div>
 				<div className={styles.imageContainer}>

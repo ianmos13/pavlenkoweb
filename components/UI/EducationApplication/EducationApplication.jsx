@@ -1,4 +1,3 @@
-'use client'
 "use client";
 
 import BlocksContainer from "@/components/UI/BlocksContainer/BlocksContainer";
@@ -23,16 +22,16 @@ const info = [
     text: "на бесплатной основе",
   },
   {
-    header: "обучение",
-    text: "на бесплатной основе",
+    header: "2 года",
+    text: "длительность обучения",
   },
   {
-    header: "обучение",
-    text: "на бесплатной основе",
+    header: "стипендия",
+    text: "во время обучения",
   },
   {
-    header: "обучение",
-    text: "на бесплатной основе",
+    header: "отбор",
+    text: "на конкурсной основе",
   },
 ];
 

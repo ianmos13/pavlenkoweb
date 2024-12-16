@@ -56,7 +56,6 @@ const NewsLibrary = () => {
 
   return (
     <div className={styles.newsContainer}>
-      <h2>Новости школы</h2>
       <Loader loading={loading}>
         <ContainerWithSidebar
           data={newsData}

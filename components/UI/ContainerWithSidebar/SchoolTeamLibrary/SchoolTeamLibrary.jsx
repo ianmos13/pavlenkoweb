@@ -31,7 +31,7 @@ const SchoolTeamLibrary = ({ staf = [] }) => {
 
 
   return (
-    <div className={styles.staffаContainer} ref={contentRef}>
+    <div className={styles.staffContainer} ref={contentRef}>
       <div className={styles.grid}>
         {currentItems.map((staf) => (
           <PersonItem

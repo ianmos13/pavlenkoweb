@@ -1,6 +1,6 @@
 import Pagination from '@/components/UI/Pagination/Pagination'
 import { useEffect, useState, useRef } from 'react'
-import CardItem from '../../CardItem/CardItem'
+import CardItem from '@/components/UI/Cards/CardItem/CardItem'
 import styles from './PublicationLibrary.module.scss'
 
 const PublicationLibrary = ({ publications = [] }) => {
@@ -39,6 +39,7 @@ const PublicationLibrary = ({ publications = [] }) => {
 						body={publication.body}
 						category={publication.category}
 						link={publication.link}
+						target={'_blank'}
 					/>
 				))}
 			</div>

@@ -71,15 +71,12 @@ export default function SchoolNewsSlider() {
           modules={[EffectCoverflow]}
           coverflowEffect={{
             rotate: 0,
-            stretch: -45,
-            depth: 185,
-            modifier: 2,
             slideShadows: false,
           }}
           breakpoints={{
-            320: { coverflowEffect: { stretch: -25 } },
-            740: { coverflowEffect: { stretch: -35 } },
-            1025: { coverflowEffect: { stretch: -45 } },
+            320: { coverflowEffect: { stretch: 0, depth: 0, modifier: 0 } },
+            740: { coverflowEffect: { stretch: -35, depth: 185, modifier: 2 } },
+            1025: { coverflowEffect: { stretch: -45, depth: 185, modifier: 2 } },
           }}>
           {news.map((article, idx) => (
             <SwiperSlide key={idx} className={styles.swiperSlide}>

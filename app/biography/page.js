@@ -1,9 +1,10 @@
 import ImageWithDescription from "@/components/UI/ImageWithDescription/ImageWithDescription";
 import TextContainer from "@/components/Biography/TextContainer/TextContainer";
 import QuoteCard from "@/components/Biography/QuoteCard/QuoteCard";
-import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
 import CoverflowSwiper from "@/components/UI/CoverflowSwiper/CoverflowSwiper";
 import HeaderText from "@/components/UI/HeaderText/HeaderText";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+import BiographyVideoComponent from "@/components/Biography/BiographyVideoComponent/BiographyVideoComponent";
 const text1 = `В 2018 году Андрей Николаевич заболел раком желудка и прошел путь пациента, поддерживая тысячи людей своим отношением к болезни и просветительской работой. Одной из главных его целей стало создание Школы для хирургов-онкологов, которая смогла бы в долгосрочной перспективе увеличить выживаемость пациентов.<br /><br />В январе 2020 года Андрей Павленко ушел из жизни, но его проекты продолжают развитие. Для команды Школы очень важно сохранить и продолжить дело друга, наставника и учителя.`;
 
 const quote1 = `Я хочу собрать под этим зонтиком всех неравнодушных профессионалов, настоящих лидеров, которые научат новую генерацию хирургов, дадут новый стимул для развития и новую ментальность. Это хирургия high-level — то, что требует от хирурга максимальных знаний и технических умений.`;
@@ -30,31 +31,51 @@ const text4 = `Андрей Николаевич был одним из немн
 export default function page() {
   return (
     <>
-    	<HeaderText>Андрей Николаевич Павленко</HeaderText>
-      <ImageWithDescription
-        imgPath={"/images/Biography-main.svg"}
-        textOverlay={
-          " 24 июня Школа Павленко и Городская клиническая онкологическая больница №1 провелинаучно-практическую конференцию «Осложнения в хирургии малого таза» из цикла «Будущее онкологии», приуроченную к выпуску первых резидентов образовательного проекта."
-        }
-      />
-      <TextContainer text={text1} />
-      <QuoteCard author={"Андрей Павленко"} text={quote1} />
-      <CoverflowSwiper data={swiperData} />
-      <TextContainer text={text2} />
-      <VideoPlayer
-        caption={videoCaption}
-        videoPath={"/path-to-your-video.mp4"}
-        preview={"images/Biography-video-preview.svg"}
-      />
-      <TextContainer text={text3} />
-      <QuoteCard author={"Андрей Павленко"} text={quote2} />
-      <TextContainer text={text4} />
-      <ImageWithDescription
-        imgPath={"/images/Biography-last.svg"}
-        textOverlay={
-          "В школе Павленко кроме хирургического опыта и медицинских знаний резиденты получают важные коммуникативные навыки. Ведь настоящий врач – это не только холодный ум и твердая рука, но и чуткое сердце, желание помочь, спасти, защитить!"
-        }
-      />
+      <HeaderText>Андрей Николаевич Павленко</HeaderText>
+      <AnimatedComponent>
+        <ImageWithDescription
+            imgPath={"/images/Biography-main.svg"}
+            textOverlay={
+              " 24 июня Школа Павленко и Городская клиническая онкологическая больница №1 провелинаучно-практическую конференцию «Осложнения в хирургии малого таза» из цикла «Будущее онкологии», приуроченную к выпуску первых резидентов образовательного проекта."
+            }
+          />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <TextContainer text={text1} />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <QuoteCard author={"Андрей Павленко"} text={quote1} />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <CoverflowSwiper data={swiperData} />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <TextContainer text={text2} />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <BiographyVideoComponent
+          videoCaption={videoCaption}
+          videoPath={"https://rutube.ru/video/e0d0e89c2daea0a3db298172a63a8f8a/?r=plwd"}
+          preview={"images/Biography-video-preview.svg"}
+        />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <TextContainer text={text3} />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <QuoteCard author={"Андрей Павленко"} text={quote2} />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <TextContainer text={text4} />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <ImageWithDescription
+          imgPath={"/images/Biography-last.svg"}
+          textOverlay={
+            "В школе Павленко кроме хирургического опыта и медицинских знаний резиденты получают важные коммуникативные навыки. Ведь настоящий врач – это не только холодный ум и твердая рука, но и чуткое сердце, желание помочь, спасти, защитить!"
+          }
+        />
+      </AnimatedComponent>
     </>
   );
 }

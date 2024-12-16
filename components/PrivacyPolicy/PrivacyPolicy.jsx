@@ -1,6 +1,7 @@
 
 import RenderSection from "@/components/UI/RenderSection/RenderSection";
 import styles from "./PrivacyPolicy.module.scss";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const PrivacyPolicy = () => {
   const data = [
@@ -88,7 +89,9 @@ const PrivacyPolicy = () => {
     <section className={styles.container}>
       <h1>Политика конфиденциальности</h1>
       {Object.entries(data[0]).map(([sectionTitle, sectionContent]) => (
-        <RenderSection key={sectionTitle} title={sectionTitle} content={sectionContent} />
+        <AnimatedComponent>
+          <RenderSection key={sectionTitle} title={sectionTitle} content={sectionContent} />
+        </AnimatedComponent>
       ))}
     </section>
   );

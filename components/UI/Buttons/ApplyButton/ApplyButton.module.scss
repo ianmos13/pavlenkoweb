@@ -36,6 +36,7 @@
 	&:hover {
 		background-color: $neutral-white;
 		border-width: 1px;
+		border-style: solid;
 		border-color: $secondary-lite-red-1;
 
 		.buttonText {
@@ -43,7 +44,7 @@
 		}
 
 		.icon {
-			background-image: url('/images/icons/top-right-arrow.svg');
+			background-image: url('/images/icons/top-right-arrow-red.svg');
 		}
 	}
 
@@ -56,7 +57,7 @@
 		}
 
 		.icon {
-			background-image: url('/images/icons/top-right-arrow.svg');
+			background-image: url('/images/icons/top-right-arrow-red.svg');
 		}
 	}
 }
