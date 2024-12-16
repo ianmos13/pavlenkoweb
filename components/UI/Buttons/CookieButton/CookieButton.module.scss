@@ -1,0 +1,67 @@
+@import '/styles/variables';
+
+.buttonContainer {
+	min-width: 320px;
+	height: 72px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 16px;
+	border: 1px solid #0F384A;
+	background-color: $neutral-white;
+	transition: background-color 0.3s ease-out;
+
+	.buttonText {
+		font-family: $button-desktop-font;
+		font-weight: $button-desktop-weight;
+		font-size: $button-desktop-size;
+		line-height: $button-desktop-line-height;
+		text-align: $button-desktop-text-align;
+		color: $primary-blue;
+	}
+
+	&:hover {
+		background-color: $secondary-blue-2;
+		border-width: 1px;
+		border-color: $primary-blue;
+		.buttonText {
+			color: $neutral-white;
+		}
+	}
+
+	&:active {
+		background-color: $primary-blue;
+		transform: none;
+		.buttonText {
+			color: $neutral-white;
+		}
+	}
+}
+
+@media (max-width: 744px) {
+	.buttonContainer {
+		min-width: 312px;
+		height: 64px;
+		.buttonText {
+			font-family: $button-tablet-font;
+			font-weight: $button-tablet-weight;
+			font-size: $button-tablet-size;
+			line-height: $button-tablet-line-height;
+			text-align: $button-tablet-text-align;
+		}
+	}
+}
+
+@media (max-width: 320px) {
+	.buttonContainer {
+		min-width: 288px;
+		height: 64px;
+		.buttonText {
+			font-family: $button-mobile-font;
+			font-weight: $button-mobile-weight;
+			font-size: $button-mobile-size;
+			line-height: $button-mobile-line-height;
+			text-align: $button-mobile-text-align;
+		}
+	}
+}

@@ -1,0 +1,129 @@
+@import "/styles/variables";
+
+.administrationContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px 56px 120px 56px;
+  gap: 56px;
+  h2 {
+    color: $neutral-black;
+  }
+}
+
+.ContainerInner {
+  display: flex;
+  gap: 48px;
+
+  @media (max-width: 1024px) {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.sideInfo {
+    max-width: 432px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.adminContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin: 0 auto;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  
+    @media (max-width: 1400px) {
+      grid-template-columns: 1fr;
+      margin: 0 auto;
+    }
+  
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 630px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+@media (max-width: 1024px) {
+  .videoContainer {
+    padding: 20px 32px 60px 32px;
+    gap: 36px;
+  }
+}
+@media (max-width: 739px) {
+  .videoContainer {
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+
+
+
+@media (max-width: 1024px) {
+  .administrationContainer{
+    padding: 60px 32px 80px 32px;
+    gap: 32px;
+    .ContainerInner{
+      gap: 16px;
+      align-items: unset;
+      .sideInfo{
+          width: 100%;
+          max-width: unset;
+      }
+      .content{
+        .videoContainer{
+          padding: unset;
+          .grid{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .administrationContainer{
+    padding: 40px 16px;
+    gap: 24px;
+    .ContainerInner{
+      gap: 16px;
+      align-items: unset;
+      .sideInfo{
+          width: 100%;
+          max-width: unset;
+      }
+      .sideInfo > p {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .content{
+        .videoContainer{
+          padding: unset;
+          .grid{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+        }
+      }
+    }
+  }
+}

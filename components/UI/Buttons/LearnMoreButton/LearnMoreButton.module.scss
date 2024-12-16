@@ -1,0 +1,187 @@
+@import '/styles/variables';
+.buttonContainer {
+	min-width: 320px;
+	height: 72px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+	border: 1px solid $primary-blue;
+	border-radius: 16px;
+	background-color: $neutral-white;
+	transition: background-color 0.3s ease-out;
+	cursor: pointer;
+  
+	.buttonText {
+	  color: $primary-blue;
+	}
+  
+	.iconContainer {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+  
+	.icon {
+	  width: 24px;
+	  height: 24px;
+	  background-image: url('/images/icons/right-arrow-grey.svg');
+	}
+  
+	&:hover:not(:disabled) {
+	  background-color: $secondary-blue-2;
+	  border-color: $primary-blue;
+  
+	  .buttonText {
+		color: $neutral-white;
+	  }
+  
+	  .icon {
+		background-image: url('/images/icons/top-right-arrow.svg');
+	  }
+	}
+  
+	&:active:not(:disabled) {
+	  background-color: $primary-blue;
+  
+	  .buttonText {
+		color: $neutral-white;
+	  }
+  
+	  .icon {
+		background-image: url('/images/icons/top-right-arrow.svg');
+	  }
+	}
+  
+	&:disabled {
+	  background-color: $neutral-grey;
+	  border-color: $neutral-dark-grey;
+	  cursor: not-allowed;
+  
+	  .buttonText {
+		color: $neutral-dark-grey;
+	  }
+  
+	  .icon {
+		background-image: url('/images/icons/right-arrow-grey.svg');
+	  }
+	}
+  }
+  
+  .redButton {
+	border: unset;
+	background-color: $primary-red;
+  
+	.buttonText {
+	  color: $neutral-white;
+	}
+  
+	.icon {
+	  background-image: url('/images/icons/right-arrow.svg');
+	}
+  
+	&:hover:not(:disabled) {
+	  background-color: $neutral-white;
+	  border-color: $secondary-lite-red-1;
+  
+	  .buttonText {
+		color: $primary-red;
+	  }
+  
+	  .icon {
+		background-image: url('/images/icons/top-right-arrow-red.svg');
+	  }
+	}
+  
+	&:active:not(:disabled) {
+	  background-color: $secondary-lite-red-1;
+  
+	  .buttonText {
+		color: $primary-red;
+	  }
+  
+	  .icon {
+		background-image: url('/images/icons/top-right-arrow-red.svg');
+	  }
+	}
+  
+	&:disabled {
+	  background-color: $neutral-grey;
+	  cursor: not-allowed;
+  
+	  .buttonText {
+		color: $neutral-dark-grey;
+	  }
+  
+	  .icon {
+		background-image: url('/images/icons/right-arrow-grey.svg');
+	  }
+	}
+  }
+
+  .youtubeButton {
+	border: unset;
+	background-color: $primary-red;
+
+	.buttonText {
+	  color: $neutral-white;
+	}
+
+	.icon {
+	  background-image: url('/images/icons/youtube-icon.svg');
+	}
+
+	&:hover:not(:disabled) {
+	  background-color: $neutral-white;
+	  border: 1px solid $secondary-lite-red-1;
+
+	  .buttonText {
+		color: $primary-red;
+	  }
+
+	  .icon {
+		background-image: url('/images/icons/youtube-icon-red.svg');
+	  }
+	}
+
+	&:active:not(:disabled) {
+	  background-color: $secondary-lite-red-1;
+	  transform: none;
+
+	  .buttonText {
+		color: $primary-red;
+	  }
+
+	  .icon {
+		background-image: url('/images/icons/youtube-icon-red.svg');
+	  }
+	}
+
+	&:disabled {
+	  background-color: $neutral-grey;
+	  cursor: not-allowed;
+
+	  .buttonText {
+		color: $neutral-dark-grey;
+	  }
+
+	  .icon {
+		background-image: url('/images/icons/right-arrow-grey.svg');
+	  }
+	}
+  }
+
+  @media (max-width: 1024px) {
+	.buttonContainer {
+	  min-width: 312px;
+	}
+  }
+  
+  @media (max-width: 739px) {
+	.buttonContainer {
+	  min-width: 288px;
+	  width: 100%;
+	  height: 64px;
+	}
+  }
+  

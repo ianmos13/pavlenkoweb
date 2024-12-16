@@ -1,0 +1,117 @@
+@import '/styles/variables';
+
+.headerContainer {
+	background-color: $primary-blue;
+	width: 100%;
+	.headerContainerInner {
+		max-width: 1440px;
+		padding: 48px 56px 0 48px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		margin: 0 auto;
+
+		@media (max-width: 1024px) {
+			flex-direction: column;
+			padding: 48px 32px;
+		}
+
+		.textSection {
+			display: flex;
+			flex-direction: column;
+			gap: 40px;
+			width: 50%;
+			h1 {
+				color: $neutral-white;
+				.focusText {
+					font-family: $h1-desktop-secondary-font;
+					font-weight: $h1-desktop-secondary-weight;
+					font-style: $h1-desktop-secondary-style;
+					font-size: $h1-desktop-secondary-size;
+					line-height: $h1-desktop-secondary-line-height;
+					color: $h1-desktop-secondary-color;
+				}
+			}
+
+			@media (max-width: 1024px) {
+				width: 100%;
+			}
+		}
+		.imageSection {
+			flex: 1;
+			display: flex;
+			justify-content: flex-end;
+			width: 50%;
+			@media (max-width: 1024px) {
+				width: 100%;
+			}
+
+			img {
+				width: 100%;
+				border-radius: 24px;
+			}
+		}
+	}
+
+	.runningLine {
+		position: relative;
+		padding: 80px 0;
+		max-width: 100%;
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		overflow: hidden;
+
+		@media (max-width: 739px) {
+			padding: 20px 0;
+		}
+	}
+}
+@media (max-width: 1024px) {
+	.headerContainer{
+		.headerContainerInner{
+			.textSection{
+				h1 {
+					font-weight: 600;
+					font-size: 40px;
+					line-height: 56px;
+					.focusText{
+						font-weight: 400;
+						font-size: 56px;
+						line-height: 48px;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 739px) {
+	.headerContainer{
+		.headerContainerInner{
+			padding: unset;
+			.textSection{
+				padding: 24px 16px;
+				h1 {
+					font-weight: 600;
+					font-size: 26px;
+					line-height: 32px;
+					.focusText{
+						font-weight: 400;
+						font-size: 36px;
+						line-height: 22px;
+					}
+				}
+			}
+			.imageSection{
+				width: 100%;
+				img {
+					border-radius: unset;
+				}
+			}
+		}
+	}
+}
+
+

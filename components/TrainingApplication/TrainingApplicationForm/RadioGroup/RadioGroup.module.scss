@@ -1,0 +1,94 @@
+@import "/styles/variables";
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  .subLabel h5 {
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 16px;
+  }
+
+  .radioOption {
+    display: flex;
+    align-items: center;
+    font-family: Nunito;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    color: $neutral-black;
+    margin-bottom: 12px;
+    cursor: pointer;
+
+  
+    &:hover {
+      .radioLabel {
+        color: $secondary-blue-2; 
+      }
+
+      .radioVisual {
+        border-color: $secondary-blue-2; 
+      }
+    }
+
+    .radioInput {
+      display: none;
+    }
+
+    .radioVisual {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid $neutral-grey;
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+      background-color: $neutral-white;
+    }
+
+    
+    .radioInput:checked + .radioVisual {
+      border-color: $secondary-blue-2;
+
+      &::after {
+        content: "";
+        width: 14px;
+        height: 14px;
+        background-color: $secondary-blue-2;
+        border-radius: 50%;
+      }
+    }
+
+    .radioLabel {
+      color: $neutral-black;
+      transition: color 0.2s;
+
+      
+      .radioInput:checked ~ & {
+        color: $neutral-black;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .radioGroup{
+    .subLabel h5 {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+  
+}
+
+@media (max-width: 739px) {
+  .radioGroup{
+    margin-bottom: 16px;
+  }
+}

@@ -1,0 +1,35 @@
+@import '/styles/variables';
+
+.staffContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 80px 56px 80px 56px;
+	gap: 56px;
+	h1 {
+		color: $neutral-black;
+	}
+}
+.top {
+	padding-top: 20px;
+}
+.bottom {
+	padding-bottom: 120px;
+}
+@media (max-width: 1024px) {
+	.staffContainer {
+		padding: 60px 32px 60px 32px;
+		gap: 36px;
+	}
+	.bottom {
+		padding-bottom: 80px;
+	}
+}
+@media (max-width: 739px) {
+	.staffContainer {
+		gap: 20px;
+		padding: 40px 20px;
+	}
+	.bottom {
+		padding-bottom: 60px;
+	}
+}

@@ -1,0 +1,15 @@
+.lineContainer {
+	padding: 40px 0 80px 0;
+}
+
+@media (max-width: 1024px) {
+	.lineContainer {
+		padding: 20px 0 20px 0;
+	}
+}
+
+@media (max-width: 739px) {
+	.lineContainer {
+		padding: 40px 0 40px 0;
+	}
+}

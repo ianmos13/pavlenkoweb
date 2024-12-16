@@ -1,0 +1,103 @@
+@import '/styles/variables';
+
+.buttonContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-width: 0;
+    transition: background-color 0.3s ease-out;
+    border-radius: 8px;
+    padding: 16px 32px;
+    cursor: pointer;
+
+    .buttonImage {
+        transition: padding 0.3s ease;
+        width: 32px;
+        height: 32px;
+        padding: 4px;
+    }
+
+    &:active {
+        .buttonImage {
+            padding: 0
+        }
+    }
+}
+
+.lightContainer {
+    background-color: $primary-blue;
+
+    span {
+        color: $neutral-white;
+    }
+
+    &:hover {
+        background-color: $secondary-blue-2;
+    }
+
+    &:active {
+        background-color: $neutral-black;
+    }
+}
+
+.darkContainer {
+    background-color: $secondary-ultra-lite-blue;
+
+    span {
+        color: $primary-blue;
+    }
+
+    &:hover {
+        background-color: $neutral-white;
+    }
+
+    &:active {
+        background-color: $neutral-grey;
+    }
+}
+
+.greyContainer {
+    background-color: $primary-blue;
+
+    span {
+        color: $neutral-white;
+    }
+
+    &:hover {
+        background-color: $secondary-blue-2;
+    }
+
+    &:active {
+        background-color: $neutral-black;
+    }
+}
+
+.redContainer {
+    background-color: $primary-red;
+    border-radius: 16px;
+
+    span {
+        color: $neutral-white;
+    }
+
+    &:hover {
+        background-color: $primary-red;
+    }
+
+    &:active {
+        background-color: $primary-red;
+    }
+
+    &:disabled {
+        background-color: $neutral-grey;
+    }
+}
+
+@media (max-width: 739px) {
+    .buttonContainer {
+
+    }
+}

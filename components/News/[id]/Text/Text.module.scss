@@ -1,0 +1,30 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 40px 56px 40px 56px;
+
+	h3:first-child {
+		margin-bottom: 24px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.container {
+		padding: 40px 32px;
+
+		h3:first-child {
+			margin-bottom: 16px;
+		}
+	}
+}
+
+@media (max-width: 739px) {
+	.container {
+		padding: 24px 16px;
+
+		h3:first-child {
+			margin-bottom: 16px;
+		}
+	}
+}

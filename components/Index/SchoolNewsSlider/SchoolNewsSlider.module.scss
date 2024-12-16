@@ -1,0 +1,29 @@
+@import "/styles/variables";
+
+.swiperContainer {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+
+  .swiperSlide {
+    background: $neutral-white;
+    width: 432px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+    .swiperContainer {
+      .swiperSlide {
+        width: 320px;
+      }
+    }
+}
+@media (max-width: 739px) {
+
+  .swiperContainer {
+    .swiperSlide {
+      width: 208px;
+    }
+  }
+}

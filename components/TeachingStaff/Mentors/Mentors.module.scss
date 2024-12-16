@@ -1,0 +1,127 @@
+@import "/styles/variables";
+.mentorsContainer {
+  padding: 80px 56px 120px 56px;
+  display: flex;
+  gap: 56px;
+  flex-direction: column;
+  max-width: 1440px;
+  margin: 0 auto;
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    .gridItem{ 
+      display: flex;
+      flex-direction: row;
+      border: 1px solid $secondary-lite-blue;
+      border-radius: 24px;
+      gap: 8px;
+      height: 174px;
+      .textContent{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        justify-content: space-between;
+        padding: 24px 0px 24px 24px;
+        .name{
+          h5{
+            font-family: Nunito;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 28px;
+            color: #0F384A;
+          }
+        }
+        .description{
+          p {
+            font-family: Nunito;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #717780;
+          }
+    
+        }
+      }
+      .imageWrapper{
+        .avatar{
+          border-radius: unset;
+          object-fit: cover;
+          border-top-right-radius: 16px;
+          border-bottom-right-radius: 16px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+@media (max-width: 1024px) {
+  .mentorsContainer {
+    padding: 60px 32px 80px 32px;
+    gap: 32px;
+    .gridContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .gridItem{ 
+        .textContent{
+          .name{
+            h5{
+              font-size: 16px;
+              line-height: 22px;
+            }
+          }
+          .description{
+            p {
+              font-size: 14px;
+              line-height: 20px;
+            }
+          }
+        }
+        .imageWrapper{
+          .avatar{
+            border-radius: unset;
+            object-fit: cover;
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 739px) {
+  .mentorsContainer {
+    padding: 40px 16px 60px 16px;
+    gap: 24px;
+    .gridContainer {
+      gap: 16px;
+      .gridItem{ 
+        height: unset;
+        .textContent{
+          padding: 16px;
+          .name{
+            h5{
+              font-size: 16px;
+              line-height: 22px;
+            }
+          }
+          .description{
+            p {
+              font-size: 14px;
+              line-height: 20px;
+            }
+          }
+        }
+        .imageWrapper{
+          display: none;
+        }
+      }
+    }
+  }
+}

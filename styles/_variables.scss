@@ -1,0 +1,457 @@
+// ====== Colors ====== //
+
+// Brand Colors
+$primary-blue: #0f384a;
+$primary-red: #ed3834;
+
+$secondary-background-photo: #224858;
+$secondary-blue-2: #577481;
+$secondary-lite-blue: #cadbe0;
+$secondary-ultra-lite-blue: #f2f5fa;
+$secondary-ultra-lite-blue-85: rgba(202, 219, 224, 0.85);
+$secondary-lite-red-1: #ffdbd9;
+$secondary-lite-red-2: #feeceb;
+$loader-color: #e57920;
+
+// Neutral Colors
+$neutral-black: #191c1f;
+$neutral-dark-grey: #717780;
+$neutral-grey: #e1e5ed;
+$neutral-white: #ffffff;
+
+// System Colors
+$system-error: #bf3939;
+$system-success: #0abd7d;
+
+// ====== Typography ====== //
+
+// Font Families
+$primary-font-family: 'Nunito', sans-serif;
+$secondary-font-family: 'Gogol', sans-serif;
+
+// ====== Font Sizes ====== //
+
+// ====== Typography Settings ====== //
+// Font Families
+$primary-font-family: 'Nunito', sans-serif;
+$secondary-font-family: 'Gogol', sans-serif;
+
+// ====== H1 Styles ====== //
+// H1 - Desktop
+$h1-desktop-primary-font: $primary-font-family;
+$h1-desktop-primary-weight: 600;
+$h1-desktop-primary-size: 48px;
+$h1-desktop-primary-line-height: 56px;
+$h1-desktop-primary-color: $primary-blue;
+
+$h1-desktop-secondary-font: $secondary-font-family;
+$h1-desktop-secondary-weight: 400;
+$h1-desktop-secondary-style: italic;
+$h1-desktop-secondary-size: 68px;
+$h1-desktop-secondary-line-height: 46px;
+$h1-desktop-secondary-color: $primary-red;
+
+// H1 - Tablet
+$h1-tablet-primary-font: $primary-font-family;
+$h1-tablet-primary-weight: 600;
+$h1-tablet-primary-size: 40px;
+$h1-tablet-primary-line-height: 56px;
+$h1-tablet-primary-color: $primary-blue;
+
+$h1-tablet-secondary-font: $secondary-font-family;
+$h1-tablet-secondary-weight: 400;
+$h1-tablet-secondary-style: italic;
+$h1-tablet-secondary-size: 56px;
+$h1-tablet-secondary-line-height: 48px;
+$h1-tablet-secondary-color: $primary-red;
+
+// H1 - Mobile
+$h1-mobile-primary-font: $primary-font-family;
+$h1-mobile-primary-weight: 600;
+$h1-mobile-primary-size: 26px;
+$h1-mobile-primary-line-height: 32px;
+$h1-mobile-primary-color: $primary-blue;
+
+$h1-mobile-secondary-font: $secondary-font-family;
+$h1-mobile-secondary-weight: 400;
+$h1-mobile-secondary-style: italic;
+$h1-mobile-secondary-size: 36px;
+$h1-mobile-secondary-line-height: 20px;
+$h1-mobile-secondary-color: $primary-red;
+
+// ====== H2 Styles ====== //
+// H2 - Desktop
+$h2-desktop-primary-font: $primary-font-family;
+$h2-desktop-primary-weight: 600;
+$h2-desktop-primary-size: 40px;
+$h2-desktop-primary-line-height: 52px;
+$h2-desktop-primary-color: #2e3439;
+
+$h2-desktop-secondary-font: $secondary-font-family;
+$h2-desktop-secondary-weight: 400;
+$h2-desktop-secondary-style: italic;
+$h2-desktop-secondary-size: 56px;
+$h2-desktop-secondary-line-height: 36px;
+$h2-desktop-secondary-color: $primary-red;
+
+// H2 - Tablet
+$h2-tablet-primary-font: $primary-font-family;
+$h2-tablet-primary-weight: 600;
+$h2-tablet-primary-size: 32px;
+$h2-tablet-primary-line-height: 48px;
+$h2-tablet-primary-color: #2e3439;
+
+$h2-tablet-secondary-font: $secondary-font-family;
+$h2-tablet-secondary-weight: 400;
+$h2-tablet-secondary-style: italic;
+$h2-tablet-secondary-size: 40px;
+$h2-tablet-secondary-line-height: 28px;
+$h2-tablet-secondary-color: $primary-red;
+
+// H2 - Mobile
+$h2-mobile-primary-font: $primary-font-family;
+$h2-mobile-primary-weight: 600;
+$h2-mobile-primary-size: 22px;
+$h2-mobile-primary-line-height: 28px;
+$h2-mobile-primary-color: #2e3439;
+
+$h2-mobile-secondary-font: $secondary-font-family;
+$h2-mobile-secondary-weight: 400;
+$h2-mobile-secondary-style: italic;
+$h2-mobile-secondary-size: 32px;
+$h2-mobile-secondary-line-height: 20px;
+$h2-mobile-secondary-color: $primary-red;
+
+// ====== H3 Styles ====== //
+// H3 - Desktop
+$h3-desktop-primary-font: $primary-font-family;
+$h3-desktop-primary-weight: 600;
+$h3-desktop-primary-size: 32px;
+$h3-desktop-primary-line-height: 44px;
+$h3-desktop-primary-margin-bottom: 24px;
+$h3-desktop-primary-color: #2e3439;
+
+$h3-desktop-link-font: $primary-font-family;
+$h3-desktop-link-weight: 600;
+$h3-desktop-link-size: 30px;
+$h3-desktop-link-line-height: 46px;
+$h3-desktop-link-color: #1e2831;
+
+$h3-desktop-secondary-font: $secondary-font-family;
+$h3-desktop-secondary-weight: 400;
+$h3-desktop-secondary-style: italic;
+$h3-desktop-secondary-size: 32px;
+$h3-desktop-secondary-line-height: 28px;
+$h3-desktop-secondary-color: $primary-red;
+
+// H3 - Tablet
+$h3-tablet-primary-font: $primary-font-family;
+$h3-tablet-primary-weight: 600;
+$h3-tablet-primary-size: 22px;
+$h3-tablet-primary-line-height: 30px;
+$h3-tablet-primary-margin-bottom: 24px;
+$h3-tablet-primary-color: #1e2831;
+
+$h3-tablet-link-font: $primary-font-family;
+$h3-tablet-link-weight: 600;
+$h3-tablet-link-size: 22px;
+$h3-tablet-link-line-height: 32px;
+$h3-tablet-link-color: #1e2831;
+
+$h3-tablet-secondary-font: $secondary-font-family;
+$h3-tablet-secondary-weight: 400;
+$h3-tablet-secondary-style: italic;
+$h3-tablet-secondary-size: 32px;
+$h3-tablet-secondary-line-height: 28px;
+$h3-tablet-secondary-color: $primary-red;
+
+// H3 - Mobile
+$h3-mobile-primary-font: $primary-font-family;
+$h3-mobile-primary-weight: 600;
+$h3-mobile-primary-size: 18px;
+$h3-mobile-primary-line-height: 25px;
+$h3-mobile-primary-margin-bottom: 10px;
+$h3-mobile-primary-color: #1e2831;
+
+$h3-mobile-link-font: $primary-font-family;
+$h3-mobile-link-weight: 600;
+$h3-mobile-link-size: 18px;
+$h3-mobile-link-line-height: 24px;
+$h3-mobile-link-margin-bottom: 18px;
+$h3-mobile-link-color: #1e2831;
+
+$h3-mobile-secondary-font: $secondary-font-family;
+$h3-mobile-secondary-weight: 400;
+$h3-mobile-secondary-style: italic;
+$h3-mobile-secondary-size: 32px;
+$h3-mobile-secondary-line-height: 28px;
+$h3-mobile-secondary-color: $primary-red;
+
+// H4 - Desktop
+$h4-desktop-primary-font: $primary-font-family;
+$h4-desktop-primary-weight: 600;
+$h4-desktop-primary-size: 20px;
+$h4-desktop-primary-line-height: 28px;
+$h4-desktop-primary-margin-bottom: 12px;
+$h4-desktop-primary-color: #1e2831;
+
+$h4-tablet-primary-font: $primary-font-family;
+$h4-tablet-primary-weight: 600;
+$h4-tablet-primary-size: 16px;
+$h4-tablet-primary-line-height: 22px;
+$h4-tablet-primary-margin-bottom: 10px;
+$h4-tablet-primary-color: #1e2831;
+
+$h4-mobile-primary-font: $primary-font-family;
+$h4-mobile-primary-weight: 600;
+$h4-mobile-primary-size: 16px;
+$h4-mobile-primary-line-height: 22px;
+$h4-mobile-primary-margin-bottom: 10px;
+$h4-mobile-primary-color: #1e2831;
+
+// ====== Paragraph (P) Styles ====== //
+
+// Standard Body Text - Desktop, Tablet, Mobile
+$p-desktop-primary-font: $primary-font-family;
+$p-desktop-primary-weight: 400;
+$p-desktop-primary-size: 18px;
+$p-desktop-primary-line-height: 26px;
+$p-desktop-primary-margin-bottom: 12px;
+$p-desktop-primary-color: #141421;
+
+$p-tablet-primary-font: $primary-font-family;
+$p-tablet-primary-weight: 400;
+$p-tablet-primary-size: 16px;
+$p-tablet-primary-line-height: 24px;
+$p-tablet-primary-color: #141421;
+
+$p-mobile-primary-font: $primary-font-family;
+$p-mobile-primary-weight: 400;
+$p-mobile-primary-size: 14px;
+$p-mobile-primary-line-height: 22px;
+$p-mobile-primary-color: #141421;
+
+// Crossed-out Body Text - Desktop, Tablet, Mobile
+$p-desktop-crossed-font: $primary-font-family;
+$p-desktop-crossed-weight: 400;
+$p-desktop-crossed-size: 18px;
+$p-desktop-crossed-line-height: 27px;
+$p-desktop-crossed-margin-bottom: 16px;
+$p-desktop-crossed-color: #141421;
+
+$p-tablet-crossed-font: $primary-font-family;
+$p-tablet-crossed-weight: 400;
+$p-tablet-crossed-size: 18px;
+$p-tablet-crossed-line-height: 27px;
+$p-tablet-crossed-margin-bottom: 16px;
+$p-tablet-crossed-color: #141421;
+
+$p-mobile-crossed-font: $primary-font-family;
+$p-mobile-crossed-weight: 400;
+$p-mobile-crossed-size: 16px;
+$p-mobile-crossed-line-height: 24px;
+$p-mobile-crossed-margin-bottom: 16px;
+$p-mobile-crossed-color: #141421;
+
+// Italic Body Text - Desktop, Tablet, Mobile
+$p-desktop-italic-font: $primary-font-family;
+$p-desktop-italic-weight: 400;
+$p-desktop-italic-secondary-style: italic;
+$p-desktop-italic-size: 18px;
+$p-desktop-italic-line-height: 27px;
+$p-desktop-italic-margin-bottom: 16px;
+$p-desktop-italic-color: #141421;
+
+$p-tablet-italic-font: $primary-font-family;
+$p-tablet-italic-weight: 400;
+$p-tablet-italic-secondary-style: italic;
+$p-tablet-italic-size: 18px;
+$p-tablet-italic-line-height: 27px;
+$p-tablet-italic-margin-bottom: 16px;
+$p-tablet-italic-color: #141421;
+
+$p-mobile-italic-font: $primary-font-family;
+$p-mobile-italic-weight: 400;
+$p-mobile-italic-secondary-style: italic;
+$p-mobile-italic-size: 16px;
+$p-mobile-italic-line-height: 24px;
+$p-mobile-italic-margin-bottom: 16px;
+$p-mobile-italic-color: #141421;
+
+// Bold Body Text - Desktop, Tablet, Mobile
+$p-desktop-bold-font: $primary-font-family;
+$p-desktop-bold-weight: 600;
+$p-desktop-bold-size: 18px;
+$p-desktop-bold-line-height: 24px;
+$p-desktop-bold-margin-bottom: 16px;
+$p-desktop-bold-color: #141421;
+
+$p-tablet-bold-font: $primary-font-family;
+$p-tablet-bold-weight: 600;
+$p-tablet-bold-size: 18px;
+$p-tablet-bold-line-height: 24px;
+$p-tablet-bold-margin-bottom: 16px;
+$p-tablet-bold-color: #141421;
+
+$p-mobile-bold-font: $primary-font-family;
+$p-mobile-bold-weight: 600;
+$p-mobile-bold-size: 16px;
+$p-mobile-bold-line-height: 24px;
+$p-mobile-bold-margin-bottom: 16px;
+$p-mobile-bold-color: #141421;
+
+// Small Text - Desktop, Tablet, Mobile (e.g., for captions or small details)
+$p-desktop-small-font: $primary-font-family;
+$p-desktop-small-weight: 400;
+$p-desktop-small-size: 14px;
+$p-desktop-small-line-height: 20px;
+$p-desktop-small-margin-bottom: 16px;
+$p-desktop-small-color: #141421;
+
+$p-tablet-small-font: $primary-font-family;
+$p-tablet-small-weight: 400;
+$p-tablet-small-size: 14px;
+$p-tablet-small-line-height: 20px;
+$p-tablet-small-margin-bottom: 16px;
+$p-tablet-small-color: #141421;
+
+$p-mobile-small-font: $primary-font-family;
+$p-mobile-small-weight: 400;
+$p-mobile-small-size: 14px;
+$p-mobile-small-line-height: 20px;
+$p-mobile-small-margin-bottom: 16px;
+$p-mobile-small-color: #141421;
+
+// Small Links - Desktop, Tablet, Mobile (e.g., for captions or small details)
+$p-desktop-small-link-font: $primary-font-family;
+$p-desktop-small-link-weight: 400;
+$p-desktop-small-link-size: 14px;
+$p-desktop-small-link-line-height: 20px;
+$p-desktop-small-link-margin-bottom: 16px;
+$p-desktop-small-link-color: #141421;
+
+$p-tablet-small-link-font: $primary-font-family;
+$p-tablet-small-link-weight: 400;
+$p-tablet-small-link-size: 14px;
+$p-tablet-small-link-line-height: 20px;
+$p-tablet-small-link-margin-bottom: 16px;
+$p-tablet-small-link-color: #141421;
+
+$p-mobile-small-link-font: $primary-font-family;
+$p-mobile-small-link-weight: 400;
+$p-mobile-small-link-size: 14px;
+$p-mobile-small-link-line-height: 20px;
+$p-mobile-small-link-margin-bottom: 16px;
+$p-mobile-small-link-color: #141421;
+
+// Primary Small Text - Desktop, Tablet, Mobile (e.g., for captions or small details)
+$p-desktop-primary-small-font: $primary-font-family;
+$p-desktop-primary-small-weight: 600;
+$p-desktop-primary-small-size: 14px;
+$p-desktop-primary-small-line-height: 20px;
+$p-desktop-primary-small-margin-bottom: 16px;
+$p-desktop-primary-small-color: $primary-blue;
+
+$p-tablet-primary-small-font: $primary-font-family;
+$p-tablet-primary-small-weight: 600;
+$p-tablet-primary-small-size: 14px;
+$p-tablet-primary-small-line-height: 20px;
+$p-tablet-primary-small-margin-bottom: 16px;
+$p-tablet-primary-small-color: $primary-blue;
+
+$p-mobile-primary-small-font: $primary-font-family;
+$p-mobile-primary-small-weight: 600;
+$p-mobile-primary-small-size: 14px;
+$p-mobile-primary-small-line-height: 20px;
+$p-mobile-primary-small-margin-bottom: 16px;
+$p-mobile-primary-small-color: $primary-blue;
+
+// Label Text (for form labels or descriptions)
+$label-desktop-font: $primary-font-family;
+$label-desktop-weight: 400;
+$label-desktop-size: 12px;
+$label-desktop-line-height: 16px;
+$label-desktop-margin-bottom: 9px;
+$label-desktop-color: #141421;
+
+$label-tablet-font: $primary-font-family;
+$label-tablet-weight: 400;
+$label-tablet-size: 12px;
+$label-tablet-line-height: 16px;
+$label-tablet-margin-bottom: 9px;
+$label-tablet-color: #141421;
+
+$label-mobile-font: $primary-font-family;
+$label-mobile-weight: 400;
+$label-mobile-size: 12px;
+$label-mobile-line-height: 16px;
+$label-mobile-margin-bottom: 9px;
+$label-mobile-color: #141421;
+
+// ====== Button Text Styles ====== //
+
+// Desktop Button Text
+$button-desktop-font: $primary-font-family;
+$button-desktop-weight: 600;
+$button-desktop-size: 22px;
+$button-desktop-line-height: 30.01px;
+$button-desktop-text-align: center;
+$button-desktop-color: $neutral-black;
+
+// Tablet Button Text
+$button-tablet-font: $primary-font-family;
+$button-tablet-weight: 600;
+$button-tablet-size: 18px;
+$button-tablet-line-height: 24.55px;
+$button-tablet-text-align: center;
+$button-tablet-color: $neutral-black;
+
+// Mobile Button Text
+$button-mobile-font: $primary-font-family;
+$button-mobile-weight: 600;
+$button-mobile-size: 18px;
+$button-mobile-line-height: 24.55px;
+$button-mobile-text-align: center;
+$button-mobile-color: $neutral-black;
+
+// // ====== Mixin for Responsive Typography ====== //
+// @mixin responsive-text($font, $weight, $size, $line-height, $color) {
+// 	font-family: $font;
+// 	font-weight: $weight;
+// 	font-size: $size;
+// 	line-height: $line-height;
+// 	color: $color;
+// }
+
+// // Example usage for H1 on Desktop, Tablet, and Mobile
+// h1 {
+// 	@include responsive-text(
+// 		$h1-desktop-primary-font,
+// 		$h1-desktop-primary-weight,
+// 		$h1-desktop-primary-size,
+// 		$h1-desktop-primary-line-height,
+// 		$h1-desktop-primary-color
+// 	);
+
+// 	@media (max-width: $breakpoint-desktop) {
+// 		@include responsive-text(
+// 			$h1-tablet-primary-font,
+// 			$h1-tablet-primary-weight,
+// 			$h1-tablet-primary-size,
+// 			$h1-tablet-primary-line-height,
+// 			$h1-tablet-primary-color
+// 		);
+// 	}
+
+// 	@media (max-width: $breakpoint-tablet) {
+// 		@include responsive-text(
+// 			$h1-mobile-primary-font,
+// 			$h1-mobile-primary-weight,
+// 			$h1-mobile-primary-size,
+// 			$h1-mobile-primary-line-height,
+// 			$h1-mobile-primary-color
+// 		);
+// 	}
+// }
+
+// You can create similar mixins and usage for h2, p, and smaller text types

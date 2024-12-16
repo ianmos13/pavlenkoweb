@@ -1,0 +1,26 @@
+@import "/styles/variables";
+
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 80px 56px 80px 56px;
+  gap: 56px;
+  max-width: 1440px;
+  h2 {
+    color: $neutral-black;
+  }
+}
+
+@media (max-width: 1024px) {
+    .videoContainer {
+      padding: 60px 32px 60px 32px;
+      gap: 32px;
+    }
+}  
+@media (max-width: 739px) {
+    .videoContainer {
+        padding: 40px 16px;
+        gap: 32px;
+      }
+}

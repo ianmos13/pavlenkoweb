@@ -1,0 +1,97 @@
+@import "/styles/variables";
+
+.headerContainer {
+  background-color: $primary-blue;
+  width: 100%;
+}
+
+.headerContainerInner {
+  max-width: 1440px;
+  padding: 48px 56px 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    padding: 48px 32px;
+  }
+}
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 50%;
+  h1 {
+    color: $neutral-white;
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+  h5 {
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    color: $neutral-white;
+  }
+  @media (max-width: 739px) {
+    h5{
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+}
+.imageSection {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 24px;
+  }
+}
+
+.runningLine {
+  position: relative;
+  padding: 80px 0;
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 40px 0;
+  }
+
+  @media (max-width: 739px) {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 739px) {
+  .headerContainer{
+    .headerContainerInner{
+      padding: 24px 16px;
+      .textSection{
+        gap: 24px;
+      }
+      .imageSection{
+        display: none;
+      }
+    }
+  }
+}
+
+

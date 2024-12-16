@@ -1,0 +1,40 @@
+@import "/styles/variables";
+
+.track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  will-change: transform;
+  animation: marquee 60s linear infinite;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  span {
+    font-weight: normal;
+    margin-right: 24px;
+    background-color: $secondary-ultra-lite-blue;
+    padding: 12px 41px;
+    border-radius: 100px;
+    display: inline-block;
+    white-space: nowrap;
+    color: $secondary-blue-2;
+
+    h4 {
+      color: $secondary-blue-2;
+    }
+  }
+}
+  
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

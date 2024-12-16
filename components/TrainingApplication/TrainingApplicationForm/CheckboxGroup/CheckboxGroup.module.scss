@@ -1,0 +1,103 @@
+@import "/styles/variables";
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .subLabel h5 {
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 16px;
+  }
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  font-family: Nunito;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  color: $neutral-black;
+  cursor: pointer;
+
+  // Наведение на всю область чекбокса и текста
+  &:hover {
+    p {
+      color: $secondary-blue-2; // Цвет текста при наведении на .checkboxItem
+    }
+  }
+
+  input[type="checkbox"] {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 2px solid $neutral-grey; 
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    background-color: white;
+
+    &:hover {
+      border-color: $secondary-blue-2; 
+    }
+
+    &:checked {
+      border-color: $secondary-blue-2; 
+      background-color: $secondary-blue-2; 
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 10px;
+        height: 8px;
+        background-color: white; 
+        mask: url('/images/icons/checkbox-icon.svg') no-repeat center; 
+        mask-size: contain;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+    color: $neutral-black;
+
+    // Цвет текста при активном состоянии
+    input[type="checkbox"]:checked + & {
+      color: $neutral-black;
+    }
+  }
+} 
+
+@media (max-width: 1024px) {
+  .checkboxGroup {
+    gap: 12px; 
+    .subLabel h5{
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .checkboxItem{
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+
+}
+
+@media (max-width: 739px) {
+
+}
+
+
+
+
+

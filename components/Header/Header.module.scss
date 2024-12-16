@@ -1,0 +1,125 @@
+@import '/styles/variables';
+
+.container {
+
+    .headerBody {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1440px;
+        height: 116px;
+        padding: 24px 56px;
+        margin: 0 auto;
+
+        .menu {
+            display: block;
+        }
+
+        .mobileMenu {
+            display: none;
+        }
+    }
+
+    .dropdownMenu {
+        display: none;
+    }
+}
+
+.lightContainer {
+    background-color: $neutral-white;
+
+    .headerBody {
+        background-color: $neutral-white;
+    }
+}
+
+.darkContainer {
+    background-color: $primary-blue;
+
+    .headerBody {
+        background-color: $primary-blue;
+    }
+}
+
+
+.greyContainer {
+    background-color: $secondary-ultra-lite-blue;
+
+    .headerBody {
+        background-color: $secondary-ultra-lite-blue;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+
+        .headerBody {
+            position: relative;
+            padding: 24px 32px;
+            z-index: 1000;
+
+            .menu {
+                display: none;
+            }
+
+            .mobileMenu {
+                display: block;
+
+                .burgerButton {
+                    border: unset;
+                    background-color: unset;
+                    height: 24px;
+                    width: 24px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .dropdownMenu {
+            display: block;
+            position: absolute;
+            top: calc(-50% + 60px);
+            visibility: hidden;
+            transition:
+                visibility 1s linear,
+                top 1s ease;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+
+            &.active {
+                top: 116px;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+@media (max-width: 739px) {
+    .container {
+        .headerBody {
+            height: 80px;
+            padding: 16px;
+
+            .logo {
+                height: 48px;
+                width: 80px;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+        .dropdownMenu {
+            top: -100%;
+            min-height: calc(100vh - 80px);
+
+            &.active {
+                top: 80px;
+            }
+        }
+    }
+}

@@ -1,0 +1,89 @@
+@import '/styles/variables';
+
+.buttonContainer {
+	min-width: 320px;
+	width: 100%;
+	height: 72px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	gap: 16px;
+	border-width: 0;
+	border-radius: 16px;
+	background-color: $primary-red;
+	transition: background-color 0.3s ease-out;
+
+	.buttonText {
+		font-family: $button-desktop-font;
+		font-weight: $button-desktop-weight;
+		font-size: $button-desktop-size;
+		line-height: $button-desktop-line-height;
+		text-align: $button-desktop-text-align;
+		color: $neutral-white;
+	}
+
+	.iconContainer {
+		display: flex;
+		align-items: center;
+		.icon {
+			width: 24px;
+			height: 24px;
+			background-image: url('/images/icons/right-arrow.svg');
+		}
+	}
+
+	&:hover {
+		background-color: $neutral-white;
+		border-width: 1px;
+		border-color: $secondary-lite-red-1;
+
+		.buttonText {
+			color: $primary-red;
+		}
+
+		.icon {
+			background-image: url('/images/icons/top-right-arrow.svg');
+		}
+	}
+
+	&:active {
+		background-color: $secondary-lite-red-1;
+		transform: none;
+
+		.buttonText {
+			color: $primary-red;
+		}
+
+		.icon {
+			background-image: url('/images/icons/top-right-arrow.svg');
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.buttonContainer {
+		.buttonText {
+			font-family: $button-tablet-font;
+			font-weight: $button-tablet-weight;
+			font-size: $button-tablet-size;
+			line-height: $button-tablet-line-height;
+			text-align: $button-tablet-text-align;
+		}
+	}
+}
+
+@media (max-width: 739px) {
+	.buttonContainer {
+		min-width: unset;
+		width: 100%;
+		height: 64px;
+		.buttonText {
+			font-family: $button-mobile-font;
+			font-weight: $button-mobile-weight;
+			font-size: $button-mobile-size;
+			line-height: $button-mobile-line-height;
+			text-align: $button-mobile-text-align;
+		}
+	}
+}

@@ -1,0 +1,50 @@
+.adaptiveContainer {
+	width: 100%;
+	.gridContainer {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		aspect-ratio: 25 / 26;
+		.top {
+			flex: 2 1;
+			display: flex;
+			gap: 16px;
+			margin-left: 13%;
+			margin-right: 5%;
+			.topLeftImage {
+				flex: 1 1;
+			}
+			.topRightImage {
+				flex: 1 1;
+				display: flex;
+				align-items: flex-end;
+				img {
+					height: 60%;
+				}
+			}
+		}
+
+		.bottom {
+			flex: 1 1;
+			display: flex;
+			gap: 16px;
+			.bottomLeftImage {
+				flex: 3 1;
+				img {
+					height: 71%;
+				}
+			}
+			.bottomRightImage {
+				flex: 7 1;
+			}
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			border-radius: 10px;
+		}
+	}
+}

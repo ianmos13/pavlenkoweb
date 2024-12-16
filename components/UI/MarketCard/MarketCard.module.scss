@@ -1,0 +1,107 @@
+@import "/styles/variables";
+
+.card {
+  display: block;
+  max-width: 431px;
+  max-height: 626px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid $secondary-lite-blue;
+  border-radius: 24px;
+  place-self: center;
+  @media (max-width: 1024px) {
+    max-width: 320px;
+    max-height: 566px;
+  }
+  @media (max-width: 739px) {
+    max-width: 288px;
+    max-height: 478px;
+  }
+}
+
+.imagePlaceholder {
+  width: 100%;
+  max-height: 352px;
+
+  overflow: hidden;
+  @media (max-width: 1024px) {
+    max-height: 296px;
+  }
+  @media (max-width: 739px) {
+    max-height: 208px;
+  }
+
+  img {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bottom {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  @media (max-width: 1024px) {
+    padding: 16px;
+  }
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  h5 {
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    color: $primary-blue;
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  .price {
+    h3 {
+      color: $primary-blue;
+    }
+  }
+  .discountPrice {
+    p {
+      color: $neutral-grey;
+      text-decoration: line-through;
+    }
+  }
+}
+
+.swiperCard {
+  @media (max-width: 1024px) {
+    max-width: 431px;
+    max-height: 626px;
+  }
+  @media (max-width: 739px) {
+    max-width: 320px;
+    max-height: 566px;
+    min-width: 288px;
+    min-height: 478px;
+  }
+
+  .imagePlaceholder {
+    @media (max-width: 1024px) {
+      max-height: 352px;
+    }
+    @media (max-width: 739px) {
+      max-height: 260px;
+    }
+  }
+}

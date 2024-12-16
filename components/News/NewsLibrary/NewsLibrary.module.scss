@@ -1,0 +1,26 @@
+@import "/styles/variables";
+
+.newsContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px 56px 120px 56px;
+  gap: 56px;
+  max-width: 1440px;
+  h2 {
+    color: $neutral-black;
+  }
+}
+
+@media (max-width: 1024px) {
+    .newsContainer {
+      padding: 20px 32px 60px 32px;
+      gap: 36px;
+    }
+}  
+@media (max-width: 739px) {
+    .newsContainer {
+        gap: 20px;
+        padding: 20px;
+      }
+}

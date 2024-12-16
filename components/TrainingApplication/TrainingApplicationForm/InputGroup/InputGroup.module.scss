@@ -1,0 +1,100 @@
+@import '/styles/variables';
+
+.inputGroup {
+	width: 100%;
+	margin-bottom: 24px;
+
+	.textAreaContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+
+		span p {
+			color: $neutral-dark-grey;
+			font-family: Nunito;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20px;
+			text-align: left;
+		}
+	}
+
+	textarea {
+		height: 120px;
+		border: none;
+		padding: 18px 16px;
+		font-family: Nunito;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 26px;
+		text-align: left;
+		border-radius: 8px;
+		&:focus-visible {
+			outline: none;
+		}
+	}
+
+	input {
+		height: 72px;
+		padding: 18px 16px;
+		font-family: Nunito;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 26px;
+		text-align: left;
+		border: none;
+		border-radius: 8px;
+
+		&:focus-visible {
+			outline: none;
+		}
+	}
+
+	.inputField {
+		width: 100%;
+
+		&::placeholder {
+			font-family: Nunito;
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 26px;
+			text-align: left;
+			color: $neutral-dark-grey;
+		}
+	}
+
+	label {
+		font-family: Nunito;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 26px;
+		text-align: left;
+		width: 100%;
+		display: block;
+		background-color: $secondary-ultra-lite-blue;
+		margin-bottom: 16px;
+	}
+}
+
+.note {
+	font-family: Nunito;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 16px;
+	text-align: left;
+	color: $neutral-dark-grey;
+	background-color: $secondary-ultra-lite-blue;
+	width: 100%;
+	display: block;
+}
+
+@media (max-width: 1024px) {
+  .inputGroup{
+    margin-bottom: 16px;
+  }
+
+}
+
+@media (max-width: 739px) {
+
+}

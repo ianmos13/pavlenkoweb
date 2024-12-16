@@ -1,0 +1,33 @@
+@import "/styles/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 80px 0 120px 0;
+  gap: 56px;
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  .swiperContainer {
+    display: none;
+
+    @media (max-width: 1024px) {
+      display: block;
+      width: 100vw;
+      margin: 0 -32px;
+    }
+
+    @media (max-width: 739px) {
+      display: block;
+      width: 100vw;
+      margin: 0 -16px;
+    }
+  }
+}

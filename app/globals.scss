@@ -1,0 +1,626 @@
+@import "/styles/variables";
+
+@font-face {
+  font-family: "Gogol";
+  src: url("/fonts/Gogol.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+// STYLE FOR MAP
+.leaflet-control-attribution {
+  display: none !important;
+}
+.custom-cluster-icon {
+  position: relative;
+  width: 50px; 
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-cluster-icon img {
+  width: 100%; 
+  height: 100%;
+}
+
+.custom-cluster span {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  pointer-events: none; 
+}
+
+.swiper-slide-active .feedback-container .feedbackImageContainer {
+  background-image: url('/images/quote-active.svg');
+}
+
+.swiper-slide-active .friends-of-school-container .friends-of-school-text-container {
+  background-color: $secondary-blue-2;
+}
+.swiper-slide-active .friends-of-school-container .friends-of-school-text-container div span h4 {
+  color: $primary-red;
+}
+
+container {
+  display: block;
+  margin: 0 auto;
+  min-height: 70vh;
+}
+
+.container {
+  max-width: 1440px;
+  display: block;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: $h1-desktop-primary-font;
+  font-weight: $h1-desktop-primary-weight;
+  font-size: $h1-desktop-primary-size;
+  line-height: $h1-desktop-primary-line-height;
+  color: $h1-desktop-primary-color;
+}
+
+h1.secondary,
+h1 .secondary {
+  font-family: $h1-desktop-secondary-font;
+  font-weight: $h1-desktop-secondary-weight;
+  font-size: $h1-desktop-secondary-size;
+  line-height: $h1-desktop-secondary-line-height;
+  color: $h1-desktop-secondary-color;
+}
+
+h2 {
+  font-family: $h2-desktop-primary-font;
+  font-weight: $h2-desktop-primary-weight;
+  font-size: $h2-desktop-primary-size;
+  line-height: $h2-desktop-primary-line-height;
+  color: $h2-desktop-primary-color;
+}
+
+h2.secondary {
+  font-family: $h2-desktop-secondary-font;
+  font-weight: $h2-desktop-secondary-weight;
+  font-size: $h2-desktop-secondary-size;
+  line-height: $h2-desktop-secondary-line-height;
+  color: $h2-desktop-secondary-color;
+}
+
+h3 {
+  font-family: $h3-desktop-primary-font;
+  font-weight: $h3-desktop-primary-weight;
+  font-size: $h3-desktop-primary-size;
+  line-height: $h3-desktop-primary-line-height;
+  color: $h3-desktop-primary-color;
+  //margin-bottom: $h3-desktop-primary-margin-bottom;
+}
+
+h3.secondary {
+  font-family: $h3-desktop-secondary-font;
+  font-weight: $h3-desktop-secondary-weight;
+  font-size: $h3-desktop-secondary-size;
+  line-height: $h3-desktop-secondary-line-height;
+  color: $h3-desktop-secondary-color;
+  //margin-bottom: unset;
+}
+
+h3 a {
+  font-family: $h3-desktop-link-font;
+  font-weight: $h3-desktop-link-weight;
+  font-size: $h3-desktop-link-size;
+  line-height: $h3-desktop-link-line-height;
+  color: $h3-desktop-link-color;
+}
+
+h4 {
+  font-family: $h4-desktop-primary-font;
+  font-weight: $h4-desktop-primary-weight;
+  font-size: $h4-desktop-primary-size;
+  line-height: $h4-desktop-primary-line-height;
+  color: $h4-desktop-primary-color;
+  //margin-bottom: $h4-desktop-primary-margin-bottom;
+}
+
+a {
+  text-decoration: unset;
+  font-family: $p-desktop-primary-font;
+  font-weight: $p-desktop-primary-weight;
+  font-size: $p-desktop-primary-size;
+  line-height: $p-desktop-primary-line-height;
+  color: $p-desktop-primary-color;
+}
+
+p {
+  font-family: $p-desktop-primary-font;
+  font-weight: $p-desktop-primary-weight;
+  font-size: $p-desktop-primary-size;
+  line-height: $p-desktop-primary-line-height;
+  color: $p-desktop-primary-color;
+  //margin-bottom: $p-desktop-primary-margin-bottom;
+}
+
+p.crossed {
+  font-family: $p-desktop-crossed-font;
+  font-weight: $p-desktop-crossed-weight;
+  font-size: $p-desktop-crossed-size;
+  line-height: $p-desktop-crossed-line-height;
+  color: $p-desktop-crossed-color;
+  //margin-bottom: $p-desktop-crossed-margin-bottom;
+}
+
+p.italic {
+  font-family: $p-desktop-italic-font;
+  font-weight: $p-desktop-italic-weight;
+  font-style: $p-desktop-italic-secondary-style;
+  font-size: $p-desktop-italic-size;
+  line-height: $p-desktop-italic-line-height;
+  color: $p-desktop-italic-color;
+  //margin-bottom: $p-desktop-italic-margin-bottom;
+}
+
+p.bold {
+  font-family: $p-desktop-bold-font;
+  font-weight: $p-desktop-bold-weight;
+  font-size: $p-desktop-bold-size;
+  line-height: $p-desktop-bold-line-height;
+  color: $p-desktop-bold-color;
+  //margin-bottom: $p-desktop-bold-margin-bottom;
+}
+
+p.small {
+  font-family: $p-desktop-small-font;
+  font-weight: $p-desktop-small-weight;
+  font-size: $p-desktop-small-size;
+  line-height: $p-desktop-small-line-height;
+  color: $p-desktop-small-color;
+  //margin-bottom: $p-desktop-small-margin-bottom;
+}
+
+a .smallLink {
+  font-family: $p-desktop-small-link-font;
+  font-weight: $p-desktop-small-link-weight;
+  font-size: $p-desktop-small-link-size;
+  line-height: $p-desktop-small-link-line-height;
+  color: $p-desktop-small-link-color;
+  //margin-bottom: $p-desktop-small-link-margin-bottom;
+}
+
+p.primarySmall {
+  font-family: $p-desktop-primary-small-font;
+  font-weight: $p-desktop-primary-small-weight;
+  font-size: $p-desktop-primary-small-size;
+  line-height: $p-desktop-primary-small-line-height;
+  color: $p-desktop-primary-small-color;
+  //margin-bottom: $p-desktop-primary-small-margin-bottom;
+}
+
+label {
+  font-family: $label-desktop-font;
+  font-weight: $label-desktop-weight;
+  font-size: $label-desktop-size;
+  line-height: $label-desktop-line-height;
+  color: $label-desktop-color;
+  //margin-bottom: $label-desktop-margin-bottom;
+}
+
+button {
+  font-family: $button-desktop-font;
+  font-weight: $button-desktop-weight;
+  font-size: $button-desktop-size;
+  line-height: $button-desktop-line-height;
+  text-align: $button-desktop-text-align;
+  color: $button-desktop-color;
+}
+
+@media (max-width: 1024px) {
+  container {
+  }
+
+  h1 {
+    font-family: $h1-tablet-primary-font;
+    font-weight: $h1-tablet-primary-weight;
+    font-size: $h1-tablet-primary-size;
+    line-height: $h1-tablet-primary-line-height;
+    color: $h1-tablet-primary-color;
+  }
+  h1 {
+    font-family: $h1-tablet-primary-font;
+    font-weight: $h1-tablet-primary-weight;
+    font-size: $h1-tablet-primary-size;
+    line-height: $h1-tablet-primary-line-height;
+    color: $h1-tablet-primary-color;
+  }
+
+  h1.secondary,
+  h1 .secondary {
+    font-family: $h1-tablet-secondary-font;
+    font-weight: $h1-tablet-secondary-weight;
+    font-size: $h1-tablet-secondary-size;
+    line-height: $h1-tablet-secondary-line-height;
+    color: $h1-tablet-secondary-color;
+  }
+
+  h2 {
+    font-family: $h2-tablet-primary-font;
+    font-weight: $h2-tablet-primary-weight;
+    font-size: $h2-tablet-primary-size;
+    line-height: $h2-tablet-primary-line-height;
+    color: $h2-tablet-primary-color;
+  }
+  h2 {
+    font-family: $h2-tablet-primary-font;
+    font-weight: $h2-tablet-primary-weight;
+    font-size: $h2-tablet-primary-size;
+    line-height: $h2-tablet-primary-line-height;
+    color: $h2-tablet-primary-color;
+  }
+
+  h2.secondary {
+    font-family: $h2-tablet-secondary-font;
+    font-weight: $h2-tablet-secondary-weight;
+    font-size: $h2-tablet-secondary-size;
+    line-height: $h2-tablet-secondary-line-height;
+    color: $h2-tablet-secondary-color;
+  }
+
+  h3 {
+    font-family: $h3-tablet-primary-font;
+    font-weight: $h3-tablet-primary-weight;
+    font-size: $h3-tablet-primary-size;
+    line-height: $h3-tablet-primary-line-height;
+    color: $h3-tablet-primary-color;
+    //margin-bottom: $h3-tablet-primary-margin-bottom;
+  }
+
+  h3.secondary {
+    font-family: $h3-tablet-secondary-font;
+    font-weight: $h3-tablet-secondary-weight;
+    font-size: $h3-tablet-secondary-size;
+    line-height: $h3-tablet-secondary-line-height;
+    color: $h3-tablet-secondary-color;
+    //margin-bottom: unset;
+  }
+
+  h3 a {
+    font-family: $h3-tablet-link-font;
+    font-weight: $h3-tablet-link-weight;
+    font-size: $h3-tablet-link-size;
+    line-height: $h3-tablet-link-line-height;
+    color: $h3-tablet-link-color;
+  }
+
+  h4 {
+    font-family: $h4-tablet-primary-font;
+    font-weight: $h4-tablet-primary-weight;
+    font-size: $h4-tablet-primary-size;
+    line-height: $h4-tablet-primary-line-height;
+    color: $h4-tablet-primary-color;
+    //margin-bottom: $h4-tablet-primary-margin-bottom;
+  }
+
+  a {
+    font-family: $p-tablet-primary-font;
+    font-weight: $p-tablet-primary-weight;
+    font-size: $p-tablet-primary-size;
+    line-height: $p-tablet-primary-line-height;
+    color: $p-tablet-primary-color;
+  }
+  a {
+    font-family: $p-tablet-primary-font;
+    font-weight: $p-tablet-primary-weight;
+    font-size: $p-tablet-primary-size;
+    line-height: $p-tablet-primary-line-height;
+    color: $p-tablet-primary-color;
+  }
+
+  p {
+    font-family: $p-tablet-primary-font;
+    font-weight: $p-tablet-primary-weight;
+    font-size: $p-tablet-primary-size;
+    line-height: $p-tablet-primary-line-height;
+    color: $p-tablet-primary-color;
+    //margin-bottom: unset;
+  }
+
+  p.crossed {
+    font-family: $p-tablet-crossed-font;
+    font-weight: $p-tablet-crossed-weight;
+    font-size: $p-tablet-crossed-size;
+    line-height: $p-tablet-crossed-line-height;
+    color: $p-tablet-crossed-color;
+    //margin-bottom: $p-tablet-crossed-margin-bottom;
+  }
+
+  p.italic {
+    font-family: $p-tablet-italic-font;
+    font-weight: $p-tablet-italic-weight;
+    font-style: $p-tablet-italic-secondary-style;
+    font-size: $p-tablet-italic-size;
+    line-height: $p-tablet-italic-line-height;
+    color: $p-tablet-italic-color;
+    //margin-bottom: $p-tablet-italic-margin-bottom;
+  }
+
+  p.bold {
+    font-family: $p-tablet-bold-font;
+    font-weight: $p-tablet-bold-weight;
+    font-size: $p-tablet-bold-size;
+    line-height: $p-tablet-bold-line-height;
+    color: $p-tablet-bold-color;
+    //margin-bottom: $p-tablet-bold-margin-bottom;
+  }
+
+  p.small {
+    font-family: $p-tablet-small-font;
+    font-weight: $p-tablet-small-weight;
+    font-size: $p-tablet-small-size;
+    line-height: $p-tablet-small-line-height;
+    color: $p-tablet-small-color;
+    //margin-bottom: $p-tablet-small-margin-bottom;
+  }
+
+  a .smallLink {
+    font-family: $p-tablet-small-link-font;
+    font-weight: $p-tablet-small-link-weight;
+    font-size: $p-tablet-small-link-size;
+    line-height: $p-tablet-small-link-line-height;
+    color: $p-tablet-small-link-color;
+  }
+  a .smallLink {
+    font-family: $p-tablet-small-link-font;
+    font-weight: $p-tablet-small-link-weight;
+    font-size: $p-tablet-small-link-size;
+    line-height: $p-tablet-small-link-line-height;
+    color: $p-tablet-small-link-color;
+  }
+
+  p.primarySmall {
+    font-family: $p-tablet-primary-small-font;
+    font-weight: $p-tablet-primary-small-weight;
+    font-size: $p-tablet-primary-small-size;
+    line-height: $p-tablet-primary-small-line-height;
+    color: $p-tablet-primary-small-color;
+    //margin-bottom: $p-tablet-primary-small-margin-bottom;
+  }
+
+  label {
+    font-family: $label-tablet-font;
+    font-weight: $label-tablet-weight;
+    font-size: $label-tablet-size;
+    line-height: $label-tablet-line-height;
+    color: $label-tablet-color;
+    //margin-bottom: $label-tablet-margin-bottom;
+  }
+
+  button {
+    font-family: $button-tablet-font;
+    font-weight: $button-tablet-weight;
+    font-size: $button-tablet-size;
+    line-height: $button-tablet-line-height;
+    text-align: $button-tablet-text-align;
+    color: $button-tablet-color;
+  }
+  button {
+    font-family: $button-tablet-font;
+    font-weight: $button-tablet-weight;
+    font-size: $button-tablet-size;
+    line-height: $button-tablet-line-height;
+    text-align: $button-tablet-text-align;
+    color: $button-tablet-color;
+  }
+}
+
+@media (max-width: 739px) {
+  container {
+  }
+
+  h1 {
+    font-family: $h1-mobile-primary-font;
+    font-weight: $h1-mobile-primary-weight;
+    font-size: $h1-mobile-primary-size;
+    line-height: $h1-mobile-primary-line-height;
+    color: $h1-mobile-primary-color;
+  }
+  h1 {
+    font-family: $h1-mobile-primary-font;
+    font-weight: $h1-mobile-primary-weight;
+    font-size: $h1-mobile-primary-size;
+    line-height: $h1-mobile-primary-line-height;
+    color: $h1-mobile-primary-color;
+  }
+
+  h1.secondary,
+  h1 .secondary {
+    font-family: $h1-mobile-secondary-font;
+    font-weight: $h1-mobile-secondary-weight;
+    font-size: $h1-mobile-secondary-size;
+    line-height: $h1-mobile-secondary-line-height;
+    color: $h1-mobile-secondary-color;
+  }
+
+  h2 {
+    font-family: $h2-mobile-primary-font;
+    font-weight: $h2-mobile-primary-weight;
+    font-size: $h2-mobile-primary-size;
+    line-height: $h2-mobile-primary-line-height;
+    color: $h2-mobile-primary-color;
+  }
+  h2 {
+    font-family: $h2-mobile-primary-font;
+    font-weight: $h2-mobile-primary-weight;
+    font-size: $h2-mobile-primary-size;
+    line-height: $h2-mobile-primary-line-height;
+    color: $h2-mobile-primary-color;
+  }
+
+  h2.secondary {
+    font-family: $h2-mobile-secondary-font;
+    font-weight: $h2-mobile-secondary-weight;
+    font-size: $h2-mobile-secondary-size;
+    line-height: $h2-mobile-secondary-line-height;
+    color: $h2-mobile-secondary-color;
+  }
+
+  h3 {
+    font-family: $h3-mobile-primary-font;
+    font-weight: $h3-mobile-primary-weight;
+    font-size: $h3-mobile-primary-size;
+    line-height: $h3-mobile-primary-line-height;
+    color: $h3-mobile-primary-color;
+    //margin-bottom: $h3-mobile-primary-margin-bottom;
+  }
+
+  h3.secondary {
+    font-family: $h3-mobile-secondary-font;
+    font-weight: $h3-mobile-secondary-weight;
+    font-size: $h3-mobile-secondary-size;
+    line-height: $h3-mobile-secondary-line-height;
+    color: $h3-mobile-secondary-color;
+    //margin-bottom: unset;
+  }
+
+  h3 a {
+    font-family: $h3-mobile-link-font;
+    font-weight: $h3-mobile-link-weight;
+    font-size: $h3-mobile-link-size;
+    line-height: $h3-mobile-link-line-height;
+    color: $h3-mobile-link-color;
+  }
+
+  h4 {
+    font-family: $h4-mobile-primary-font;
+    font-weight: $h4-mobile-primary-weight;
+    font-size: $h4-mobile-primary-size;
+    line-height: $h4-mobile-primary-line-height;
+    color: $h4-mobile-primary-color;
+    //margin-bottom: $h4-mobile-primary-margin-bottom;
+  }
+
+  a {
+    font-family: $p-mobile-primary-font;
+    font-weight: $p-mobile-primary-weight;
+    font-size: $p-mobile-primary-size;
+    line-height: $p-mobile-primary-line-height;
+    color: $p-mobile-primary-color;
+  }
+  a {
+    font-family: $p-mobile-primary-font;
+    font-weight: $p-mobile-primary-weight;
+    font-size: $p-mobile-primary-size;
+    line-height: $p-mobile-primary-line-height;
+    color: $p-mobile-primary-color;
+  }
+
+  p {
+    font-family: $p-mobile-primary-font;
+    font-weight: $p-mobile-primary-weight;
+    font-size: $p-mobile-primary-size;
+    line-height: $p-mobile-primary-line-height;
+    color: $p-mobile-primary-color;
+    //margin-bottom: unset;
+  }
+
+  p.crossed {
+    font-family: $p-mobile-crossed-font;
+    font-weight: $p-mobile-crossed-weight;
+    font-size: $p-mobile-crossed-size;
+    line-height: $p-mobile-crossed-line-height;
+    color: $p-mobile-crossed-color;
+    //margin-bottom: $p-mobile-crossed-margin-bottom;
+  }
+
+  p.italic {
+    font-family: $p-mobile-italic-font;
+    font-weight: $p-mobile-italic-weight;
+    font-style: $p-mobile-italic-secondary-style;
+    font-size: $p-mobile-italic-size;
+    line-height: $p-mobile-italic-line-height;
+    color: $p-mobile-italic-color;
+    //margin-bottom: $p-mobile-italic-margin-bottom;
+  }
+
+  p.bold {
+    font-family: $p-mobile-bold-font;
+    font-weight: $p-mobile-bold-weight;
+    font-size: $p-mobile-bold-size;
+    line-height: $p-mobile-bold-line-height;
+    color: $p-mobile-bold-color;
+    //margin-bottom: $p-mobile-bold-margin-bottom;
+  }
+
+  p.small {
+    font-family: $p-mobile-small-font;
+    font-weight: $p-mobile-small-weight;
+    font-size: $p-mobile-small-size;
+    line-height: $p-mobile-small-line-height;
+    color: $p-mobile-small-color;
+    //margin-bottom: $p-mobile-small-margin-bottom;
+  }
+
+  a .smallLink {
+    font-family: $p-mobile-small-link-font;
+    font-weight: $p-mobile-small-link-weight;
+    font-size: $p-mobile-small-link-size;
+    line-height: $p-mobile-small-link-line-height;
+    color: $p-mobile-small-link-color;
+  }
+  a .smallLink {
+    font-family: $p-mobile-small-link-font;
+    font-weight: $p-mobile-small-link-weight;
+    font-size: $p-mobile-small-link-size;
+    line-height: $p-mobile-small-link-line-height;
+    color: $p-mobile-small-link-color;
+  }
+
+  p.primarySmall {
+    font-family: $p-mobile-primary-small-font;
+    font-weight: $p-mobile-primary-small-weight;
+    font-size: $p-mobile-primary-small-size;
+    line-height: $p-mobile-primary-small-line-height;
+    color: $p-mobile-primary-small-color;
+    //margin-bottom: $p-mobile-primary-small-margin-bottom;
+  }
+
+  label {
+    font-family: $label-mobile-font;
+    font-weight: $label-mobile-weight;
+    font-size: $label-mobile-size;
+    line-height: $label-mobile-line-height;
+    color: $label-mobile-color;
+    //margin-bottom: $label-mobile-margin-bottom;
+  }
+
+  button {
+    font-family: $button-mobile-font;
+    font-weight: $button-mobile-weight;
+    font-size: $button-mobile-size;
+    line-height: $button-mobile-line-height;
+    text-align: $button-mobile-text-align;
+    color: $button-mobile-color;
+  }
+  button {
+    font-family: $button-mobile-font;
+    font-weight: $button-mobile-weight;
+    font-size: $button-mobile-size;
+    line-height: $button-mobile-line-height;
+    text-align: $button-mobile-text-align;
+    color: $button-mobile-color;
+  }
+}

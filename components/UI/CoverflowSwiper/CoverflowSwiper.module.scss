@@ -1,0 +1,70 @@
+@import "/styles/variables";
+
+.container {
+  padding: 80px 0;
+  width: 100%;
+
+  .swiperContainer {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+
+    .swiperSlide {
+      background: $neutral-white;
+      max-width: 656px;
+      max-height: 344px;
+      overflow: hidden;
+      border-radius: 24px;
+
+      .imageContainer {
+        width: 656px;
+        height: 344px;
+
+        img {
+          position: absolute;
+          width: 100%;
+          height: auto;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 60px 0;
+
+    .swiperContainer {
+      .swiperSlide {
+        max-width: 656px;
+        max-height: 344px;
+
+        .imageContainer {
+          width: 656px;
+          height: 344px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 739px) {
+  .container {
+    padding: 40px 0;
+
+    .swiperContainer {
+      .swiperSlide {
+        max-width: 266px;
+        max-height: 140px;
+        border-radius: 16px;
+
+        .imageContainer {
+          width: 266px;
+          height: 140px;
+        }
+      }
+    }
+  }
+}

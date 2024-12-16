@@ -1,0 +1,243 @@
+@import '/styles/variables';
+
+.container {
+    background-color: $primary-blue;
+
+    .footerBody {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        padding: 62px 56px;
+        max-width: 1440px;
+        margin: 0 auto;
+
+        .footerBox {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+
+            .logo {
+                margin-right: 10px;
+            }
+
+            .linksBox {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 24px;
+                max-width: 1160px;
+
+                .linksColumn {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+
+                    p {
+                        min-height: 20px;
+                        color: $neutral-dark-grey;
+                    }
+
+                    .linksItem {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        gap: 4px;
+
+                        .link p {
+                            padding: 4px;
+                            color: $neutral-white;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footerInfo {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .textInfo {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-top: 4px;
+                gap: 16px;
+
+                p {
+                    color: $neutral-white;
+                }
+            }
+
+            .linksInfo {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                text-align: right;
+
+                .link {
+                    span {
+                        color: $neutral-white;
+                        border-bottom: solid 1px $neutral-white;
+                    }
+
+                    &:hover {
+                        span {
+                            color: $secondary-blue-2;
+                            border-bottom: solid 1px $secondary-blue-2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        .footerBody {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 56px;
+            padding: 48px 32px;
+            max-width: unset;
+
+            .footerBox {
+                flex-direction: column;
+
+                .logo {
+                    margin-right: unset;
+                    width: 112px;
+                    height: 64px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .linksBox {
+                    max-width: unset;
+                    width: 100%;
+                    flex-direction: unset;
+                    flex-wrap: wrap;
+                    margin-top: 24px;
+                    gap: 40px;
+
+                    .linksColumn {
+                        max-width: 320px;
+                        min-width: 320px;
+                        width: unset;
+                        order: 1;
+
+                        .linksItem {
+                            .link {
+                                min-width: 320px;
+
+                                p {
+                                    font-weight: $p-tablet-primary-weight;
+                                    line-height: 26px;
+                                }
+                            }
+                        }
+                    }
+
+                    .withoutTitleColumn {
+                        order: 0;
+                        width: 100%;
+                        max-width: unset;
+                        min-width: 320px;
+
+                        .linksItem {
+                            flex-direction: row;
+
+                            .link {
+                                min-width: 320px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .footerInfo {
+                .linksInfo {
+                    justify-content: end;
+                    gap: 12px;
+                    min-width: 290px;
+                }
+            }
+        }
+    }
+
+}
+@media (max-width: 739px) {
+    .container {
+        .footerBody {
+            padding: 48px 16px;
+
+            .footerBox {
+                .linksBox {
+                    .linksColumn {
+                        min-width: 288px;
+
+                        .linksItem {
+                            .link {
+                                min-width: 288px;
+
+                                p {
+                                    font-weight: $p-mobile-primary-weight;
+                                    line-height: $p-tablet-primary-line-height;
+                                }
+                            }
+                        }
+                    }
+
+                    .withoutTitleColumn {
+                        min-width: 288px;
+
+                        .linksItem {
+                            flex-direction: column;
+                        }
+                    }
+                }
+            }
+
+            .footerInfo {
+                flex-direction: column-reverse;
+                gap: 24px;
+
+                .textInfo {
+                    margin-top: unset;
+                    gap: 8px;
+
+                    p {
+                        font-size: $label-mobile-size;
+                        line-height: $label-mobile-line-height;
+                    }
+                }
+
+                .linksInfo {
+                    justify-content: space-between;
+                    text-align: start;
+                    min-width: 288px;
+
+                    .link {
+                        span {
+                            font-size: $label-mobile-size;
+                            line-height: $label-mobile-line-height;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

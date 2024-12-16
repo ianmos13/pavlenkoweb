@@ -1,0 +1,27 @@
+{
+  "name": "pavlenko-school",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "set NODE_ENV=production && node server.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "framer-motion": "^11.13.0",
+    "gsap": "^3.12.5",
+    "leaflet": "^1.9.4",
+    "next": "14.2.14",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-leaflet": "^4.2.1",
+    "react-leaflet-markercluster": "^4.0.0-rc1",
+    "swiper": "^11.1.14"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.14",
+    "sass": "^1.79.4"
+  }
+}

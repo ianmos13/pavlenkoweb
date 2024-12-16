@@ -1,0 +1,128 @@
+@import "/styles/variables";
+
+.container {
+  width: 100%;
+
+  .swiperContainer {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    --swiper-pagination-bottom: 80px;
+    --swiper-pagination-bullet-width: 26px;
+    --swiper-pagination-bullet-border-radius: 50px;
+    --swiper-pagination-left: 40px;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-opacity: 1;
+
+    .paginationBullet {
+      width: 26px;
+      transition: width 1s ease;
+    }
+
+    .paginationBulletActive {
+      width: 88px;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: start;
+      width: 100%;
+      left: 56px;
+    }
+  }
+
+}
+
+.largeContainer {
+  .swiperContainer {
+    max-width: 1440px;
+  }
+}
+
+.mediumContainer {
+  padding: 20px 56px 40px 56px;
+
+  .swiperContainer {
+    border-radius: 24px;
+    max-width: 1328px;
+
+    --swiper-pagination-bottom: 56px;
+  }
+}
+
+.darkContainer {
+  background-color: $primary-blue;
+
+  .swiperContainer {
+    .paginationBullet {
+      background-color: $secondary-blue-2;
+    }
+
+    .paginationBulletActive {
+      background-color: $secondary-lite-blue;
+    }
+
+  }
+}
+
+.lightContainer {
+  background-color: $neutral-white;
+
+  .swiperContainer {
+    .paginationBullet {
+      background-color: $neutral-grey;
+    }
+
+    .paginationBulletActive {
+      background-color: $secondary-blue-2;
+    }
+
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+
+    .swiperContainer {
+      max-width: 1024px;
+      max-height: 952px;
+      --swiper-pagination-bottom: 40px;
+      --swiper-pagination-left: auto;
+
+      .pagination {
+        justify-content: center;
+        left: unset;
+        text-align: center;
+      }
+    }
+  }
+
+  .mediumContainer {
+    padding: 24px 32px 40px 32px;
+
+    .swiperContainer {
+      --swiper-pagination-bottom: 32px;
+    }
+  }
+
+}
+@media (max-width: 739px) {
+  .container {
+
+    .swiperContainer {
+      max-width: unset;
+      max-height: 602px;
+      --swiper-pagination-bottom: 24px;
+    }
+  }
+
+  .mediumContainer {
+    padding: 0;
+
+    .swiperContainer {
+      max-height: unset;
+      border-radius: 0;
+      --swiper-pagination-bottom: 24px;
+    }
+  }
+}

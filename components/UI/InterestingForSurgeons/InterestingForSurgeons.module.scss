@@ -1,0 +1,152 @@
+@import '/styles/variables';
+.container {
+	padding: 80px 56px;
+	.containerInner {
+		padding: 56px;
+		display: flex;
+		flex-direction: column;
+		gap: 56px;
+		border-radius: 24px;
+		.cards {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 16px;
+			.card {
+				flex: 1 1;
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				padding: 24px;
+				border-radius: 16px;
+				justify-content: space-between;
+				height: 335px;
+				a {
+					display: inline-block;
+					text-decoration: none;
+					font-family: $button-desktop-font;
+					font-weight: $button-desktop-weight;
+					font-size: $button-desktop-size;
+					line-height: $button-desktop-line-height;
+					color: $primary-blue;
+				}
+				a:hover {
+					text-decoration: underline;
+				}
+				.cardHeader {
+					gap: 24px;
+					display: flex;
+					flex-direction: column;
+					h3 {
+						color: $primary-red;
+					}
+					overflow: hidden;
+				}
+			}
+		}
+	}
+}
+
+.blue {
+	background: $secondary-ultra-lite-blue;
+	.cards {
+		.card {
+			background-color: $neutral-white;
+		}
+	}
+}
+
+.white {
+	background: $neutral-white;
+	.cards {
+		.card {
+			background-color: $secondary-ultra-lite-blue;
+		}
+	}
+}
+
+.top {
+	padding-top: 20px;
+}
+.bottom {
+	padding-bottom: 120px;
+}
+
+@media (max-width: 1024px) {
+	.container {
+		padding: 60px 32px;
+		.containerInner {
+			padding: 32px;
+			gap: 32px;
+			.cards {
+				gap: 16px;
+				flex-direction: column;
+				.card {
+					flex: 1 1;
+					gap: 24px;
+					p {
+						font-size: 18px;
+						line-height: 26px;
+					}
+					a {
+						display: inline-block;
+						text-decoration: none;
+						font-family: $button-tablet-font;
+						font-weight: $button-tablet-weight;
+						font-size: $button-tablet-size;
+						line-height: $button-tablet-line-height;
+					}
+					.cardHeader {
+						gap: 16px;
+					}
+				}
+			}
+		}
+	}
+	.bottom {
+		padding-bottom: 80px;
+	}
+}
+
+@media (max-width: 739px) {
+	.container {
+		padding: 40px 0;
+		.containerInner {
+			padding: 40px 16px;
+			gap: 32px;
+			border-radius: unset;
+			.cards {
+				gap: 16px;
+				flex-direction: column;
+				.card {
+					padding: 16px;
+					gap: 24px;
+					width: 100%;
+					a {
+						display: inline-block;
+						text-decoration: none;
+						font-family: $button-mobile-font;
+						font-weight: $button-mobile-weight;
+						font-size: $button-mobile-size;
+						line-height: $button-mobile-line-height;
+					}
+					.cardHeader {
+						h3 {
+							font-weight: 600;
+							font-size: 22px;
+							line-height: 30px;
+						}
+						p{
+							font-weight: 400;
+							font-size: 16px;
+							line-height: 24px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.bottom {
+		padding-bottom: 60px;
+	}
+}

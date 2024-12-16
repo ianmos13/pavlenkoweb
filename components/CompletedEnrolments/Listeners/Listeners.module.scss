@@ -1,0 +1,227 @@
+@import "/styles/variables";
+
+// .container {
+//   padding: 80px 56px 120px 56px;
+//   gap: 56px;
+//   display: flex;
+//   flex-direction: column;
+//   max-width: 1440px;
+//   margin: 0 auto;
+  
+//   @media (max-width: 1024px) {
+//     padding: 40px 32px 60px 32px;
+//   }
+ 
+// }
+
+// .gridGraduates {
+//   display: grid;
+//   grid-template-columns: repeat(4,1fr);
+//   gap: 8px;
+//   margin: 0 auto;
+//   @media (max-width: 1380px) {
+//     grid-template-columns: repeat(2,2fr);
+    
+//   }
+//   @media (max-width: 775px) {
+//     grid-template-columns: repeat(1,4fr);
+   
+//   }
+// }
+
+// .card {
+//   border-radius: 24px;
+//   border: 1px solid $secondary-lite-blue;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   transition: transform 0.2s ease-in-out;
+//   gap: 8px;
+//   width: 320px;
+//   height: 174px;
+//   justify-content: space-between;
+
+//   //   &:hover {
+//   //     transform: translateY(-5px);
+//   //   }
+// }
+// .name {
+//   display: flex;
+//   width: 114px;
+//   height: 56px;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+//   h5 {
+//     font-family: Nunito;
+//     font-size: 20px;
+//     font-weight: 600;
+//     line-height: 28px;
+//     color: $primary-blue;
+//     overflow: hidden;
+
+//     text-align: center;
+//     @media (max-width: 1024px) {
+//       font-size: 18px;
+//       line-height: 24px;
+//     }
+//     @media (max-width: 739px) {
+//       font-size: 14px;
+//       line-height: 20px;
+//     }
+//   }
+// }
+// .image {
+//   width: 174px;
+//   height: 174px;
+//   object-fit: cover;
+//   border-top-right-radius: 24px;
+//   border-bottom-right-radius: 24px;
+// }
+.container {
+.swiperContainer {
+  display: none;
+  @media (max-width: 1024px) {
+    display: block;
+    width: 100vw;
+    margin: 0 -32px;
+  }
+  @media (max-width: 739px) {
+    display: none;
+  }
+}
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 80px 56px 120px 56px;
+  h2{
+      font-family: Nunito;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 52px;
+  }
+  .gridGraduates{
+    display: grid;
+    grid-template-columns: repeat(3 ,1fr);
+    gap: 16px;
+    .card{
+      height: 174px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid $secondary-lite-blue;
+      border-radius: 24px;
+      transition: transform 0.2s ease-in-out;
+      &:hover {
+        transform: translateY(-5px);
+      }
+      .name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px 0 24px 24px;
+        h5{
+          font-family: Nunito;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 28px;
+          color: #0F384A;
+        }
+      }
+      .image{
+        object-fit: cover;
+        height: 174px;
+        width: 174px;
+        border-top-right-radius: 24px;
+        border-bottom-right-radius: 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .container{
+    gap: 32px;
+    padding: 60px 32px 80px 32px;
+    h2 {
+      font-size: 32px;
+      line-height: 48px;
+    }
+    .gridGraduates {
+      display: none;
+    }
+    .swiperContainer{
+      .card{
+        height: 174px;
+        width: 432px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid $secondary-lite-blue;
+        border-radius: 24px;
+        transition: transform 0.2s ease-in-out;
+        &:hover {
+          transform: translateY(-5px);
+        }
+        .name{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 24px 0 24px 24px;
+          h5{
+            font-family: Nunito;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 28px;
+            color: #0F384A;
+          }
+        }
+        .image{
+          object-fit: cover;
+          height: 174px;
+          width: 174px;
+          border-top-right-radius: 24px;
+          border-bottom-right-radius: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 739px) {
+  .container{
+    gap: 24px;
+    padding: 40px 16px 60px 16px;
+    h2{
+        font-size: 22px;
+        line-height: 28px;
+    }
+    .gridGraduates{
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .card{
+        height: 120px;
+        gap: 0;
+        border-radius: 16px;
+        .name{
+          padding: 16px;
+          h5{
+            font-size: 16px;
+            line-height: 22px;
+          }
+        }
+        .image{
+          height: 120px;
+          width: 120px;
+          border-top-right-radius: 16px;
+          border-bottom-right-radius: 16px;
+        }
+      }
+    }
+  }
+}

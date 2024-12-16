@@ -1,0 +1,36 @@
+@import "/styles/variables";
+
+.marketContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 24px 56px 80px 56px;
+  gap: 24px;
+  max-width: 1440px;
+  @media (max-width: 1024px) {
+    padding: 20px 32px 60px 32px;
+  }
+
+  @media (max-width: 739px) {
+    padding: 20px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0 auto;
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  @media (max-width: 739px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1 1fr);
+  }
+}
+
+

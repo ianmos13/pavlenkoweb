@@ -1,0 +1,220 @@
+@import '/styles/variables';
+
+.container {
+    position: relative;
+    padding: 4px;
+
+    .link {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 9px;
+        cursor: pointer;
+
+        .linkImage {
+            width: 16px;
+            height: 16px;
+            padding: 2px;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        &:hover {
+            span {
+                color: $secondary-blue-2;
+            }
+
+            img {
+                filter: invert(43%) sepia(19%) saturate(508%) hue-rotate(153deg) brightness(95%) contrast(93%);
+            }
+        }
+    }
+
+    .dropdownMenuWrapper {
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 0.5s linear, opacity 0.5s cubic-bezier(0.5, 0.12, 0.46, 0.88);
+        position: absolute;
+        left: 0;
+        top: 100%;
+        z-index: 1001;
+
+        .dropdownMenu {
+            overflow: hidden;
+            width: 320px;
+            border-radius: 16px;
+            padding: 12px;
+
+            .dropdownElement {
+                list-style: none;
+                padding: 4px;
+
+                .link {
+                    text-decoration: none;
+
+                    &:hover {
+                        span {
+                            color: $secondary-blue-2;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+}
+
+.lightContainer {
+    .link {
+        span {
+            color: $primary-blue;
+        }
+    }
+
+    .dropdownMenu {
+        background-color: $primary-blue;
+
+        .link {
+            span {
+                color: $neutral-white;
+            }
+        }
+
+    }
+}
+
+.darkContainer {
+    .link {
+        span {
+            color: $neutral-white;
+        }
+    }
+
+    .dropdownMenu {
+        background-color: $secondary-ultra-lite-blue;
+
+        .link {
+            span {
+                color: $primary-blue;
+            }
+        }
+
+    }
+}
+
+.greyContainer {
+    .link {
+        span {
+            color: $primary-blue;
+        }
+    }
+
+    .dropdownMenu {
+        background-color: $primary-blue;
+
+        .link {
+            span {
+                color: $neutral-white;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0;
+        width: 100%;
+
+        .link {
+            padding: 15px 4px;
+            width: 100%;
+
+            span {
+                font-size: $p-desktop-primary-size;
+                line-height: $p-desktop-primary-line-height;
+            }
+        }
+
+        .dropdownMenuWrapper {
+            position: relative;
+            width: 100%;
+            padding: 0;
+            display: grid;
+            grid-template-rows: 0fr;
+            transition:
+                grid-template-rows 0.5s ease-out,
+                visibility 0.5s linear,
+                opacity 0.5s cubic-bezier(0.5, 0.12, 0.46, 0.88);
+
+            .dropdownMenu {
+                width: 100%;
+                padding: 0;
+
+                .dropdownElement {
+                    padding: 0;
+                    height: 56px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .link {
+                        padding: 2px 4px 2px 16px;
+                        max-width: 320px;
+                    }
+                }
+            }
+
+            &.active {
+                margin-bottom: 16px;
+                grid-template-rows: 1fr;
+            }
+        }
+    }
+
+    .lightContainer {
+        .dropdownMenu {
+            background-color: $neutral-white;
+
+            .link {
+                span {
+                    color: $primary-blue;
+                }
+            }
+
+        }
+    }
+
+    .darkContainer {
+        .dropdownMenu {
+            background-color: $primary-blue;
+
+            .link {
+                span {
+                    color: $neutral-white;
+                }
+            }
+        }
+    }
+
+    .greyContainer {
+        .dropdownMenu {
+            background-color: $secondary-ultra-lite-blue;
+
+            .link {
+                span {
+                    color: $primary-blue;
+                }
+            }
+
+        }
+    }
+}
+
+@media (max-width: 739px) {
+}

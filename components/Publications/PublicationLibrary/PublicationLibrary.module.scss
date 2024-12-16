@@ -1,0 +1,26 @@
+@import "/styles/variables";
+
+.libraryContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 80px 56px 120px 56px;
+  gap: 56px;
+  max-width: 1440px;
+  h2 {
+    color: $neutral-black;
+  }
+}
+
+@media (max-width: 1024px) {
+    .libraryContainer {
+      padding: 60px 32px 60px 32px;
+      gap: 36px;
+    }
+}  
+@media (max-width: 739px) {
+    .libraryContainer {
+        gap: 20px;
+        padding: 20px;
+      }
+}

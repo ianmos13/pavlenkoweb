@@ -1,0 +1,119 @@
+@import '/styles/variables';
+
+.block {
+  padding: 120px 56px 80px 56px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px;
+    gap: 48px;
+    background-color: $secondary-ultra-lite-blue;
+    border: none;
+    border-radius: 24px;
+
+    .textContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .text {
+        color: $neutral-black;
+
+        .focusText {
+          font-family: $h1-desktop-secondary-font;
+          font-weight: 400;
+          font-size: 68px;
+          line-height: 46px;
+          color: $h1-desktop-secondary-color;
+          margin-right: 5px;
+        }
+
+        .link {
+          margin-left: 5px;
+          color: $secondary-blue-2;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .blocksContainer {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+
+      .block {
+        flex: 1 1 calc(25% - 24px);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 16px 24px 16px;
+        background-color: $neutral-white;
+        border: none;
+        border-radius: 16px;
+
+        .text {
+          color: $h3-desktop-primary-color;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .block {
+    padding: 80px 32px 60px 32px;
+
+    .container {
+      padding: 32px;
+
+      .textContainer {
+        width: 100%;
+        gap: 16px;
+        .text{
+          .focusText {
+            font-size: 40px;
+            line-height: 28px;
+          }
+        }
+      }
+
+      .blocksContainer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 739px) {
+  .block {
+    padding: unset;
+    .container {
+      padding: 60px 16px 40px 16px;
+      border-radius: unset;
+      gap: 32px;
+
+      .textContainer{
+        .text{
+          .focusText{
+            font-size: 32px;
+            line-height: 20px;
+          }
+        }
+      }
+
+      .blocksContainer {
+        grid-template-columns: 1fr;
+
+        .block {
+          flex: 1 1 100%;
+
+          .text {
+            margin-bottom: unset;
+          }
+        }
+      }
+    }
+  }
+}

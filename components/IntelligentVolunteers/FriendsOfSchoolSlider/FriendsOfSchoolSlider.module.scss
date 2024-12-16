@@ -1,0 +1,142 @@
+@import "/styles/variables";
+
+.container {
+  display: block;
+  width: 100%;
+
+  .swiperContainer {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+
+    .swiperSlide {
+      background: $neutral-white;
+      max-width: 656px;
+      max-height: 514px;
+      overflow: hidden;
+    }
+  }
+}
+
+.cardContainer {
+  background: $neutral-white;
+  position: relative;
+  width: 656px;
+  height: 514px;
+  aspect-ratio: 1/0.784;
+  display: flex;
+  align-items: flex-end;
+
+  .imageContainer {
+    padding: 0 32px;
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+
+  .textContainer {
+    padding: 24px;
+    height: 457px;
+    width: 100%;
+    border-radius: 16px;
+    background-color: $secondary-lite-blue;
+
+    .track {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 100%;
+      width: 100%;
+
+      span {
+        position: absolute;
+        background-color: $secondary-ultra-lite-blue;
+        padding: 10px 41px;
+        border-radius: 100px;
+        display: inline-block;
+        color: $secondary-blue-2;
+
+        h4 {
+          text-align: center;
+          font-family: Nunito;
+          color: $secondary-blue-2;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    .swiperContainer {
+      .swiperSlide {
+        max-width: 416px;
+        max-height: 326px;
+      }
+    }
+  }
+
+  .cardContainer {
+    width: 416px;
+    height: 326px;
+
+    .imageContainer {
+      padding: 0 24px;
+    }
+
+    .textContainer {
+      padding: 16px;
+      height: 289px;
+
+      .track {
+        span {
+          padding: 8px 26px;
+        }
+      }
+    }
+
+  }
+}
+
+@media (max-width: 739px) {
+  .container {
+    .swiperContainer {
+      .swiperSlide {
+        max-width: 240px;
+        max-height: 223px;
+        margin: 0 8px;
+      }
+    }
+  }
+
+  .cardContainer {
+    width: 240px;
+    height: 223px;
+    aspect-ratio: 1/0.784;
+
+    .imageContainer {
+      top: 0;
+      padding: 0 16px;
+      height: 187px;
+    }
+
+    .textContainer {
+      padding: 0;
+      height: 202px;
+      border-radius: 8px 8px 10px 10px;
+
+      .track {
+        span {
+          width: 100%;
+          padding: 8px;
+          border-radius: 0 0 8px 8px;
+          h4 {
+            font-size: 14px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+}

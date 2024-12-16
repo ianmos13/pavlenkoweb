@@ -1,0 +1,13 @@
+@import '/styles/variables';
+
+.buttonContainer {
+    min-width: 320px;
+    height: 72px;
+}
+
+@media (max-width: 739px) {
+    .buttonContainer {
+        min-width: unset;
+        height: 64px;
+    }
+}

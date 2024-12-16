@@ -1,0 +1,14 @@
+.programsContainer {
+  padding: 80px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  @media (max-width: 1024px) {
+    padding: 60px 32px;
+    gap: 32px;
+  }
+  @media (max-width: 739px) {
+    gap: 20px;
+    padding: 20px;
+  }
+}

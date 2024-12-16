@@ -1,0 +1,39 @@
+.list {
+	list-style-type: none;
+	.listItem {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 16px;
+		.icon {
+			width: 16px;
+			height: 16px;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.list {
+		.listItem {
+			gap: 12px;
+			margin-bottom: 14px;
+			.icon {
+				width: 13px;
+				height: 13px;
+			}
+		}
+	}
+}
+
+@media (max-width: 739px) {
+	.list {
+		.listItem {
+			gap: 10px;
+			margin-bottom: 12px;
+			.icon {
+				width: 10px;
+				height: 10px;
+			}
+		}
+	}
+}

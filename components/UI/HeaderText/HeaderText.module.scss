@@ -1,0 +1,25 @@
+@import "/styles/variables";
+
+.textContainer {
+	display: flex;
+	align-items: center;
+	padding: 24px 56px;
+}
+
+.contactsContainer {
+	h1 {
+		color: $neutral-black;
+	}
+}
+
+@media (max-width: 1024px) {
+	.textContainer {
+		padding: 16px 32px;
+	}
+}
+
+@media (max-width: 739px) {
+	.textContainer {
+		padding: 16px;
+	}
+}

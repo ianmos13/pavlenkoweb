@@ -1,0 +1,64 @@
+@import "/styles/variables";
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .sectionHeader {
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h4 {
+        color: $secondary-blue-2;
+        font-family: Nunito;
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 36px;
+        text-align: left;
+      }
+    }
+
+    .sectionContent {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+
+    &.open .sectionContent {
+      max-height: max-content; 
+      opacity: 1;
+    }
+}
+@media (max-width: 1024px) {
+  .section {
+    gap: 32px;
+    .sectionHeader{
+      gap: 8px;
+      h4{
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 739px) {
+  .section {
+    gap: 16px;
+    .sectionHeader{
+      gap: 8px;
+      h4{
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@import '/styles/variables';
+
+.blocksContainer {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: repeat(4, 1fr);
+
+	.block {
+		flex: 1 1 calc(25% - 24px);
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		padding: 24px 16px 24px 16px;
+		background-color: $neutral-white;
+		border: none;
+		border-radius: 16px;
+
+		h3 {
+			line-height: 21px;
+		}
+
+		.text {
+			color: $neutral-black;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.blocksContainer {
+		grid-template-columns: repeat(2, 1fr);
+
+		.block {
+
+			h3 {
+				line-height: 28px;
+			}
+			.text {
+				font-size: 18px;
+				line-height: 26px;
+			}
+		}
+	}
+}
+
+@media (max-width: 739px) {
+	.blocksContainer {
+		grid-template-columns: 1fr;
+
+		.block {
+			flex: 1 1 100%;
+
+			.text {
+				margin-bottom: unset;
+				font-size: 16px;
+				line-height: 24px;
+			}
+		}
+	}
+}

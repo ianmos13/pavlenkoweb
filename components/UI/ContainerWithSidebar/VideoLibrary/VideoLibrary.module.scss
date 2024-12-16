@@ -1,0 +1,29 @@
+@import "/styles/variables";
+
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  @media (max-width: 630px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

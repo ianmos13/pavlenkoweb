@@ -1,0 +1,15 @@
+.block {
+	padding: 20px 56px 80px 56px;
+}
+
+@media (max-width: 1024px) {
+	.block {
+		padding: 20px 32px 60px 32px;
+	}
+}
+
+@media (max-width: 739px) {
+	.block {
+		padding: unset;
+	}
+}

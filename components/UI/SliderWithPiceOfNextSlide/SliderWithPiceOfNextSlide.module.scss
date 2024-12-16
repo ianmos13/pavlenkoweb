@@ -1,0 +1,35 @@
+@import "/styles/variables";
+
+.swiperClass {
+    display: none;
+}
+
+.itemsClass {
+    display: none;
+}
+
+.cardItems {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 56px;
+    gap: 16px;
+}
+
+@media (max-width: 1024px) {
+    .swiperClass {
+        display: block;
+    }
+
+    .cardItems {
+        display: none;
+    }
+}
+
+@media (max-width: 739px) {
+    .swiperContainer {
+        height: 291px;
+    }
+}

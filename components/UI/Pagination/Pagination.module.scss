@@ -1,0 +1,52 @@
+@import "/styles/variables";
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0 auto;
+
+  button {
+    background-color: $neutral-white;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 34px;
+    p {
+      color: $neutral-dark-grey;
+
+      &:hover {
+        color: $secondary-blue-2;
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &.activePage {
+      background-color: $secondary-ultra-lite-blue;
+      p {
+        color: $primary-blue;
+      }
+
+      padding: 4px;
+
+      border-radius: 8px;
+    }
+  }
+
+  .arrowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $neutral-white;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+  }
+}

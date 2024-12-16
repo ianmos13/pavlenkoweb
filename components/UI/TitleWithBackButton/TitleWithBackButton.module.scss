@@ -1,0 +1,68 @@
+@import "/styles/variables";
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px 56px 24px 56px;
+  
+}
+
+.baсkButton {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: $primary-blue;
+    gap: 8px;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 1024px) {
+  .container{
+    padding: 16px 32px;
+    gap: 24px;
+    .baсkButton{
+      gap: 8px;
+      div{
+        p{
+          font-size: 18px;
+          line-height: 26px;
+          color: #0F384A;
+        }
+      }
+    }
+    div {
+      h1 {
+        font-size: 32px;
+        line-height: 48px;
+      }
+    }
+  }
+}
+
+@media (max-width: 739px) {
+  .container{
+    padding: 16px;
+    gap: 24px;
+    .baсkButton{
+      gap: 8px;
+      div{
+        p{
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+    }
+    div {
+      h1 {
+        font-size: 26px;
+        line-height: 32px;
+      }
+    }
+  }
+}

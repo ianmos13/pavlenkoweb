@@ -1,0 +1,35 @@
+// =======================
+// ===== Mixins =========
+// =======================
+
+// Mixin for responsive typography
+@mixin responsive-text(
+	$font-family,
+	$font-weight,
+	$size,
+	$line-height,
+	$color
+) {
+	font-family: $font-family;
+	font-weight: $font-weight;
+	font-size: $size;
+	line-height: $line-height;
+	color: $color;
+}
+
+// Mixin for media queries
+@mixin media($breakpoint) {
+	@if $breakpoint == desktop {
+		@media (max-width: $breakpoint-desktop) {
+			@content;
+		}
+	} @else if $breakpoint == tablet {
+		@media (max-width: $breakpoint-tablet) {
+			@content;
+		}
+	} @else if $breakpoint == mobile {
+		@media (max-width: $breakpoint-mobile) {
+			@content;
+		}
+	}
+}

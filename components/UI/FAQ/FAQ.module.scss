@@ -1,0 +1,26 @@
+@import "/styles/variables";
+
+.faqContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 80px 56px;
+  gap: 56px;
+  max-width: 1440px;
+  h2 {
+    color: $neutral-black;
+  }
+}
+
+@media (max-width: 1024px) {
+    .faqContainer {
+      padding: 60px 32px ;
+      gap: 32px;
+    }
+}  
+@media (max-width: 739px) {
+    .faqContainer {
+        gap: 20px;
+        padding: 40px 16px;
+      }
+}
