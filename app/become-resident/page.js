@@ -6,13 +6,14 @@ import BannerSlider from '@/components/UI/BannerSlider/BannerSlider'
 import EducationApplication from '@/components/UI/EducationApplication/EducationApplication'
 import InterestingForSurgeons from '@/components/UI/InterestingForSurgeons/InterestingForSurgeons'
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+import BannersSection from '@/components/BecomeResident/BannersSection/BannersSection'
 
 export default function page() {
 	return (
 		<>
 			<HeaderText>Стать резидентом</HeaderText>
 			<AnimatedComponent>
-				<BannerSlider data={bannersData} size={'medium'} theme={'light'} />
+				<BannersSection/>
 			</AnimatedComponent>
 			<AnimatedComponent>
 				<Line data={firstLine} />
@@ -65,35 +66,3 @@ const firstLine = [
 	'Стажировки и ротации',
 ]
 
-const bannersData = [
-	{
-		id: 0,
-		background: 'light',
-		headerData: [
-			{
-				id: 0,
-				text: 'Выпуск передачи «Наблюдатель»',
-				className: 'default',
-			},
-		],
-		image: '/images/banners/banner-4.png',
-		body: 'В гостях у ведущей Фёклы Толстой сооснователи школы Илья Черниковский и Михаил Ласков, директор школы Надежда Кузнецова и резидент первого набора Эмиль Чир-Чир.',
-		buttonText: 'Узнать подробнее',
-		buttonLink: '/',
-	},
-	{
-		id: 1,
-		background: 'light',
-		headerData: [
-			{
-				id: 0,
-				text: 'Старт набора на колопроклогию',
-				className: 'default',
-			},
-		],
-		image: '/images/banners/banner-5.png',
-		body: 'В феврале проходит набор на специализацию колопроктология. Подайте заявку уже сейчас, чтобы начать обучение в октябре 2024.',
-		buttonText: 'Подать заявку',
-		buttonLink: '/training-application-form',
-	},
-]

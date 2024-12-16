@@ -1,4 +1,4 @@
-import BannerSlider from "@/components/UI/BannerSlider/BannerSlider";
+import BannersSection from "@/components/Index/BannersSection/BannersSection";
 import DonationComponentIndex from "@/components/Index/DonationComponentIndex/DonationComponentIndex";
 import FAQ from "@/components/UI/FAQ/FAQ";
 import ImageBox from "@/components/Index/ImageBox/ImageBox";
@@ -9,10 +9,11 @@ import AboutUsSlider from "@/components/Index/AboutUsSlider/AboutUsSlider";
 import RunningLines from "@/components/UI/RunningLines/RunningLines";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
+
 export default function Home() {
   return (
     <>
-      <BannerSlider data={bannersData} size={"large"} theme={"dark"} />
+      <BannersSection />
       <AnimatedComponent>
         <InfoBlock />
       </AnimatedComponent>
