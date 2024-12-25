@@ -25,7 +25,7 @@ export default function Header() {
 						</div>
 					</div>
 					<div className={styles.buttonContainer}>
-						<ApplyButton text={'Ознакомиться'} />
+						<ApplyButton text={'Презентация для партнеров'} />
 					</div>
 				</div>
 				<div className={styles.imageContainer}>
