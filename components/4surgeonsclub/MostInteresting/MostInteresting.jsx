@@ -29,7 +29,7 @@ const MostInteresting = () => {
     title: "Самое интересное",
     buttonTheme: "youtube",
     buttonText: "Подписаться на канал",
-    buttonUrl: "https://www.youtube.com/",
+    buttonUrl: "https://www.youtube.com/@4surgeonsclub260",
   };
 
   return (
