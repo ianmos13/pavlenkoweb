@@ -32,12 +32,10 @@
 }	
 
 @media (max-width: 739px) {
-	.withPadding{
+	.withPadding {
 		padding: 16px;
 	}
 }
-
-
 
 .question {
 	position: relative;
@@ -75,18 +73,37 @@
 	overflow: hidden;
 	transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	opacity: 0;
+	.answerText  {
+		h5 {
+			font-family: Nunito;
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 28px;
+			text-align: left;
+			color: $neutral-dark-grey;
+	
+			@media (max-width: 1024px) {
+				font-size: 16px;
+				line-height: 22px;
+			}
+		}
+	}
+
 
 	.margin {
 		min-height: 0;
 		transition: min-height 0.3s ease-in-out;
+
 		&.expanded {
 			min-height: 32px;
 		}
+		
 		@media (max-width: 1024px) {
 			&.expanded {
 				min-height: 24px;
 			}
 		}
+
 		@media (max-width: 739px) {
 			&.expanded {
 				min-height: 16px;
@@ -94,26 +111,14 @@
 		}
 	}
 
-	h5 {
-		font-family: Nunito;
-		font-size: 20px;
-		font-weight: 600;
-		line-height: 28px;
-		text-align: left;
-		color: $neutral-dark-grey;
 
-		@media (max-width: 1024px) {
-			font-size: 16px;
-			line-height: 22px;
-		}
-	}
 
 	&.expanded {
-		//min-height: fit-content;
 		max-height: 700px;
 		opacity: 1;
 	}
 }
+
 
 .separator {
 	margin-top: 32px;
@@ -125,9 +130,70 @@
 }
 
 @media (max-width: 1024px) {
-	.question{
+	.question {
 		gap: 8px;
 	}
 }
 
 
+.answer ul {
+	margin: 16px 0;
+	padding-left: 24px;
+	list-style-type: disc;
+
+	li {
+		font-family: Nunito;
+		font-size: 16px;
+		line-height: 24px;
+		color: $neutral-dark-grey;
+		margin-bottom: 8px;
+
+		&::marker {
+			color: $primary-blue;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		padding-left: 16px;
+
+		li {
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+}
+
+
+.answer ol {
+	margin: 16px 0;
+	padding-left: 24px;
+	list-style-type: decimal;
+
+	li {
+		font-family: Nunito;
+		font-size: 16px;
+		line-height: 24px;
+		color: $neutral-dark-grey;
+		margin-bottom: 8px;
+
+		&::marker {
+			color: $primary-blue;
+			font-weight: bold;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		padding-left: 16px;
+
+		li {
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+}
+
+
+.answer ul, .answer ol {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
