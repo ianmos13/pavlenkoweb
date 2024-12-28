@@ -1,5 +1,4 @@
 import QuestionsList from '@/components/UI/ContainerWithSidebar/QuestionsList/QuestionsList'
-import Tile from './Tile/Tile'
 import styles from './TrainingProgram.module.scss'
 
 export default function TrainingProgram() {
