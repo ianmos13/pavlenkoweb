@@ -37,16 +37,16 @@ const QuestionsList = ({ questions, withBc, withPadding, separator }) => {
                 />
               </div>
               <div
-                  className={`${styles.answer} ${
-                      expanded[index] ? styles.expanded : ""
-                  }`}>
+                  className={`${styles.answer} ${expanded[index] ? styles.expanded : ""}`}>
                 <div
-                    className={`${styles.margin} ${
-                        expanded[index] ? styles.expanded : ""
-                    }`}></div>
+                    className={`${styles.margin} ${expanded[index] ? styles.expanded : ""}`}></div>
                 <h5>{question.answer}</h5>
               </div>
               {separator && <div className={styles.separator}></div>}
             </div>
         ))}
       </div>
+  );
+};
+
+export default QuestionsList; // Добавление экспорта компонента
