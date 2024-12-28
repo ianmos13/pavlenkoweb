@@ -1,4 +1,5 @@
 import QuestionsList from '@/components/UI/ContainerWithSidebar/QuestionsList/QuestionsList'
+import Tile from './Tile/Tile'
 import styles from './TrainingProgram.module.scss'
 
 export default function TrainingProgram() {
@@ -26,6 +27,26 @@ export default function TrainingProgram() {
 						withPadding={true}
 						questions={questions}
 					/>
+				</div>
+				<div className={styles.bottomContainer}>
+					<h2>Лицензия и аккредитации</h2>
+					<div className={styles.tileContainer}>
+						<Tile
+							header={'Лицензия'}
+							text={'на осуществление образовательной деятельности'}
+							label={'******'}
+						/>
+						<Tile
+							header={'Свидетельство'}
+							text={'о государственной аккредитации'}
+							label={'*****'}
+						/>
+						<Tile
+							header={'Аккредитация'}
+							text={'Международной ассоциации MBA'}
+							label={'*****'}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
