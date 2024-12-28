@@ -28,26 +28,6 @@ export default function TrainingProgram() {
 						questions={questions}
 					/>
 				</div>
-				<div className={styles.bottomContainer}>
-					<h2>Лицензия и аккредитации</h2>
-					<div className={styles.tileContainer}>
-						<Tile
-							header={'Лицензия'}
-							text={'на осуществление образовательной деятельности'}
-							label={'3242434'}
-						/>
-						<Tile
-							header={'Свидетельство'}
-							text={'о государственной аккредитации'}
-							label={'3242434'}
-						/>
-						<Tile
-							header={'Аккредитация'}
-							text={'Международной ассоциации MBA'}
-							label={'3242434'}
-						/>
-					</div>
-				</div>
 			</div>
 		</div>
 	)
