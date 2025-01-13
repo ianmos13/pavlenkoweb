@@ -7,7 +7,7 @@ export default function InfoBlock() {
 			<div className={styles.container}>
 				<div className={styles.textContainer}>
 					<h3 className={styles.text}>
-						<span className={styles.focusText}>Школа Павленко</span>– Некоммерческий
+						<span className={styles.focusText}>Школа Павленко</span>– некоммерческий
 						образовательный проект
 						проект в России по&nbsp;подготовке специализированных
 						хирургов-онкологов для выпускников ординатур. Наши резиденты и
