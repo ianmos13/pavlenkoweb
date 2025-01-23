@@ -8,9 +8,7 @@ export default function page() {
   return (
     <>
       <HeaderText>Преподавательский состав</HeaderText>
-      <AnimatedComponent>
-        <TeachingStaff top={true}/>
-      </AnimatedComponent>
+      <TeachingStaff top={true}/>
       <AnimatedComponent>
         <TeachersSwiper />
       </AnimatedComponent>
