@@ -8,9 +8,7 @@ export default function page() {
   return (
     <>
       <Header />
-      <AnimatedComponent>
-        <Programs />
-      </AnimatedComponent>
+      <Programs />
       <AnimatedComponent>
         <SliderWithPopup />
       </AnimatedComponent>
