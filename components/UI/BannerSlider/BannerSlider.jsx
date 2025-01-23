@@ -27,6 +27,15 @@ export default function BannerSlider(props) {
         }
     }
 
+    useEffect(() => {
+        if(swiperRef.current && data.length > 0) {
+            const currentSlideIndex = swiperRef.current.realIndex ? swiperRef.current.realIndex : 0
+            const newTheme = data[currentSlideIndex].background
+            dispatch(setTheme(newTheme))
+            setBannerTheme(newTheme)
+        }
+    }, [data, swiperRef])
+
     return (
         <section className={`${styles.container} ${styles[`${bannerTheme}Container`]} ${styles[`${size}Container`]}`} >
             <Swiper
