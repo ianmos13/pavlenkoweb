@@ -9,7 +9,7 @@ const IntelligentVolunteersHeader = () => {
         </div>
         <div className={styles.imageSection}>
           <img
-            src="/images/4club-header.svg"
+            src="/images/4club-header.webp"
             alt="4club-header"
             className={styles.image}
           />

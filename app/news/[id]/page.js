@@ -13,10 +13,10 @@ import Loader from "@/components/UI/Loader/Loader";
 import TeachingStaff from "@/components/TeachingStaff/TeachingStaff";
 import CoverflowSwiper from "@/components/UI/CoverflowSwiper/CoverflowSwiper";
 import TitleWithBackButton from "@/components/UI/TitleWithBackButton/TitleWithBackButton";
-import BottomLeft from "@/public/images/news_images/bottom-left-filter.svg";
-import BottomRight from "@/public/images/news_images/bottom-right-filter.svg";
-import TopLeft from "@/public/images/news_images/top-left-filter.svg";
-import TopRight from "@/public/images/news_images/top-right-filter.svg";
+import BottomLeft from "@/public/images/news_images/bottom-left-filter.webp";
+import BottomRight from "@/public/images/news_images/bottom-right-filter.webp";
+import TopLeft from "@/public/images/news_images/top-left-filter.webp";
+import TopRight from "@/public/images/news_images/top-right-filter.webp";
 import ImageWithDescription from "@/components/UI/ImageWithDescription/ImageWithDescription";
 import ArticleInfo from "@/components/News/[id]/ArticleInfo/ArticleInfo";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
@@ -36,7 +36,6 @@ export default function Page() {
     switch (component.component_name) {
       case "VideoComponent":
         return (
-          <AnimatedComponent>
             <VideoComponent
               key="VideoComponent"
               videoCaption={component.additional_text}
@@ -51,11 +50,9 @@ export default function Page() {
                   : ""
               }
             />
-          </AnimatedComponent>
         );
       case "ImageWithDescription":
         return (
-          <AnimatedComponent>
             <ImageWithDescription
               key="ImageWithDescription"
               imgPath={
@@ -65,7 +62,6 @@ export default function Page() {
               }
               textOverlay={component.additional_text}
             />
-          </AnimatedComponent>
         );
       case "Text":
         return (

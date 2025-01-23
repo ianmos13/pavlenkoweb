@@ -4,7 +4,7 @@ import styles from './DonationComponentIndex.module.scss'
 export default function DonationComponentIndex() {
 	return (
 		<section className={`${styles.block} container`}>
-			<DonationComponent />
+			<DonationComponent id="index_dontaion"/>
 		</section>
 	)
 }

@@ -1,4 +1,4 @@
-@import "/styles/variables";
+@import '/styles/variables';
 
 .track {
   display: flex;
@@ -20,7 +20,6 @@
     }
   }
 
-
   span {
     font-weight: normal;
     margin-right: 24px;
@@ -36,12 +35,25 @@
     }
   }
 }
-  
+
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-100%);
+  }
+}
+
+.reverse {
+  animation: marquee-reverse 60s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }

@@ -28,7 +28,7 @@ export default function SchoolNewsSlider() {
     data: articlesData,
     loading: articlesLoading,
     error: articlesError,
-  } = useFetch("/articles?populate=*");
+  } = useFetch("/articles?sort=rank:asc&populate=*");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const loading = categoriesLoading || articlesLoading;

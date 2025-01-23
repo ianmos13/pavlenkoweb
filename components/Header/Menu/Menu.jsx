@@ -5,7 +5,7 @@ import ButtonBox from '@/components/UI/Buttons/ButtonBox/ButtonBox'
 import SupportButton from '@/components/UI/Buttons/SupportButton/SupportButton'
 
 import styles from './Menu.module.scss'
-import DonationPopup from "@/components/Header/DonationPopup/DonationPopup";
+import DonationPopup from "@/components/UI/DonationPopup/DonationPopup";
 
 export default function Menu(props) {
 	const { currentLink, theme, elements, openMenu } = props
@@ -49,7 +49,7 @@ export default function Menu(props) {
 				<SupportButton theme={theme} onClick={togglePopup} />
 			</ButtonBox>
 			{isPopupOpen && (
-				<DonationPopup togglePopup={togglePopup} />
+				<DonationPopup togglePopup={togglePopup} uuid="pop_up_dontaion_header" />
 			)}
 		</div>
 	)

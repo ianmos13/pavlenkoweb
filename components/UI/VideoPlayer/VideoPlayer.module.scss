@@ -44,11 +44,19 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: rgba(0, 0, 0, 0.7);
+          .playIcon {
+            color: $secondary-blue-2;
+          }
+        }
+
+        &:active {
+          .playIcon {
+            color: $neutral-black;
+          }
         }
 
         .playIcon {
-          color: white;
+          color: $primary-blue;
           font-size: 30px;
         }
       }

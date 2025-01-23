@@ -6,10 +6,12 @@ const SidebarCategories = ({
   activeCategory,
   onCategoryChange,
   showAllCategoriesFilters,
+  allCategoriesLabel, 
 }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const updatedCategories = [{ name: "" }, ...categories];
+
   return (
     <>
       <div className={styles.sidebar}>
@@ -19,7 +21,7 @@ const SidebarCategories = ({
               activeCategory === null ? styles.activeDesctop : ""
             }`}
             onClick={() => onCategoryChange(null)}>
-            <h5>Все категории</h5>
+            <h5>{allCategoriesLabel}</h5>
           </div>
         )}
         {updatedCategories.map((category, index) => {
@@ -45,7 +47,7 @@ const SidebarCategories = ({
           onClick={() => setDropdownOpen(!dropdownOpen)}>
           <h3>
             {activeCategory === null
-              ? "Все категории"
+              ? allCategoriesLabel
               : updatedCategories[activeCategory]?.name}
           </h3>
           <img
@@ -74,7 +76,7 @@ const SidebarCategories = ({
                   onCategoryChange(null);
                   setDropdownOpen(false);
                 }}>
-                <p>Все категории</p>
+                <p>{allCategoriesLabel}</p>
               </li>
             )}
             {updatedCategories.map((category, index) => {

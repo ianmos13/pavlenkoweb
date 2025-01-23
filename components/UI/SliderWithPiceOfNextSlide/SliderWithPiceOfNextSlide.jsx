@@ -7,8 +7,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlider";
 import styles from "./SliderWithPiceOfNextSlide.module.scss";
 
-const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, imageCover }) => {
-  const initialSlideIndex = slideData.length > 1 ? 1 : 0
+const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, imageCover, slideIndex }) => {
+
+  const collectInitialSlide = () => {
+    if(slideData.length <= 1) return 0
+    if(slideData.length <= 3) return 1
+    return slideIndex
+  }
 
   return (
     <SectionWithSlider titleOptions={titleOptions}>
@@ -30,7 +35,7 @@ const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, imageCover }) => {
           className={slideData?.length <= 3 ? styles.swiperClass : styles.swiperContainer}
           centeredSlides={true}
           spaceBetween={16}
-          initialSlide={initialSlideIndex}
+          initialSlide={collectInitialSlide}
           breakpoints={swiperBreakpoints}
         >
           {slideData.map((slide, idx) => (

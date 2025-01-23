@@ -34,12 +34,33 @@ const TrainingApplicationForm = () => {
     mail: "",
     specialization: [],
     additionalInfo: "",
+    files: {}, // State to track file uploads
   });
+
+  const [errors, setErrors] = useState({});
+  const [resetKey, setResetKey] = useState(0); // Key to trigger reset for file inputs
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Введите ФИО.";
+    if (!formData.age || formData.age <= 0) newErrors.age = "Введите корректный возраст.";
+    if (!formData.city.trim()) newErrors.city = "Введите город проживания.";
+    if (!/\S+@\S+\.\S+/.test(formData.mail)) newErrors.mail = "Введите корректный email.";
+    if (!/^\d+$/.test(formData.phone)) newErrors.phone = "Введите корректный номер телефона.";
+    return newErrors;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
 
-  
+    console.log("Отправка формы. Данные:", formData);
+
+
     setFormData({
       name: "",
       age: "",
@@ -56,14 +77,24 @@ const TrainingApplicationForm = () => {
       mail: "",
       specialization: [],
       additionalInfo: "",
+      files: {}, 
     });
+
+   
+    setResetKey((prev) => prev + 1);
+
     setIsConsentChecked(false);
+    setErrors({});
   };
 
   const handleInputChange = (field) => (e) => {
     setFormData((prev) => ({
       ...prev,
       [field]: e.target.value,
+    }));
+    setErrors((prev) => ({
+      ...prev,
+      [field]: "",
     }));
   };
 
@@ -86,21 +117,34 @@ const TrainingApplicationForm = () => {
     }));
   };
 
+  const handleFileUpload = (fileId) => (files) => {
+    setFormData((prev) => ({
+      ...prev,
+      files: {
+        ...prev.files,
+        [fileId]: files,
+      },
+    }));
+  };
+
   return (
     <div className={styles.wrapper}>
       <h2>Подробно заполните представленные ниже пункты</h2>
-      <div className={styles.wrapperInner} onSubmit={handleSubmit}>
+      <form className={styles.wrapperInner} onSubmit={handleSubmit}>
         <div className={styles.container}>
           <Section
             title="1. Персональные данные"
             isOpen={openSections.personal}
-            onToggle={() => toggleSection("personal")}>
+            onToggle={() => toggleSection("personal")}
+          >
             <InputGroup
               name="name"
               placeholder="ФИО"
               value={formData.name}
               onChange={handleInputChange("name")}
             />
+            {errors.name && <p className={styles.error}>{errors.name}</p>}
+
             <InputGroup
               type="number"
               name="age"
@@ -108,12 +152,15 @@ const TrainingApplicationForm = () => {
               value={formData.age}
               onChange={handleInputChange("age")}
             />
+            {errors.age && <p className={styles.error}>{errors.age}</p>}
+
             <InputGroup
               name="city"
               placeholder="Город проживания"
               value={formData.city}
               onChange={handleInputChange("city")}
             />
+            {errors.city && <p className={styles.error}>{errors.city}</p>}
 
             <RadioGroup
               label="Гражданство России"
@@ -154,7 +201,8 @@ const TrainingApplicationForm = () => {
           <Section
             title="2. Образование и карьера"
             isOpen={openSections.education}
-            onToggle={() => toggleSection("education")}>
+            onToggle={() => toggleSection("education")}
+          >
             <InputGroup
               type="textarea"
               name="education"
@@ -210,23 +258,34 @@ const TrainingApplicationForm = () => {
                 label: "Документы, подтверждающие вашу квалификацию",
               },
             ].map(({ id, label }) => (
-              <FileUploadArea key={id} label={label} fileId={id} />
+              <FileUploadArea
+                key={id}
+                label={label}
+                fileId={id}
+                onChange={handleFileUpload(id)}
+                resetKey={resetKey}
+              />
             ))}
           </Section>
 
           <Section
             title="3. Направление обучения"
             isOpen={openSections.specialization}
-            onToggle={() => toggleSection("specialization")}>
+            onToggle={() => toggleSection("specialization")}
+          >
             <CheckboxGroup
               label="Какую специализацию (и город) вы хотите выбрать?"
               name="specialization"
               options={[
-                "Хирургия Upper GI - Санкт-Петербург",
-                "Хирургия Upper GI - Тюмень",
-                "Хирургия Upper GI - Москва",
-                "Онкогинекология - Санкт-Петербург",
-                "Торакальная онкохирургия - Москва",
+                "Онкоурология - Тюмень",
+                "Онкоурология - Уфа",
+                "Гепатобилиарная хирургия - Казань",
+                "Гепатобилиарная хирургия - Новосибирск ",
+                "Онкогинекология",
+                "Опухоли головы и шеи",
+                "Торакальная хирургия ",
+                "Колопроктология",
+                "Абдоминальная хирургия (Upper GI)",
               ]}
               value={formData.specialization}
               onChange={handleCheckboxChange}
@@ -236,7 +295,8 @@ const TrainingApplicationForm = () => {
           <Section
             title="4. Расскажите подробнее"
             isOpen={openSections.moreInfo}
-            onToggle={() => toggleSection("moreInfo")}>
+            onToggle={() => toggleSection("moreInfo")}
+          >
             <InputGroup
               type="textarea"
               name="additionalInfo"
@@ -249,19 +309,23 @@ const TrainingApplicationForm = () => {
           <Section
             title="5. Контакты"
             isOpen={openSections.contacts}
-            onToggle={() => toggleSection("contacts")}>
+            onToggle={() => toggleSection("contacts")}
+          >
             <InputGroup
               name="phone"
               placeholder="Телефон"
               value={formData.phone}
               onChange={handleInputChange("phone")}
             />
+            {errors.phone && <p className={styles.error}>{errors.phone}</p>}
+
             <InputGroup
               name="mail"
               placeholder="Электронная почта"
               value={formData.mail}
               onChange={handleInputChange("mail")}
             />
+            {errors.mail && <p className={styles.error}>{errors.mail}</p>}
           </Section>
 
           <ConsentSection
@@ -270,30 +334,7 @@ const TrainingApplicationForm = () => {
             handleSubmit={handleSubmit}
           />
         </div>
-
-
-        <div className={styles.sidebar}>
-          <ul className={styles.navList}>
-            
-            {[
-              { id: "personal", label: "Персональные данные" },
-              { id: "education", label: "Образование и карьера" },
-              { id: "specialization", label: "Направление обучения" },
-              { id: "moreInfo", label: "Расскажите подробнее" },
-              { id: "contacts", label: "Контакты" },
-            ].map((section) => (
-              <li
-                key={section.id}
-                className={`${styles.navItem} ${
-                  openSections[section.id] ? styles.active : ""
-                }`}
-                onClick={() => toggleSection(section.id)}>
-                <h5>{section.label}</h5>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      </form>
     </div>
   );
 };

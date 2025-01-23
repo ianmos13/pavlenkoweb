@@ -34,31 +34,30 @@ const interestingData = [
 		header: 'Сообщество в телеграмм',
 		text: 'Смотрите мастер-классы ведущих хирургов в прямом эфире, узнавайте полезную информацию, задавайте вопросы, делитесь личным опытом и присоединяйтесь к сообществу неравнодушных профессионалов!',
 		linkText: 'Вступить в группу',
-		linkHref: '#',
+		linkHref: 'https://t.me/FourSurgeons ',
 	},
 	{
 		header: '4SurgeonsClub Junior',
 		text: 'Если вы учитесь в медицинском вузе, ординатуре или аспирантуре, ждем вас на канале 4SurgeonsClub Junior! Это научно-практическое общество молодых специалистов. Встречи проходят в гибридном формате, очном или онлайн. Участие в заседаниях клуба бесплатное, а программа насыщенная и полезная.   ',
 		linkText: 'Узнать больше',
-		linkHref: '#',
+		linkHref: 'https://t.me/foursurgeonsclub_junior',
 	},
 ]
 
 const swiperData = [
-	'/images/club/slider-1.png',
-	'/images/club/slider-2.png',
-	'/images/club/slider-3.png',
-	'/images/club/slider-4.png',
-	'/images/club/slider-1.png',
-	'/images/club/slider-2.png',
-	'/images/club/slider-3.png',
-	'/images/club/slider-4.png',
+	'/images/club/slider-1.webp',
+	'/images/club/slider-2.webp',
+	'/images/club/slider-3.webp',
+	'/images/club/slider-4.webp',
+	'/images/club/slider-1.webp',
+	'/images/club/slider-2.webp',
+	'/images/club/slider-3.webp',
+	'/images/club/slider-4.webp',
 ]
 
 const linesData = {
 	firstLine: [
 		'/images/Logos/Logo_VrachiRF.svg',
-		'/images/Logos/Logo_pdupd.svg',
 		'/images/Logos/Logo_amgen.svg',
 		'/images/Logos/Logo_bowa.svg',
 		'/images/Logos/Logo_Medach_gray.svg',

@@ -5,6 +5,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
 
     .infoContainer {
         width: 100%;
@@ -12,6 +13,7 @@
         .titleContainer {
             h1 {
                 line-height: 51px;
+
                 span {
                     margin-right: 16px;
 
@@ -29,6 +31,47 @@
             margin-top: 24px;
             h4 {
                 color: $primary-blue;
+            }
+        }
+
+        .cardsContainer {
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+
+            .cardContainer {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 11px;
+                padding: 32px 12px;
+                background-color: $secondary-ultra-lite-blue;
+                border-radius: 16px;
+
+                .cardTitleContainer {
+                    display: flex;
+                    align-items: center;
+                    min-height: 21px;
+
+                    h3 {
+                        line-height: 11px;
+                    }
+                }
+
+                .cardText {
+                    color: $neutral-black;
+                }
+                @media (max-width: 1280px) {
+                    padding: 24px 12px;
+                    gap: 8px;
+                    .cardTitleContainer {
+                        h3 {
+                            line-height: 21px;
+                        }
+                    }
+                }
             }
         }
 
@@ -51,27 +94,109 @@
             object-fit: cover;
         }
     }
+
+    .mobilePagination {
+        display: none;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        border-radius: 24px 2px;
+        padding: 12px 16px;
+        width: 170px;
+        height: 60px;
+
+        .paginationFraction {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 4px;
+
+            span {
+                font-family: Nunito;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 26px;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+            }
+
+            .paginationActive {
+                font-size: 26px;
+                font-weight: 600;
+                line-height: 36px;
+            }
+        }
+
+        .navigation {
+            z-index: 11;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+
+            &.disabled {
+                cursor: not-allowed;
+            }
+
+            .icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .navigationPrev {
+            .icon {
+                rotate: 180deg;
+            }
+        }
+    }
 }
 
 .largeContainer {
     padding: 40px 56px 80px 56px;
+    position: relative;
 
     .imageContainer {
         max-width: 656px;
+        min-width: 500px;
         max-height: 504px;
+    }
+
+    .infoContainer {
+        min-width: 500px;
+
+        .pagination {
+            position: absolute;
+            bottom: 76px;
+        }
+    }
+    .paginationContainer {
+        display: block;
+    }
+    .tabletPagination {
+        display: none;
     }
 }
 
 .mediumContainer {
-    height: 452px;
+    height: 412px;
     padding: 56px;
-    gap: 16px;
     align-items: flex-start;
 
     .infoContainer {
         padding-top: 14px;
         height: 300px;
         width: 100%;
+
+        .button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
     }
 
     .imageContainer {
@@ -79,15 +204,95 @@
         max-height: 300px;
         height: 300px;
     }
-}
 
+    .tabletPagination {
+        display: block;
+    }
+}
 
 .greyContainer {
     background-color: $neutral-grey;
+
+    .pagination {
+        background-color: $secondary-ultra-lite-blue;
+        opacity: 85%;
+
+        .paginationFraction {
+            span {
+                color: $secondary-blue-2
+            }
+
+            .paginationActive {
+                color: $neutral-black;
+            }
+        }
+
+        .navigation {
+            .icon {
+                background-image: url("/images/icons/right-arrow-pagination.svg");
+            }
+
+            &:hover:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+
+            &:active:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-black.svg");
+                }
+            }
+
+            &.disabled {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+        }
+    }
 }
 
 .lightContainer {
     background-color: $secondary-ultra-lite-blue;
+
+    .pagination {
+        background-color: $neutral-white;
+
+        .paginationFraction {
+            span {
+                color: $secondary-blue-2
+            }
+
+            .paginationActive {
+                color: $neutral-black;
+            }
+        }
+
+        .navigation {
+            .icon {
+                background-image: url("/images/icons/right-arrow-pagination.svg");
+            }
+
+            &:hover:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+
+            &:active:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-black.svg");
+                }
+            }
+
+            &.disabled {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+        }
+    }
 }
 
 .darkContainer {
@@ -108,18 +313,60 @@
             }
         }
     }
+
+    .pagination {
+        background-color: $secondary-background-photo;
+
+        .paginationFraction {
+            span {
+                color: $neutral-white;
+                opacity: 50%;
+            }
+
+            .paginationActive {
+                color: $neutral-white;
+                opacity: 1;
+            }
+        }
+
+        .navigation {
+            .icon {
+                background-image: url("/images/icons/right-arrow.svg");
+            }
+
+            &:hover:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+
+            &:active:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-black.svg");
+                }
+            }
+
+            &.disabled {
+                .icon {
+                    opacity: 50%;
+                    background-image: url("/images/icons/right-arrow.svg");
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 1024px) {
     .container {
-        padding: 24px 32px 48px 32px;
+        padding: 24px 32px 40px 32px;
         flex-direction: column;
+        gap: unset;
 
         .infoContainer {
             height: 276px;
 
             .titleContainer {
-                max-width: 420px;
+                max-width: 560px;
 
                 h1 {
                     line-height: 48px;
@@ -141,21 +388,44 @@
 
         .imageContainer {
             margin-top: 40px;
-            margin-bottom: 40px;
-            max-height: 524px;
-            max-width: 100%;
+            height: unset;
+            max-width: unset;
+            min-width: unset;
+            max-height: unset;
         }
     }
+    .largeContainer {
+        .infoContainer {
+            min-width: unset;
+            .pagination {
+                position: relative;
+                bottom: unset;
+            }
 
+            .button {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 16px;
+            }
+        }
+
+        .paginationContainer {
+            display: none;
+        }
+
+        .tabletPagination {
+            display: block;
+        }
+    }
     .mediumContainer {
         height: unset;
         padding: 32px 32px 40px 32px;
         align-items: flex-start;
-        gap: unset;
 
         .infoContainer {
             padding-top: unset;
-            height: 234px;
+            height: unset;
             width: 100%;
 
             .titleContainer {
@@ -171,19 +441,16 @@
         .imageContainer {
             margin-left: auto;
             margin-right: auto;
-            height: 340px;
         }
     }
 }
 
 @media (max-width: 739px) {
     .container {
-        padding: 24px 16px 32px 16px;
+        padding: 24px 16px;
         flex-direction: column;
 
         .infoContainer {
-            height: 252px;
-
             .titleContainer {
                 max-width: 320px;
 
@@ -214,8 +481,6 @@
             border-radius: unset;
             margin: 24px -16px;
             width: 100vw;
-            max-width: 100vw;
-            max-height: 300px;
 
             img {
                 max-width: unset;
@@ -224,13 +489,20 @@
                 height: 100%;
             }
         }
+        .mobilePagination {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .tabletPagination {
+            display: none;
+        }
     }
 
     .mediumContainer {
         height: unset;
-        padding: 24px 0 32px 0;
+        padding: 24px 0;
         align-items: flex-start;
-        gap: unset;
 
         .infoContainer {
             padding-left: 16px;
@@ -254,28 +526,10 @@
 
         .imageContainer {
             margin: 32px 0;
-            height: 300px;
 
             img {
                 height: 100%;
             }
-        }
-    }
-}
-
-@media (max-width: 500px) {
-    .container {
-        .imageContainer {
-            max-height: 246px;
-        }
-    }
-
-    .mediumContainer {
-        .imageContainer {
-            height: 246px;
-        }
-        .infoContainer {
-            height: 292px;
         }
     }
 }

@@ -1,16 +1,29 @@
+"use client";
+
 import VideoPlayer from '@/components/UI/VideoPlayer/VideoPlayer'
 import styles from './BiographyVideoComponent.module.scss'
+import useFetch from "@/services/hook/useFetch";
+import Loader from "@/components/UI/Loader/Loader";
 
+export default function BiographyVideoComponent({videoCaption, preview}) {
+	const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+	const { data, loading, error } = useFetch("/biography-page-data?populate=*");
 
-export default function BiographyVideoComponent({videoCaption, preview, videoPath}) {
+	if (error) {
+		return <p>Ошибка загрузки данных: {error.message}</p>;
+	}
+	if (!data) return null;
+
 	return (
 		<section className={`${styles.container} container`}>
-			<VideoPlayer
-				caption={videoCaption}
-				preview={preview}
-				videoPath={videoPath}
-				newsVideo={true}
-			/>
+			<Loader loading={loading}>
+				<VideoPlayer
+					caption={videoCaption}
+					preview={preview}
+					videoPath={`${API_URL}${data?.video?.url}`}
+					newsVideo={true}
+				/>
+			</Loader>
 		</section>
 	)
 }

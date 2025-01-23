@@ -56,9 +56,9 @@ export default function EducationApplication() {
               </div>
               <div className={styles.ulContainer}>
                 <ul className={styles.list}>
-                  {arrayList.map((item) => (
-                    <li key={item.id} className={styles.listItem}>
-                      <Image src={Heart} className={styles.icon} />
+                  {arrayList.map((item, i) => (
+                    <li key={i} className={styles.listItem}>
+                      <Image src={Heart} alt="Heart" className={styles.icon} />
                       <h4 style={{ color: "white" }}>{item.text}</h4>
                     </li>
                   ))}
@@ -73,7 +73,7 @@ export default function EducationApplication() {
             </div>
           </div>
           <div className={styles.logoContainer}>
-            <Image src={Logo} className={styles.logo} />
+            <Image src={Logo} alt="Logo" className={styles.logo} />
           </div>
         </div>
         <BlocksContainer info={info} />

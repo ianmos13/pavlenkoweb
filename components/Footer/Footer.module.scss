@@ -19,6 +19,7 @@
             justify-content: space-between;
             align-items: flex-start;
             width: 100%;
+            gap: 16px;
 
             .logo {
                 margin-right: 10px;
@@ -50,11 +51,35 @@
                         gap: 4px;
 
                         .link p {
+                            cursor: pointer;
                             padding: 4px;
                             color: $neutral-white;
                         }
                     }
                 }
+            }
+        }
+
+        .footerSubscribe {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 16px;
+
+            .subscribeTitle {
+                width: min-content;
+                max-width: 148px;
+
+                p {
+                    color: $neutral-white;
+                    font-size: 20px;
+                    line-height: 28px;
+                }
+            }
+            .subscribeForm {
+                width: 100%;
+                max-width: 1160px;
             }
         }
 
@@ -113,6 +138,7 @@
 
             .footerBox {
                 flex-direction: column;
+                gap: unset;
 
                 .logo {
                     margin-right: unset;
@@ -167,6 +193,23 @@
                     }
                 }
             }
+            .footerSubscribe {
+                padding: 0 11px;
+                flex-direction: column;
+
+                .subscribeTitle {
+                    width: 100%;
+                    max-width: unset;
+
+                    p {
+                        font-size: 16px;
+                        line-height: 22px;
+                    }
+                }
+                .subscribeForm {
+                    max-width: unset;
+                }
+            }
 
             .footerInfo {
                 .linksInfo {
@@ -207,6 +250,17 @@
                         .linksItem {
                             flex-direction: column;
                         }
+                    }
+                }
+            }
+
+            .footerSubscribe {
+                padding: 0;
+
+                .subscribeTitle {
+
+                    .subscribeForm {
+
                     }
                 }
             }

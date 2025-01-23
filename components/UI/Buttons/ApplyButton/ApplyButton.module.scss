@@ -1,90 +1,168 @@
 @import '/styles/variables';
 
-.buttonContainer {
+.container {
 	min-width: 320px;
 	width: 100%;
 	height: 72px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	gap: 16px;
-	border-width: 0;
-	border-radius: 16px;
-	background-color: $primary-red;
-	transition: background-color 0.3s ease-out;
 
-	.buttonText {
-		font-family: $button-desktop-font;
-		font-weight: $button-desktop-weight;
-		font-size: $button-desktop-size;
-		line-height: $button-desktop-line-height;
-		text-align: $button-desktop-text-align;
-		color: $neutral-white;
+	& > div {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transition: background-color 0.3s ease-out;
+		background-color: $primary-red;
+
+		&:before {
+			transition: background-color 0.3s ease-out;
+			background-color: $primary-red;
+		}
+
+		&:hover {
+			background-color: $secondary-lite-red-1;
+
+			&:before {
+				background-color: $neutral-white;
+			}
+		}
+
+		&:active {
+			background-color: $primary-red;
+
+			&:before {
+				background-color: $secondary-lite-red-1;
+			}
+		}
 	}
 
-	.iconContainer {
+	.buttonContainer {
+		position: absolute;
+		width: 100%;
+		top: 1px;
+		left: 1px;
+		min-width: 318px;
+		height: 70px;
 		display: flex;
+		justify-content: center;
 		align-items: center;
-		.icon {
-			width: 24px;
-			height: 24px;
-			background-image: url('/images/icons/right-arrow.svg');
-		}
-	}
-
-	&:hover {
-		background-color: $neutral-white;
-		border-width: 1px;
-		border-style: solid;
-		border-color: $secondary-lite-red-1;
+		cursor: pointer;
+		gap: 16px;
+		border: none;
+		border-radius: 18px;
+		background-color: $primary-red;
+		transition: background-color 0.3s ease-out;
 
 		.buttonText {
-			color: $primary-red;
+			font-family: $button-desktop-font;
+			font-weight: $button-desktop-weight;
+			font-size: $button-desktop-size;
+			line-height: $button-desktop-line-height;
+			text-align: $button-desktop-text-align;
+			color: $neutral-white;
 		}
 
-		.icon {
-			background-image: url('/images/icons/top-right-arrow-red.svg');
+		.iconContainer {
+			display: flex;
+			align-items: center;
+
+			.icon {
+				width: 24px;
+				height: 24px;
+				background-image: url('/images/icons/right-arrow.svg');
+			}
+		}
+
+		&:hover:not(:disabled) {
+			background-color: $neutral-white;
+
+			.buttonText {
+				color: $primary-red;
+			}
+
+			.icon {
+				background-image: url('/images/icons/top-right-arrow-red.svg');
+			}
+		}
+
+		&:active:not(:disabled) {
+			background-color: $secondary-lite-red-1;
+			transform: none;
+
+			.buttonText {
+				color: $primary-red;
+			}
+
+			.icon {
+				background-image: url('/images/icons/top-right-arrow-red.svg');
+			}
+		}
+
+		&:disabled {
+			background-color: $neutral-grey;
+			cursor: not-allowed;
+
+			.buttonText {
+				color: $neutral-white;
+			}
 		}
 	}
+}
 
-	&:active {
-		background-color: $secondary-lite-red-1;
-		transform: none;
-
-		.buttonText {
-			color: $primary-red;
+.disabledContainer {
+	cursor: not-allowed;
+	& > div {
+		background-color: $neutral-grey;
+		&:before {
+			background-color: $neutral-grey;
 		}
-
-		.icon {
-			background-image: url('/images/icons/top-right-arrow-red.svg');
+		&:hover {
+			background-color: $neutral-grey;
+			&:before {
+				background-color: $neutral-grey;
+			}
+		}
+		&:active {
+			background-color: $neutral-grey;
+			&:before {
+				background-color: $neutral-grey;
+			}
 		}
 	}
 }
 
 @media (max-width: 1024px) {
-	.buttonContainer {
-		.buttonText {
-			font-family: $button-tablet-font;
-			font-weight: $button-tablet-weight;
-			font-size: $button-tablet-size;
-			line-height: $button-tablet-line-height;
-			text-align: $button-tablet-text-align;
+	.container {
+		min-width: 312px;
+
+		.buttonContainer {
+			min-width: 310px;
+			.buttonText {
+				font-family: $button-tablet-font;
+				font-weight: $button-tablet-weight;
+				font-size: $button-tablet-size;
+				line-height: $button-tablet-line-height;
+				text-align: $button-tablet-text-align;
+			}
 		}
 	}
 }
 
 @media (max-width: 739px) {
-	.buttonContainer {
-		min-width: unset;
-		width: 100%;
+	.container {
+		min-width: 288px;
+		width: calc(100% - 2px);
 		height: 64px;
-		.buttonText {
-			font-family: $button-mobile-font;
-			font-weight: $button-mobile-weight;
-			font-size: $button-mobile-size;
-			line-height: $button-mobile-line-height;
-			text-align: $button-mobile-text-align;
+
+		.buttonContainer {
+			min-width: 286px;
+			width: calc(100% - 2px);
+			height: 62px;
+			.buttonText {
+				font-family: $button-tablet-font;
+				font-weight: $button-tablet-weight;
+				font-size: $button-tablet-size;
+				line-height: $button-tablet-line-height;
+				text-align: $button-tablet-text-align;
+			}
 		}
 	}
 }

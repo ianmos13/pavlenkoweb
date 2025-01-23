@@ -37,6 +37,7 @@ const MostInteresting = () => {
       <SliderWithPiceOfNextSlide
         slideData={slideData}
         titleOptions={titleOptions}
+        slideIndex={2}
       />
     </>
   );

@@ -1,0 +1,68 @@
+@import "/styles/variables";
+
+.container {
+  width: 100%;
+  background-color: $secondary-ultra-lite-blue;
+
+  .headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 48px 56px;
+    width: 100%;
+    gap: 16px;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      padding: 48px 32px;
+    }
+
+    @media (max-width: 739px) {
+      padding: 24px 0;
+    }
+
+    .textSection {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 50%;
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
+
+      @media (max-width: 739px) {
+        gap: 16px;
+        padding: 0 16px;
+      }
+      h5 {
+        font-family: Nunito;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        text-align: left;
+        color: $primary-blue;
+      }
+    }
+
+    .imageSection {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      width: 50%;
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+        border-radius: 24px;
+
+        @media (max-width: 739px) {
+          border-radius: 0px;
+        }
+      }
+    }
+  }
+}

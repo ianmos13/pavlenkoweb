@@ -1,4 +1,3 @@
-import QuestionsList from '@/components/UI/ContainerWithSidebar/QuestionsList/QuestionsList'
 import styles from './Partnership.module.scss'
 
 export default function Partnership() {
@@ -7,7 +6,6 @@ export default function Partnership() {
 			<div className={styles.container}>
 				<div className={styles.topContainer}>
 					<h2>Возможности для сотрудничества</h2>
-					{/* Убираем компонент QuestionsList, так как вопросы больше не используются */}
 				</div>
 				<div className={styles.bottomContainer}>
 					<div className={styles.tile}>
@@ -40,23 +38,3 @@ export default function Partnership() {
 		</section>
 	)
 }
-
-// Убираем весь массив questions
-const info = [
-	{
-		header: 'Единственная в России',
-		text: 'Программа по подготовке специализированных хирургов-онкологов для выпускников ординатур (аналог fellowship)',
-	},
-	{
-		header: '500 пациентов',
-		text: 'такая нагрузка приходится в среднем на одного врача-онколога сегодня',
-	},
-	{
-		header: '80% пациентов',
-		text: 'с диагнозом рак, нуждаются в срочном хирургическом вмешательстве',
-	},
-	{
-		header: 'не более 30%',
-		text: 'онкологических пациентов получают доступ к cвоевременной, безопасной и доступной хирургической помощи',
-	},
-]

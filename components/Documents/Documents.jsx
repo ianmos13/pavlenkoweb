@@ -11,12 +11,12 @@ const Documents = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/documents-and-report-categories");
+  } = useFetch("/documents-and-report-categories?sort=rank:asc");
   const {
     data: documentsData,
     loading: documentsLoading,
     error: documentsError,
-  } = useFetch("/documents-and-reports?populate=*");
+  } = useFetch("/documents-and-reports?sort=rank:asc&populate=*");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const loading = categoriesLoading || documentsLoading;
@@ -37,8 +37,8 @@ const Documents = () => {
           .map((document) => ({
             id: document.id,
             name: document.name,
-            url: document.url ? `${API_URL}${document.url}` : "",
-            file: document.file ? `${API_URL}${document.file.url}` : "",
+            url: document.url ? `${document.url}` : "",
+            file: document.file ? `${API_URL}${document.file[0].url}` : "",
           })),
       })),
     };

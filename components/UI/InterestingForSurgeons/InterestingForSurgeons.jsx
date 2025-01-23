@@ -20,7 +20,7 @@ const InterestingForSurgeons = ({ theme, data, top, bottom }) => {
 								<h3>{item.header}</h3>
 								<p>{item.text}</p>
 							</div>
-							<a href={item.linkHref}>{item.linkText} &rarr;</a>
+							<a href={item.linkHref}target='_blank' >{item.linkText} &rarr;</a>
 						</div>
 					))}
 				</div>

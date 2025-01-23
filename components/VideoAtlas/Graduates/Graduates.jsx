@@ -8,22 +8,22 @@ const graduates = [
   {
     name: "Максим ",
     secondName: "Попов",
-    image: "/images/graduates/maxim-popov.svg",
+    image: "/images/graduates/maxim-popov.webp",
   },
   {
     name: "Эмиль",
     secondName: "Чир-Чир",
-    image: "/images/graduates/emil-chirchir.svg",
+    image: "/images/graduates/emil-chirchir.webp",
   },
   {
     name: "Илья",
     secondName: "Скляр",
-    image: "/images/graduates/ilya-sklyar.svg",
+    image: "/images/graduates/ilya-sklyar.webp",
   },
   {
     name: "Даниил",
     secondName: "Синотин",
-    image: "/images/graduates/daniil-sinotin.svg",
+    image: "/images/graduates/daniil-sinotin.webp",
   },
 ];
 

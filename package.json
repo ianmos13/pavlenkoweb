@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
+    "corner-smoothing": "^0.1.5",
+    "decline-word": "^1.4.0",
     "framer-motion": "^11.13.0",
     "gsap": "^3.12.5",
     "leaflet": "^1.9.4",
@@ -17,6 +20,7 @@
     "react-dom": "^18",
     "react-leaflet": "^4.2.1",
     "react-leaflet-markercluster": "^4.0.0-rc1",
+    "react-redux": "^9.2.0",
     "swiper": "^11.1.14"
   },
   "devDependencies": {

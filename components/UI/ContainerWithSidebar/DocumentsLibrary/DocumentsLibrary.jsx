@@ -1,6 +1,7 @@
 import Pagination from "@/components/UI/Pagination/Pagination";
 import { useEffect, useState, useRef } from "react";
 import styles from "./DocumentsLibrary.module.scss";
+import Link from "next/link";
 
 const DocumentsLibrary = ({ documents = [] }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,15 +33,20 @@ const DocumentsLibrary = ({ documents = [] }) => {
     <div className={styles.documentsContainer} ref={contentRef}>
       <div className={styles.grid}>
         {currentItems.map((document) => (
-          <div key={document.id} className={styles.documentItem}>
-            <h3>{document.name}</h3>
-            <img
-              className={styles.icon}
-              href={document.url}
+          <Link
+              href={document.file ? document.file : document.url}
               target="_blank"
               rel="noopener noreferrer"
-              src="/images/icons/right-red-icon.svg"></img>
-          </div>
+          >
+            <div key={document.id} className={styles.documentItem}>
+              <h3>{document.name}</h3>
+              <img
+                alt=""
+                className={styles.icon}
+                src="/images/icons/right-red-icon.svg"
+              />
+            </div>
+          </Link>
         ))}
       </div>
 
