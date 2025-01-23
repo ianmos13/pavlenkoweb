@@ -54,8 +54,10 @@
     }
 
     @media (max-width: 1024px) {
+      aspect-ratio: 2/1;
+
       img {
-        height: 340px;
+        width: 100%;
         object-fit: cover;
       }
     }
@@ -84,8 +86,6 @@
       .imageSection{
         width: 100%;
         img{
-          height: 160px;
-          width: 100%;
           border-radius: unset;
         }
       }

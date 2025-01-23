@@ -7,6 +7,39 @@ import Podkast from "@/public/images/icons/podcast.svg";
 import Article from "@/public/images/icons/article.svg";
 
 const CardItem = ({ header, body, category, link, title, date, imageCover, target }) => {
+
+  return (
+      <>
+        { link ? (
+            <Link href={link} target={target ? target : undefined}>
+              <Card
+                  header={header}
+                  body={body}
+                  category={category}
+                  link={link}
+                  title={title}
+                  date={date}
+                  imageCover={imageCover}
+              />
+            </Link>
+        ) : (
+            <Card
+                header={header}
+                body={body}
+                category={category}
+                link={link}
+                title={title}
+                date={date}
+                imageCover={imageCover}
+            />
+        )}
+      </>
+  );
+};
+
+export default CardItem;
+
+const Card = ({ header, body, category, link, title, date, imageCover }) => {
   const renderCategoryIcon = (category) => {
     switch (category) {
       case "Видео":
@@ -21,42 +54,42 @@ const CardItem = ({ header, body, category, link, title, date, imageCover, targe
   };
 
   return (
-    <div className={styles.card} >
-      <div className={`${styles.cardHeader} ${imageCover ? styles.imageCover : ''}`}>
-        <img src={header} alt="Header Image" />
-      </div>
-      <div className={styles.cardBody}>
-        <div className={styles.cardBodyText}>
-          {title && <h5 className={styles.title}>{title}</h5>}
-          <p className={styles.description}>{body}</p>
+      <div className={styles.card} >
+        <div className={`${styles.cardHeader} ${imageCover ? styles.imageCover : ''}`}>
+            <div className={styles.imageContainer}>
+                <img src={header} alt="Header Image" />
+            </div>
         </div>
-        <div className={styles.cardFooter}>
-          <div
-            className={`${styles.categoryContainer} ${
-              date ? styles.columnLayout : ""
-            }`}>
-            {renderCategoryIcon(category)}
-            {date && <p>{date}</p>}
-            <p>{category}</p>
+        <div className={styles.cardBody}>
+          <div className={styles.cardBodyText}>
+            {title && <h5 className={styles.title}>{title}</h5>}
+            <p className={styles.description}>{body}</p>
           </div>
-          {link && (
-            <Link href={link} target={target ? target : undefined}>
-              <img
-                className={styles.desktopArrow}
-                src={"/images/icons/right-arrow-bold.svg"}
-                alt="Bold Arrow Icon"
-              />
-              <img
-                className={styles.mobileArrow}
-                src={"/images/icons/right-arrow-normal.svg"}
-                alt="Normal Arrow Icon"
-              />
-            </Link>
-          )}
+          <div className={styles.cardFooter}>
+            <div
+                className={`${styles.categoryContainer} ${
+                    date ? styles.columnLayout : ""
+                }`}>
+              {renderCategoryIcon(category)}
+              {date && <p>{date}</p>}
+              <p>{category}</p>
+            </div>
+            {link && (
+              <>
+                  <img
+                      className={`${styles.arrowIcon} ${styles.desktopArrow}`}
+                      src={"/images/icons/right-arrow-bold.svg"}
+                      alt="Bold Arrow Icon"
+                  />
+                  <img
+                      className={`${styles.arrowIcon} ${styles.mobileArrow}`}
+                      src={"/images/icons/right-arrow-normal.svg"}
+                      alt="Normal Arrow Icon"
+                  />
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
   );
 };
-
-export default CardItem;

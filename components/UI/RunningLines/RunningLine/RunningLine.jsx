@@ -19,28 +19,32 @@ const ImageElement = (props) => {
 }
 
 const RunningLine = (props) => {
-  const { data, isImages } = props;
+  const { data, isImages, reverse } = props;
 
   return (
-    <div className={styles.track}>
+    <div className={`${styles.track} ${reverse ? styles.reverse : ""}`}>
         {data.map((element, index) => (
             <>
-                { isImages ?
-                    (<ImageElement key={index} data={element} />) :
-                    (<TextElement key={index} data={element} />)
-                }
+                {isImages ? (
+                    <ImageElement key={index} data={element} />
+                ) : (
+                    <TextElement key={index} data={element} />
+                )}
             </>
         ))}
         {data.map((element, index) => (
             <>
-                { isImages ?
-                    (<ImageElement key={`duplicate-${index}`} data={element} />) :
-                    (<TextElement key={`duplicate-${index}`} data={element} />)
-                }
+                {isImages ? (
+                    <ImageElement key={`duplicate-${index}`} data={element} />
+                ) : (
+                    <TextElement key={`duplicate-${index}`} data={element} />
+                )}
             </>
         ))}
     </div>
-  )
-}
+  );
+};
+
+
 
 export default RunningLine;

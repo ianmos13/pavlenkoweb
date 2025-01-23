@@ -1,0 +1,142 @@
+@import "/styles/variables";
+
+.mainContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+    height: 72px;
+    max-width: 839px;
+    .input {
+      flex: 2 1;
+      border: none;
+      border-radius: 8px;
+      background-color: #fff;
+      padding: 18px 16px 18px 16px;
+      font-family: $primary-font-family;
+      font-weight: $p-desktop-primary-weight;
+      font-size: $p-desktop-primary-size;
+      line-height: $p-desktop-primary-line-height;
+      color: $neutral-dark-grey;
+    }
+    .button {
+      flex: 1 1;
+      background-color: red;
+    }
+  }
+  .label label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $primary-blue;
+    .link {
+      color: $secondary-blue-2;
+      font-size: 14px;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}
+
+.footerContainer {
+  max-width: 658px;
+  gap: 8px;
+
+  .label label {
+    color: $neutral-grey;
+    .link {
+      text-decoration: underline;
+      color: $neutral-grey;
+      line-height: 20px;
+    }
+  }
+}
+
+.paymentContainer {
+}
+
+@media (max-width: 1024px) {
+  .mainContainer {
+    width: 56%;
+    display: flex;
+    gap: 16px;
+    .form {
+      flex-direction: column;
+      gap: 16px;
+      height: unset;
+      .input {
+        min-height: 72px;
+        font-weight: $p-tablet-primary-weight;
+        font-size: $p-tablet-primary-size;
+        line-height: $p-tablet-primary-line-height;
+      }
+    }
+    .label {
+      width: 100%;
+      label {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+
+        .link {
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  .footerContainer {
+    max-width: unset;
+    width: 100%;
+
+    .form {
+      flex-direction: row;
+      max-width: unset;
+    }
+  }
+
+  .paymentContainer {
+    width: 100%;
+
+    .form {
+      flex-direction: row;
+    }
+  }
+}
+
+@media (max-width: 739px) {
+  .mainContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .form {
+      flex-direction: column;
+      gap: 16px;
+      height: unset;
+      .input {
+        min-height: 72px;
+        font-weight: $p-mobile-primary-weight;
+        font-size: $p-mobile-primary-size;
+        line-height: $p-mobile-primary-line-height;
+      }
+    }
+    .label label {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}

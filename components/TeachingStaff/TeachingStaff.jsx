@@ -16,7 +16,7 @@ const TeachingStaff = ({ bottom, top, showonly }) => {
     data: staffData,
     loading: staffLoading,
     error: staffError,
-  } = useFetch("/teaching-stuffs?populate=*&pagination[pageSize]=100");
+  } = useFetch("/teaching-stuffs?sort=rank:asc&populate=*&pagination[pageSize]=100");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
   const loading = categoriesLoading || staffLoading;
   const error = categoriesError || staffError;

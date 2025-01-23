@@ -26,7 +26,9 @@ const SupportButton = (props) => {
 			onMouseLeave={onMouseLeave}
 		>
 			<span>Поддержать</span>
-			<Image className={styles.buttonImage} src={imageSrc} alt='Heart' />
+			<div className={styles.buttonImage}>
+				<Image src={imageSrc} alt='Heart' />
+			</div>
 		</button>
 	)
 }

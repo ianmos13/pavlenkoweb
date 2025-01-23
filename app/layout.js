@@ -3,11 +3,12 @@ import './globals.scss'
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
 import CookieModal from '@/components/UI/CookieModal/CookieModal';
+import StoreProvider from "@/app/StoreProvider";
 
 export const metadata = {
 	title: 'Школа Павленко',
 	description:
-		'Единственный в России проект по подготовке специализированных хирургов-онкологов для выпускников ординатур.',
+		'Некоммерческий образовательный проект по подготовке специализированных хирургов-онкологов для выпускников ординатур.',
 }
 
 export default function RootLayout({ children }) {
@@ -25,12 +26,14 @@ export default function RootLayout({ children }) {
 					rel='stylesheet'
 				></link>
 			</head>
-			<body>
-				<Header />
-				<container>{children}</container>
-				<CookieModal />
-				<Footer />
-			</body>
+			<StoreProvider>
+				<body>
+					<Header />
+					<container>{children}</container>
+					<CookieModal />
+					<Footer />
+				</body>
+			</StoreProvider>
 		</html>
 	)
 }

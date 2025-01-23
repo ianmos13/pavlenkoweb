@@ -65,12 +65,13 @@
           }
           
         }
-        .author {
-          display: none;
-        }
       }
     }
   }
+}
+
+.lastContainer {
+  margin-bottom: 96px;
 }
 
 @media (max-width: 1024px) {
@@ -84,6 +85,10 @@
       }
     }
   }
+
+  .lastContainer {
+    margin-bottom: 32px;
+  }
 }
 
 @media (max-width: 739px) {
@@ -94,6 +99,8 @@
       .imageContainer{
         width: 100%;
         height: auto;
+        display: flex;
+        flex-direction: column;
         img {
           border-radius: unset;
           width: 100%;
@@ -113,15 +120,11 @@
             font-size: 16px;
             line-height: 22px;
           }
-          .author {
-            display: block;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 22px;
-            color: #717780;
-          }
         }
       }
     }
+  }
+  .lastContainer {
+    margin-bottom: 0;
   }
 }

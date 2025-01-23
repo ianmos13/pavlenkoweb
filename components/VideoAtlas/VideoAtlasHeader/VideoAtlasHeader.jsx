@@ -1,9 +1,16 @@
-'use client'
+"use client";
 
+import { useRouter } from "next/navigation";
 import styles from "./VideoAtlasHeader.module.scss";
 import LearnMoreButton from "@/components/UI/Buttons/LearnMoreButton/LearnMoreButton";
 
 const VideoAtlasHeader = () => {
+  const router = useRouter();
+  const buttonUrl = "https://www.youtube.com/";
+
+  const onSubmit = () => {
+    window.open(buttonUrl, "_blank");
+  };
   return (
     <section className={styles.container}>
       <div className={styles.headerContainer}>
@@ -22,15 +29,15 @@ const VideoAtlasHeader = () => {
           </h5>
           <div className={styles.buttonContainer}>
             <LearnMoreButton
-                theme={'youtube'}
-                text={"Подписаться на канал"}
-                onClick={() => {}}
+              theme={"youtube"}
+              text={"Подписаться на канал"}
+              onClick={onSubmit}
             />
           </div>
         </div>
         <div className={styles.imageSection}>
           <img
-            src="/images/video-atlas-header.svg"
+            src="/images/video-atlas-header.webp"
             alt="Surgery Training"
             className={styles.image}
           />

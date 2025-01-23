@@ -9,7 +9,7 @@ export default function TeachersSwiper() {
         data: teachersData,
         loading,
         error,
-      } = useFetch("/teaching-staff-teacher-sliders?populate=*");
+      } = useFetch("/teaching-staff-teacher-sliders?sort=rank:asc&populate=*");
       const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
       const parsedData =

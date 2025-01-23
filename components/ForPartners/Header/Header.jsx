@@ -1,5 +1,5 @@
 import ApplyButton from '@/components/UI/Buttons/ApplyButton/ApplyButton'
-import Photo from '@/public/images/partners.svg'
+import Photo from '@/public/images/partners.webp'
 import Image from 'next/image'
 import styles from './Header.module.scss'
 export default function Header() {

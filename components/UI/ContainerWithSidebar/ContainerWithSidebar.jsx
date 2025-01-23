@@ -64,8 +64,26 @@ const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
         activeCategory={activeCategory}
         onCategoryChange={handleCategoryChange}
         showAllCategoriesFilters={showAllCategoriesFilters}
+        allCategoriesLabel={
+          type === "NewsLibrary"
+            ? "Все новости"
+            : type === "PublicationLibrary"
+            ? "Все публикации"
+            : type === "VideoLibrary"
+            ? "Все публикации"
+            : type === "SchoolTeam"
+            ? "Вся команда"
+            : type === "TeachingStaff"
+            ? "Все преподаватели"
+            : type === "Documents"
+            ? "Все документы"
+            : type === "Question"
+            ? "Все вопросы"
+            : type === "Program"
+            ? "Все программы"
+            : "Все категории"
+        }
       />
-
       <div className={styles.content}>{contentMap[type] || null}</div>
     </div>
   );

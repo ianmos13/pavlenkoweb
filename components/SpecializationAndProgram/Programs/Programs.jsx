@@ -10,13 +10,13 @@ export default function Programs() {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/program-categories");
+  } = useFetch("/program-categories?sort=rank:asc");
 
   const {
     data: programsData,
     loading: programsLoading,
     error: programsError,
-  } = useFetch("/programs/?populate=*");
+  } = useFetch("/programs?sort=rank:asc&populate=*");
 
   const loading = categoriesLoading || programsLoading;
   const error = categoriesError || programsError;

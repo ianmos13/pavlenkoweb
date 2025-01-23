@@ -5,8 +5,20 @@ import Link from "next/link";
 import Image from "next/image";
 import HeaderLogo from "@/public/images/logo.svg";
 import useIsPath501 from "@/services/hook/useIsPath501";
+import DonationPopup from "@/components/UI/DonationPopup/DonationPopup";
+import React, {useState} from "react";
+import SubscribeForm from "@/components/UI/Subscribe/SubscribeForm/SubscribeForm";
+import SubscribePopup from "@/components/UI/Subscribe/SubscribePopup/SubscribePopup";
+
 export default function Footer() {
   const isPath501 = useIsPath501();
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+
   return !isPath501 ? (
     <footer className={styles.container}>
       <div className={styles.footerBody}>
@@ -25,16 +37,36 @@ export default function Footer() {
                 <div className={styles.linksItem}>
                   {element.children &&
                     element.children.map((child, idxc) => (
-                      <Link
-                        key={idxc}
-                        href={child.link}
-                        className={styles.link}>
-                        <p className={`bold`}>{child.title}</p>
-                      </Link>
+                      <div key={idxc}>
+                        { child.link === 'popup' ? (
+                          <>
+                            <div className={styles.link} onClick={togglePopup} >
+                              <p className={`bold`}>{child.title}</p>
+                            </div>
+                            {isPopupOpen && (
+                                <DonationPopup togglePopup={togglePopup} uuid="pop_up_dontaion_footer" />
+                            )}
+                          </>
+                        ) : (
+                          <Link
+                              href={child.link}
+                              className={styles.link}>
+                            <p className={`bold`}>{child.title}</p>
+                          </Link>
+                        ) }
+                      </div>
                     ))}
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+        <div className={styles.footerSubscribe}>
+          <div className={styles.subscribeTitle}>
+            <p className={`bold`}>Подписаться на&nbsp;рассылку</p>
+          </div>
+          <div className={styles.subscribeForm}>
+            <SubscribeForm setIsPopupVisible={setIsPopupVisible} theme="footer" />
           </div>
         </div>
         <div className={styles.footerInfo}>
@@ -43,7 +75,7 @@ export default function Footer() {
               193312 г. Санкт-Петербург, проспект Товарищеский, д.10, корп.1А,
               154
             </p>
-            <p className={`small`}>© 2021 Школа практической онкологии</p>
+            <p className={`small`}>© {(new Date().getFullYear())} Школа практической онкологии</p>
           </div>
           <div className={styles.linksInfo}>
             <Link href="/privacy-policy" className={styles.link}>
@@ -59,6 +91,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      {isPopupVisible && <SubscribePopup onClose={() => setIsPopupVisible(false)} />}
     </footer>
   ) : null;
 }
@@ -88,11 +121,11 @@ const footerElements = [
         title: "Новости школы",
         link: "/news",
       },
-      {
-        id: 14,
-        title: "Маркет",
-        link: "/market",
-      },
+      // {
+      //   id: 14,
+      //   title: "Маркет",
+      //   link: "/market",
+      // },
       {
         id: 15,
         title: "Сведения об образовательной организации",
@@ -111,7 +144,7 @@ const footerElements = [
       },
       {
         id: 21,
-        title: "Специализации и программа",
+        title: "Специализации и\u00A0программа",
         link: "/specialization-and-program",
       },
       {
@@ -180,7 +213,7 @@ const footerElements = [
       {
         id: 51,
         title: "Поддержать",
-        link: "/",
+        link: "popup",
       },
     ],
   },

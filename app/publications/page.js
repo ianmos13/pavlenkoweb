@@ -1,16 +1,14 @@
-	import PublicationLibrary from '@/components/Publications/PublicationLibrary/PublicationLibrary'
+import PublicationLibrary from '@/components/Publications/PublicationLibrary/PublicationLibrary'
 import BannersSection from '@/components/Publications/BannersSection/BannersSection';
-import BannerSlider from "@/components/UI/BannerSlider/BannerSlider";
 import RunningLines from "@/components/UI/RunningLines/RunningLines";
 import HeaderText from "@/components/UI/HeaderText/HeaderText";
-	import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+
 export default function page() {
 	return (
 		<>
 			<HeaderText>Публикации о школе</HeaderText>
-			<BannersSection
-				
-			/>
+			<BannersSection />
 			<AnimatedComponent>
 				<RunningLines
 					data={linesData}

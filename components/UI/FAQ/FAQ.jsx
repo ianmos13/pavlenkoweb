@@ -21,6 +21,73 @@ const FAQ = () => {
   const loading = categoriesLoading || faqsLoading;
   const error = categoriesError || faqsError;
 
+  const parseAnswerContent = (content) => {
+    return content.map((block, index) => {
+      switch (block.type) {
+        case "paragraph":
+          return (
+              <><p key={index}>{parseLevelContent(block.children)}</p><br /> </>
+          );
+        case "list":
+          return block.format === "unordered" ? (
+            <ul key={index} style={{ listStyleType: "disc", marginLeft: "20px" }}>
+              {block.children.map((item, i) => (
+                <li key={i}>{formatText(item.children[0], i)}</li>
+              ))}
+            </ul>
+          ) : (
+            <ol key={index} style={{ listStyleType: "decimal", marginLeft: "20px" }}>
+              {block.children.map((item, i) => (
+                <li key={i}>{formatText(item.children[0], i)}</li>
+              ))}
+            </ol>
+          );
+        case "heading":
+          const HeadingTag = `h${block.level}`;
+          return (
+            <HeadingTag key={index}>
+              {parseLevelContent(block.children)}
+            </HeadingTag>
+          );
+        case "link":
+          return (
+            <a key={index} href={block.url} target="_blank" rel="noopener noreferrer">
+              {block.children.map((child, i) => formatText(child, i))}
+            </a>
+          );
+        default:
+          return null;
+      }
+    });
+  };
+
+  const parseLevelContent = (content) => {
+    return content.map((block, index) => {
+      switch (block.type) {
+        case "text":
+          return formatText(block, index)
+        case "link":
+          return <a key={index} href={block.url} target="_blank" rel="noopener noreferrer">
+            { block.children.map((b, i) => formatText(b, i) )}
+          </a>;
+        default:
+          return null;
+      }
+    })
+  }
+
+  const formatText = (child, key) => {
+    if (!child) return null;
+    let textElement = child.text;
+  
+    if (child.bold) textElement = <strong key={key}>{textElement}</strong>;
+    if (child.italic) textElement = <em key={key}>{textElement}</em>;
+    if (child.underline) textElement = <u key={key}>{textElement}</u>;
+    if (child.strikethrough) textElement = <s key={key}>{textElement}</s>;
+  
+    return textElement;
+  };
+  
   const faqData = React.useMemo(() => {
     if (!categoriesData || !faqsData) return null;
 
@@ -32,14 +99,13 @@ const FAQ = () => {
           .filter((faq) => faq.category && faq.category.id === category.id)
           .map((faq) => ({
             question: faq.question,
-            answer: faq.answer,
+            answer: parseAnswerContent(faq.answer),
           })),
       })),
     };
 
     return mappedData;
   }, [categoriesData, faqsData]);
-
   return (
     <section className={`${styles.faqContainer} container`}>
       <h2>Часто задаваемые вопросы</h2>
@@ -49,5 +115,6 @@ const FAQ = () => {
     </section>
   );
 };
+
 
 export default FAQ;

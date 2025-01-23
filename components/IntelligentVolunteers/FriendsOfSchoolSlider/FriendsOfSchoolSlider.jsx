@@ -15,7 +15,7 @@ export default function FriendsOfSchoolSlider() {
     data: volunteersData,
     loading,
     error,
-  } = useFetch("/intelligent-volunteers-sliders?populate=*");
+  } = useFetch("/intelligent-volunteers-sliders?sort=rank:asc&populate=*");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const formattedData = volunteersData.map((item) => ({

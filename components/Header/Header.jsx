@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -15,35 +15,50 @@ import CloseIconDark from "@/public/images/icons/close-icon-dark.svg";
 import useIsPath501 from "@/services/hook/useIsPath501";
 
 import styles from "./Header.module.scss";
+import { useSelector } from "react-redux";
+
 const darkPages = [
   "/about-us",
   "/training-application-form",
   "/specialization-and-program",
     "/information-about-educational-organization"
 ];
-const greyPages = ["/4surgeonsclub", "/video-atlas", "/for-partners", "/intelligent-volunteers"];
+const ultraLitePages = ["/biography","/4surgeonsclub", "/video-atlas", "/for-partners", "/intelligent-volunteers"];
 
 export default function Header() {
   const isPath501 = useIsPath501();
   const pathname = usePathname();
-  const theme =
-    pathname === "/" || darkPages.includes(pathname)
-      ? "dark"
-      : greyPages.includes(pathname)
-      ? "grey"
-      : "light";
+  const bannerTheme = useSelector(state => state.header?.theme || 'dark')
 
+  const defaultTheme =
+      pathname === "/" || darkPages.includes(pathname)
+          ? "dark"
+          : ultraLitePages.includes(pathname)
+              ? "ultraLite"
+              : "light";
+
+  const [theme, setTheme] = useState(defaultTheme)
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [burgerImageSrc, setBurgerImageSrc] = useState(Burger);
   const burgerButtonRef = useRef(null);
 
-  const burgerImageSrc =
-    theme === "dark"
-      ? isBurgerOpen
-        ? CloseIcon
-        : Burger
-      : isBurgerOpen
-      ? CloseIconDark
-      : BurgerDark;
+  useEffect(() => {
+    if(pathname === "/") {
+      setTheme(bannerTheme ? bannerTheme : defaultTheme)
+    } else {
+      setTheme(defaultTheme)
+    }
+  }, [bannerTheme])
+
+  useEffect(() => {
+    setTheme(defaultTheme)
+  }, [pathname])
+
+
+  useEffect(() => {
+    if(theme === "dark") isBurgerOpen ? setBurgerImageSrc(CloseIcon) : setBurgerImageSrc(Burger)
+    else isBurgerOpen ? setBurgerImageSrc(CloseIconDark) : setBurgerImageSrc(BurgerDark)
+  }, [theme]);
 
   return !isPath501 ? (
     <header className={`${styles.container} ${styles[`${theme}Container`]}`}>
@@ -120,11 +135,11 @@ const menuElements = [
         title: "Новости школы",
         link: "/news",
       },
-      {
-        id: 15,
-        title: "Маркет",
-        link: "/market",
-      },
+      // {
+      //   id: 15,
+      //   title: "Маркет",
+      //   link: "/market",
+      // },
       {
         id: 16,
         title: "Сведения об образовательной организации",

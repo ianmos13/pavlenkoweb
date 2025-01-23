@@ -11,6 +11,10 @@
 	border-radius: 12px;
 	background-color: $neutral-white;
 	margin-bottom: 32px;
+		&.dragging {
+		border-color: $primary-blue;
+		background-color:  #d0d7de;
+	}
 
 	.uploadInstruction {
 		font-family: Nunito;
@@ -27,6 +31,12 @@
 	.fileLink {
 		display: flex;
 		gap: 12px;
+
+		img {
+			max-width: 26px;
+			max-height: 26px;
+		}
+
 		p {
 			color: $primary-blue;
 		}

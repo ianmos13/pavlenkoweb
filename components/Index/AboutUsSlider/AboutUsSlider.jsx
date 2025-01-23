@@ -9,7 +9,7 @@ const AboutUsSlider = () => {
     data: publicationsData,
     loading,
     error,
-  } = useFetch("/publications?populate=*");
+  } = useFetch("/publications?sort=rank:asc&populate=*");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const slideData = React.useMemo(() => {
@@ -27,11 +27,10 @@ const AboutUsSlider = () => {
   }, [publicationsData]);
 
   const titleOptions = {
-    title: "Говорят о нас",
+    title: "Говорят о\u00A0нас",
     buttonText: "Все публикации",
     buttonUrl: "/publications",
   };
-  const cartType = 'aboutUs'
 
   return (
     <>
@@ -39,6 +38,7 @@ const AboutUsSlider = () => {
         <SliderWithPiceOfNextSlide
           slideData={slideData}
           titleOptions={titleOptions}
+          slideIndex={1}
         />
       </Loader>
     </>

@@ -138,15 +138,13 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			z-index: 1000;
+			z-index: 10000;
 			padding: 20px;
 		}
 
 		.modalContent {
 			background-color: #fff;
-			padding: 20px;
 			border-radius: 16px;
-			max-width: 90%;
 			position: relative;
 			display: flex;
 			flex-direction: column;

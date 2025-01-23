@@ -125,6 +125,24 @@
     }
 }
 
+.ultraLiteContainer {
+    .link {
+        span {
+            color: $primary-blue;
+        }
+    }
+
+    .dropdownMenu {
+        background-color: $primary-blue;
+
+        .link {
+            span {
+                color: $neutral-white;
+            }
+        }
+    }
+}
+
 @media (max-width: 1024px) {
     .container {
         padding: 0;

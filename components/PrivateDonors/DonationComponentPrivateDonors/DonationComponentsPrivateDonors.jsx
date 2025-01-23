@@ -4,7 +4,7 @@ import styles from './DonationComponentPrivateDonors.module.scss'
 export default function DonationComponentsPrivateDonors() {
 	return (
 		<section className={`${styles.block} container`}>
-			<DonationComponent />
+			<DonationComponent id="private_donors_dontaion"/>
 		</section>
 	)
 }

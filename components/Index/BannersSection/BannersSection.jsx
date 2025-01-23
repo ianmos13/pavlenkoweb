@@ -6,7 +6,7 @@ import Loader from "@/components/UI/Loader/Loader";
 
 const BannersSection = () => {
 
-  const { data: bannersData, loading, error } = useFetch("/index-banner-sliders?populate=*");
+  const { data: bannersData, loading, error } = useFetch("/index-banner-sliders?sort=rank:asc&populate=*");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 
@@ -15,12 +15,17 @@ const BannersSection = () => {
 
     return bannersData.map((banner) => ({
       id: banner.id,
-      background: banner.background || "dark",
-      headerData: banner.headerData.map((header, index) => ({
+      background: banner.theme?.name || "dark",
+      headerData: banner.headerData ? banner.headerData.map((header, index) => ({
         id: index,
         text: header.text,
         className: header.className,
-      })),
+      })) : [],
+      cardsData: banner.cardsData ? banner.cardsData.map((card, index) => ({
+        id: card,
+        text: card.text,
+        title: card.title,
+      })) : [],
       image: banner.image?.url ? `${API_URL}${banner.image.url}` : "/images/default-banner.png",
       body: banner.body,
       buttonText: banner.buttonText,
