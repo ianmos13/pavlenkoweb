@@ -41,7 +41,6 @@ export default function page() {
       <AnimatedComponent>
         <BiographyVideoComponent
           videoCaption={videoCaption}
-          videoPath={"https://rutube.ru/video/e0d0e89c2daea0a3db298172a63a8f8a/?r=plwd"}
           preview={"images/Biography-video-preview.webp"}
         />
       </AnimatedComponent>
