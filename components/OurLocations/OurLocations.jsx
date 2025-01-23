@@ -1,10 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
 import styles from "./OurLocations.module.scss";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import declineWord from "decline-word";
 
 // Dynamically import LocationMap to disable SSR
 const LocationMap = dynamic(() => import("./LocationMap/LocationMap"), { ssr: false });
@@ -83,7 +84,7 @@ const OurLocations = () => {
                   }`}
                   onClick={() => setActiveCity(activeCity === idx ? null : idx)}>
                   <h4>
-                    {location.city} ({location.clinics.length} клиник)
+                    {location.city} ({location.clinics.length} {declineWord(location.clinics.length, 'клиник', 'а', 'и', '')})
                   </h4>
                   <img
                     src={
