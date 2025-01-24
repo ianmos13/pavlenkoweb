@@ -6,7 +6,7 @@ import Loader from "@/components/UI/Loader/Loader";
 
 const BannersSection = () => {
 
-  const { data: bannersData, loading, error } = useFetch("/become-resident-banner-sliders?populate=*");
+  const { data: bannersData, loading, error } = useFetch("/become-resident-banner-sliders?populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 

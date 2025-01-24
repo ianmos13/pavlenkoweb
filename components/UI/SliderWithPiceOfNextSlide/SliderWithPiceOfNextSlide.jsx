@@ -28,6 +28,7 @@ const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, imageCover, slideI
               category={slide.category}
               link={slide.link}
               imageCover={imageCover}
+              target={'_blank'}
             />
           ))}
         </div>

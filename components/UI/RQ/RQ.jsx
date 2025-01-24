@@ -11,7 +11,7 @@ import DzenIcon from "@/public/images/icons/dzen-dark.svg";
 import Loader from "@/components/UI/Loader/Loader";
 
 export default function RQ() {
-  const { data, loading, error } = useFetch("/any-questions-link");
+  const { data, loading, error } = useFetch("/any-questions-link?pagination[pageSize]=9999999");
 
   if (error) {
     return <p>Ошибка загрузки данных: {error.message}</p>;

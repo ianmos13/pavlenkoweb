@@ -9,7 +9,7 @@ const MostInteresting = () => {
     data: publicationsData,
     loading,
     error,
-  } = useFetch("/publications?populate=*");
+  } = useFetch("/club-most-interestings?populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const slideData = React.useMemo(() => {
@@ -21,8 +21,8 @@ const MostInteresting = () => {
         ? `${API_URL}${item.header.url}`
         : "/images/default-image.svg",
       body: item.body,
-      category: item.publication_categorie?.category || "Без категории",
-      link: `/${item.link}`,
+      category: "Видео",
+      link: `${item.link}`,
     }));
   }, [publicationsData]);
   const titleOptions = {
@@ -37,6 +37,7 @@ const MostInteresting = () => {
       <SliderWithPiceOfNextSlide
         slideData={slideData}
         titleOptions={titleOptions}
+        imageCover={true}
         slideIndex={2}
       />
     </>

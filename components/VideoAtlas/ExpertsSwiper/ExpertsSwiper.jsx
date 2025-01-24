@@ -9,7 +9,7 @@ export default function ExpertsSwiper() {
     data: expertData,
     loading,
     error,
-  } = useFetch("/video-atlas-expert-sliders?populate=*");
+  } = useFetch("/video-atlas-expert-sliders?populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const parsedData =

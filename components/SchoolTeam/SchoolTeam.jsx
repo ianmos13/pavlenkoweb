@@ -10,13 +10,13 @@ const SchoolTeam = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/school-team-categories?sort=rank:asc");
+  } = useFetch("/school-team-categories?sort=rank:asc&pagination[pageSize]=9999999");
 
   const {
     data: staffData,
     loading: staffLoading,
     error: staffError,
-  } = useFetch("/school-teams?sort=rank:asc&populate=*");
+  } = useFetch("/school-teams?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const loading = categoriesLoading || staffLoading;

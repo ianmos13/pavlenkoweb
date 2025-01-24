@@ -10,7 +10,7 @@ import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlid
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
 export default function SliderWithPopup() {
-  const { data: feedbackData, loading, error } = useFetch("/feedback-datas?sort=rank:asc");
+  const { data: feedbackData, loading, error } = useFetch("/feedback-datas?sort=rank:asc&pagination[pageSize]=9999999");
 
   const formattedData = feedbackData.map((item) => ({
     text: item.text

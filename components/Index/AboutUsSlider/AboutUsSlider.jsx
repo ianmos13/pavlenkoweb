@@ -9,7 +9,7 @@ const AboutUsSlider = () => {
     data: publicationsData,
     loading,
     error,
-  } = useFetch("/publications?sort=rank:asc&populate=*");
+  } = useFetch("/publications?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const slideData = React.useMemo(() => {
