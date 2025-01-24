@@ -10,7 +10,7 @@ const AboutAdministration = () => {
     data: teamData,
     loading,
     error,
-  } = useFetch("/school-teams?sort=rank:asc&populate=*");
+  } = useFetch("/school-teams?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const administrators = useMemo(() => {

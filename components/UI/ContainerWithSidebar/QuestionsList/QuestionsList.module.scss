@@ -59,6 +59,7 @@
 
 		@media (max-width: 739px) {
 			font-size: 18px;
+			line-height: 22px;
 		}
 	}
 }
@@ -69,10 +70,20 @@
 }
 
 .answer {
+	white-space: pre-wrap;
+	font-family: Nunito;
+	color: $neutral-dark-grey;
+	font-size: 20px;
+	line-height: 26px;
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 	opacity: 0;
+
+	@media (max-width: 1024px) {
+		font-size: 16px;
+		line-height: 22px;
+	}
 
 	.margin {
 		min-height: 0;
@@ -99,6 +110,17 @@
 		color: $neutral-dark-grey;
 	}
 
+	p {
+		margin: 1em 0;
+		font-size: 20px;
+		line-height: 26px;
+
+		@media (max-width: 1024px) {
+			font-size: 16px;
+			line-height: 22px;
+		}
+	}
+
 	h1 a, h2 a, h3 a {
 		font-size: inherit;
 	}
@@ -108,8 +130,7 @@
 	}
 
 	&.expanded {
-		//min-height: fit-content;
-		max-height: 700px;
+		max-height: 2500px;
 		opacity: 1;
 	}
 }

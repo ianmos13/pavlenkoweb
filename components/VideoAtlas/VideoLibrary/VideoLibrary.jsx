@@ -10,12 +10,12 @@ const VideoLibrary = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/video-categories");
+  } = useFetch("/video-categories?pagination[pageSize]=9999999");
   const {
     data: videosData,
     loading: videosLoading,
     error: videosError,
-  } = useFetch("/videos?populate=*");
+  } = useFetch("/videos?populate=*&pagination[pageSize]=9999999");
 
   const loading = categoriesLoading || videosLoading;
   const error = categoriesError || videosError;

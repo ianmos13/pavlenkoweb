@@ -12,7 +12,7 @@ const Header = () => {
 		data: categoriesData,
 		loading: categoriesLoading,
 		error: categoriesError,
-	} = useFetch("/program-categories?sort=rank:asc");
+	} = useFetch("/program-categories?sort=rank:asc&pagination[pageSize]=9999999");
 
 	const categories = React.useMemo(() => {
 		if (!categoriesData) return null;

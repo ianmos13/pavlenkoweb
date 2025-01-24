@@ -3,14 +3,14 @@ import React from "react";
 import styles from "./Mentors.module.scss";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
-import Link from "next/link";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const Mentors = ({ bottom, top }) => {
   const {
     data: mentorsResponse,
     loading: mentorsLoading,
     error: mentorsError,
-  } = useFetch("/mentors?populate=*");
+  } = useFetch("/mentors?populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const formattedMentorsData = React.useMemo(() => {
@@ -33,27 +33,29 @@ const Mentors = ({ bottom, top }) => {
         <h2>Менторы</h2>
       </div>
       <Loader loading={mentorsLoading}>
-        <div className={styles.gridContainer}>
-          {formattedMentorsData.map((mentor) => (
-            <div key={mentor.id} className={styles.gridItem}>
-              <div className={styles.textContent}>
-                <div className={styles.name}>
-                  <h5>{mentor.name}</h5>
+        <AnimatedComponent>
+            <div className={styles.gridContainer}>
+              {formattedMentorsData.map((mentor) => (
+                <div key={mentor.id} className={styles.gridItem}>
+                  <div className={styles.textContent}>
+                    <div className={styles.name}>
+                      <h5>{mentor.name}</h5>
+                    </div>
+                    <div className={styles.description}>
+                      <p>{mentor.description}</p>
+                    </div>
+                  </div>
+                  <div className={styles.imageWrapper}>
+                    <img
+                      src={mentor.photo}
+                      alt={mentor.name}
+                      className={styles.avatar}
+                    />
+                  </div>
                 </div>
-                <div className={styles.description}>
-                  <p>{mentor.description}</p>
-                </div>
-              </div>
-              <div className={styles.imageWrapper}>
-                <img
-                  src={mentor.photo}
-                  alt={mentor.name}
-                  className={styles.avatar}
-                />
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
+        </AnimatedComponent>
       </Loader>
     </div>
   );

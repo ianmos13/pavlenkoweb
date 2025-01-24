@@ -20,13 +20,13 @@ const OurLocations = () => {
     data: citiesData,
     loading: citiesLoading,
     error: citiesError,
-  } = useFetch("/our-locations-cities");
+  } = useFetch("/our-locations-cities?pagination[pageSize]=9999999");
 
   const {
     data: clinicsData,
     loading: clinicsLoading,
     error: clinicsError,
-  } = useFetch("/our-locations-clinics?populate=*");
+  } = useFetch("/our-locations-clinics?populate=*&pagination[pageSize]=9999999");
 
   const loading = citiesLoading || clinicsLoading;
   const error = citiesError || clinicsError;

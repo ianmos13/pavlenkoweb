@@ -11,12 +11,12 @@ const Documents = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/documents-and-report-categories?sort=rank:asc");
+  } = useFetch("/documents-and-report-categories?sort=rank:asc&pagination[pageSize]=9999999");
   const {
     data: documentsData,
     loading: documentsLoading,
     error: documentsError,
-  } = useFetch("/documents-and-reports?sort=rank:asc&populate=*");
+  } = useFetch("/documents-and-reports?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const loading = categoriesLoading || documentsLoading;

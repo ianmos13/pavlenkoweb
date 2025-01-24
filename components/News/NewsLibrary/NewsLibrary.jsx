@@ -11,12 +11,12 @@ const NewsLibrary = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/article-categories");
+  } = useFetch("/article-categories?pagination[pageSize]=9999999");
   const {
     data: articlesData,
     loading: articlesLoading,
     error: articlesError,
-  } = useFetch("/articles?populate=*");
+  } = useFetch("/articles?populate=*&pagination[pageSize]=9999999");
   
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
   const loading = categoriesLoading || articlesLoading;
