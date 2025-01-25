@@ -1,12 +1,12 @@
 import React from "react";
-import styles from "./CardItem.module.scss";
+import styles from "./PublicationCardItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import Camera from "@/public/images/icons/news-camera.svg";
 import Podkast from "@/public/images/icons/podcast.svg";
 import Article from "@/public/images/icons/article.svg";
 
-const CardItem = ({ header, body, category, link, title, date, imageCover, target }) => {
+const PublicationCardItem = ({ header, body, category, link, title, date, imageCover, target }) => {
 
   return (
       <>
@@ -37,7 +37,7 @@ const CardItem = ({ header, body, category, link, title, date, imageCover, targe
   );
 };
 
-export default CardItem;
+export default PublicationCardItem;
 
 const Card = ({ header, body, category, link, title, date, imageCover }) => {
   const renderCategoryIcon = (category) => {
@@ -61,8 +61,7 @@ const Card = ({ header, body, category, link, title, date, imageCover }) => {
             </div>
         </div>
         <div className={styles.cardBody}>
-          <div className={`${styles.cardBodyText} ${title ? '' : styles.withoutTitleBodyText}`}>
-            {title && <h5 className={styles.title}>{title}</h5>}
+          <div className={styles.cardBodyText}>
             <p className={styles.description}>{body}</p>
           </div>
           <div className={styles.cardFooter}>

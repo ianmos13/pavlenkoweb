@@ -130,11 +130,12 @@
     width: 100%;
 
     .dropdownHeader {
-      padding: 16px 32px;
+      padding: 16px;
+      justify-content: center;
       h3 {
         color: $primary-blue;
-        font-size: 22px;
-        line-height: 30px;
+        font-size: 18px;
+        line-height: 25px;
       }
     }
 

@@ -1,7 +1,7 @@
 import Pagination from '@/components/UI/Pagination/Pagination'
 import { useEffect, useState, useRef } from 'react'
-import CardItem from '@/components/UI/Cards/CardItem/CardItem'
 import styles from './PublicationLibrary.module.scss'
+import PublicationCardItem from "@/components/UI/Cards/PublicationCardItem/PublicationCardItem";
 
 const PublicationLibrary = ({ publications = [] }) => {
 	const [currentPage, setCurrentPage] = useState(1)
@@ -33,7 +33,7 @@ const PublicationLibrary = ({ publications = [] }) => {
 		<div className={styles.publicationLibraryContainer} ref={contentRef}>
 			<div className={styles.grid}>
 				{currentItems.map(publication => (
-					<CardItem
+					<PublicationCardItem
 						key={publication.link}
 						header={publication.header}
 						body={publication.body}

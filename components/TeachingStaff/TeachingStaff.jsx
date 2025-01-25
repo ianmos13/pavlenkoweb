@@ -53,10 +53,10 @@ const TeachingStaff = ({ bottom, top, showonly }) => {
             biography: member.biography,
             location: member.city,
             avatar: member.avatar
-              ? `${API_URL}${member.avatar.url}`
+              ? `${API_URL}${member.avatar?.url}`
               : "/images/default-avatar.svg",
             photo: member.photo
-              ? `${API_URL}${member.photo.url}`
+              ? `${API_URL}${member.photo?.url}`
               : "/images/default-photo.svg",
           })),
       })),

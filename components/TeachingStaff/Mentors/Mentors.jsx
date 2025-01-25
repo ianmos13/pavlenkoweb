@@ -21,7 +21,7 @@ const Mentors = ({ bottom, top }) => {
         description: mentor.Description,
         link: mentor.link,
         photo: mentor.photo
-          ? `${API_URL}${mentor.photo.url}`
+          ? `${API_URL}${mentor.photo?.url}`
           : "/images/default-photo.svg",
       })) || []
     );

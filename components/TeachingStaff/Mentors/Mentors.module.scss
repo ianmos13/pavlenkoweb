@@ -22,7 +22,7 @@
         flex-direction: column;
         gap: 12px;
         justify-content: space-between;
-        padding: 24px 0px 24px 24px;
+        padding: 17px 0 17px 24px;
         .name{
           h5{
             font-family: Nunito;
@@ -44,20 +44,25 @@
         }
       }
       .imageWrapper{
+        position: relative;
+        width: 174px;
+        min-width: 174px;
+        overflow: hidden;
+        aspect-ratio: 1;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+
         .avatar{
-          border-radius: unset;
-          object-fit: cover;
+          width: 174px;
           border-top-right-radius: 16px;
           border-bottom-right-radius: 16px;
+          object-fit: cover;
+          position: absolute;
         }
       }
     }
   }
 }
-
-
-
-
 
 @media (max-width: 1024px) {
   .mentorsContainer {
@@ -69,6 +74,7 @@
       gap: 16px;
       .gridItem{ 
         .textContent{
+          padding: 30px 0 30px 24px;
           .name{
             h5{
               font-size: 16px;
@@ -84,10 +90,6 @@
         }
         .imageWrapper{
           .avatar{
-            border-radius: unset;
-            object-fit: cover;
-            border-top-right-radius: 16px;
-            border-bottom-right-radius: 16px;
           }
         }
       }

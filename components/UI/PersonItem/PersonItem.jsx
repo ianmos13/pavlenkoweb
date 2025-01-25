@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from "react";
-import Image from "next/image";
-import Modal from "./Modal/Modal"; 
+import Modal from "./Modal/Modal";
 import styles from "./PersonItem.module.scss";
 
 const PersonItem = ({ name, position, biography, avatar, photo }) => {
@@ -34,13 +33,7 @@ const PersonItem = ({ name, position, biography, avatar, photo }) => {
           </div>
         </div>
         <div className={styles.personImage}>
-          <Image
-            src={avatar}
-            alt={name}
-            width={100}
-            height={100}
-            className={styles.image}
-          />
+          <img src={avatar} alt={name} className={styles.image} />
         </div>
       </div>
 
