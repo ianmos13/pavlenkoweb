@@ -6,9 +6,10 @@
   justify-content: space-between;
   border: 1px solid $secondary-lite-blue;
   color: $neutral-white;
-  width: 432px;
-  height: 508px;
+  width: 100%;
+  aspect-ratio: 0.85;
   border-radius: 24px;
+  max-width: 432px;
   overflow: hidden;
 
   &:hover {
@@ -26,7 +27,8 @@
 
 .cardHeader {
   background-color: $secondary-lite-blue;
-  height: 226px;
+  width: 100%;
+  aspect-ratio: 1.9115;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,8 +44,8 @@
   img {
     position: absolute;
     object-fit: contain;
-    width: 432px;
-    height: 226px;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -55,7 +57,8 @@
 
 .cardBody {
   padding: 24px;
-  height: 282px;
+  width: 100%;
+  aspect-ratio: 1.532;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -79,19 +82,18 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  height: 184px;
+  max-height: 184px;
   overflow: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
   text-overflow: ellipsis;
   position: relative;
-  display: -webkit-box;
   line-height: 26px;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 6;
 
   .title {}
   .description {
-    height: 104px;
+    height: 154px;
   }
 }
 
@@ -143,28 +145,25 @@
 
 @media (max-width: 1024px) {
   .card {
-    max-width: 320px;
+    max-width: unset;
     width: 100%;
-    height: 382px;
+    aspect-ratio: 0.8377;
+    min-width: 320px;
     border-radius: 16px;
 
     .cardBody {
       padding: 16px;
       gap: 5px;
-      height: 216px;
+      aspect-ratio: 1.48;
       p {
         font-size: 14px;
         line-height: 20px;
       }
     }
     .cardBodyText {
+      max-height: unset;
       height: 142px;
       gap: 8px;
-      .description {
-        height: 96px;
-      }
-    }
-    .withoutTitleBodyText {
       .description {
         height: 142px;
       }
@@ -175,10 +174,11 @@
       line-height: 24px;
     }
     .cardHeader {
-      height: 166px;
+      width: 100%;
+      aspect-ratio: 1.9278;
 
       img {
-        width: 320px;
+        width: 100%;
         height: 100%;
         object-fit: contain;
       }
@@ -213,14 +213,16 @@
 
 @media (max-width: 739px) {
   .card {
+    min-width: unset;
     width: 100%;
-    height: 290px;
-    border-radius: 12px;
+    aspect-ratio: 0.8623;
+    border-radius: 16px;
 
     .cardBody {
       padding: 10px;
       gap: 0;
-      height: 148px;
+      width: 100%;
+      aspect-ratio: 1.7143;
 
       p {
         font-size: 14px;
@@ -228,24 +230,19 @@
       }
     }
     .cardBodyText {
-      height: 100px;
-      gap: 4px;
+      max-height: 122px;
       .description {
-        height: 80px;
+        height: unset;
       }
     }
-    .withoutTitleBodyText {
-      .description {
-        height: 100px;
-      }
-    }
+
     h5 {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 20px;
     }
 
     .cardHeader {
-      height: 166px;
+      aspect-ratio: 1.735;
 
       img {
         width: 100%;

@@ -15,7 +15,7 @@ const CompletedSetsSlider = () => {
   const slideData = enrolmentDatas?.map((enrolment) => ({
     id: enrolment.id,
     title: enrolment.title,
-    header: `${API_URL}${enrolment.img.url}`, 
+    header: `${API_URL}${enrolment.img?.url}`,
     body: enrolment.description || enrolment.body, 
     category: enrolment.years,
     link: `/completed-enrolments/${enrolment.link}`,

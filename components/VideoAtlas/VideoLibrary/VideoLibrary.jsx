@@ -4,6 +4,7 @@ import styles from "./VideoLibrary.module.scss";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const VideoLibrary = () => {
   const {
@@ -50,11 +51,13 @@ const VideoLibrary = () => {
     <div className={styles.videoContainer}>
       <h2>Библиотека видео</h2>
       <Loader loading={loading}>
-        <ContainerWithSidebar
-          data={videoData}
-          type={"VideoLibrary"}
-          showAllCategoriesFilters={true}
-        />
+        <AnimatedComponent>
+          <ContainerWithSidebar
+            data={videoData}
+            type={"VideoLibrary"}
+            showAllCategoriesFilters={true}
+          />
+        </AnimatedComponent>
       </Loader>
     </div>
   );

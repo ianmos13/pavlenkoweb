@@ -27,10 +27,10 @@ const AboutAdministration = () => {
         position: admin.position,
         biography: admin.biography || "",
         avatar: admin.avatar
-          ? `${API_URL}${admin.avatar.url}`
+          ? `${API_URL}${admin.avatar?.url}`
           : "/images/default-avatar.svg",
         photo: admin.photo
-          ? `${API_URL}${admin.photo.url}`
+          ? `${API_URL}${admin.photo?.url}`
           : "/images/default-photo.svg",
       }));
   }, [teamData]);

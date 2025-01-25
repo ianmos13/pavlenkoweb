@@ -4,34 +4,36 @@
   border-radius: 24px;
   width: 100%;
   border: 1px solid $secondary-lite-blue;
+  aspect-ratio: 1.7685;
   max-width: 432px;
-  height: 764px;
 
   @media (max-width: 1024px) {
-    max-width: 320px;
-    max-height: 562px;
+    aspect-ratio: 1.756;
+    max-width: unset;
+    min-width: 320px;
   }
 
   @media (max-width: 739px) {
-    max-width: 288px;
-    max-height: 530px;
+    min-width: 288px;
+    max-width: unset;
+    max-height: unset;
+    aspect-ratio: 1.84;
+    height: unset;
   }
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 432px;
+  aspect-ratio: 1;
   overflow: hidden;
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
 
   @media (max-width: 1024px) {
-    max-height: 320px;
   }
 
   @media (max-width: 739px) {
-    max-height: 288px;
   }
 }
 
