@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./TrainingApplicationForm.module.scss";
 import RadioGroup from "./RadioGroup/RadioGroup";
 import CheckboxGroup from "./CheckboxGroup/CheckboxGroup";
@@ -7,6 +7,7 @@ import Section from "./Section/Section";
 import FileUploadArea from "./FileUploadArea/FileUploadArea";
 import InputGroup from "./InputGroup/InputGroup";
 import ConsentSection from "./СonsentSection/СonsentSection";
+import FormPopup from "@/components/TrainingApplication/TrainingApplicationForm/FormPopup/FormPopup";
 
 const TrainingApplicationForm = () => {
   const [openSections, setOpenSections] = useState({
@@ -34,32 +35,131 @@ const TrainingApplicationForm = () => {
     mail: "",
     specialization: [],
     additionalInfo: "",
-    files: {}, // State to track file uploads
+    files: {},
   });
 
   const [errors, setErrors] = useState({});
-  const [resetKey, setResetKey] = useState(0); // Key to trigger reset for file inputs
+  const [resetKey, setResetKey] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const [firstErrorField, setFirstErrorField] = useState(null);
 
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = "Введите ФИО.";
-    if (!formData.age || formData.age <= 0) newErrors.age = "Введите корректный возраст.";
+    if (!formData.age || formData.age <= 0)
+      newErrors.age = "Введите корректный возраст.";
     if (!formData.city.trim()) newErrors.city = "Введите город проживания.";
-    if (!/\S+@\S+\.\S+/.test(formData.mail)) newErrors.mail = "Введите корректный email.";
-    if (!/^\d+$/.test(formData.phone)) newErrors.phone = "Введите корректный номер телефона.";
+    if (!/\S+@\S+\.\S+/.test(formData.mail))
+      newErrors.mail = "Введите корректный email.";
+    if (!/^\d+$/.test(formData.phone))
+      newErrors.phone = "Введите корректный номер телефона.";
+
+    if (formData.operation.trim()) {
+      const youtubeRegex =
+        /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+      if (!youtubeRegex.test(formData.operation)) {
+        newErrors.operation = "Введите корректную ссылку на YouTube.";
+      }
+    }
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const getSectionIdByField = (field) => {
+    const fieldToSectionMap = {
+      name: "personal",
+      age: "personal",
+      city: "personal",
+      citizenship: "personal",
+      family: "personal",
+      children: "personal",
+      education: "education",
+      work: "education",
+      rewards: "education",
+      operation: "education",
+      english: "education",
+      phone: "contacts",
+      mail: "contacts",
+      specialization: "specialization",
+      additionalInfo: "moreInfo",
+    };
+    return fieldToSectionMap[field];
+  };
+
+  const toggleSection = (section) => {
+    setOpenSections((prev) =>
+      Object.keys(prev).reduce((acc, key) => {
+        acc[key] = key === section;
+        return acc;
+      }, {})
+    );
+  };
+
+  useEffect(() => {
+    if (firstErrorField) {
+      const sectionId = getSectionIdByField(firstErrorField);
+      if (sectionId) {
+        toggleSection(sectionId);
+      }
+
+      setTimeout(() => {
+        const errorElement = document.querySelector(
+          `[name="${firstErrorField}"]`
+        );
+        if (errorElement) {
+          errorElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    }
+  }, [firstErrorField]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
+    setErrors(formErrors);
+
     if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
+      setFirstErrorField(Object.keys(formErrors)[0] || null);
       return;
     }
 
-    console.log("Отправка формы. Данные:", formData);
+    setFirstErrorField(null);
 
+    try {
+      setIsLoading(true);
+      setError("");
+      const data = new FormData();
+      for (const [key, value] of Object.entries(formData)) {
+        if (key === "files") {
+          for (const i of ["certificate", "doc", "resume"]) {
+            if (value[i]) {
+              Array.from(value[i]).forEach((file) => {
+                data.append("files", file);
+              });
+            }
+          }
+        } else {
+          data.append(key, value);
+        }
+      }
+      console.log("data", data);
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        body: data,
+      });
+      const result = await response.json();
+      if (response.ok) {
+        setIsPopupVisible(true);
+      } else {
+        setError(result.error || "Что-то пошло не так. Попробуйте снова.");
+      }
+    } catch (error) {
+      setError(`${error.message} Ошибка соединения. Попробуйте позже.`);
+    } finally {
+      setIsLoading(false);
+    }
 
     setFormData({
       name: "",
@@ -77,12 +177,9 @@ const TrainingApplicationForm = () => {
       mail: "",
       specialization: [],
       additionalInfo: "",
-      files: {}, 
+      files: {},
     });
-
-   
     setResetKey((prev) => prev + 1);
-
     setIsConsentChecked(false);
     setErrors({});
   };
@@ -108,15 +205,6 @@ const TrainingApplicationForm = () => {
     }));
   };
 
-  const toggleSection = (section) => {
-    setOpenSections((prev) => ({
-      ...Object.keys(prev).reduce((acc, key) => {
-        acc[key] = key === section;
-        return acc;
-      }, {}),
-    }));
-  };
-
   const handleFileUpload = (fileId) => (files) => {
     setFormData((prev) => ({
       ...prev,
@@ -129,14 +217,15 @@ const TrainingApplicationForm = () => {
 
   return (
     <div className={styles.wrapper}>
+      {isPopupVisible && <FormPopup onClose={() => setIsPopupVisible(false)} />}
       <h2>Подробно заполните представленные ниже пункты</h2>
+
       <form className={styles.wrapperInner} onSubmit={handleSubmit}>
         <div className={styles.container}>
           <Section
             title="1. Персональные данные"
             isOpen={openSections.personal}
-            onToggle={() => toggleSection("personal")}
-          >
+            onToggle={() => toggleSection("personal")}>
             <InputGroup
               name="name"
               placeholder="ФИО"
@@ -201,8 +290,7 @@ const TrainingApplicationForm = () => {
           <Section
             title="2. Образование и карьера"
             isOpen={openSections.education}
-            onToggle={() => toggleSection("education")}
-          >
+            onToggle={() => toggleSection("education")}>
             <InputGroup
               type="textarea"
               name="education"
@@ -231,6 +319,9 @@ const TrainingApplicationForm = () => {
               value={formData.operation}
               onChange={handleInputChange("operation")}
             />
+            {errors.operation && (
+              <p className={styles.error}>{errors.operation}</p>
+            )}
 
             <RadioGroup
               label="Знание английского языка"
@@ -271,8 +362,7 @@ const TrainingApplicationForm = () => {
           <Section
             title="3. Направление обучения"
             isOpen={openSections.specialization}
-            onToggle={() => toggleSection("specialization")}
-          >
+            onToggle={() => toggleSection("specialization")}>
             <CheckboxGroup
               label="Какую специализацию (и город) вы хотите выбрать?"
               name="specialization"
@@ -295,8 +385,7 @@ const TrainingApplicationForm = () => {
           <Section
             title="4. Расскажите подробнее"
             isOpen={openSections.moreInfo}
-            onToggle={() => toggleSection("moreInfo")}
-          >
+            onToggle={() => toggleSection("moreInfo")}>
             <InputGroup
               type="textarea"
               name="additionalInfo"
@@ -309,8 +398,7 @@ const TrainingApplicationForm = () => {
           <Section
             title="5. Контакты"
             isOpen={openSections.contacts}
-            onToggle={() => toggleSection("contacts")}
-          >
+            onToggle={() => toggleSection("contacts")}>
             <InputGroup
               name="phone"
               placeholder="Телефон"
@@ -327,12 +415,35 @@ const TrainingApplicationForm = () => {
             />
             {errors.mail && <p className={styles.error}>{errors.mail}</p>}
           </Section>
+          {error && <p className={styles.error}>{error}</p>}
 
           <ConsentSection
+            isLoading={isLoading}
             isConsentChecked={isConsentChecked}
             setIsConsentChecked={setIsConsentChecked}
             handleSubmit={handleSubmit}
           />
+        </div>
+
+        <div className={styles.sidebar}>
+          <ul className={styles.navList}>
+            {[
+              { id: "personal", label: "Персональные данные" },
+              { id: "education", label: "Образование и карьера" },
+              { id: "specialization", label: "Направление обучения" },
+              { id: "moreInfo", label: "Расскажите подробнее" },
+              { id: "contacts", label: "Контакты" },
+            ].map((section) => (
+              <li
+                key={section.id}
+                className={`${styles.navItem} ${
+                  openSections[section.id] ? styles.active : ""
+                }`}
+                onClick={() => toggleSection(section.id)}>
+                <h5>{section.label}</h5>
+              </li>
+            ))}
+          </ul>
         </div>
       </form>
     </div>

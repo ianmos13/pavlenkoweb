@@ -19,16 +19,21 @@
 .wrapperInner {
   display: flex;
   gap: 16px;
+  position: relative;
+  overflow-y: auto;
 }
+
 .sidebar {
   max-width: 320px;
   width: 100%;
   display: flex;
   flex-direction: column;
+
   @media (max-width: 739px) {
     display: none;
   }
 }
+
 .navList {
   display: flex;
   flex-direction: column;
@@ -52,13 +57,15 @@
   color: $secondary-blue-2;
   cursor: pointer;
   transition: color 0.3s;
+
   h5 {
-    font-family: Nunito;
+    font-family: Nunito, sans-serif;
     font-size: 20px;
     font-weight: 600;
     line-height: 28px;
     text-align: center;
   }
+
   &:hover {
     color: $primary-blue;
   }
@@ -100,6 +107,7 @@
     color: $neutral-white;
   }
 }
+
 .container {
   max-width: 880px;
   width: 100%;
@@ -109,6 +117,7 @@
   display: flex;
   flex-direction: column;
   gap: 56px;
+
   @media (max-width: 1024px) {
     padding: 32px;
   }
@@ -118,32 +127,35 @@
 }
 
 @media (max-width: 1024px) {
-  .wrapper{
-    .sidebar{
+  .wrapper {
+    .sidebar {
       display: none;
     }
   }
 }
 
 @media (max-width: 739px) {
-  .wrapper{
+  .wrapper {
     width: 100%;
     padding: unset;
     gap: unset;
-    .wrapperInner{
-      .container{
+
+    .wrapperInner {
+      .container {
         border-radius: unset;
         padding: 0 16px 60px 16px;
       }
     }
-    h2{
+
+    h2 {
       padding: 40px 16px 24px 16px;
       background-color: #F2F5FA;
       font-weight: 600;
       font-size: 22px;
       line-height: 28px;
     }
-    .sidebar{
+
+    .sidebar {
       display: none;
     }
   }
@@ -154,4 +166,3 @@
   font-size: 14px;
   margin-top: 4px;
 }
-
