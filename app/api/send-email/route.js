@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export const config = {
-  runtime: "nodejs",
-};
+export const runtime = "nodejs"
 
 const getFamilyStatusLabel = (value) => {
   switch (value) {
