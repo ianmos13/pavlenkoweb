@@ -4,7 +4,7 @@ import styles from "./СonsentSection.module.scss";
 import ButtonBox from "@/components/UI/Buttons/ButtonBox/ButtonBox";
 import LearnMoreButton from "@/components/UI/Buttons/LearnMoreButton/LearnMoreButton";
 
-const ConsentSection = ({ isConsentChecked, setIsConsentChecked, handleSubmit }) => {
+const ConsentSection = ({ isConsentChecked, setIsConsentChecked, handleSubmit, isLoading }) => {
   return (
     <div className={styles.buttonContainer}>
       <div className={styles.buttonContainerInner}>
@@ -26,9 +26,9 @@ const ConsentSection = ({ isConsentChecked, setIsConsentChecked, handleSubmit })
 
       <ButtonBox>
         <LearnMoreButton
-          text={"Отправить заявку"}
+          text={isLoading ? "Отправка..." : "Отправить заявку"}
           theme={"red"}
-          isDisabled={!isConsentChecked}
+          isDisabled={!isConsentChecked || isLoading}
           onClick={handleSubmit}
         />
       </ButtonBox>

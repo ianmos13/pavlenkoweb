@@ -1,8 +1,15 @@
+"use client";
+
 import ApplyButton from '@/components/UI/Buttons/ApplyButton/ApplyButton'
 import Photo from '@/public/images/partners.webp'
 import Image from 'next/image'
 import styles from './Header.module.scss'
 export default function Header() {
+	const buttonUrl = "https://www.youtube.com/";
+
+	const onSubmit = () => {
+		window.open(buttonUrl, "_blank");
+	};
 	return (
 		<section className={`${styles.container}`}>
 			<div className={styles.mainBox}>
@@ -25,7 +32,7 @@ export default function Header() {
 						</div>
 					</div>
 					<div className={styles.buttonContainer}>
-						<ApplyButton text={'Презентация для партнеров'} />
+						<ApplyButton text={'Презентация для партнеров'} onClick={onSubmit} />
 					</div>
 				</div>
 				<div className={styles.imageContainer}>
