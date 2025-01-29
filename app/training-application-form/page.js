@@ -9,9 +9,7 @@ export default function page() {
       <AnimatedComponent>
         <TrainingApplicationForm />
       </AnimatedComponent>
-      <AnimatedComponent>
-	    <FAQ />
-      </AnimatedComponent>
+      <FAQ />
     </>
   );
 }

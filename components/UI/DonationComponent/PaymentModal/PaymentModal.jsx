@@ -1,7 +1,10 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./PaymentModal.module.scss";
+
+
+const PUBLIC_ID_PAYMENT = process.env.NEXT_PUBLIC_PUBLIC_ID_PAYMENT;
+const ACCOUNT_ID_PAYMENT = process.env.NEXT_PUBLIC_ACCOUNT_ID_PAYMENT;
 
 const PaymentModal = ({
   isOpen,
@@ -20,17 +23,16 @@ const PaymentModal = ({
           paymentBlockRef.current.unmount();
           paymentBlockRef.current = null;
         }
-
         const paymentBlock = new cp.PaymentBlocks(
           {
-            publicId: "test_api_00000000000000000000002",
+            publicId: PUBLIC_ID_PAYMENT,
             description: subscriptionConfig.description,
             amount: subscriptionConfig.amount,
             currency: "RUB",
             invoiceId: `invoice_${Date.now()}_${Math.floor(
               Math.random() * 1000
             )}`,
-            accountId: "",
+            accountId: ACCOUNT_ID_PAYMENT,
             email: "",
             requireEmail: false,
             language: "ru-RU",
@@ -66,23 +68,19 @@ const PaymentModal = ({
             },
           }
         );
-
         paymentBlock.mount(document.getElementById(`paymentBlockContainer_${id}`));
-
         paymentBlock.on("destroy", () => console.log("destroy"));
         paymentBlock.on("success", (res) => {
           console.log("success", res);
           onClose();
         });
         paymentBlock.on("fail", (res) => console.log("fail", res));
-
         paymentBlockRef.current = paymentBlock;
         setIsSpinnerVisible(false);
       } catch (error) {
         console.error("Ошибка создания PaymentBlocks:", error);
       }
     }
-
     return () => {
       if (paymentBlockRef.current) {
         paymentBlockRef.current.unmount();

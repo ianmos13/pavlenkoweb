@@ -4,6 +4,7 @@ import Loader from "@/components/UI/Loader/Loader"
 import useFetch from "@/services/hook/useFetch"
 import React from "react"
 import styles from "./SchoolTeam.module.scss"
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const SchoolTeam = () => {
   const {
@@ -59,11 +60,13 @@ const SchoolTeam = () => {
   return (
     <div className={styles.staffContainer}>
       <Loader loading={loading}>
+        <AnimatedComponent>
         <ContainerWithSidebar
           data={teamData}
           type={"SchoolTeam"}
           showAllCategoriesFilters={false}
         />
+        </AnimatedComponent>
       </Loader>
     </div>
   );

@@ -3,6 +3,8 @@
 import React from "react";
 import SliderWithPiceOfNextSlide from "@/components/UI/SliderWithPiceOfNextSlide/SliderWithPiceOfNextSlide";
 import useFetch from "@/services/hook/useFetch";
+import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const MostInteresting = () => {
   const {
@@ -34,12 +36,16 @@ const MostInteresting = () => {
 
   return (
     <>
-      <SliderWithPiceOfNextSlide
-        slideData={slideData}
-        titleOptions={titleOptions}
-        imageCover={true}
-        slideIndex={2}
-      />
+      <Loader loading={loading} error={error}>
+        <AnimatedComponent>
+          <SliderWithPiceOfNextSlide
+            slideData={slideData}
+            titleOptions={titleOptions}
+            imageCover={true}
+            slideIndex={2}
+          />
+        </AnimatedComponent>
+      </Loader>
     </>
   );
 };

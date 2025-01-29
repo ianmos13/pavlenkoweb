@@ -9,9 +9,7 @@ export default function page() {
 		<>
 			<VideoAtlasHeader />
 			<VideoLibrary />
-			<AnimatedComponent>
-				<ExpertsSwiper />
-			</AnimatedComponent>
+			<ExpertsSwiper />
 			<AnimatedComponent>
 				<Graduates />
 			</AnimatedComponent>

@@ -21,12 +21,17 @@ const SchoolTeamLibrary = ({ staf = [] }) => {
   const scrollToTop = () => {
     if (contentRef.current) {
       contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        window.scrollBy(0, -20);
+      }, 500);
     }
   };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    scrollToTop(); 
+    setTimeout(() => {
+      scrollToTop();
+    }, 100)
   };
 
 

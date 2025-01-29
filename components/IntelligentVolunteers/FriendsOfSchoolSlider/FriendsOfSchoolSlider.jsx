@@ -1,7 +1,6 @@
 "use client";
 
 import "swiper/css";
-import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow } from "swiper/modules";
 
@@ -9,6 +8,7 @@ import styles from "./FriendsOfSchoolSlider.module.scss";
 import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlider";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function FriendsOfSchoolSlider() {
   const {
@@ -41,6 +41,7 @@ export default function FriendsOfSchoolSlider() {
 
   return (
     <Loader loading={loading}>
+      <AnimatedComponent>
       <div className={styles.container}>
         <SectionWithSlider titleOptions={titleOptions}>
           <>
@@ -76,6 +77,7 @@ export default function FriendsOfSchoolSlider() {
           </>
         </SectionWithSlider>
       </div>
+      </AnimatedComponent>
     </Loader>
   );
 }

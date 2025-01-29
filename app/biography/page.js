@@ -26,33 +26,19 @@ export default function page() {
   return (
     <>
       <BiographyHeader />
-      <AnimatedComponent>
-        <TextContainer text={text1} />
-      </AnimatedComponent>
-      <AnimatedComponent>
-        <QuoteCard author={"Андрей Павленко"} text={quote1} />
-      </AnimatedComponent>
+      <TextContainer text={text1} />
+      <QuoteCard author={"Андрей Павленко"} text={quote1} />
       <AnimatedComponent>
         <CoverflowSwiper data={swiperData} />
       </AnimatedComponent>
-      <AnimatedComponent>
-        <TextContainer text={text2} />
-      </AnimatedComponent>
-      <AnimatedComponent>
-        <BiographyVideoComponent
-          videoCaption={videoCaption}
-          preview={"images/Biography-video-preview.webp"}
-        />
-      </AnimatedComponent>
-      <AnimatedComponent>
-        <TextContainer text={text3} />
-      </AnimatedComponent>
-      <AnimatedComponent>
-        <QuoteCard author={"Андрей Павленко"} text={quote2} />
-      </AnimatedComponent>
-      <AnimatedComponent>
-        <TextContainer text={text4} />
-      </AnimatedComponent>
+      <TextContainer text={text2} />
+      <BiographyVideoComponent
+        videoCaption={videoCaption}
+        preview={"images/Biography-video-preview.webp"}
+      />
+      <TextContainer text={text3} />
+      <QuoteCard author={"Андрей Павленко"} text={quote2} />
+      <TextContainer text={text4} />
       <AnimatedComponent>
         <ImageWithDescription
           imgPath={"/images/Biography-last.webp"}

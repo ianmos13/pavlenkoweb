@@ -7,6 +7,7 @@ import Logo from "@/public/images/Logos/Logo_Cross_light.svg";
 import Image from "next/image";
 import styles from "./EducationApplication.module.scss";
 import { useRouter } from "next/navigation";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 const arrayList = [
   {
     text: "В феврале идет набор по специализациям Онкогинекология и Upper GI",
@@ -43,6 +44,7 @@ export default function EducationApplication() {
   };
 
   return (
+    <AnimatedComponent>
     <div className={`${styles.container} container`}>
       <div className={styles.main}>
         <div className={styles.topContainer}>
@@ -79,5 +81,6 @@ export default function EducationApplication() {
         <BlocksContainer info={info} />
       </div>
     </div>
+    </AnimatedComponent>
   );
 }

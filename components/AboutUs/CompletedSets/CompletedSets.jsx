@@ -2,6 +2,7 @@
 import SliderWithPiceOfNextSlide from "@/components/UI/SliderWithPiceOfNextSlide/SliderWithPiceOfNextSlide";
 import useEnrolmentData from "@/services/hook/useEnrolmentData";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const CompletedSetsSlider = () => {
   const { enrolmentDatas, loading, error } = useEnrolmentData();
@@ -27,12 +28,14 @@ const CompletedSetsSlider = () => {
 
   return (
     <Loader loading={loading}>
-      <SliderWithPiceOfNextSlide
-        slideData={slideData}
-        titleOptions={titleOptions}
-        imageCover={true}
-        slideIndex={1}
-      />
+      <AnimatedComponent>
+        <SliderWithPiceOfNextSlide
+          slideData={slideData}
+          titleOptions={titleOptions}
+          imageCover={true}
+          slideIndex={1}
+        />
+      </AnimatedComponent>
     </Loader>
   );
 };

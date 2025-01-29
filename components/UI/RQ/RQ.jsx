@@ -9,6 +9,7 @@ import TelegramIcon from "@/public/images/icons/telegram-grey.svg";
 import VkIcon from "@/public/images/icons/vk-dark.svg";
 import DzenIcon from "@/public/images/icons/dzen-dark.svg";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function RQ() {
   const { data, loading, error } = useFetch("/any-questions-link?pagination[pageSize]=9999999");
@@ -21,6 +22,7 @@ export default function RQ() {
 
   return (
     <Loader loading={loading}>
+      <AnimatedComponent>
       <div className={styles.blocksContainer}>
         <div className={styles.topContainer}>
           <div className={styles.block}>
@@ -91,6 +93,7 @@ export default function RQ() {
           </a>
         </div>
       </div>
+      </AnimatedComponent>
     </Loader>
   );
 }

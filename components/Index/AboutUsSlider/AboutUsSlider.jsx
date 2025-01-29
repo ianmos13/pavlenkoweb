@@ -3,6 +3,7 @@ import React from "react";
 import useFetch from "@/services/hook/useFetch";
 import SliderWithPiceOfNextSlide from "@/components/UI/SliderWithPiceOfNextSlide/SliderWithPiceOfNextSlide";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const AboutUsSlider = () => {
   const {
@@ -35,11 +36,13 @@ const AboutUsSlider = () => {
   return (
     <>
       <Loader loading={loading}>
+        <AnimatedComponent>
         <SliderWithPiceOfNextSlide
           slideData={slideData}
           titleOptions={titleOptions}
           slideIndex={1}
         />
+        </AnimatedComponent>
       </Loader>
     </>
   );

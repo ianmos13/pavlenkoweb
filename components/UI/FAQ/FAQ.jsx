@@ -5,6 +5,7 @@ import styles from "./FAQ.module.scss";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
 import {parseAnswerContent} from "@/services/parseAnswerContent";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const FAQ = () => {
   const {
@@ -44,7 +45,9 @@ const FAQ = () => {
     <section className={`${styles.faqContainer} container`}>
       <h2>Часто задаваемые вопросы</h2>
       <Loader loading={loading}>
+        <AnimatedComponent>
         <ContainerWithSidebar data={faqData} type="Question" />
+        </AnimatedComponent>
       </Loader>
     </section>
   );

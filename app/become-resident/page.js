@@ -5,33 +5,22 @@ import TeachingStaff from '@/components/TeachingStaff/TeachingStaff'
 import EducationApplication from '@/components/UI/EducationApplication/EducationApplication'
 import InterestingForSurgeons from '@/components/UI/InterestingForSurgeons/InterestingForSurgeons'
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
-import BannersSection from '@/components/BecomeResident/BannersSection/BannersSection'
 
 export default function page() {
 	return (
 		<>
 			<HeaderText>Стать резидентом</HeaderText>
-			{/*<BannersSection/>*/}
 			<EducationApplication />
 			<AnimatedComponent>
 				<Line data={firstLine} />
 			</AnimatedComponent>
-			<AnimatedComponent>
-				<TrainingProgram />
-			</AnimatedComponent>
-			<AnimatedComponent>
-				<TeachingStaff />
-			</AnimatedComponent>
-			{/*<AnimatedComponent>*/}
-			{/*	<EducationApplication />*/}
-			{/*</AnimatedComponent>*/}
-			<AnimatedComponent>
-				<InterestingForSurgeons
-					theme={'white'}
-					data={interestingData}
-					bottom={true}
-				/>
-			</AnimatedComponent>
+			<TrainingProgram />
+			<TeachingStaff />
+			<InterestingForSurgeons
+				theme={'white'}
+				data={interestingData}
+				bottom={true}
+			/>
 		</>
 	)
 }

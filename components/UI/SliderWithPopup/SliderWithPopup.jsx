@@ -9,6 +9,7 @@ import styles from "./SliderWithPopup.module.scss";
 import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlider";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 export default function SliderWithPopup() {
   const { data: feedbackData, loading, error } = useFetch("/feedback-datas?sort=rank:asc&pagination[pageSize]=9999999");
 
@@ -37,6 +38,7 @@ export default function SliderWithPopup() {
 
   return (
     <Loader loading={loading}>
+      <AnimatedComponent>
       <div className={styles.container}>
         <SectionWithSlider titleOptions={titleOptions}>
           <>
@@ -78,6 +80,7 @@ export default function SliderWithPopup() {
           </>
         </SectionWithSlider>
       </div>
+      </AnimatedComponent>
     </Loader>
   );
 }

@@ -4,6 +4,7 @@ import styles from "./AboutAdministration.module.scss";
 import PersonItem from "@/components/UI/PersonItem/PersonItem";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const AboutAdministration = () => {
   const {
@@ -37,6 +38,7 @@ const AboutAdministration = () => {
 
   return (
     <section className={`${styles.administrationContainer} container`}>
+      <AnimatedComponent>
         <h2>Административная команда школы</h2>
         <div className={styles.ContainerInner}>
           <div className={styles.sideInfo}>
@@ -64,6 +66,7 @@ const AboutAdministration = () => {
             </Loader>
           </div>
         </div>
+      </AnimatedComponent>
     </section>
   );
 };

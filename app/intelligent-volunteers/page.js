@@ -8,15 +8,11 @@ export default function page() {
   return (
     <>
       <IntelligentVolunteersHeader />
-      <AnimatedComponent>
-        <FriendsOfSchoolSlider />
-      </AnimatedComponent>
+      <FriendsOfSchoolSlider />
       <AnimatedComponent>
         <Сollaboration />
       </AnimatedComponent>
-      <AnimatedComponent>
-        <AboutUsSlider />
-      </AnimatedComponent>
+      <AboutUsSlider />
     </>
   );
 }
