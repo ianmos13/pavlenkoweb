@@ -78,7 +78,7 @@ export async function POST(req) {
 
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      host: "smtp.yandex.ru",
       port: 587,
       secure: false,
       auth: {
@@ -87,7 +87,7 @@ export async function POST(req) {
       },
     });
 
-    
+
     const messageText = `
 Новая заявка на обучение:
 
@@ -108,25 +108,25 @@ Email: ${mail}
 Доп. информация: ${additionalInfo}
 `;
 
-   
+
     const mailOptions = {
-      from: `"Анкета на обучение shkolapavlenko.ru"`,
+      from: ` <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
       subject: "Новая заявка на обучение",
       text: messageText,
       attachments,
     };
 
-    
+
     await transporter.sendMail(mailOptions);
 
-    
+
     return NextResponse.json({ success: true, message: "Письмо отправлено!" });
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: "Ошибка при отправке письма" },
-      { status: 500 }
+        { error: "Ошибка при отправке письма" },
+        { status: 500 }
     );
   }
 }
