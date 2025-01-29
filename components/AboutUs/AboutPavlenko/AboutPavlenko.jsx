@@ -4,9 +4,11 @@ import BottomRight from '@/public/images/bottom-right-about-us.webp'
 import TopLeft from '@/public/images/top-left-about-us.webp'
 import TopRight from '@/public/images/top-right-about-us.webp'
 import styles from './AboutPavlenko.module.scss'
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const AboutPavlenko = () => {
 	return (
+		<AnimatedComponent>
 		<section className={`${styles.block} container`}>
 			<div className={styles.container}>
 				<div className={styles.textContainer}>
@@ -48,6 +50,7 @@ const AboutPavlenko = () => {
 				</div>
 			</div>
 		</section>
+		</AnimatedComponent>
 	)
 }
 

@@ -1,7 +1,9 @@
 import styles from './Partnership.module.scss'
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function Partnership() {
 	return (
+		<AnimatedComponent>
 		<section className={`${styles.block} container`}>
 			<div className={styles.container}>
 				<div className={styles.topContainer}>
@@ -36,5 +38,6 @@ export default function Partnership() {
 				</div>
 			</div>
 		</section>
+		</AnimatedComponent>
 	)
 }

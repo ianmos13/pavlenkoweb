@@ -3,6 +3,7 @@
 import CoverflowCardSwiper from "@/components/UI/CoverflowCardSwiper/CoverflowCardSwiper";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function ExpertsSwiper() {
   const {
@@ -30,10 +31,12 @@ export default function ExpertsSwiper() {
       {error ? (
         <div>Ошибка загрузки данных: {error.message}</div>
       ) : (
+        <AnimatedComponent>
         <CoverflowCardSwiper
           data={parsedData}
           titleOptions={expertsSwiperOptions}
         />
+        </AnimatedComponent>
       )}
     </Loader>
   );

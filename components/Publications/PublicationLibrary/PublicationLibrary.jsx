@@ -4,6 +4,7 @@ import styles from "./PublicationLibrary.module.scss";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const PublicationLibrary = () => {
   
@@ -55,11 +56,13 @@ const PublicationLibrary = () => {
     <div className={styles.libraryContainer}>
       <h2>Библиотека публикаций</h2>
       <Loader loading={loading}>
+        <AnimatedComponent>
         <ContainerWithSidebar
           data={publicationData}
           type="PublicationLibrary"
           showAllCategoriesFilters={true}
         />
+        </AnimatedComponent>
       </Loader>
     </div>
   );

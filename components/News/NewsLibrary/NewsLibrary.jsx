@@ -4,6 +4,7 @@ import styles from "./NewsLibrary.module.scss";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 const NewsLibrary = () => {
  
@@ -57,11 +58,13 @@ const NewsLibrary = () => {
   return (
     <div className={styles.newsContainer}>
       <Loader loading={loading}>
+        <AnimatedComponent>
         <ContainerWithSidebar
           data={newsData}
           type={"NewsLibrary"}
           showAllCategoriesFilters={true}
         />
+        </AnimatedComponent>
       </Loader>
     </div>
   );

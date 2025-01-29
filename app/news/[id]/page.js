@@ -1,6 +1,6 @@
 "use client";
-import { useEffect } from "react";
-import { useParams } from "next/navigation";
+
+import {useParams } from "next/navigation";
 import ImageBox from "@/components/News/[id]/ImageBox/ImageBox";
 import List from "@/components/News/[id]/List/List";
 import Return from "@/components/News/[id]/Return/Return";
@@ -20,6 +20,8 @@ import TopRight from "@/public/images/news_images/top-right-filter.webp";
 import ImageWithDescription from "@/components/UI/ImageWithDescription/ImageWithDescription";
 import ArticleInfo from "@/components/News/[id]/ArticleInfo/ArticleInfo";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+import {useEffect} from "react";
+import useScrollToTop from "@/services/hook/useScrollToTop";
 export default function Page() {
   const { id } = useParams();
   const {
@@ -27,6 +29,10 @@ export default function Page() {
     loading,
     error,
   } = useFetch("/articles?populate=*");
+
+    useEffect(() => {
+        useScrollToTop()
+    }, []);
 
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
   const articleData = articlesData?.find((article) => article.link === id);

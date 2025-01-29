@@ -10,6 +10,7 @@ import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlid
 import { EffectCoverflow } from "swiper/modules";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function SchoolNewsSlider() {
   const titleOptions = {
@@ -62,6 +63,7 @@ export default function SchoolNewsSlider() {
       {loading ? (
         <Loader loading={loading} />
       ) : (
+        <AnimatedComponent>
         <Swiper
           className={styles.swiperContainer}
           effect="coverflow"
@@ -92,6 +94,7 @@ export default function SchoolNewsSlider() {
             </SwiperSlide>
           ))}
         </Swiper>
+        </AnimatedComponent>
       )}
     </SectionWithSlider>
   );

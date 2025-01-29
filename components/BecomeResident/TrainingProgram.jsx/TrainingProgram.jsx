@@ -1,8 +1,10 @@
 import QuestionsList from '@/components/UI/ContainerWithSidebar/QuestionsList/QuestionsList'
 import styles from './TrainingProgram.module.scss'
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function TrainingProgram() {
 	return (
+		<AnimatedComponent>
 		<div className={`${styles.container} container`}>
 			<div className={styles.block}>
 				<div className={styles.description}>
@@ -29,6 +31,7 @@ export default function TrainingProgram() {
 				</div>
 			</div>
 		</div>
+		</AnimatedComponent>
 	)
 }
 

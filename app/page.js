@@ -23,9 +23,7 @@ export default function Home() {
       <AnimatedComponent>
         <RunningLines data={linesData} />
       </AnimatedComponent>
-      <AnimatedComponent>
-        <SchoolNewsSlider />
-      </AnimatedComponent>
+      <SchoolNewsSlider />
       <AnimatedComponent>
         <DonationComponentIndex />
       </AnimatedComponent>

@@ -9,18 +9,12 @@ export default function page() {
   return (
     <>
       <Header />
-      <AnimatedComponent>
-        <Partnership />
-      </AnimatedComponent>
+      <Partnership />
       <AnimatedComponent>
         <RunningLines data={linesData} isImages={true} />
       </AnimatedComponent>
-      <AnimatedComponent>
-        <Donation />
-      </AnimatedComponent>
-      <AnimatedComponent>
-        <FAQ />
-      </AnimatedComponent>
+      <Donation />
+      <FAQ />
     </>
   );
 }

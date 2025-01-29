@@ -10,7 +10,10 @@ const NewsLibrary = ({ news = [] }) => {
 
 	const scrollToTop = () => {
 		if (contentRef.current) {
-		  contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+			contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+			setTimeout(() => {
+				window.scrollBy(0, -20);
+			}, 500);
 		}
 	  };
 
@@ -27,7 +30,9 @@ const NewsLibrary = ({ news = [] }) => {
 
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
-		scrollToTop(); 
+		setTimeout(() => {
+			scrollToTop();
+		}, 100)
 	};
 
 	return (

@@ -1,8 +1,10 @@
 import MentorCardItem from "@/components/UI/MentorCardItem/MentorCardItem";
 import styles from './MentorsAndGraduates.module.scss'
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 const MentorsAndGraduates = ({people}) => {
   return (
     <>
+     <AnimatedComponent>
      <section className={styles.block}>
         <div>
           <h2>Наставники и их выпускники</h2>
@@ -21,6 +23,7 @@ const MentorsAndGraduates = ({people}) => {
           ))}
         </div>
       </section>
+     </AnimatedComponent>
     </>
   );
 };

@@ -15,9 +15,7 @@ export default function page() {
 					isImages={true}
 				/>
 			</AnimatedComponent>
-			<AnimatedComponent>
-				<PublicationLibrary />
-			</AnimatedComponent>
+			<PublicationLibrary />
 		</>
 	)
 }

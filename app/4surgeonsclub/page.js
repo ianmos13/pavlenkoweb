@@ -10,21 +10,13 @@ export default function page() {
 	return (
 		<>
 			<SurgeonsClubHeader />
-			<AnimatedComponent>
-				<MostInteresting />
-			</AnimatedComponent>
-			<AnimatedComponent>
-				<RunningLines data={linesData} isImages={true} />
-			</AnimatedComponent>
-			<AnimatedComponent>
-				<InterestingForSurgeons theme={'blue'} data={interestingData} />
-			</AnimatedComponent>
+			<MostInteresting />
+			<RunningLines data={linesData} isImages={true} />
+			<InterestingForSurgeons theme={'blue'} data={interestingData} />
 			<AnimatedComponent>
 				<CoverflowSwiper data={swiperData} />
 			</AnimatedComponent>
-			<AnimatedComponent>
-				<Subscribe />
-			</AnimatedComponent>
+			<Subscribe />
 		</>
 	)
 }

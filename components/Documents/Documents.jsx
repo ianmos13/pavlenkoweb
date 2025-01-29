@@ -49,17 +49,17 @@ const Documents = () => {
   return (
     <section className={'container'}>
       <h2 className={styles.header}>Документы и отчеты</h2>
-      <AnimatedComponent>
         <div className={styles.documentContainer}>
           <Loader loading={loading}>
-            <ContainerWithSidebar
-              data={documentData}
-              type={"Documents"}
-              showAllCategoriesFilters={false}
-            />
+            <AnimatedComponent>
+              <ContainerWithSidebar
+                data={documentData}
+                type={"Documents"}
+                showAllCategoriesFilters={false}
+              />
+            </AnimatedComponent>
           </Loader>
         </div>
-      </AnimatedComponent>
     </section>
   );
 };

@@ -30,8 +30,7 @@ const CompletedEnrolmentPage = () => {
               years={enrolmentData.years}
             />
           </AnimatedComponent>
-          <AnimatedComponent>
-            <MentorsAndGraduates
+          <MentorsAndGraduates
               people={enrolmentData.people.map((person) => ({
                 name: person.name,
                 avatar: `${API_URL}${person.avatar}`,
@@ -39,8 +38,7 @@ const CompletedEnrolmentPage = () => {
                 city: person.city,
                 position: person.position,
               }))}
-            />
-          </AnimatedComponent>
+          />
           <AnimatedComponent>
             <Listeners
               graduates={enrolmentData.listeners.map((listener) => ({
