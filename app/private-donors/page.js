@@ -13,12 +13,6 @@ export default function page() {
 				<DonationComponentsPrivateDonors />
 			</AnimatedComponent>
 			<AnimatedComponent>
-			<RunningLines
-				data={linesData}
-				headerData={"Недавно нам помогли"}
-			/>
-			</AnimatedComponent>
-			<AnimatedComponent>
 				<PaymentSecurity />
 				<FAQ />
 			</AnimatedComponent>
