@@ -52,8 +52,7 @@ export default function EducationApplication() {
             <div className={styles.textContainer}>
               <div className={styles.header}>
                 <h3 style={{ color: "white" }}>
-                  Заявка на <span>обучение</span> <br />в Школе практической
-                  онкологии
+                  Заявка на <span>обучение</span> <br />в Школе Павленко
                 </h3>
               </div>
               <div className={styles.ulContainer}>
