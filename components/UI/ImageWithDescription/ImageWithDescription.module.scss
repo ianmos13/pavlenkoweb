@@ -96,6 +96,9 @@
     padding: unset;
     .photoCard{
       border-radius: unset;
+      .years {
+        padding: 0 16px 20px 16px;
+      }
       .imageContainer{
         width: 100%;
         height: auto;

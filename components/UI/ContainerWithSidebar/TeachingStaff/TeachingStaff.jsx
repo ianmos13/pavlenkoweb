@@ -29,7 +29,7 @@ const TeachingStaff = ({ staf = [] }) => {
   };
 
   if (!staf || staf.length === 0) {
-    return <div>No staf to display</div>;
+    return <div>No staff to display</div>;
   }
 
   const startIndex = (currentPage - 1) * itemsPerPage;

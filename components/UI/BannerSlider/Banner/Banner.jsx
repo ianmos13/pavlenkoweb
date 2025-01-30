@@ -4,10 +4,18 @@ import styles from './Banner.module.scss'
 import ButtonBox from "@/components/UI/Buttons/ButtonBox/ButtonBox";
 import LearnMoreButton from "@/components/UI/Buttons/LearnMoreButton/LearnMoreButton";
 import {useRouter} from "next/navigation";
+import {useEffect, useState} from "react";
 
 export default function Banner(props) {
-    const { theme, data, size, swiper, currentSlide, totalSlide } = props
+    const { theme, data, size, swiperRef, currentSlide, totalSlide } = props
     const router = useRouter();
+
+    const [swiper, setSwiper] = useState(swiperRef.current)
+
+    useEffect(() => {
+        if(swiperRef.current)
+            setSwiper(swiperRef.current)
+    }, [swiperRef]);
 
     const goToPage = () => {
         router.push(data.buttonLink);
@@ -93,11 +101,13 @@ const TitleBody = ({data}) => {
 
 const PaginationBlock = ({swiper, current, total }) => {
     const nextSlide = () => {
-        swiper.slideNext()
+        if(current !== total)
+            swiper.slideNext()
     }
 
     const prevSlide = () => {
-        swiper.slidePrev()
+        if(current !== 1)
+            swiper.slidePrev()
     }
     return (
         <div className={styles.pagination}>

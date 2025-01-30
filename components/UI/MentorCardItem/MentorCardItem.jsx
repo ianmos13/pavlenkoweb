@@ -1,9 +1,8 @@
-import Image from "next/image";
 import styles from "./MentorCardItem.module.scss";
 
-const MentorCardItem = ({ avatar, name, biography, location, specialty }) => {
+const MentorCardItem = ({ avatar, size, name, biography, location, specialty }) => {
   return (
-    <div className={styles.mentorCard}>
+    <div className={`${styles.mentorCard} ${size === 'small' ? styles.mentorSmallCard : '' }`}>
       <div className={styles.imageWrapper}>
         <img
           src={avatar}

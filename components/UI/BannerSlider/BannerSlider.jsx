@@ -56,7 +56,7 @@ export default function BannerSlider(props) {
                 {data.map((banner, idx) => (
                     <SwiperSlide key={idx}>
                         <Banner
-                            swiper={swiperRef.current}
+                            swiperRef={swiperRef}
                             size={size}
                             data={banner}
                             theme={bannerTheme}

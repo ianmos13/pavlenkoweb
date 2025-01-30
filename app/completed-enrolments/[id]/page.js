@@ -15,42 +15,48 @@ const CompletedEnrolmentPage = () => {
 
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
+  const people = enrolmentData?.people?.map((person) => ({
+    name: person.name,
+    avatar: `${API_URL}${person.avatar}`,
+    biography: person.biography,
+    city: person.city,
+    position: person.position,
+    graduates: person.graduates?.map((graduate) => ({
+      name: graduate.name,
+      avatar: `${API_URL}${graduate.avatar}`,
+      biography: graduate.biography,
+      city: graduate.city,
+      position: graduate.position,
+    })) || []
+  }))
 
   return (
-    <Loader loading={loading}>
-      {enrolmentData && (
-        <>
-          <AnimatedComponent>
-            <TitleWithBackButton title={enrolmentData.title} />
-          </AnimatedComponent>
-          <AnimatedComponent>
-            <ImageWithDescription
-              imgPath={`${API_URL}${enrolmentData.img.url}`}
-              textOverlay={enrolmentData.textOverlayImg}
-              years={enrolmentData.years}
-            />
-          </AnimatedComponent>
-          <MentorsAndGraduates
-              people={enrolmentData.people.map((person) => ({
-                name: person.name,
-                avatar: `${API_URL}${person.avatar}`,
-                biography: person.biography,
-                city: person.city,
-                position: person.position,
-              }))}
-          />
-          <AnimatedComponent>
-            <Listeners
-              graduates={enrolmentData.listeners.map((listener) => ({
-                name: listener.name,
-                secondName: listener.secondName,
-                image: `${API_URL}${listener.image}`,
-              }))}
-            />
-          </AnimatedComponent>
-        </>
-      )}
-    </Loader>
+      <Loader loading={loading}>
+        {enrolmentData && (
+            <>
+              <AnimatedComponent>
+                <TitleWithBackButton title={enrolmentData.title} />
+              </AnimatedComponent>
+              <AnimatedComponent>
+                <ImageWithDescription
+                    imgPath={`${API_URL}${enrolmentData.img.url}`}
+                    textOverlay={enrolmentData.textOverlayImg}
+                    years={enrolmentData.years}
+                />
+              </AnimatedComponent>
+              <MentorsAndGraduates people={people} />
+              <AnimatedComponent>
+                <Listeners
+                    graduates={enrolmentData.listeners.map((listener) => ({
+                      name: listener.name,
+                      secondName: listener.secondName,
+                      image: `${API_URL}${listener.image}`,
+                    }))}
+                />
+              </AnimatedComponent>
+            </>
+        )}
+      </Loader>
   );
 };
 
