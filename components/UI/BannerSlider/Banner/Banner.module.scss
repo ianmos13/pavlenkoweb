@@ -67,6 +67,7 @@
                 }
 
                 .cardText {
+                    white-space: pre-wrap;
                     color: $neutral-black;
                 }
                 @media (max-width: 1280px) {

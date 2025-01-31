@@ -17,6 +17,7 @@ export default function Menu(props) {
 
 	const [oldLink, setOldLink] = useState(null);
 	const [isOpen, setIsOpen] = useState(refs)
+	const [openRefName, setOpenRefName] = useState(null)
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 	useEffect(() => {
@@ -28,6 +29,7 @@ export default function Menu(props) {
 
 	const handleClickMenu = async refName => {
 		setIsOpen({ ...refs, [refName]: !isOpen[refName] })
+		setOpenRefName(isOpen[refName] ? null : refName)
 	}
 
 	const togglePopup = () => {
@@ -48,6 +50,11 @@ export default function Menu(props) {
 			<ButtonBox className={styles.menuButton}>
 				<SupportButton theme={theme} onClick={togglePopup} />
 			</ButtonBox>
+			{openRefName &&
+				(<div className={styles.closeArea}
+					 onClick={() => handleClickMenu(openRefName) }
+				></div>
+			)}
 			{isPopupOpen && (
 				<DonationPopup togglePopup={togglePopup} uuid="pop_up_dontaion_header" />
 			)}

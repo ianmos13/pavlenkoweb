@@ -12,6 +12,7 @@
 }
 
 .ContainerInner {
+  margin-top: 56px;
   display: flex;
   gap: 48px;
 
@@ -19,6 +20,10 @@
     gap: 20px;
     flex-direction: column;
     align-items: center;
+    margin-top: 32px;
+  }
+  @media (max-width: 739px) {
+    margin-top: 24px;
   }
 }
 
@@ -70,9 +75,6 @@
     padding: 20px;
   }
 }
-
-
-
 
 @media (max-width: 1024px) {
   .administrationContainer{
