@@ -37,7 +37,6 @@ const PersonItem = ({ name, position, biography, avatar, photo }) => {
         </div>
       </div>
 
-      
       <Modal
         isOpen={isModalOpen}
         onClose={handleModalClose}
