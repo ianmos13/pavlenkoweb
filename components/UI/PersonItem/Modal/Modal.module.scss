@@ -109,6 +109,7 @@
 
       .biography {
         p {
+          white-space: pre-wrap;
           font-size: 16px;
           line-height: 24px;
         }
@@ -204,6 +205,7 @@
   }
   p {
     color: $secondary-blue-2;
+    white-space: pre-wrap;
   }
 }
 .modalRight {
