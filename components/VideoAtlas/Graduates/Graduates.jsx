@@ -11,11 +11,6 @@ const graduates = [
     image: "/images/graduates/maxim-popov.webp",
   },
   {
-    name: "Эмиль",
-    secondName: "Чир-Чир",
-    image: "/images/graduates/emil-chirchir.webp",
-  },
-  {
     name: "Илья",
     secondName: "Скляр",
     image: "/images/graduates/ilya-sklyar.webp",
@@ -36,20 +31,22 @@ const Graduates = () => {
           <Graduate key={index} graduate={graduate} />
         ))}
       </div>
-      <Swiper
-        className={styles.swiperContainer}
-        spaceBetween={16}
-        initialSlide={1}
-        centeredSlides={true}
-        centerInsufficientSlides={true}
-        breakpoints={swiperBreakpoints}
-      >
-        {graduates.map((graduate, index) => (
-            <SwiperSlide key={index}>
-              <Graduate graduate={graduate} />
-            </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className={styles.swiperContainer}>
+          <Swiper
+            className={styles.swiper}
+            spaceBetween={16}
+            initialSlide={1}
+            centeredSlides={true}
+            centerInsufficientSlides={true}
+            breakpoints={swiperBreakpoints}
+          >
+            {graduates.map((graduate, index) => (
+                <SwiperSlide key={index}>
+                  <Graduate graduate={graduate} />
+                </SwiperSlide>
+            ))}
+          </Swiper>
+      </div>
     </div>
   );
 };
@@ -60,8 +57,7 @@ const Graduate = ({ graduate }) => {
   return (
     <div className={styles.card}>
       <div className={styles.name}>
-        <h5>{graduate.name}</h5>
-        <h5>{graduate.secondName}</h5>
+          <h5>{`${graduate.name} ${graduate.secondName}`}</h5>
       </div>
 
       <img
