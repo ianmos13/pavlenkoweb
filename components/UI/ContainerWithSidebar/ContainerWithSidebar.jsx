@@ -74,7 +74,7 @@ const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
             : type === "SchoolTeam"
             ? "Вся команда"
             : type === "TeachingStaff"
-            ? "Все преподаватели"
+            ? "Все наставники"
             : type === "Documents"
             ? "Все документы"
             : type === "Question"
