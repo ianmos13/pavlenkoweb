@@ -19,11 +19,16 @@ const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
   };
 
   const getCategoryItems = (key) => {
-    return activeCategory === null
+    const categoryItems = activeCategory === null
       ? data.categories.flatMap((category) => category[key] || [])
       : data.categories.find((category) => category.id === activeCategory)?.[
-          key
-        ] || [];
+      key
+      ] || [];
+
+    return type === "TeachingStaff" ? categoryItems.filter((value, index, self) =>
+      index === self.findIndex((t) => (
+        t.name === value.name && t.position === value.position && t.biography === value.biography
+      ))) : categoryItems
   };
 
   useEffect(() => {

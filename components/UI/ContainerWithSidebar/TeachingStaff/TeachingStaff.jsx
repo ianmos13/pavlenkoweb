@@ -29,7 +29,7 @@ const TeachingStaff = ({ staf = [] }) => {
   };
 
   if (!staf || staf.length === 0) {
-    return <div>No staff to display</div>;
+    return <div>Нет наставников для отображения</div>;
   }
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -38,15 +38,15 @@ const TeachingStaff = ({ staf = [] }) => {
   return (
     <div className={styles.staffContainer} ref={contentRef} >
       <div className={styles.grid}>
-        {currentItems.map((staf) => (
+        {currentItems.map((item, index) => (
           <MentorCardItem
-            key={staf.id}
-            name={staf.name}
-            specialty={staf.position}
-            biography={staf.biography}
-            avatar={staf.avatar}
-            photo={staf.photo}
-            location={staf.location}
+            key={index}
+            name={item.name}
+            specialty={item.position}
+            biography={item.biography}
+            avatar={item.avatar}
+            photo={item.photo}
+            location={item.location}
           />
         ))}
       </div>
