@@ -6,9 +6,9 @@ import CookieModal from '@/components/UI/CookieModal/CookieModal';
 import StoreProvider from "@/app/StoreProvider";
 
 export const metadata = {
-	title: 'Школа Павленко',
+	title: 'Школа Павленко — Некоммерческий образовательный проект',
 	description:
-		'Некоммерческий образовательный проект по подготовке специализированных хирургов-онкологов для выпускников ординатур.',
+		' Школа Павленко – некоммерческий образовательный проект по подготовке специализированных хирургов-онкологов для выпускников ординатур.',
 }
 
 export default function RootLayout({ children }) {
