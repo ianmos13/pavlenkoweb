@@ -31,32 +31,32 @@ const CompletedEnrolmentPage = () => {
   }))
 
   return (
-      <Loader loading={loading}>
-        {enrolmentData && (
-            <>
-              <AnimatedComponent>
-                <TitleWithBackButton title={enrolmentData.title} />
-              </AnimatedComponent>
-              <AnimatedComponent>
-                <ImageWithDescription
-                    imgPath={`${API_URL}${enrolmentData.img.url}`}
-                    textOverlay={enrolmentData.textOverlayImg}
-                    years={enrolmentData.years}
-                />
-              </AnimatedComponent>
-              <MentorsAndGraduates people={people} />
-              <AnimatedComponent>
-                <Listeners
-                    graduates={enrolmentData.listeners.map((listener) => ({
-                      name: listener.name,
-                      secondName: listener.secondName,
-                      image: `${API_URL}${listener.image}`,
-                    }))}
-                />
-              </AnimatedComponent>
-            </>
-        )}
-      </Loader>
+    <Loader loading={loading}>
+      {enrolmentData && (
+        <>
+          <AnimatedComponent>
+            <TitleWithBackButton title={enrolmentData.title} />
+          </AnimatedComponent>
+          <AnimatedComponent>
+            <ImageWithDescription
+              imgPath={`${API_URL}${enrolmentData.img.url}`}
+              textOverlay={enrolmentData.textOverlayImg}
+              years={enrolmentData.years}
+            />
+          </AnimatedComponent>
+          <MentorsAndGraduates people={people} />
+          <AnimatedComponent>
+            <Listeners
+              graduates={enrolmentData.listeners.map((listener) => ({
+                name: listener.name,
+                secondName: listener.secondName,
+                image: `${API_URL}${listener.image}`,
+              }))}
+            />
+          </AnimatedComponent>
+        </>
+      )}
+    </Loader>
   );
 };
 
