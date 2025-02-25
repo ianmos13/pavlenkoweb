@@ -169,6 +169,31 @@
 	}
 }
 
+.disabledContainer {
+	cursor: not-allowed;
+  
+	& > div {
+	  background-color: $neutral-grey;
+  
+	  &:before {
+		background-color: $neutral-grey;
+	  }
+  
+	  &:hover {
+		background-color: $neutral-grey;
+		&:before {
+		  background-color: $neutral-grey;
+		}
+	  }
+	  &:active {
+		background-color: $neutral-grey;
+		&:before {
+		  background-color: $neutral-grey;
+		}
+	  }
+	}
+  }
+
 @media (max-width: 1024px) {
 	.container {
 		width: 100%;

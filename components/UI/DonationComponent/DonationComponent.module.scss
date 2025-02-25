@@ -8,6 +8,7 @@
   gap: 48px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   &.blurred {
     filter: blur(4px);
@@ -50,6 +51,7 @@
         background-color: $neutral-white;
         overflow: hidden;
         width: 100%;
+
         input[type="radio"] {
           display: none;
         }
@@ -88,33 +90,60 @@
     max-width: 320px;
   }
 
-  .info {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    text-align: start;
-
-    .infoItem {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      background-color: #fff;
-      border-radius: 16px;
-      padding: 24px 16px;
-      flex: 1;
-    }
-  }
-
   .supportImg {
     display: block;
   }
 }
 
-.customAmountInput {
+.secondStepBackLink {
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+  margin-bottom: 8px;
+
+  p {
+    color: $primary-blue;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.infoSelection {
+  display: flex;
+
+  justify-content: space-between;
+  width: 100%;
+}
+.infoSelectionRight {
+  max-width: 760px;
+  width: 100%;
+  @media (max-width: 1024px) {
+    max-width: 100%;
+  }
+}
+.infoSelectionHeadr {
+  flex-direction: column;
+  display: flex;
+  h3 {
+    margin-bottom: 32px;
+    @media (max-width: 739px) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.infoSelectionForm {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 16px;
+}
+.secondStepInput,
+.firstStepInput {
+  display: flex;
+  flex-direction: column;
 
   label {
     font-family: $primary-font-family;
@@ -125,25 +154,283 @@
   }
 
   input {
-    border: 1px solid $secondary-lite-blue;
-    border-radius: 50px;
-    background-color: $neutral-white;
-    padding: 14px 20px;
-    font-family: $primary-font-family;
-    font-weight: $p-desktop-primary-weight;
-    font-size: $p-desktop-primary-size;
-    line-height: $p-desktop-primary-line-height;
-    color: $secondary-blue-2;
-    outline: none;
+    height: 60px;
+    padding: 18px 16px;
+    font-family: Nunito;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+    border: none;
+    border-radius: 8px;
+
+    &:focus-visible {
+      outline: none;
+    }
 
     &:focus {
       border-color: $primary-blue;
     }
   }
+  .textareaWrapper {
+    position: relative;
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 18px 16px;
+      font-family: Nunito;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 26px;
+      text-align: left;
+      border: none;
+      border-radius: 8px;
+      background-color: $neutral-white;
+      resize: vertical;
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .charCounter {
+  
+      margin-top: 0;
+     
+      position: absolute;
+      right: 16px;
+      bottom: 10px; 
+      font-size: 14px;
+      line-height: 20px;
+      color: $neutral-dark-grey;
+    }
+  }
+}
+
+.secondStepToggleContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 22px;
+    @media (max-width: 360px) {
+      width: 50px;
+    }
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      cursor: pointer;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $neutral-grey;
+      transition: 0.4s;
+      border-radius: 22px;
+
+      &:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 3px;
+        bottom: 3px;
+        background-color: $neutral-white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+    }
+
+    input:checked + .slider {
+      background-color: $secondary-blue-2;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+  }
+
+  label {
+    font-family: $primary-font-family;
+    font-weight: $p-desktop-primary-weight;
+    font-size: $p-desktop-primary-size;
+    line-height: $p-desktop-primary-line-height;
+    cursor: pointer;
+    @media (max-width: 739px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
+
+.secondStepCheckboxContainerSecond,
+.secondStepCheckboxContainerFirst {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  label {
+    font-family: $primary-font-family;
+    font-weight: $p-desktop-primary-weight;
+    font-size: $p-desktop-primary-size;
+    line-height: $p-desktop-primary-line-height;
+    a {
+       color: $secondary-blue-2;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    }
+
+  }
+}
+.secondStepCheckboxContainerFirst {
+  margin-top: 24px;
+}
+.secondStepCheckboxContainerSecond {
+  margin-bottom: 8px;
+}
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+  margin-top: 20px;
+
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  font-family: Nunito;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  color: $neutral-black;
+  cursor: pointer;
+
+  &:hover {
+    p {
+      color: $secondary-blue-2;
+    }
+  }
+
+  input[type="checkbox"] {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    appearance: none; 
+    border: 2px solid $neutral-grey;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    background-color: $neutral-white;
+    @media (max-width: 739px) {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      border-color: $secondary-blue-2;
+    }
+
+    &:checked {
+      border-color: $secondary-blue-2;
+      background-color: $secondary-blue-2;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 10px;
+        height: 8px;
+        background-color: $neutral-white;
+        mask: url('/images/icons/checkbox-icon.svg') no-repeat center;
+        mask-size: contain;
+        @media (max-width: 739px) {
+          width: 8px;
+          height: 8px;
+          top: 2px;
+        left: 2px;
+        }
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+    color: $neutral-black;
+
+
+  }
+
+  a {
+    color: $secondary-blue-2;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+.error {
+  border: 1px solid red !important;
+  
 }
 
 
+.errorCheckbox {
+  border: 1px solid red !important;
+ 
+}
+.txhSelection {
+  display: flex;
+  h4{
 
+font-weight: 600;
+font-size: 26px;
+line-height: 36px;
+
+
+@media (max-width: 739px) {
+  font-size: 18px;
+line-height: 22px;
+}
+  }
+  .txhSelectionForm{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+.fullText {
+  display: inline;
+}
+
+.shortText {
+  display: none;
+}
 
 @media (max-width: 1024px) {
   .donationContainer {
@@ -172,22 +459,6 @@
           label {
             padding: 14px 30px;
           }
-        }
-      }
-    }
-
-    .info {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-
-      .infoItem {
-        h3 {
-          line-height: 21px;
-        }
-
-        p {
-          font-size: $p-desktop-primary-size;
-          line-height: $p-desktop-primary-line-height;
         }
       }
     }
@@ -255,24 +526,6 @@
       }
     }
 
-    .info {
-      flex-direction: column;
-      display: flex;
-
-      .infoItem {
-        h3 {
-          color: $primary-red;
-          line-height: 21px;
-        }
-
-        p {
-          color: $neutral-black;
-          font-size: 16px;
-          line-height: 24px;
-        }
-      }
-    }
-
     .menuButton {
       margin-top: 0;
       max-width: unset;
@@ -282,5 +535,11 @@
     .supportImg {
       display: none;
     }
+  }
+  .fullText {
+    display: none;
+  }
+  .shortText {
+    display: inline;
   }
 }

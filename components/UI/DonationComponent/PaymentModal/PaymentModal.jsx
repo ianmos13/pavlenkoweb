@@ -12,6 +12,7 @@ const PaymentModal = ({
   subscriptionConfig,
   isScriptLoaded,
   id,
+  onPaymentSuccess
 }) => {
   const paymentBlockRef = useRef(null);
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(true);
@@ -72,7 +73,7 @@ const PaymentModal = ({
         paymentBlock.on("destroy", () => console.log("destroy"));
         paymentBlock.on("success", (res) => {
           console.log("success", res);
-          onClose();
+          onPaymentSuccess();
         });
         paymentBlock.on("fail", (res) => console.log("fail", res));
         paymentBlockRef.current = paymentBlock;

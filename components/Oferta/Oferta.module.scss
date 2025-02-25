@@ -1,0 +1,25 @@
+@import "/styles/variables";
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 56px;
+  @media (max-width: 1024px) {
+    padding: 60px 32px;
+  }
+  @media (max-width: 739px) {
+    padding: 40px 16px;
+  }
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}

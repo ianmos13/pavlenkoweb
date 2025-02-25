@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Обязательно указываем runtime = 'nodejs', иначе nodemailer в edge-режиме не заработает
 export const runtime = "nodejs"
 
+// Функции для преобразования значений в читаемый формат
 const getFamilyStatusLabel = (value) => {
   switch (value) {
     case "free":
@@ -44,8 +46,10 @@ const getEnglishLevelLabel = (value) => {
 
 export async function POST(req) {
   try {
+    // Считываем FormData (это встроенный метод Web API Request)
     const formData = await req.formData();
 
+    // Получаем поля — .get вернёт первое значение, .getAll — массив
     const name = formData.get("name") || "";
     const age = formData.get("age") || "";
     const city = formData.get("city") || "";
@@ -65,6 +69,7 @@ export async function POST(req) {
 
     const allFiles = formData.getAll("files");
 
+    // Формируем вложения
     const attachments = [];
     for (const file of allFiles) {
       if (file && typeof file.arrayBuffer === "function") {
@@ -87,7 +92,7 @@ export async function POST(req) {
       },
     });
 
-
+    
     const messageText = `
 Новая заявка на обучение:
 
@@ -108,7 +113,7 @@ Email: ${mail}
 Доп. информация: ${additionalInfo}
 `;
 
-
+   
     const mailOptions = {
       from: ` <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
@@ -117,16 +122,16 @@ Email: ${mail}
       attachments,
     };
 
-
+    
     await transporter.sendMail(mailOptions);
 
-
+    
     return NextResponse.json({ success: true, message: "Письмо отправлено!" });
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-        { error: "Ошибка при отправке письма" },
-        { status: 500 }
+      { error: "Ошибка при отправке письма" },
+      { status: 500 }
     );
   }
 }

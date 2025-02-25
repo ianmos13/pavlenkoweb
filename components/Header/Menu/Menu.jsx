@@ -1,24 +1,26 @@
-import React, {useEffect, useState} from 'react'
+"use client";
 
-import MenuElement from '@/components/Header/MenuElement/MenuElement'
-import ButtonBox from '@/components/UI/Buttons/ButtonBox/ButtonBox'
-import SupportButton from '@/components/UI/Buttons/SupportButton/SupportButton'
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation'; // Важно! Используйте next/navigation
 
-import styles from './Menu.module.scss'
-import DonationPopup from "@/components/UI/DonationPopup/DonationPopup";
+import MenuElement from '@/components/Header/MenuElement/MenuElement';
+import ButtonBox from '@/components/UI/Buttons/ButtonBox/ButtonBox';
+import SupportButton from '@/components/UI/Buttons/SupportButton/SupportButton';
+
+import styles from './Menu.module.scss';
 
 export default function Menu(props) {
-	const { currentLink, theme, elements, openMenu } = props
+	const { currentLink, theme, elements, openMenu } = props;
+	const router = useRouter();
 
 	const refs = elements.reduce((acc, el) => {
-		acc[el.ref] = false
-		return acc
-	}, {})
+		acc[el.ref] = false;
+		return acc;
+	}, {});
 
 	const [oldLink, setOldLink] = useState(null);
-	const [isOpen, setIsOpen] = useState(refs)
-	const [openRefName, setOpenRefName] = useState(null)
-	const [isPopupOpen, setIsPopupOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(refs);
+	const [openRefName, setOpenRefName] = useState(null);
 
 	useEffect(() => {
 		if (currentLink !== oldLink) {
@@ -28,12 +30,12 @@ export default function Menu(props) {
 	}, [currentLink]);
 
 	const handleClickMenu = async refName => {
-		setIsOpen({ ...refs, [refName]: !isOpen[refName] })
-		setOpenRefName(isOpen[refName] ? null : refName)
-	}
+		setIsOpen({ ...refs, [refName]: !isOpen[refName] });
+		setOpenRefName(isOpen[refName] ? null : refName);
+	};
 
-	const togglePopup = () => {
-		setIsPopupOpen(!isPopupOpen);
+	const handleDonateClick = () => {
+		router.push('/pozshertvovanie');
 	};
 
 	return (
@@ -48,16 +50,14 @@ export default function Menu(props) {
 				/>
 			))}
 			<ButtonBox className={styles.menuButton}>
-				<SupportButton theme={theme} onClick={togglePopup} />
+				<SupportButton theme={theme} onClick={handleDonateClick} />
 			</ButtonBox>
-			{openRefName &&
-				(<div className={styles.closeArea}
-					 onClick={() => handleClickMenu(openRefName) }
+			{openRefName && (
+				<div
+					className={styles.closeArea}
+					onClick={() => handleClickMenu(openRefName)}
 				></div>
 			)}
-			{isPopupOpen && (
-				<DonationPopup togglePopup={togglePopup} uuid="pop_up_dontaion_header" />
-			)}
 		</div>
-	)
+	);
 }
