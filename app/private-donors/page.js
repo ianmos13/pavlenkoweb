@@ -2,7 +2,6 @@ import PaymentSecurity from '@/components/IntelligentVolunteers/PaymentSecurity/
 import DonationComponentsPrivateDonors from '@/components/PrivateDonors/DonationComponentPrivateDonors/DonationComponentsPrivateDonors'
 import FAQ from '@/components/UI/FAQ/FAQ'
 import Header from '@/components/PrivateDonors/Header/Header'
-import RunningLines from "@/components/UI/RunningLines/RunningLines";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function page() {

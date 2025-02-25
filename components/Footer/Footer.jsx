@@ -213,7 +213,7 @@ const footerElements = [
       {
         id: 51,
         title: "Поддержать",
-        link: "popup",
+        link: "/pozshertvovanie",
       },
     ],
   },

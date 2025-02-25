@@ -44,6 +44,7 @@ const TrainingApplicationForm = () => {
   const [error, setError] = useState("");
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
+  // Добавим состояние для хранения первого ошибочного поля:
   const [firstErrorField, setFirstErrorField] = useState(null);
 
   const validateForm = () => {
@@ -67,6 +68,7 @@ const TrainingApplicationForm = () => {
     return newErrors;
   };
 
+  // Мапа, чтобы понять к какой секции относится поле
   const getSectionIdByField = (field) => {
     const fieldToSectionMap = {
       name: "personal",

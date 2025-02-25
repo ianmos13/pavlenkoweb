@@ -6,7 +6,6 @@ import Image from 'next/image'
 import styles from './Header.module.scss'
 export default function Header() {
 	const buttonUrl = "/files/Школа_Павленко_Презентация_для_корпоративных_партнеров.pdf";
-
 	const onSubmit = () => {
 		window.open(buttonUrl, "_blank");
 	};

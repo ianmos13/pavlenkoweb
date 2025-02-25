@@ -1,0 +1,62 @@
+@import "/styles/variables";
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 80px 56px;;
+  @media (max-width: 1024px) {
+    padding: 60px 32px;
+    gap: 32px;
+}
+  @media (max-width: 739px) {
+    padding: 40px 16px;
+    gap: 24px;
+}
+
+  .titelData {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    h1 {
+      text-align: center;
+      
+    }
+  }
+  .DonationComponent {
+    @media (max-width: 739px) {
+    margin: 0 -20px;
+    }
+  }
+  .checkingAccount {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .checkingData {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  a {
+    color: $secondary-blue-2;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  .qr {
+    position: relative;
+    max-width: 360px;
+    aspect-ratio: 1;
+    img {
+      position: absolute;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}
