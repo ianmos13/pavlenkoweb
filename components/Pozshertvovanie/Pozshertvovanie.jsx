@@ -6,10 +6,20 @@ const Pozshertvovanie = () => {
     <section className={styles.container}>
       <div className={styles.titelData}>
         <h1>Хотите помочь проекту?</h1>
-        <h3>У нас есть 3 доступных варианта, как это можно сделать:</h3>
+        <ul className={styles.list}>
+            <li className={styles.listItem}>
+                <h3>Вы можете воспользоваться формой ниже</h3>
+            </li>
+            <li className={styles.listItem}>
+                <h3>По реквизитам</h3>
+            </li>
+            <li className={styles.listItem}>
+                <h3>По QR коду</h3>
+            </li>
+        </ul>
       </div>
       <div className={styles.DonationComponent}>
-      <DonationComponent id="pozshertvovanie" />
+        <DonationComponent id="pozshertvovanie" />
       </div>
       <div className={styles.checkingAccount}>
         <h3>
