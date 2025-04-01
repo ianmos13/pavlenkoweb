@@ -29,9 +29,7 @@ const PublicationLibrary = ({ publications = [] }) => {
 
 	const handlePageChange = page => {
 		setCurrentPage(page)
-		setTimeout(() => {
-			scrollToTop();
-		}, 100)
+		scrollToTop(); 
 	}
 
 	return (

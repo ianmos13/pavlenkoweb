@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import logo from "@/assets/images/Gif_logo.svg";
 import ButtonBox from "@/components/UI/Buttons/ButtonBox/ButtonBox";
@@ -9,15 +9,11 @@ import styles from "./DonationComponent.module.scss";
 import SubscribeButton from "@/components/UI/Buttons/SubscribeButton/SubscribeButton";
 
 const DonationComponent = ({ id }) => {
-
   const [currentStep, setCurrentStep] = useState(1);
-
-
   const [amount, setAmount] = useState(1000);
   const [customAmount, setCustomAmount] = useState("");
   const [subscriptionConfig, setSubscriptionConfig] = useState({});
   const [isMonthly, setIsMonthly] = useState(true);
-
 
   const [fullName, setFullName] = useState("");
   const [showNameOnSite, setShowNameOnSite] = useState(false);
@@ -26,20 +22,23 @@ const DonationComponent = ({ id }) => {
   const [subscribeNews, setSubscribeNews] = useState(false);
   const [acceptPersonalData, setAcceptPersonalData] = useState(false);
 
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
+  const [fullNameTouched, setFullNameTouched] = useState(false);
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [personalDataTouched, setPersonalDataTouched] = useState(false);
 
   const isEmailValid = (value) => value.includes("@") && value.includes(".");
 
-  const isFullNameError = fullName.trim().length === 0;
-  const isEmailError = !isEmailValid(email.trim());
-  const isPersonalDataError = !acceptPersonalData;
+  const isFullNameError = fullNameTouched && fullName.trim().length === 0;
+  const isEmailError = emailTouched && !isEmailValid(email.trim());
+  const isPersonalDataError = personalDataTouched && !acceptPersonalData;
 
-
-  const isSecondStepValid = !isFullNameError && !isEmailError && !isPersonalDataError;
-
+  const isSecondStepValid =
+    fullName.trim().length > 0 &&
+    isEmailValid(email.trim()) &&
+    acceptPersonalData;
 
   const loadPaymentScript = () => {
     if (typeof window !== "undefined" && !window.cp) {
@@ -54,7 +53,6 @@ const DonationComponent = ({ id }) => {
       setIsScriptLoaded(true);
     }
   };
-
 
   const handleAmountChange = (newAmount) => {
     setAmount(newAmount);
@@ -72,34 +70,29 @@ const DonationComponent = ({ id }) => {
       alert("Введите сумму больше 0");
       return;
     }
-
     setSubscriptionConfig({
-      description: `${isMonthly ? "Ежемесячное" : "Разовое"} пожертвование ${finalAmount} руб`,
+      description: `${
+        isMonthly ? "Ежемесячное" : "Разовое"
+      } пожертвование ${finalAmount} руб`,
       subscription: isMonthly ? { interval: "Month", period: 1 } : undefined,
       amount: finalAmount,
     });
-
     setCurrentStep(2);
   };
-
 
   const handleOpenModal = () => {
     if (!isScriptLoaded) {
       loadPaymentScript();
     }
     if (isSecondStepValid) {
-    
       const formData = new FormData();
       formData.append("fullName", fullName);
       formData.append("email", email);
       formData.append("comment", comment);
-
       formData.append("amount", subscriptionConfig.amount);
       formData.append("frequency", isMonthly ? "monthly" : "one-time");
       formData.append("subscribeNews", subscribeNews ? "да" : "нет");
       formData.append("showNameOnSite", showNameOnSite ? "да" : "нет");
-    
-    
 
       fetch("/api/send-donation/", {
         method: "POST",
@@ -117,19 +110,59 @@ const DonationComponent = ({ id }) => {
     }
   };
 
-
   const handlePaymentSuccess = () => {
     setIsModalOpen(false);
     setCurrentStep(3);
   };
 
+  const amountOptions = ["1000", "500", "300", "custom"];
+  const sliderIndex =
+    amount === 1000
+      ? 0
+      : amount === 500
+      ? 1
+      : amount === 300
+      ? 2
+      : amount === "custom"
+      ? 3
+      : 0;
+  const optionRefs = useRef([]);
+  const [sliderStyle, setSliderStyle] = useState({ width: 0, left: 0 });
+
+  useEffect(() => {
+    if (optionRefs.current[sliderIndex]) {
+      const { offsetWidth, offsetLeft } = optionRefs.current[sliderIndex];
+      setSliderStyle({ width: offsetWidth, left: offsetLeft });
+    }
+  }, [amount, sliderIndex]);
+
+  const frequencyOptions = ["monthly", "one-time"];
+  const frequencyIndex = isMonthly ? 0 : 1;
+  const frequencyRefs = useRef([]);
+  const [frequencySliderStyle, setFrequencySliderStyle] = useState({
+    width: 0,
+    left: 0,
+  });
+
+  useEffect(() => {
+    if (frequencyRefs.current[frequencyIndex]) {
+      const { offsetWidth, offsetLeft } = frequencyRefs.current[frequencyIndex];
+      setFrequencySliderStyle({ width: offsetWidth, left: offsetLeft });
+    }
+  }, [isMonthly, frequencyIndex]);
+
   return (
     <>
-      <div className={`${styles.donationContainer} ${isModalOpen ? styles.blurred : ""}`}>
-   
+      <div
+        className={`${styles.donationContainer} ${
+          isModalOpen ? styles.blurred : ""
+        }`}>
         <h3>
-          Вы можете помочь развитию проекта. Проект является некоммерческим и&nbsp;работает благодаря{" "}
-          <span className={styles.highlight}>поддержке</span> партнёров
+          Вы можете помочь развитию проекта. Проект является некоммерческим
+          и&nbsp;работает благодаря{" "}
+          <span className={styles.highlight}>поддержке</span> партнёров,
+          разделяющих нашу миссию. Резиденты поступают в школу на конкурсной
+          основе, обучение для них бесплатно.
         </h3>
 
         {currentStep === 1 && (
@@ -139,16 +172,31 @@ const DonationComponent = ({ id }) => {
                 <h3>Выберите сумму и&nbsp;частоту пожертвования:</h3>
                 <div className={styles.segmentedControl}>
                   <div className={styles.segmentedControlAmount}>
-                    {["1000", "500", "300", "custom"].map((value) => (
-                      <div className={styles.amountRadioButton} key={value}>
+                    <div
+                      className={styles.slider}
+                      style={{
+                        width: sliderStyle.width,
+                        transform: `translateX(${sliderStyle.left}px)`,
+                      }}
+                    />
+                    {amountOptions.map((value, index) => (
+                      <div
+                        key={value}
+                        className={styles.amountRadioButton}
+                        ref={(el) => (optionRefs.current[index] = el)}>
                         <input
                           type="radio"
                           id={`amount${value}_${id}`}
                           name={`amount_${id}`}
                           value={value}
-                          checked={amount === (value === "custom" ? "custom" : parseInt(value))}
+                          checked={
+                            amount ===
+                            (value === "custom" ? "custom" : parseInt(value))
+                          }
                           onChange={() =>
-                            handleAmountChange(value === "custom" ? "custom" : parseInt(value))
+                            handleAmountChange(
+                              value === "custom" ? "custom" : parseInt(value)
+                            )
                           }
                         />
                         <label htmlFor={`amount${value}_${id}`}>
@@ -157,10 +205,20 @@ const DonationComponent = ({ id }) => {
                       </div>
                     ))}
                   </div>
-
                   <div className={styles.segmentedControlFrequency}>
-                    {["monthly", "one-time"].map((freq) => (
-                      <div className={styles.frequencyRadioButton} key={freq}>
+                    {/* Ползунок для частоты пожертвований */}
+                    <div
+                      className={styles.slider}
+                      style={{
+                        width: frequencySliderStyle.width,
+                        transform: `translateX(${frequencySliderStyle.left}px)`,
+                      }}
+                    />
+                    {frequencyOptions.map((freq, index) => (
+                      <div
+                        key={freq}
+                        className={styles.frequencyRadioButton}
+                        ref={(el) => (frequencyRefs.current[index] = el)}>
                         <input
                           type="radio"
                           id={`${freq}_${id}`}
@@ -192,7 +250,11 @@ const DonationComponent = ({ id }) => {
                 )}
 
                 <ButtonBox className={styles.menuButton}>
-                  <SubscribeButton text="Поддержать" theme="support" onClick={handleGoToStep2} />
+                  <SubscribeButton
+                    text="Поддержать"
+                    theme="support"
+                    onClick={handleGoToStep2}
+                  />
                 </ButtonBox>
               </div>
 
@@ -208,8 +270,9 @@ const DonationComponent = ({ id }) => {
             <div className={styles.infoSelection}>
               <div className={styles.infoSelectionRight}>
                 <div className={styles.infoSelectionHeadr}>
-            
-                  <div className={styles.secondStepBackLink} onClick={() => setCurrentStep(1)}>
+                  <div
+                    className={styles.secondStepBackLink}
+                    onClick={() => setCurrentStep(1)}>
                     <img src="images/icons/back-icon.svg" alt="back" />
                     <p>Назад</p>
                   </div>
@@ -224,6 +287,7 @@ const DonationComponent = ({ id }) => {
                       placeholder="ФИО"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
+                      onBlur={() => setFullNameTouched(true)}
                       className={isFullNameError ? styles.error : ""}
                     />
                   </div>
@@ -250,6 +314,7 @@ const DonationComponent = ({ id }) => {
                       placeholder="E-mail"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      onBlur={() => setEmailTouched(true)}
                       className={isEmailError ? styles.error : ""}
                     />
                   </div>
@@ -263,7 +328,9 @@ const DonationComponent = ({ id }) => {
                         onChange={(e) => setComment(e.target.value)}
                         maxLength={800}
                       />
-                      <div className={styles.charCounter}>{comment.length}/800</div>
+                      <div className={styles.charCounter}>
+                        {comment.length}/800
+                      </div>
                     </div>
                   </div>
 
@@ -283,14 +350,28 @@ const DonationComponent = ({ id }) => {
                         type="checkbox"
                         id={`acceptPersonalData_${id}`}
                         checked={acceptPersonalData}
-                        onChange={(e) => setAcceptPersonalData(e.target.checked)}
-                        className={isPersonalDataError ? styles.errorCheckbox : ""}
+                        onChange={(e) =>
+                          setAcceptPersonalData(e.target.checked)
+                        }
+                        onBlur={() => setPersonalDataTouched(true)}
+                        className={
+                          isPersonalDataError ? styles.errorCheckbox : ""
+                        }
                       />
                       <p>
                         Согласие на{" "}
                         <a href="/personal-data-processing-policy">
-                          <span className={styles.fullText}>обработку персональных данных</span>
-                          <span className={styles.shortText}>обработку перс.данных</span>
+                          <span className={styles.fullText}>
+                            обработку персональных данных
+                          </span>
+                          <span className={styles.shortText}>
+                            обработку перс.данных
+                          </span>
+                        </a>{" "}
+                        и{" "}
+                        <a href="/oferta">
+                          <span className={styles.fullText}>офертой</span>
+                          <span className={styles.shortText}>офертой</span>
                         </a>
                       </p>
                     </div>

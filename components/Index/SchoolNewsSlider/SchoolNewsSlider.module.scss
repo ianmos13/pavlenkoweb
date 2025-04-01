@@ -1,5 +1,18 @@
 @import "/styles/variables";
 
+.desktopSwiper {
+  @media (max-width: 739px) {
+    display: none;
+  }
+}
+
+.mobileSwiper {
+  display: none;
+  @media (max-width: 739px) {
+    display: block;
+  }
+}
+
 .swiperContainer {
   display: block;
   margin: 0 auto;
@@ -9,6 +22,28 @@
     background: $neutral-white;
     width: 432px;
   }
+}
+
+.swiperContainerTest {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.slide-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+  background-color: #fff;
+  opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
 }
 
 

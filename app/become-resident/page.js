@@ -12,7 +12,7 @@ export default function page() {
 			<HeaderText>Стать резидентом</HeaderText>
 			<EducationApplication />
 			<AnimatedComponent>
-				<Line data={firstLine} />
+				<Line  />
 			</AnimatedComponent>
 			<TrainingProgram />
 			<TeachingStaff />
@@ -40,16 +40,4 @@ const interestingData = [
 	},
 ]
 
-const firstLine = [
-	'Работа с наставником',
-	'Мультидисциплинарный подход',
-	'Стипендия',
-	'70% практики',
-	'Стажировки и ротации',
-	'Работа с наставником',
-	'Мультидисциплинарный подход',
-	'Стипендия',
-	'70% практики',
-	'Стажировки и ротации',
-]
 
