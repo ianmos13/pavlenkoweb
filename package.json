@@ -24,6 +24,7 @@
     "react-leaflet": "^4.2.1",
     "react-leaflet-markercluster": "^4.0.0-rc1",
     "react-redux": "^9.2.0",
+    "react-responsive": "^10.0.1",
     "swiper": "^11.1.14"
   },
   "devDependencies": {

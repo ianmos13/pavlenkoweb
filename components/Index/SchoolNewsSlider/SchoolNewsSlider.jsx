@@ -7,10 +7,11 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import styles from "./SchoolNewsSlider.module.scss";
 import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlider";
-import { EffectCoverflow } from "swiper/modules";
+import {EffectCoverflow, Pagination} from "swiper/modules";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+import CustomCoverflowSlider from "@/components/Index/SchoolNewsSlider/CustomCoverflowSlider/CustomCoverflowSlider";
 
 export default function SchoolNewsSlider() {
   const titleOptions = {
@@ -64,36 +65,40 @@ export default function SchoolNewsSlider() {
         <Loader loading={loading} />
       ) : (
         <AnimatedComponent>
-        <Swiper
-          className={styles.swiperContainer}
-          effect="coverflow"
-          centeredSlides={true}
-          initialSlide={news.length > 1 ? 1 : 0}
-          slidesPerView="auto"
-          modules={[EffectCoverflow]}
-          coverflowEffect={{
-            rotate: 0,
-            slideShadows: false,
-          }}
-          breakpoints={{
-            320: { coverflowEffect: { stretch: 0, depth: 0, modifier: 0 } },
-            740: { coverflowEffect: { stretch: -35, depth: 185, modifier: 2 } },
-            1025: { coverflowEffect: { stretch: -45, depth: 185, modifier: 2 } },
-          }}>
-          {news.map((article, idx) => (
-            <SwiperSlide key={idx} className={styles.swiperSlide}>
-              <CardItem
-                key={article.id}
-                header={article.header}
-                title={article.title}
-                body={article.body}
-                category={article.category}
-                date={article.date}
-                link={article.link}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <div className={styles.desktopSwiper}>
+            <CustomCoverflowSlider data={news} type={'newsCard'}/>
+          </div>
+          <div className={styles.mobileSwiper}>
+            <Swiper
+              className={styles.swiperContainer}
+              effect="coverflow"
+              centeredSlides={true}
+              initialSlide={news.length < 3 ? 0 : news.length < 5 ? 1 : 2 }
+              slidesPerView="auto"
+              modules={[EffectCoverflow, Pagination]}
+              coverflowEffect={{
+                rotate: 0,
+                stretch: 0,
+                depth: 0,
+                slideShadows: false,
+                modifier: 0,
+              }}
+            >
+              {news.map((article, idx) => (
+                <SwiperSlide key={idx} className={styles.swiperSlide}>
+                  <CardItem
+                    key={article.id}
+                    header={article.header}
+                    title={article.title}
+                    body={article.body}
+                    category={article.category}
+                    date={article.date}
+                    link={article.link}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </AnimatedComponent>
       )}
     </SectionWithSlider>

@@ -45,12 +45,12 @@
 
       .segmentedControlAmount,
       .segmentedControlFrequency {
+        position: relative;
         display: flex;
         border: 1px solid $secondary-lite-blue;
         border-radius: 50px;
         background-color: $neutral-white;
         overflow: hidden;
-        width: 100%;
 
         input[type="radio"] {
           display: none;
@@ -69,9 +69,17 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          position: relative;
+          z-index: 1;
+          transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
         }
 
         input[type="radio"]:checked + label {
+          background-color: $secondary-blue-2;
+          color: $secondary-ultra-lite-blue;
+          border-radius: 100px;
+        }
+        input[type="radio"]:checked + label:hover {
           background-color: $secondary-blue-2;
           color: $secondary-ultra-lite-blue;
           border-radius: 100px;
@@ -80,6 +88,17 @@
           background-color: $secondary-lite-blue;
           color: $primary-blue;
           border-radius: 100px;
+        }
+
+        .slider {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          background-color: $secondary-blue-2;
+          border-radius: 50px;
+          transition: transform 0.3s ease, width 0.3s ease;
+          z-index: 0;
         }
       }
     }
@@ -113,7 +132,6 @@
 
 .infoSelection {
   display: flex;
-
   justify-content: space-between;
   width: 100%;
 }
@@ -198,12 +216,10 @@
     }
 
     .charCounter {
-  
       margin-top: 0;
-     
       position: absolute;
       right: 16px;
-      bottom: 10px; 
+      bottom: 10px;
       font-size: 14px;
       line-height: 20px;
       color: $neutral-dark-grey;
@@ -296,13 +312,12 @@
     font-size: $p-desktop-primary-size;
     line-height: $p-desktop-primary-line-height;
     a {
-       color: $secondary-blue-2;
-    &:hover {
-      text-decoration: underline;
-      cursor: pointer;
+      color: $secondary-blue-2;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
-    }
-
   }
 }
 .secondStepCheckboxContainerFirst {
@@ -314,9 +329,8 @@
 .checkboxGroup {
   display: flex;
   flex-direction: column;
-  gap: 16px; 
+  gap: 16px;
   margin-top: 20px;
-
 }
 
 .checkboxItem {
@@ -339,7 +353,7 @@
     margin-right: 8px;
     width: 20px;
     height: 20px;
-    appearance: none; 
+    appearance: none;
     border: 2px solid $neutral-grey;
     border-radius: 4px;
     position: relative;
@@ -366,13 +380,13 @@
         width: 10px;
         height: 8px;
         background-color: $neutral-white;
-        mask: url('/images/icons/checkbox-icon.svg') no-repeat center;
+        mask: url("/images/icons/checkbox-icon.svg") no-repeat center;
         mask-size: contain;
         @media (max-width: 739px) {
           width: 8px;
           height: 8px;
           top: 2px;
-        left: 2px;
+          left: 2px;
         }
       }
     }
@@ -381,8 +395,6 @@
   p {
     margin: 0;
     color: $neutral-black;
-
-
   }
 
   a {
@@ -396,29 +408,24 @@
 }
 .error {
   border: 1px solid red !important;
-  
 }
-
 
 .errorCheckbox {
   border: 1px solid red !important;
- 
 }
 .txhSelection {
   display: flex;
-  h4{
+  h4 {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 36px;
 
-font-weight: 600;
-font-size: 26px;
-line-height: 36px;
-
-
-@media (max-width: 739px) {
-  font-size: 18px;
-line-height: 22px;
-}
+    @media (max-width: 739px) {
+      font-size: 18px;
+      line-height: 22px;
+    }
   }
-  .txhSelectionForm{
+  .txhSelectionForm {
     gap: 20px;
     display: flex;
     flex-direction: column;
@@ -541,5 +548,10 @@ line-height: 22px;
   }
   .shortText {
     display: inline;
+  }
+
+  .segmentedControlAmount .slider,
+  .segmentedControlFrequency .slider {
+    display: none !important;
   }
 }

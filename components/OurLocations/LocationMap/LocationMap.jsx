@@ -7,7 +7,6 @@ import "leaflet/dist/leaflet.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
 import styles from "./LocationMap.module.scss";
 
-
 const createCustomMarkerIcon = () =>
   L.icon({
     iconUrl: "/images/icons/map-marker.svg",
@@ -25,7 +24,6 @@ const createCustomClusterIcon = (cluster) => {
   });
 };
 
-
 const MapCenter = ({ center, zoom }) => {
   const map = useMap();
   useEffect(() => {
@@ -37,15 +35,20 @@ const MapCenter = ({ center, zoom }) => {
   return null;
 };
 
-const LocationMap = ({ mapCenter, zoomLevel, locationsData, onMarkerClick, extraClass }) => {
+const LocationMap = ({
+  mapCenter,
+  zoomLevel,
+  locationsData,
+  onMarkerClick,
+  extraClass,
+}) => {
   const [selectedClinic, setSelectedClinic] = useState(null);
- 
+
   useEffect(() => {
-    setSelectedClinic(null)
+    setSelectedClinic(null);
   }, [mapCenter, zoomLevel]);
 
   const handleMarkerClick = (clinic) => {
-   
     setSelectedClinic({
       lat: clinic.lat,
       lng: clinic.lng,
@@ -54,23 +57,31 @@ const LocationMap = ({ mapCenter, zoomLevel, locationsData, onMarkerClick, extra
   };
 
   return (
-    <MapContainer center={mapCenter} zoom={zoomLevel} className={`${styles.map} ${styles[`${extraClass}Container`]}`} >
+    <MapContainer
+      center={mapCenter}
+      zoom={zoomLevel}
+      className={`${styles.map} ${styles[`${extraClass}Container`]}`}>
       <MapCenter center={mapCenter} zoom={zoomLevel} />
 
       {selectedClinic && (
-        <MapCenter center={[selectedClinic.lat, selectedClinic.lng]} zoom={16} />
+        <MapCenter
+          center={[selectedClinic.lat, selectedClinic.lng]}
+          zoom={16}
+        />
       )}
 
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; OpenStreetMap contributors'
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+        attribution="&copy; OpenStreetMap contributors &copy; CARTO"
       />
 
-      <MarkerClusterGroup iconCreateFunction={createCustomClusterIcon} disableClusteringAtZoom={15}>
+      <MarkerClusterGroup
+        iconCreateFunction={createCustomClusterIcon}
+        disableClusteringAtZoom={15}>
         {locationsData.flatMap((location) =>
           location.clinics.map((clinic) => (
             <Marker
-            key={clinic.name}
+              key={clinic.name}
               position={[clinic.lat, clinic.lng]}
               icon={createCustomMarkerIcon()}
               eventHandlers={{

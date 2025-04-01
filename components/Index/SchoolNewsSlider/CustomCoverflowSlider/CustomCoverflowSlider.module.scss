@@ -1,0 +1,72 @@
+@import "/styles/variables";
+
+.sliderContainer {
+    position: relative;
+    perspective: 1000px;
+
+    .slider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+
+        .slide {
+            position: absolute;
+            background: $neutral-white;
+        }
+
+        .slideImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+
+    .newsCardSlider {
+        height: 508px;
+
+        @media (max-width: 1024px) {
+            height: 382px;
+        }
+
+        .slide {
+            background: $neutral-white;
+            width: 432px;
+            height: 508px;
+
+            @media (max-width: 1024px) {
+                width: 320px;
+                height: 382px;
+            }
+        }
+
+        .slideImage {
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+
+    .sliderButton {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        font-size: 24px;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .sliderButton.prev {
+        left: 10px;
+    }
+
+    .sliderButton.next {
+        right: 10px;
+    }
+}
