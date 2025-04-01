@@ -1,6 +1,6 @@
-'use client'
-import { useState, useRef, useEffect } from 'react';
-import styles from './VideoPlayer.module.scss';
+"use client";
+import { useState, useRef, useEffect } from "react";
+import styles from "./VideoPlayer.module.scss";
 
 const VideoPlayer = ({ caption, preview, videoPath, newsVideo }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -12,13 +12,15 @@ const VideoPlayer = ({ caption, preview, videoPath, newsVideo }) => {
 
   useEffect(() => {
     if (isPlaying && videoRef.current) {
-      // Запускаем воспроизведение видео через реф
       videoRef.current.play();
     }
   }, [isPlaying]);
 
   return (
-    <section className={`${styles.videoContainer} ${newsVideo ? styles.newsVideoContainer : ''}`}>
+    <section
+      className={`${styles.videoContainer} ${
+        newsVideo ? styles.newsVideoContainer : ""
+      }`}>
       {!isPlaying ? (
         <div className={styles.previewContainer}>
           <div className={styles.previewImageContainer}>
@@ -28,24 +30,24 @@ const VideoPlayer = ({ caption, preview, videoPath, newsVideo }) => {
               className={styles.previewImage}
             />
             <button className={styles.playButton} onClick={handlePlayVideo}>
-              <span className={styles.playIcon}>▶</span>
+              <img
+                src="/images/icons/Player.svg"
+                alt="Play"
+                className={styles.playIcon}
+              />
             </button>
           </div>
-          <p className={styles.caption}>
-            {caption}
-          </p>
+          <p className={styles.caption}>{caption}</p>
         </div>
       ) : (
         <div className={styles.videoFrame}>
           <video
             ref={videoRef}
-            
             playsInline
             webkit-playsinline="true"
             autoPlay
             muted
-            controls
-          >
+            controls>
             <source src={videoPath} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
