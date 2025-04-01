@@ -1,17 +1,24 @@
 'use client'
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './VideoPlayer.module.scss';
 
 const VideoPlayer = ({ caption, preview, videoPath, newsVideo }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
 
   const handlePlayVideo = () => {
     setIsPlaying(true);
   };
 
+  useEffect(() => {
+    if (isPlaying && videoRef.current) {
+      // Запускаем воспроизведение видео через реф
+      videoRef.current.play();
+    }
+  }, [isPlaying]);
+
   return (
     <section className={`${styles.videoContainer} ${newsVideo ? styles.newsVideoContainer : ''}`}>
-   
       {!isPlaying ? (
         <div className={styles.previewContainer}>
           <div className={styles.previewImageContainer}>
@@ -30,7 +37,15 @@ const VideoPlayer = ({ caption, preview, videoPath, newsVideo }) => {
         </div>
       ) : (
         <div className={styles.videoFrame}>
-          <video controls autoPlay>
+          <video
+            ref={videoRef}
+            
+            playsInline
+            webkit-playsinline="true"
+            autoPlay
+            muted
+            controls
+          >
             <source src={videoPath} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
