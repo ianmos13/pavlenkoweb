@@ -40,7 +40,7 @@ const AboutUsSlider = () => {
         <SliderWithPiceOfNextSlide
           slideData={slideData}
           titleOptions={titleOptions}
-          slideIndex={1}
+          slideIndex={3}
         />
         </AnimatedComponent>
       </Loader>

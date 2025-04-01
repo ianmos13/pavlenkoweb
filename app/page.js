@@ -6,9 +6,8 @@ import InfoBlock from "@/components/Index/InfoBlock/InfoBlock";
 import RQ from "@/components/Index/RQIndex/RQIndex";
 import SchoolNewsSlider from "@/components/Index/SchoolNewsSlider/SchoolNewsSlider";
 import AboutUsSlider from "@/components/Index/AboutUsSlider/AboutUsSlider";
-import RunningLines from "@/components/UI/RunningLines/RunningLines";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
-
+import RunningLinesIndex from "@/components/Index/RunningLinesIndex/RunningLinesIndex";
 
 export default function Home() {
   return (
@@ -21,7 +20,7 @@ export default function Home() {
         <ImageBox />
       </AnimatedComponent>
       <AnimatedComponent>
-        <RunningLines data={linesData} />
+      <RunningLinesIndex />
       </AnimatedComponent>
       <SchoolNewsSlider />
       <AnimatedComponent>
@@ -40,29 +39,3 @@ export default function Home() {
   );
 }
 
-const linesData = {
-  firstLine: [
-    "Работа с наставником",
-    "Мультидисциплинарный подход",
-    "Стипендия",
-    "70% практики",
-    "Стажировки и ротации",
-    "Работа с наставником",
-    "Мультидисциплинарный подход",
-    "Стипендия",
-    "70% практики",
-    "Стажировки и ротации",
-  ],
-  secondLine: [
-    "2 года обучения",
-    "Работа с наставником",
-    "Мультидисциплинарный подход",
-    "Стипендия",
-    "70% практики",
-    "2 года обучения",
-    "Работа с наставником",
-    "Мультидисциплинарный подход",
-    "Стипендия",
-    "70% практики",
-  ],
-};

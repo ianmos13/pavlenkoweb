@@ -6,7 +6,7 @@ import Image from "next/image";
 import HeaderLogo from "@/public/images/logo.svg";
 import useIsPath501 from "@/services/hook/useIsPath501";
 import DonationPopup from "@/components/UI/DonationPopup/DonationPopup";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import SubscribeForm from "@/components/UI/Subscribe/SubscribeForm/SubscribeForm";
 import SubscribePopup from "@/components/UI/Subscribe/SubscribePopup/SubscribePopup";
 

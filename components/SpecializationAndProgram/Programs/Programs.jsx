@@ -4,6 +4,7 @@ import styles from "./Programs.module.scss";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
+import {parseAnswerContent} from "@/services/parseAnswerContent";
 
 export default function Programs() {
   const {
@@ -32,11 +33,10 @@ export default function Programs() {
           .filter((program) => program.category && program.category.id === category.id)
           .map((program) => ({
             question: program.name,
-            answer: program.description,
+            answer:  parseAnswerContent(program.answer),
           })),
       })),
     };
-	console.log(mappedData)
     return mappedData;
 	
   }, [categoriesData, programsData]);

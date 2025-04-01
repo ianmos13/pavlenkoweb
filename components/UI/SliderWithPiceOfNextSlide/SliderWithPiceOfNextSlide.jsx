@@ -6,14 +6,21 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlider";
 import styles from "./SliderWithPiceOfNextSlide.module.scss";
+import {useEffect, useRef} from "react";
 
 const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, imageCover, slideIndex }) => {
+  const swiperRef = useRef()
 
-  const collectInitialSlide = () => {
-    if(slideData.length <= 1) return 0
-    if(slideData.length <= 3) return 1
-    return slideIndex
-  }
+  useEffect(() => {
+    const swiper = swiperRef.current
+    if(slideData.length <= 1) return
+    if(slideData.length <= 3) {
+      swiper.slideNext()
+    } else {
+      for(let i = 0; i < slideIndex ; i+=1)
+        swiper.slideNext();
+    }
+  }, []);
 
   return (
     <SectionWithSlider titleOptions={titleOptions}>
@@ -33,14 +40,14 @@ const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, imageCover, slideI
           ))}
         </div>
         <Swiper
+          onSwiper={swiper => (swiperRef.current = swiper)}
           className={slideData?.length <= 3 ? styles.swiperClass : styles.swiperContainer}
           centeredSlides={true}
+          slidesPerView={"auto"}
           spaceBetween={16}
-          initialSlide={collectInitialSlide}
-          breakpoints={swiperBreakpoints}
         >
           {slideData.map((slide, idx) => (
-            <SwiperSlide key={idx}>
+            <SwiperSlide className={styles.swiperSlide} key={idx} style={{width: 'unset'}}>
               <CardItem
                 title={slide.title}
                 header={slide.header}
@@ -59,73 +66,3 @@ const SliderWithPiceOfNextSlide = ({ slideData, titleOptions, imageCover, slideI
 };
 
 export default SliderWithPiceOfNextSlide;
-
-const swiperBreakpoints = {
-  320: {
-    slidesPerView: 1.5,
-    spaceBetween: 16,
-  },
-  340: {
-    slidesPerView: 1.6,
-  },
-  375: {
-    slidesPerView: 1.7,
-  },
-  400: {
-    slidesPerView: 1.8,
-  },
-  440: {
-    slidesPerView: 1.9,
-  },
-  480: {
-    slidesPerView: 2.1,
-  },
-  530: {
-    slidesPerView: 2.4,
-  },
-  580: {
-    slidesPerView: 2.6,
-  },
-  650: {
-    slidesPerView: 3,
-  },
-  680: {
-    slidesPerView: 3.1,
-  },
-  740: {
-    slidesPerView: 2.2,
-  },
-  840: {
-    slidesPerView: 2.5,
-  },
-  950: {
-    slidesPerView: 2.8,
-  },
-  1025: {
-    slidesPerView: 2.3,
-  },
-  1150: {
-    slidesPerView: 2.5,
-  },
-  1250: {
-    slidesPerView: 2.8,
-  },
-  1330: {
-    slidesPerView: 3,
-  },
-  1380: {
-    slidesPerView: 3.1,
-  },
-  1440: {
-    slidesPerView: 3.2,
-  },
-  1600: {
-    slidesPerView: 3.6,
-  },
-  1800: {
-    slidesPerView: 4,
-  },
-  2300: {
-    slidesPerView: 5.1,
-  },
-};

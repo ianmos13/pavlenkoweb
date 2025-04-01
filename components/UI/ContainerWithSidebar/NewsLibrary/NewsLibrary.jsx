@@ -30,9 +30,7 @@ const NewsLibrary = ({ news = [] }) => {
 
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
-		setTimeout(() => {
-			scrollToTop();
-		}, 100)
+		scrollToTop(); 
 	};
 
 	return (

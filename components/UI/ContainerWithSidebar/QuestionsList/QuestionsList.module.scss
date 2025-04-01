@@ -43,6 +43,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	transition: color 0.3s ease;
+
 
 	h4 {
 		font-family: Nunito;
@@ -61,6 +63,10 @@
 			font-size: 18px;
 			line-height: 22px;
 		}
+		&:hover { 
+			color: $secondary-blue-2;
+		}
+		
 	}
 }
 

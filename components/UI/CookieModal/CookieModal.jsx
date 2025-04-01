@@ -7,14 +7,14 @@ export default function CookieModal() {
   const [isCookieAccepted, setIsCookieAccepted] = useState(true);
 
   useEffect(() => {
-    const accepted = localStorage.getItem("cookiesAccepted");
+    const accepted = sessionStorage.getItem("cookiesAccepted");
     if (!accepted) {
       setIsCookieAccepted(false);
     }
   }, []);
 
   const handleAcceptCookies = () => {
-    localStorage.setItem("cookiesAccepted", "true");
+    sessionStorage.setItem("cookiesAccepted", "true");
     setIsCookieAccepted(true);
   };
 
