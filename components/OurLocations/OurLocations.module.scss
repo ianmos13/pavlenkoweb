@@ -358,8 +358,15 @@
         }
 			}
 			.modalOverlay{
+				padding: 0;
+				align-items: flex-start;
+				justify-content: flex-start;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
 				.modalContent{
 					padding: 72px 16px 32px 16px;
+					max-height: 100vh;
+					border-radius: 0;
 					.modalHeader{
 						.modalTitle{
 							font-weight: 600;

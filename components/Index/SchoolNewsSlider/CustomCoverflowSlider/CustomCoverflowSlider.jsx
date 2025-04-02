@@ -6,25 +6,30 @@ import CardItem from "@/components/Index/SchoolNewsSlider/CardItem/CardItem";
 
 const properties = {
     newsCard: {
+        mobile: 312,
         tablet: 312,
-        desktop: 420
+        desktop: 421
     },
     imageGallery: {
-        tablet: 312,
-        desktop: 420
+        mobile: 262,
+        tablet: 623,
+        desktop: 623
     }
 }
 
 const CustomCoverflowSlider = ({ data, type }) => {
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
+    const isMobile = useMediaQuery({ query: '(max-width: 739px)' });
     const [activeIndex, setActiveIndex] = useState(5);
     const [isDragging, setIsDragging] = useState(false);
+    const [isSwipe, setIsSwipe] = useState(false);
     const [startX, setStartX] = useState(0);
     const [currentTranslate, setCurrentTranslate] = useState(0);
     const [slides, setSlides] = useState([...data]);
     const sliderRef = useRef(null);
 
-    const sliderSpace = isTablet ? properties[type].tablet : properties[type].desktop;
+    const sliderSize = isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'
+    const sliderSpace = properties[type][sliderSize]
     const scalePercent = 0.15;
 
     const handlePrev = () => {
@@ -37,6 +42,7 @@ const CustomCoverflowSlider = ({ data, type }) => {
             }
             return prev - 1;
         });
+        setIsSwipe(false)
     };
 
     const handleNext = () => {
@@ -50,6 +56,7 @@ const CustomCoverflowSlider = ({ data, type }) => {
             }
             return prev + 1;
         });
+        setIsSwipe(false)
     };
 
     useEffect(() => {
@@ -62,6 +69,7 @@ const CustomCoverflowSlider = ({ data, type }) => {
 
     useEffect(() => {
         const handleKeyDown = (e) => {
+            setIsSwipe(true)
             if (e.shiftKey && e.key === "ArrowLeft") {
                 handlePrev();
             } else if (e.shiftKey && e.key === "ArrowRight") {
@@ -86,6 +94,7 @@ const CustomCoverflowSlider = ({ data, type }) => {
         const currentX = e.clientX || e.touches?.[0].clientX;
         const deltaX = currentX - startX;
         setCurrentTranslate(deltaX);
+        (Math.abs(currentTranslate) > 50) ? setIsSwipe(true) : null
     };
 
     const handleMouseUp = () => {
@@ -131,7 +140,7 @@ const CustomCoverflowSlider = ({ data, type }) => {
                     return (
                         <div
                             key={index}
-                            className={styles.slide}
+                            className={`${styles.slide} ${isSwipe ? styles.disableSlideAction : ''}`}
                             style={{
                                 transform: `translateX(${translateX}px) scale(${scale})`,
                                 zIndex: slides.length - Math.abs(offset),
@@ -161,6 +170,11 @@ const SliderElement = ({ article, type }) => {
                     date={article.date}
                     link={article.link}
                 />
+            )}
+            { type === 'imageGallery' && (
+                <div className={styles.imageContainer} >
+                    <img src={article} alt="" />
+                </div>
             )}
         </>
     )

@@ -1,8 +1,10 @@
 import RunningLine from '@/components/UI/RunningLines/RunningLine/RunningLine'
 import styles from './RunningLines.module.scss'
+import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function RunningLines({ data, headerData, isImages }) {
 	return (
+		<AnimatedComponent>
 			<section
 				className={`${styles.runningLines} ${
 					isImages ? styles.imageRunningLines : ""
@@ -26,6 +28,7 @@ export default function RunningLines({ data, headerData, isImages }) {
 					)}
 				</div>
 			</section>
+		</AnimatedComponent>
 	);
 }
 

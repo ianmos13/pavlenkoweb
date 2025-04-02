@@ -11,7 +11,6 @@ import Subscribe from "@/components/UI/Subscribe/Subscribe";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
 import TeachingStaff from "@/components/TeachingStaff/TeachingStaff";
-import CoverflowSwiper from "@/components/UI/CoverflowSwiper/CoverflowSwiper";
 import TitleWithBackButton from "@/components/UI/TitleWithBackButton/TitleWithBackButton";
 import BottomLeft from "@/public/images/news_images/bottom-left-filter.webp";
 import BottomRight from "@/public/images/news_images/bottom-right-filter.webp";
@@ -22,6 +21,7 @@ import ArticleInfo from "@/components/News/[id]/ArticleInfo/ArticleInfo";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 import {useEffect} from "react";
 import useScrollToTop from "@/services/hook/useScrollToTop";
+import CustomCoverflowSlider from "@/components/Index/SchoolNewsSlider/CustomCoverflowSlider/CustomCoverflowSlider";
 export default function Page() {
   const { id } = useParams();
   const {
@@ -107,8 +107,8 @@ export default function Page() {
       case "CoverflowSwiper":
         return (
           <AnimatedComponent>
-            <CoverflowSwiper
-              key="CoverflowSwiper"
+            <CustomCoverflowSlider
+              type="imageGallery"
               data={
                 articleData?.CoverflowSwiperImages?.map(
                   (image) => `${API_URL}${image.url}`

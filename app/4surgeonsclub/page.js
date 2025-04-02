@@ -1,10 +1,10 @@
 import SurgeonsClubHeader from '@/components/4surgeonsclub/SurgeonsClubHeader/SurgeonsClubHeader'
-import CoverflowSwiper from '@/components/UI/CoverflowSwiper/CoverflowSwiper'
 import InterestingForSurgeons from '@/components/UI/InterestingForSurgeons/InterestingForSurgeons'
 import RunningLines from '@/components/UI/RunningLines/RunningLines'
 import Subscribe from '@/components/UI/Subscribe/Subscribe'
 import MostInteresting from "@/components/4surgeonsclub/MostInteresting/MostInteresting";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+import CustomCoverflowSlider from "@/components/Index/SchoolNewsSlider/CustomCoverflowSlider/CustomCoverflowSlider";
 
 export default function page() {
 	return (
@@ -14,7 +14,7 @@ export default function page() {
 			<RunningLines data={linesData} isImages={true} />
 			<InterestingForSurgeons theme={'blue'} data={interestingData} />
 			<AnimatedComponent>
-				<CoverflowSwiper data={swiperData} />
+				<CustomCoverflowSlider type="imageGallery" data={swiperData} />
 			</AnimatedComponent>
 			<Subscribe />
 		</>
@@ -26,7 +26,7 @@ const interestingData = [
 		header: 'Сообщество в телеграмм',
 		text: 'Смотрите мастер-классы ведущих хирургов в прямом эфире, узнавайте полезную информацию, задавайте вопросы, делитесь личным опытом и присоединяйтесь к сообществу неравнодушных профессионалов!',
 		linkText: 'Вступить в группу',
-		linkHref: 'https://t.me/FourSurgeons ',
+		linkHref: 'https://t.me/FourSurgeons',
 	},
 	{
 		header: '4SurgeonsClub Junior',
