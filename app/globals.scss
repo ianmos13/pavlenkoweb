@@ -18,6 +18,12 @@ body {
   padding: 0;
   margin: 0;
 }
+body.modal-open,
+html.modal-open {
+  overflow: hidden; 
+  overscroll-behavior: contain;
+}
+
 // STYLE FOR MAP
 .leaflet-control-attribution {
   display: none !important;

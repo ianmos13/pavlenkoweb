@@ -1,10 +1,10 @@
 import ImageWithDescription from "@/components/UI/ImageWithDescription/ImageWithDescription";
 import TextContainer from "@/components/Biography/TextContainer/TextContainer";
 import QuoteCard from "@/components/Biography/QuoteCard/QuoteCard";
-import CoverflowSwiper from "@/components/UI/CoverflowSwiper/CoverflowSwiper";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 import BiographyVideoComponent from "@/components/Biography/BiographyVideoComponent/BiographyVideoComponent";
 import BiographyHeader from "@/components/Biography/BiographyHeader/BiographyHeader";
+import CustomCoverflowSlider from "@/components/Index/SchoolNewsSlider/CustomCoverflowSlider/CustomCoverflowSlider";
 
 const text1 = `В 2018 году Андрей Николаевич заболел раком желудка и&nbsp;прошел путь пациента, поддерживая тысячи людей своим отношением к&nbsp;болезни и&nbsp;просветительской работой. Одной из&nbsp;главных его целей стало создание Школы для&nbsp;хирургов-онкологов, которая смогла&nbsp;бы в&nbsp;долгосрочной перспективе увеличить выживаемость пациентов.<br /><br />В&nbsp;январе 2020&nbsp;года Андрей Павленко ушел из&nbsp;жизни, но его&nbsp;проекты продолжают развитие. Для&nbsp;команды Школы очень важно сохранить и&nbsp;продолжить дело друга, наставника и&nbsp;учителя.`;
 const quote1 = `Я хочу собрать под\u00A0этим зонтиком всех неравнодушных профессионалов, настоящих лидеров, которые научат новую генерацию хирургов, дадут новый стимул для\u00A0развития и\u00A0новую ментальность. Это\u00A0хирургия high-level — то, что\u00A0требует от\u00A0хирурга максимальных знаний и\u00A0технических умений.`;
@@ -29,7 +29,7 @@ export default function page() {
       <TextContainer text={text1} />
       <QuoteCard author={"Андрей Павленко"} text={quote1} />
       <AnimatedComponent>
-        <CoverflowSwiper data={swiperData} />
+        <CustomCoverflowSlider type="imageGallery" data={swiperData} />
       </AnimatedComponent>
       <TextContainer text={text2} />
       <BiographyVideoComponent
