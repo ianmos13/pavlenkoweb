@@ -4,6 +4,19 @@
   display: block;
   width: 100%;
 
+  .desktopSwiper {
+    @media (max-width: 739px) {
+      display: none;
+    }
+  }
+
+  .mobileSwiper {
+    display: none;
+    @media (max-width: 739px) {
+      display: block;
+    }
+  }
+
   .swiperContainer {
     display: block;
     margin: 0 auto;
@@ -20,60 +33,6 @@
   }
 }
 
-.cardContainer {
-  background: $neutral-white;
-  border-radius: 24px;
-  width: 432px;
-  max-height: 706px;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-
-  .imageContainer {
-    position: relative;
-    max-width: 432px;
-    max-height: 432px;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 1;
-
-    .image {
-      position: absolute;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .infoContainer {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    font-family: Nunito;
-
-    .title {
-      font-size: $h4-desktop-primary-size;
-      line-height: $h4-desktop-primary-line-height;
-      color: $primary-blue;
-    }
-
-    .text {
-      height: 182px;
-      font-size: $p-desktop-primary-size;
-      line-height: $p-desktop-primary-line-height;
-      overflow: hidden;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      text-overflow: ellipsis;
-      position: relative;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 7;
-    }
-  }
-}
-
 @media (max-width: 739px) {
   .container {
     .swiperContainer {
@@ -82,34 +41,6 @@
         max-height: 336px;
         border-radius: 12px;
         margin: 0 8px;
-      }
-    }
-  }
-
-  .cardContainer {
-    border-radius: 12px;
-    width: 208px;
-    max-height: 336px;
-
-    .imageContainer {
-      max-width: 208px;
-      max-height: 208px;
-    }
-
-    .infoContainer {
-      padding: 10px;
-      gap: 8px;
-
-      .title {
-        font-size: 14px;
-        line-height: 20px;
-      }
-
-      .text {
-        font-size: 12px;
-        line-height: 16px;
-        height: 80px;
-        -webkit-line-clamp: 5;
       }
     }
   }

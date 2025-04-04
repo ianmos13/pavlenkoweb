@@ -4,6 +4,12 @@
   display: block;
   width: 100%;
 
+  .desktopSwiper {
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
   .swiperContainer {
     display: block;
     margin: 0 auto;
@@ -195,12 +201,5 @@
     .textContainer p {
       color: $secondary-blue-2
     }
-  }
-}
-
-
-@media (max-width: 1024px) {
-  .container {
-    display: none;
   }
 }

@@ -1,0 +1,99 @@
+@import "/styles/variables";
+
+
+.cardContainer {
+    background: $neutral-white;
+    position: relative;
+    width: 656px;
+    height: 514px;
+    aspect-ratio: 1/0.784;
+    display: flex;
+    align-items: flex-end;
+
+    @media (max-width: 1024px) {
+        width: 416px;
+        height: 326px;
+    }
+    @media (max-width: 739px) {
+        width: 240px;
+        height: 223px;
+        aspect-ratio: 1/0.784;
+    }
+    .imageContainer {
+        padding: 0 32px;
+        position: absolute;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        @media (max-width: 1024px) {
+            padding: 0 24px;
+        }
+        @media (max-width: 739px) {
+            top: 0;
+            padding: 0 16px;
+            height: 187px;
+        }
+    }
+
+    .textContainer {
+        padding: 24px;
+        height: 457px;
+        width: 100%;
+        border-radius: 16px;
+        background-color: $secondary-lite-blue;
+        @media (max-width: 1024px) {
+            padding: 16px;
+            height: 289px;
+        }
+        @media (max-width: 739px) {
+            padding: 0;
+            height: 202px;
+            border-radius: 8px 8px 10px 10px;
+        }
+
+        .track {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100%;
+            width: 100%;
+
+            span {
+                position: absolute;
+                background-color: $secondary-ultra-lite-blue;
+                padding: 10px 41px;
+                border-radius: 100px;
+                display: inline-block;
+                color: $secondary-blue-2;
+                @media (max-width: 1024px) {
+                    padding: 8px 26px;
+                }
+                @media (max-width: 739px) {
+                    width: 100%;
+                    padding: 8px;
+                    border-radius: 0 0 8px 8px;
+                }
+                h4 {
+                    text-align: center;
+                    font-family: Nunito;
+                    color: $secondary-blue-2;
+                    @media (max-width: 739px) {
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cardContainerActive {
+    .textContainer {
+        background-color: $secondary-blue-2;
+        .track {
+            span h4 {
+                color: $primary-red;
+            }
+        }
+    }
+}

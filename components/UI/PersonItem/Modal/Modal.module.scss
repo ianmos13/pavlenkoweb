@@ -55,14 +55,14 @@
     font-size: 24px;
     cursor: pointer;
     position: absolute;
-    top: 20px;
-    right: 32px;
+    top: -60px;
+    right: -10px;
     color: $secondary-blue-2;
     z-index: 10000;
 
     @media (max-width: 739px) {
-      top: 12px;
-      right: 12px;
+      top: 0px;
+
     }
   }
 }

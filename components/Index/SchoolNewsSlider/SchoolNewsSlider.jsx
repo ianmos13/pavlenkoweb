@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import CardItem from "./CardItem/CardItem";
+import CardItem from "@/components/Index/SchoolNewsSlider/CardItem/CardItem";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import styles from "./SchoolNewsSlider.module.scss";
@@ -11,7 +11,7 @@ import {EffectCoverflow, Pagination} from "swiper/modules";
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
-import CustomCoverflowSlider from "@/components/Index/SchoolNewsSlider/CustomCoverflowSlider/CustomCoverflowSlider";
+import CustomCoverflowSlider from "@/components/UI/CustomCoverflowSlider/CustomCoverflowSlider";
 
 export default function SchoolNewsSlider() {
   const titleOptions = {

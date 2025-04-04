@@ -24,29 +24,6 @@
   }
 }
 
-.swiperContainerTest {
-  width: 80%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.slide-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-.swiper-pagination-bullet {
-  background-color: #fff;
-  opacity: 0.6;
-}
-
-.swiper-pagination-bullet-active {
-  opacity: 1;
-}
-
-
 @media (max-width: 1024px) {
     .swiperContainer {
       .swiperSlide {
