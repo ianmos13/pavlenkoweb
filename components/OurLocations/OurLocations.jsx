@@ -21,7 +21,7 @@ const OurLocations = () => {
       setIsMobile(window.innerWidth <= 739);
     };
     
-    handleResize(); // Проверяем при первоначальной загрузке
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -79,7 +79,6 @@ const OurLocations = () => {
     setZoomLevel(10);
   };
 
-  // Блокировка прокрутки фона при открытом модальном окне
   useEffect(() => {
     if (selectedClinic) {
       document.body.classList.add("modal-open");

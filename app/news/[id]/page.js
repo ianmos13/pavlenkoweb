@@ -21,7 +21,7 @@ import ArticleInfo from "@/components/News/[id]/ArticleInfo/ArticleInfo";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 import {useEffect} from "react";
 import useScrollToTop from "@/services/hook/useScrollToTop";
-import CustomCoverflowSlider from "@/components/Index/SchoolNewsSlider/CustomCoverflowSlider/CustomCoverflowSlider";
+import CustomCoverflowSlider from "@/components/UI/CustomCoverflowSlider/CustomCoverflowSlider";
 export default function Page() {
   const { id } = useParams();
   const {

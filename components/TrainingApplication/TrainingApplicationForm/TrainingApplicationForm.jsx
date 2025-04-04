@@ -43,8 +43,6 @@ const TrainingApplicationForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-
-  // Добавим состояние для хранения первого ошибочного поля:
   const [firstErrorField, setFirstErrorField] = useState(null);
 
   const validateForm = () => {
@@ -65,10 +63,14 @@ const TrainingApplicationForm = () => {
         newErrors.operation = "Введите корректную ссылку на YouTube.";
       }
     }
+
+    if (!isConsentChecked)
+      newErrors.consent =
+        "Необходимо согласие на обработку персональных данных";
+
     return newErrors;
   };
 
-  // Мапа, чтобы понять к какой секции относится поле
   const getSectionIdByField = (field) => {
     const fieldToSectionMap = {
       name: "personal",
@@ -102,13 +104,11 @@ const TrainingApplicationForm = () => {
   useEffect(() => {
     if (firstErrorField) {
       const sectionId = getSectionIdByField(firstErrorField);
-      if (sectionId) {
-        toggleSection(sectionId);
-      }
+      if (sectionId) toggleSection(sectionId);
 
       setTimeout(() => {
         const errorElement = document.querySelector(
-          `[name="${firstErrorField}"]`
+          `[name="${firstErrorField}"], #${firstErrorField}`
         );
         if (errorElement) {
           errorElement.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -123,12 +123,11 @@ const TrainingApplicationForm = () => {
     setErrors(formErrors);
 
     if (Object.keys(formErrors).length > 0) {
-      setFirstErrorField(Object.keys(formErrors)[0] || null);
+      setFirstErrorField(Object.keys(formErrors)[0]);
       return;
     }
 
     setFirstErrorField(null);
-
     try {
       setIsLoading(true);
       setError("");
@@ -146,7 +145,7 @@ const TrainingApplicationForm = () => {
           data.append(key, value);
         }
       }
-      console.log("data", data);
+
       const response = await fetch("/api/send-email", {
         method: "POST",
         body: data,
@@ -186,15 +185,12 @@ const TrainingApplicationForm = () => {
     setErrors({});
   };
 
+  const formErrors = validateForm();
+  const isFormValid = Object.keys(formErrors).length === 0 && isConsentChecked;
+
   const handleInputChange = (field) => (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: e.target.value,
-    }));
-    setErrors((prev) => ({
-      ...prev,
-      [field]: "",
-    }));
+    setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+    setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
   const handleCheckboxChange = (e) => {
@@ -424,6 +420,9 @@ const TrainingApplicationForm = () => {
             isConsentChecked={isConsentChecked}
             setIsConsentChecked={setIsConsentChecked}
             handleSubmit={handleSubmit}
+            isFormValid={isFormValid}
+            errors={errors}
+            setErrors={setErrors}
           />
         </div>
 

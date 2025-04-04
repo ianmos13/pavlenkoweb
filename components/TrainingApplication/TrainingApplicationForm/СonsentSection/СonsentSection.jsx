@@ -1,19 +1,34 @@
 "use client";
 import React from "react";
-import styles from "./СonsentSection.module.scss"; 
+import styles from "./СonsentSection.module.scss";
 import ButtonBox from "@/components/UI/Buttons/ButtonBox/ButtonBox";
 import LearnMoreButton from "@/components/UI/Buttons/LearnMoreButton/LearnMoreButton";
 
-const ConsentSection = ({ isConsentChecked, setIsConsentChecked, handleSubmit, isLoading }) => {
+const ConsentSection = ({
+  isConsentChecked,
+  setIsConsentChecked,
+  handleSubmit,
+  isLoading,
+  isFormValid,
+  errors,
+  setErrors
+}) => {
+  const handleCheckboxChange = (e) => {
+    setIsConsentChecked(e.target.checked);
+
+ 
+    setErrors((prev) => ({ ...prev, consent: "" }));
+  };
+
   return (
     <div className={styles.buttonContainer}>
       <div className={styles.buttonContainerInner}>
-        <label className={styles.consentCheckboxItem}>
+        <label className={styles.consentCheckboxItem} id="Consent">
           <input
             type="checkbox"
             name="Consent"
             checked={isConsentChecked}
-            onChange={(e) => setIsConsentChecked(e.target.checked)}
+            onChange={handleCheckboxChange}
           />
           <p>
             Согласие на{" "}
@@ -22,13 +37,14 @@ const ConsentSection = ({ isConsentChecked, setIsConsentChecked, handleSubmit, i
             </a>
           </p>
         </label>
+        {errors?.consent && <p className={styles.error}>{errors.consent}</p>}
       </div>
 
       <ButtonBox>
         <LearnMoreButton
           text={isLoading ? "Отправка..." : "Отправить заявку"}
-          theme={"red"}
-          isDisabled={!isConsentChecked || isLoading}
+          theme={isFormValid && !isLoading ? "red" : "disabled"}
+          isDisabled={!isFormValid || isLoading}
           onClick={handleSubmit}
         />
       </ButtonBox>

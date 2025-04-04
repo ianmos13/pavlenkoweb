@@ -40,7 +40,7 @@ export default function EducationApplication() {
   const router = useRouter();
 
   const SendRequest = () => {
-	router.push("/training-application-form")
+	router.push("/application-form")
   };
 
   return (

@@ -4,7 +4,7 @@ import RunningLines from '@/components/UI/RunningLines/RunningLines'
 import Subscribe from '@/components/UI/Subscribe/Subscribe'
 import MostInteresting from "@/components/4surgeonsclub/MostInteresting/MostInteresting";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
-import CustomCoverflowSlider from "@/components/Index/SchoolNewsSlider/CustomCoverflowSlider/CustomCoverflowSlider";
+import CustomCoverflowSlider from "@/components/UI/CustomCoverflowSlider/CustomCoverflowSlider";
 
 export default function page() {
 	return (

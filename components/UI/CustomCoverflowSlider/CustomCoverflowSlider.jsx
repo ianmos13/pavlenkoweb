@@ -3,6 +3,9 @@ import React, {useEffect, useRef, useState} from 'react';
 import styles from "./CustomCoverflowSlider.module.scss";
 import {useMediaQuery} from "react-responsive";
 import CardItem from "@/components/Index/SchoolNewsSlider/CardItem/CardItem";
+import FriendsOfSchoolSlide from "@/components/UI/CustomCoverflowSlider/FriendsOfSchoolSlide/FriendsOfSchoolSlide";
+import MemberCardSlide from "@/components/UI/CustomCoverflowSlider/MemberCardSlide/MemberCardSlide";
+import FeedbackSlide from "@/components/UI/CustomCoverflowSlider/FeedbackSlide/FeedbackSlide";
 
 const properties = {
     newsCard: {
@@ -14,10 +17,25 @@ const properties = {
         mobile: 262,
         tablet: 623,
         desktop: 623
+    },
+    friendsOfSchoolSlide: {
+        mobile: 240,
+        tablet: 401,
+        desktop: 623
+    },
+    memberCardSlide: {
+        mobile: 312,
+        tablet: 421,
+        desktop: 421
+    },
+    feedbackSlide: {
+        mobile: 312,
+        tablet: 421,
+        desktop: 623
     }
 }
 
-const CustomCoverflowSlider = ({ data, type }) => {
+const CustomCoverflowSlider = ({ data, type, togglePopup = () => {} }) => {
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const isMobile = useMediaQuery({ query: '(max-width: 739px)' });
     const [activeIndex, setActiveIndex] = useState(5);
@@ -106,9 +124,8 @@ const CustomCoverflowSlider = ({ data, type }) => {
             } else {
                 handleNext();
             }
-        } else {
-            setCurrentTranslate(0);
         }
+        setCurrentTranslate(0);
         setTimeout(() => {
             sliderRef.current && Array.from(sliderRef.current.children).forEach((el) => {
                 el.style.transition = "none"
@@ -121,7 +138,6 @@ const CustomCoverflowSlider = ({ data, type }) => {
             <div
                 ref={sliderRef}
                 className={`${styles.slider} ${styles[`${type}Slider`]}`}
-
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
@@ -130,7 +146,7 @@ const CustomCoverflowSlider = ({ data, type }) => {
                 onTouchMove={handleMouseMove}
                 onTouchEnd={handleMouseUp}
             >
-                {slides.map((article, index) => {
+                {slides.map((slide, index) => {
                     const offset = index - activeIndex;
                     const scale = Math.max(0.4, 1 - Math.abs(offset) * scalePercent);
                     let xValue = sliderSpace
@@ -146,7 +162,12 @@ const CustomCoverflowSlider = ({ data, type }) => {
                                 zIndex: slides.length - Math.abs(offset),
                             }}
                         >
-                            <SliderElement article={article} type={type} />
+                            <SliderElement
+                                slideData={slide}
+                                type={type}
+                                isActive={translateX === 0}
+                                togglePopup={togglePopup}
+                            />
                         </div>
                     );
                 })}
@@ -157,24 +178,33 @@ const CustomCoverflowSlider = ({ data, type }) => {
 
 export default CustomCoverflowSlider;
 
-const SliderElement = ({ article, type }) => {
+const SliderElement = ({ slideData, type, isActive, togglePopup }) => {
     return (
         <>
             { type === 'newsCard' && (
                 <CardItem
-                    key={article.id}
-                    header={article.header}
-                    title={article.title}
-                    body={article.body}
-                    category={article.category}
-                    date={article.date}
-                    link={article.link}
+                    key={slideData.id}
+                    header={slideData.header}
+                    title={slideData.title}
+                    body={slideData.body}
+                    category={slideData.category}
+                    date={slideData.date}
+                    link={slideData.link}
                 />
             )}
             { type === 'imageGallery' && (
                 <div className={styles.imageContainer} >
-                    <img src={article} alt="" />
+                    <img src={slideData} alt="" />
                 </div>
+            )}
+            { type === 'friendsOfSchoolSlide' && (
+                <FriendsOfSchoolSlide data={slideData} isActive={isActive} />
+            )}
+            { type === 'memberCardSlide' && (
+                <MemberCardSlide data={slideData} />
+            )}
+            { type === 'feedbackSlide' && (
+                <FeedbackSlide data={slideData} isActive={isActive} togglePopup={togglePopup} />
             )}
         </>
     )
