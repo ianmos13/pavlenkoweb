@@ -8,33 +8,34 @@ import Image from "next/image";
 import styles from "./EducationApplication.module.scss";
 import { useRouter } from "next/navigation";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
-const arrayList = [
-  {
-    text: "В феврале идет набор по специализациям Онкогинекология и Upper GI",
-  },
-  {
-    text: "Круглогодичный набор по специализациям Торакальную хирургию и Онкоурология (голова и шея)",
-  },
-];
-
-const info = [
-  {
-    header: "обучение",
-    text: "на бесплатной основе",
-  },
-  {
-    header: "2 года",
-    text: "длительность обучения",
-  },
-  {
-    header: "стипендия",
-    text: "во время обучения",
-  },
-  {
-    header: "отбор",
-    text: "на конкурсной основе",
-  },
-];
+const data = {
+  arrayList: [
+    {
+      text: "Открыт набор по программам \"Онкоурология\" и \"Гепатобилиарная хирургия\"",
+    },
+    {
+      text: "Скоро откроется прием заявок на обучение по специализации \"Хирургия опухолей головы и шеи\"",
+    },
+  ],
+  info: [
+    {
+      header: "обучение",
+      text: "на бесплатной основе",
+    },
+    {
+      header: "2 года",
+      text: "длительность обучения",
+    },
+    {
+      header: "стипендия",
+      text: "во время обучения",
+    },
+    {
+      header: "отбор",
+      text: "на конкурсной основе",
+    },
+  ]
+}
 
 export default function EducationApplication() {
   const router = useRouter();
@@ -57,7 +58,7 @@ export default function EducationApplication() {
               </div>
               <div className={styles.ulContainer}>
                 <ul className={styles.list}>
-                  {arrayList.map((item, i) => (
+                  {data?.arrayList && data?.arrayList.map((item, i) => (
                     <li key={i} className={styles.listItem}>
                       <Image src={Heart} alt="Heart" className={styles.icon} />
                       <h4 style={{ color: "white" }}>{item.text}</h4>
@@ -77,7 +78,7 @@ export default function EducationApplication() {
             <Image src={Logo} alt="Logo" className={styles.logo} />
           </div>
         </div>
-        <BlocksContainer info={info} />
+        <BlocksContainer info={data.info} />
       </div>
     </div>
     </AnimatedComponent>
