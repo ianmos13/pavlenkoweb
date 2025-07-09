@@ -34,7 +34,6 @@ const ContainerWithSidebarSchoolTeam = ({ data }) => {
     if (!categories.length) return [];
     for (const cat of categories) {
       if (cat.id === activeCategory) {
-
         let all = [...(cat.stufs || [])];
         if (cat.subcategories) {
           for (const sub of cat.subcategories) {
@@ -57,11 +56,7 @@ const ContainerWithSidebarSchoolTeam = ({ data }) => {
     if (categories.length > 0) {
       setActiveCategory(categories[0].id);
     }
-  }, [data]);
-
-  useEffect(() => {
-    setActiveCategory(null);
-  }, [categories.length]);
+  }, [categories]);
 
   return (
     <div className={containerStyles.ContainerInner}>
