@@ -72,7 +72,7 @@
     background-color: $secondary-lite-blue;
     padding: 0;
     list-style: none;
-    display: none; 
+    display: none;
 
     &.active {
       display: block;
@@ -97,6 +97,77 @@
   }
 }
 
+.subCategory {
+  padding: 10px 0;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 16px;
+  background: none;
+  font-size: 16px;
+  font-family: Nunito, Arial, sans-serif;
+  margin: 3px 0;
+  box-sizing: border-box;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  display: block;
+  position: relative;
+
+  h5 {
+    font-size: 16px;
+    font-family: Nunito, Arial, sans-serif;
+    font-weight: 400;
+    color: #6a7a8c;
+    margin: 0;
+    transition: color 0.18s;
+    text-align: center;
+  }
+
+  // Удаляю chevron и все линии
+
+  &:hover {
+    background: $secondary-ultra-lite-blue;
+    h5 {
+      color: $primary-blue;
+      font-weight: 600;
+    }
+  }
+}
+
+.activeSubCategory {
+  background: linear-gradient(90deg, #e6f0fa 60%, #fafdff 100%);
+  box-shadow: 0 2px 12px 0 rgba(34, 60, 80, 0.07);
+  border-radius: 16px;
+  margin-left: 0;
+  padding-left: 0;
+  h5 {
+    font-weight: 600;
+    color: $primary-blue;
+    text-align: center;
+  }
+}
+
+.subCategoryWrapper {
+  position: relative;
+  max-width: 400px;
+}
+
+.subCategorySeparator {
+  border-left: 2px solid #d3e0e9;
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 0;
+  display: block;
+}
+
+.subCategoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 @media (max-width: 1024px) {
   .sidebar {
     display: none;
@@ -108,7 +179,7 @@
     .dropdownHeader {
       padding: 13px 32px;
       border-radius: 28px;
-      h3{
+      h3 {
         color: $primary-blue;
         font-size: 22px;
         line-height: 30px;
@@ -120,9 +191,18 @@
       }
     }
   }
+
+  .mobileSubCategory {
+    font-size: 15px;
+    color: #8a99ad;
+    font-family: Nunito;
+    padding-left: 22px;
+    background: none;
+    text-align: left;
+  }
 }
 
-@media (max-width: 736px)  {
+@media (max-width: 736px) {
   .sidebar {
     display: none;
   }
@@ -151,4 +231,3 @@
     }
   }
 }
-

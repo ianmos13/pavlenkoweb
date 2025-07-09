@@ -6,8 +6,8 @@ import HeaderText from "@/components/UI/HeaderText/HeaderText";
 export default function page() {
   return (
     <>
-      <HeaderText>Преподавательский состав</HeaderText>
-      <TeachingStaff top={true}/>
+      {/* <HeaderText>Преподавательский состав</HeaderText> */}
+      {/* <TeachingStaff top={true}/> */}
       <TeachersSwiper />
       <Mentors />
     </>
