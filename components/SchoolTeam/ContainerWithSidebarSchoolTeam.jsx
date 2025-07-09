@@ -7,9 +7,7 @@ import SchoolTeamLibrary from "@/components/UI/ContainerWithSidebar/SchoolTeamLi
 const ContainerWithSidebarSchoolTeam = ({ data }) => {
   const [activeCategory, setActiveCategory] = useState(null);
 
-
   const categories = data?.categories || [];
-
 
   const sidebarCategories = categories.map((cat) => {
     if (cat.name === "Наставники в штате" && cat.subcategories) {
@@ -28,18 +26,22 @@ const ContainerWithSidebarSchoolTeam = ({ data }) => {
     };
   });
 
-
   const handleCategoryChange = (id) => {
     setActiveCategory(id);
   };
 
-
   const getStafs = () => {
     if (!categories.length) return [];
-
     for (const cat of categories) {
       if (cat.id === activeCategory) {
-        return cat.stufs || [];
+
+        let all = [...(cat.stufs || [])];
+        if (cat.subcategories) {
+          for (const sub of cat.subcategories) {
+            if (sub.stufs) all = all.concat(sub.stufs);
+          }
+        }
+        return all;
       }
       if (cat.subcategories) {
         const sub = cat.subcategories.find((s) => s.id === activeCategory);
@@ -57,7 +59,6 @@ const ContainerWithSidebarSchoolTeam = ({ data }) => {
     }
   }, [data]);
 
- 
   useEffect(() => {
     setActiveCategory(null);
   }, [categories.length]);
