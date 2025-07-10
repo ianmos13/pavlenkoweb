@@ -105,7 +105,7 @@ export async function POST(req) {
 Образование: ${education}
 Место работы: ${work}
 Награды: ${rewards}
-Видео операции (YouTube): ${operation}
+Видео операции: ${operation}
 Уровень английского: ${getEnglishLevelLabel(english)}
 Телефон: ${phone}
 Email: ${mail}
