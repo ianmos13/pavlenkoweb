@@ -15,6 +15,7 @@ const TrainingApplicationForm = () => {
     education: false,
     specialization: false,
     moreInfo: false,
+    howDidYouLearn: false,
     contacts: false,
   });
 
@@ -35,6 +36,7 @@ const TrainingApplicationForm = () => {
     mail: "",
     specialization: [],
     additionalInfo: "",
+    howDidYouLearn: "",
     files: {},
   });
 
@@ -55,14 +57,6 @@ const TrainingApplicationForm = () => {
       newErrors.mail = "Введите корректный email.";
     if (!/^\d+$/.test(formData.phone))
       newErrors.phone = "Введите корректный номер телефона.";
-
-    // if (formData.operation.trim()) {
-    //   const youtubeRegex =
-    //     /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    //   if (!youtubeRegex.test(formData.operation)) {
-    //     newErrors.operation = "Введите корректную ссылку на YouTube.";
-    //   }
-    // }
 
     if (!isConsentChecked)
       newErrors.consent =
@@ -88,29 +82,28 @@ const TrainingApplicationForm = () => {
       mail: "contacts",
       specialization: "specialization",
       additionalInfo: "moreInfo",
+      howDidYouLearn: "howDidYouLearn",
     };
     return fieldToSectionMap[field];
   };
 
   const toggleSection = (section) => {
     setOpenSections((prev) =>
-      Object.keys(prev).reduce((acc, key) => {
-        acc[key] = key === section;
-        return acc;
-      }, {})
+        Object.keys(prev).reduce((acc, key) => {
+          acc[key] = key === section;
+          return acc;
+        }, {})
     );
   };
 
   useEffect(() => {
     if (firstErrorField) {
       const sectionId = getSectionIdByField(firstErrorField);
-      if (sectionId) {
-        toggleSection(sectionId);
-      }
+      if (sectionId) toggleSection(sectionId);
 
       setTimeout(() => {
         const errorElement = document.querySelector(
-          `[name="${firstErrorField}"]`
+            `[name="${firstErrorField}"], #${firstErrorField}`
         );
         if (errorElement) {
           errorElement.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -125,12 +118,11 @@ const TrainingApplicationForm = () => {
     setErrors(formErrors);
 
     if (Object.keys(formErrors).length > 0) {
-      setFirstErrorField(Object.keys(formErrors)[0] || null);
+      setFirstErrorField(Object.keys(formErrors)[0]);
       return;
     }
 
     setFirstErrorField(null);
-
     try {
       setIsLoading(true);
       setError("");
@@ -148,6 +140,7 @@ const TrainingApplicationForm = () => {
           data.append(key, value);
         }
       }
+
       const response = await fetch("/api/send-email", {
         method: "POST",
         body: data,
@@ -180,6 +173,7 @@ const TrainingApplicationForm = () => {
       mail: "",
       specialization: [],
       additionalInfo: "",
+      howDidYouLearn: "",
       files: {},
     });
     setResetKey((prev) => prev + 1);
@@ -391,7 +385,20 @@ const TrainingApplicationForm = () => {
             </Section>
 
             <Section
-                title="5. Контакты"
+                title="5. Откуда узнали"
+                isOpen={openSections.howDidYouLearn}
+                onToggle={() => toggleSection("howDidYouLearn")}>
+              <InputGroup
+                  type="textarea"
+                  name="howDidYouLearn"
+                  placeholder="Как вы узнали о Школе Павленко?"
+                  value={formData.howDidYouLearn}
+                  onChange={handleInputChange("howDidYouLearn")}
+              />
+            </Section>
+
+            <Section
+                title="6. Контакты"
                 isOpen={openSections.contacts}
                 onToggle={() => toggleSection("contacts")}>
               <InputGroup
@@ -430,6 +437,7 @@ const TrainingApplicationForm = () => {
                 { id: "education", label: "Образование и карьера" },
                 { id: "specialization", label: "Направление обучения" },
                 { id: "moreInfo", label: "Расскажите подробнее" },
+                { id: "howDidYouLearn", label: "Откуда узнали" },
                 { id: "contacts", label: "Контакты" },
               ].map((section) => (
                   <li
