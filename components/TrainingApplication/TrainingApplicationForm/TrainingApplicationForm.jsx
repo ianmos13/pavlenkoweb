@@ -365,6 +365,8 @@ const TrainingApplicationForm = () => {
                     "Хирургия опухолей головы и шеи - Челябинск",
                     "Онкоурология - Уфа",
                     "Онкоурология - Москва",
+                    "Гепатобилириарная хирургия - Казань",
+                    "Гепатобилириарная хирургия - Новосибирск",
                   ]}
                   value={formData.specialization}
                   onChange={handleCheckboxChange}
