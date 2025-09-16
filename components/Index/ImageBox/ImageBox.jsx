@@ -3,10 +3,6 @@
 import ButtonBox from '@/components/UI/Buttons/ButtonBox/ButtonBox'
 import LearnMoreButton from '@/components/UI/Buttons/LearnMoreButton/LearnMoreButton'
 import ImageBlock from '@/components/UI/ImageBlock/ImageBlock'
-import BottomLeft from '@/public/images/image_box/bottom-left-filter.webp'
-import BottomRight from '@/public/images/image_box/bottom-right-filter.webp'
-import TopLeft from '@/public/images/image_box/top-left-filter.webp'
-import TopRight from '@/public/images/image_box/top-right-filter.webp'
 import styles from './ImageBox.module.scss'
 import {useRouter} from "next/navigation";
 
@@ -51,10 +47,10 @@ export default function ImageBox() {
 				</div>
 				<div className={styles.imageContainer}>
 					<ImageBlock
-						TopLeft={TopLeft}
-						TopRight={TopRight}
-						BottomLeft={BottomLeft}
-						BottomRight={BottomRight}
+						TopLeft={"/images/image_box/top-left-filter.webp"}
+						TopRight={"/images/image_box/top-right-filter.webp"}
+						BottomLeft={"/images/image_box/bottom-left-filter.webp"}
+						BottomRight={"/images/image_box/bottom-right-filter.webp"}
 					/>
 				</div>
 			</div>

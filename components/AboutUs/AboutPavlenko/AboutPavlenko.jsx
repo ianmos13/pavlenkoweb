@@ -1,8 +1,4 @@
 import ImageBlock from '@/components/UI/ImageBlock/ImageBlock'
-import BottomLeft from '@/public/images/bottom-left-about-us.webp'
-import BottomRight from '@/public/images/bottom-right-about-us.webp'
-import TopLeft from '@/public/images/top-left-about-us.webp'
-import TopRight from '@/public/images/top-right-about-us.webp'
 import styles from './AboutPavlenko.module.scss'
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -41,11 +37,11 @@ const AboutPavlenko = () => {
 				</div>
 				<div className={styles.imageContainer}>
 					<ImageBlock
-						TopLeft={TopLeft}
+						TopLeft={"/images/top-left-about-us.webp"}
 						TopLeftDescription={"Фото Ксении Ивановой"}
-						TopRight={TopRight}
-						BottomLeft={BottomLeft}
-						BottomRight={BottomRight}
+						TopRight={"/images/top-right-about-us.webp"}
+						BottomLeft={"/images/bottom-left-about-us.webp"}
+						BottomRight={"/images/bottom-right-about-us.webp"}
 					/>
 				</div>
 			</div>
