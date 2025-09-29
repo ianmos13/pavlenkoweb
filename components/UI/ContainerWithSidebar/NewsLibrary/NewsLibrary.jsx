@@ -44,7 +44,7 @@ const NewsLibrary = ({ news = [] }) => {
 						title={item.title}
 						body={item.body}
 						category={item.category}
-						date={item.date}
+						date={item.date.toLocaleDateString()}
 						link={item.link}
 					/>
 				))}

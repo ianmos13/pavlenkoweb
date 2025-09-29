@@ -17,11 +17,6 @@ const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
     setActiveCategory(id);
   };
 
-  function parseDate(dateStr) {
-    const [day, month, year] = dateStr.split('.').map(Number);
-    return new Date(year, month - 1, day);
-  }
-
   const getCategoryItems = (key) => {
     const categoryItems = activeCategory === null
       ? data.categories.flatMap((category) => category[key] || [])
@@ -35,7 +30,7 @@ const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
             ))) :
         (type === "NewsLibrary" ?
             useMemo(() => {
-              return [...categoryItems].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+              return [...categoryItems].sort((a, b) => b.date - a.date);
             }, [categoryItems]) :
             categoryItems)
   };

@@ -45,7 +45,7 @@ const NewsLibrary = () => {
               title: article.title,
               body: article.body,
               category: category.categorie,
-              date: new Date(article.date).toLocaleDateString(),
+              date: new Date(article.date),
               link: `/news/${article.link}`,
             })),
       })),
