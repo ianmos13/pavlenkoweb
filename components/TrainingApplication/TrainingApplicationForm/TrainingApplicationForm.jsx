@@ -9,6 +9,9 @@ import InputGroup from "./InputGroup/InputGroup";
 import ConsentSection from "./СonsentSection/СonsentSection";
 import FormPopup from "@/components/TrainingApplication/TrainingApplicationForm/FormPopup/FormPopup";
 
+const MAX_TOTAL_SIZE_MB = 30;
+const MAX_TOTAL_SIZE = MAX_TOTAL_SIZE_MB * 1024 * 1024;
+
 const TrainingApplicationForm = () => {
   const [openSections, setOpenSections] = useState({
     personal: true,
@@ -57,12 +60,23 @@ const TrainingApplicationForm = () => {
       newErrors.mail = "Введите корректный email.";
     if (!/^\d+$/.test(formData.phone))
       newErrors.phone = "Введите корректный номер телефона.";
-
+    if (isMaxFilesSize())
+      newErrors.files = `Общий размер всех файлов не должен превышать ${MAX_TOTAL_SIZE_MB} МБ`;
     if (!isConsentChecked)
       newErrors.consent =
           "Необходимо согласие на обработку персональных данных";
-
     return newErrors;
+  };
+
+  const isMaxFilesSize = () => {
+    let totalSize = 0;
+
+    for (const files of Object.values(formData.files)) {
+      Array.from(files).forEach((file) => {
+        totalSize += file.size;
+      });
+    }
+    return totalSize > MAX_TOTAL_SIZE;
   };
 
   const getSectionIdByField = (field) => {
@@ -207,6 +221,7 @@ const TrainingApplicationForm = () => {
         [fileId]: files,
       },
     }));
+    setErrors((prev) => ({ ...prev, 'files': "" }));
   };
 
   return (
@@ -351,6 +366,9 @@ const TrainingApplicationForm = () => {
                       resetKey={resetKey}
                   />
               ))}
+              {errors.files && (
+                  <p className={styles.error}>{errors.files}</p>
+              )}
             </Section>
 
             <Section

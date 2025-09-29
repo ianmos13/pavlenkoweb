@@ -24,7 +24,7 @@ export default function Page() {
         data: articlesData,
         loading,
         error,
-    } = useFetch("/articles?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+    } = useFetch("/articles?sort=date:desc&populate=*&pagination[pageSize]=9999999");
 
     useEffect(() => {
         useScrollToTop()
@@ -68,10 +68,7 @@ export default function Page() {
             case "Text":
                 return (
                     <AnimatedComponent key={`Text-${i}`}>
-                        <Text
-                            text1={component.texts?.[0] || ""}
-                            text2={component.texts?.[1] || ""}
-                        />
+                        <Text data={component.texts} />
                     </AnimatedComponent>
                 );
             case "List": {

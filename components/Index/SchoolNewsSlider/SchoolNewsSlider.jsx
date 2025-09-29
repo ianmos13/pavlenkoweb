@@ -30,7 +30,7 @@ export default function SchoolNewsSlider() {
     data: articlesData,
     loading: articlesLoading,
     error: articlesError,
-  } = useFetch("/articles?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+  } = useFetch("/articles?sort=date:desc&populate=*&pagination[pageSize]=9999999");
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const loading = categoriesLoading || articlesLoading;
@@ -39,24 +39,22 @@ export default function SchoolNewsSlider() {
   const news = React.useMemo(() => {
     if (!categoriesData || !articlesData) return [];
 
-    return categoriesData
-      .map((category) => ({
-        name: category.category,
-        article: articlesData
-          .filter((article) => article.article_categorie?.id === category.id)
-          .map((article) => ({
-            id: article.id,
-            header: article.header
-              ? `${API_URL}${article.header.url}`
-              : "/images/news_images/default-image.svg",
-            title: article.title,
-            body: article.body,
-            category: category.category,
-            date: new Date(article.date).toLocaleDateString(),
-            link: `/news/${article.link}`,
-          })),
-      }))
-      .flatMap((c) => c.article);
+    const categoriesHash = categoriesData.reduce((acc, item) => {
+        acc[item.id] = item.name;
+        return acc;
+    }, {});
+
+    return articlesData.map((article) => ({
+        id: article.id,
+        header: article.header
+            ? `${API_URL}${article.header.url}`
+            : "/images/news_images/default-image.svg",
+        title: article.title,
+        body: article.body,
+        category: categoriesHash[article.article_categorie?.id],
+        date: new Date(article.date).toLocaleDateString(),
+        link: `/news/${article.link}`,
+    }))
   }, [categoriesData, articlesData]);
 
   return (

@@ -1,9 +1,13 @@
 import styles from './Text.module.scss'
-export default function Text({ text1, text2 }) {
+export default function Text({ data }) {
 	return (
 		<section className={`${styles.container} container`}>
-			<h3>{text1}</h3>
-			<h3>{text2}</h3>
+			{data.map((text, index) => (
+				<h3
+					key={index}
+					dangerouslySetInnerHTML={{ __html: text }}
+				/>
+			))}
 		</section>
 	)
 }

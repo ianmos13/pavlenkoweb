@@ -6,7 +6,7 @@ import NewsCardItem from "@/components/UI/Cards/NewsCardItem/NewsCardItem";
 const NewsLibrary = ({ news = [] }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 6;
-	const contentRef = useRef(null); 
+	const contentRef = useRef(null);
 
 	const scrollToTop = () => {
 		if (contentRef.current) {
@@ -15,14 +15,14 @@ const NewsLibrary = ({ news = [] }) => {
 				window.scrollBy(0, -20);
 			}, 500);
 		}
-	  };
+	};
 
 	useEffect(() => {
 		setCurrentPage(1);
 	}, [news]);
 
 	if (news.length === 0) {
-		return <div>No news to display!</div>;
+		return <div>Нет новостей для отображения!</div>;
 	}
 
 	const startIndex = (currentPage - 1) * itemsPerPage;
@@ -30,12 +30,12 @@ const NewsLibrary = ({ news = [] }) => {
 
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
-		scrollToTop(); 
+		scrollToTop();
 	};
 
 	return (
 		<div className={styles.newsContainer} ref={contentRef}>
-			
+
 			<div className={styles.grid}>
 				{currentItems.map((item) => (
 					<NewsCardItem

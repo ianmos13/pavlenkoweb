@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import {useEffect, useMemo, useState} from "react";
 import styles from "./ContainerWithSidebar.module.scss";
 import NewsLibrary from "@/components/UI/ContainerWithSidebar/NewsLibrary/NewsLibrary";
 import QuestionsList from "@/components/UI/ContainerWithSidebar/QuestionsList/QuestionsList";
@@ -9,7 +9,6 @@ import VideoLibrary from "./VideoLibrary/VideoLibrary";
 import SchoolTeamLibrary from "./SchoolTeamLibrary/SchoolTeamLibrary";
 import DocumentsLibrary from "./DocumentsLibrary/DocumentsLibrary";
 import TeachingStaff from "./TeachingStaff/TeachingStaff";
-import Programs from "@/components/SpecializationAndProgram/Programs/Programs";
 
 const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -18,17 +17,27 @@ const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
     setActiveCategory(id);
   };
 
+  function parseDate(dateStr) {
+    const [day, month, year] = dateStr.split('.').map(Number);
+    return new Date(year, month - 1, day);
+  }
+
   const getCategoryItems = (key) => {
     const categoryItems = activeCategory === null
       ? data.categories.flatMap((category) => category[key] || [])
       : data.categories.find((category) => category.id === activeCategory)?.[
           key
         ] || [];
-
-    return type === "TeachingStaff" ? categoryItems.filter((value, index, self) =>
-        index === self.findIndex((t) => (
-            t.name === value.name && t.position === value.position && t.biography === value.biography
-        ))) : categoryItems
+    return type === "TeachingStaff" ?
+        categoryItems.filter((value, index, self) =>
+            index === self.findIndex((t) => (
+                t.name === value.name && t.position === value.position && t.biography === value.biography
+            ))) :
+        (type === "NewsLibrary" ?
+            useMemo(() => {
+              return [...categoryItems].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+            }, [categoryItems]) :
+            categoryItems)
   };
 
   useEffect(() => {

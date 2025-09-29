@@ -17,7 +17,7 @@ const NewsLibrary = () => {
     data: articlesData,
     loading: articlesLoading,
     error: articlesError,
-  } = useFetch("/articles?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+  } = useFetch("/articles?sort=date:desc&populate=*&pagination[pageSize]=9999999");
 
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
   const loading = categoriesLoading || articlesLoading;

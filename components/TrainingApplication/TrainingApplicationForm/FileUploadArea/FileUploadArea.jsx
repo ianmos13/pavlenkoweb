@@ -2,17 +2,36 @@
 import React, { useState, useRef } from "react";
 import styles from "./FileUploadArea.module.scss";
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
 const FileUploadArea = ({ label, fileId, onChange, resetKey }) => {
   const [files, setFiles] = useState([]);
-  const [isDragging, setIsDragging] = useState(false); 
+  const [error, setError] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef(null);
+
+  const validateFiles = (selectedFiles) => {
+    const validFiles = [];
+    let errorMessage = "";
+
+    selectedFiles.forEach((file) => {
+      if (file.size > MAX_FILE_SIZE) {
+        errorMessage = `Файл "${file.name}" превышает 10 МБ и не был добавлен.`;
+      } else {
+        validFiles.push(file);
+      }
+    });
+
+    setError(errorMessage);
+    return validFiles;
+  };
 
   const handleFileChange = (event) => {
     const selectedFiles = Array.from(event.target.files);
-    setFiles(selectedFiles.map((file) => file.name));
-    console.log("Selected files:", selectedFiles);
+    const validFiles = validateFiles(selectedFiles);
+    setFiles(validFiles.map((file) => file.name));
 
-    if (onChange) onChange(selectedFiles);
+    if (onChange) onChange(validFiles);
   };
 
   const handleClick = () => {
@@ -24,6 +43,7 @@ const FileUploadArea = ({ label, fileId, onChange, resetKey }) => {
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
+    setError("");
   };
 
   React.useEffect(() => {
@@ -45,10 +65,10 @@ const FileUploadArea = ({ label, fileId, onChange, resetKey }) => {
     setIsDragging(false);
 
     const droppedFiles = Array.from(event.dataTransfer.files);
-    setFiles(droppedFiles.map((file) => file.name));
-    console.log("Dropped files:", droppedFiles);
+    const validFiles = validateFiles(droppedFiles);
+    setFiles(validFiles.map((file) => file.name));
 
-    if (onChange) onChange(droppedFiles);
+    if (onChange) onChange(validFiles);
   };
 
   return (
@@ -83,6 +103,7 @@ const FileUploadArea = ({ label, fileId, onChange, resetKey }) => {
           <p>{files.length ? files.join(", ") : "Выбрать\u00A0файлы"}</p>
         </a>
       </div>
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };
