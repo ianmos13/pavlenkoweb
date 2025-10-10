@@ -39,6 +39,10 @@ const TrainingApplicationForm = () => {
     mail: "",
     specialization: [],
     additionalInfo: "",
+    q1: "",
+    q2: "",
+    q3: "",
+    q4: "",
     howDidYouLearn: "",
     files: {},
   });
@@ -60,6 +64,19 @@ const TrainingApplicationForm = () => {
       newErrors.mail = "Введите корректный email.";
     if (!/^\d+$/.test(formData.phone))
       newErrors.phone = "Введите корректный номер телефона.";
+    if (!formData.operation || !formData.operation.trim()) {
+      newErrors.operation = "Добавьте ссылку на видео операции.";
+    }
+    const certFiles = formData.files?.certificate;
+    const resumeFiles = formData.files?.resume;
+    if (
+        !certFiles ||
+        certFiles.length === 0 ||
+        !resumeFiles ||
+        resumeFiles.length === 0
+    ) {
+      newErrors.files = "Загрузите сертификаты и резюме (оба обязательны).";
+    }
     if (isMaxFilesSize())
       newErrors.files = `Общий размер всех файлов не должен превышать ${MAX_TOTAL_SIZE_MB} МБ`;
     if (!isConsentChecked)
@@ -91,11 +108,16 @@ const TrainingApplicationForm = () => {
       work: "education",
       rewards: "education",
       operation: "education",
+      files: "education",
       english: "education",
       phone: "contacts",
       mail: "contacts",
       specialization: "specialization",
       additionalInfo: "moreInfo",
+      q1: "moreInfo",
+      q2: "moreInfo",
+      q3: "moreInfo",
+      q4: "moreInfo",
       howDidYouLearn: "howDidYouLearn",
     };
     return fieldToSectionMap[field];
@@ -141,15 +163,20 @@ const TrainingApplicationForm = () => {
       setIsLoading(true);
       setError("");
       const data = new FormData();
+      const fileNames = { certificate: [], resume: [], doc: [] };
       for (const [key, value] of Object.entries(formData)) {
         if (key === "files") {
           for (const i of ["certificate", "doc", "resume"]) {
             if (value[i]) {
               Array.from(value[i]).forEach((file) => {
                 data.append("files", file);
+                fileNames[i].push(file.name);
               });
             }
           }
+          data.append("files_certificate", fileNames.certificate.join(", "));
+          data.append("files_resume", fileNames.resume.join(", "));
+          data.append("files_doc", fileNames.doc.join(", "));
         } else {
           data.append(key, value);
         }
@@ -187,6 +214,10 @@ const TrainingApplicationForm = () => {
       mail: "",
       specialization: [],
       additionalInfo: "",
+      q1: "",
+      q2: "",
+      q3: "",
+      q4: "",
       howDidYouLearn: "",
       files: {},
     });
@@ -221,7 +252,7 @@ const TrainingApplicationForm = () => {
         [fileId]: files,
       },
     }));
-    setErrors((prev) => ({ ...prev, 'files': "" }));
+    setErrors((prev) => ({ ...prev, files: "" }));
   };
 
   return (
@@ -367,7 +398,9 @@ const TrainingApplicationForm = () => {
                   />
               ))}
               {errors.files && (
-                  <p className={styles.error}>{errors.files}</p>
+                <p id="files" className={styles.error}>
+                  {errors.files}
+                </p>
               )}
             </Section>
 
@@ -395,6 +428,38 @@ const TrainingApplicationForm = () => {
                 title="4. Расскажите подробнее"
                 isOpen={openSections.moreInfo}
                 onToggle={() => toggleSection("moreInfo")}>
+              <p className={styles.hint}>
+                Дайте развернутые ответы на вопросы ниже. Желательно, чтобы текст
+                ответа на каждый вопрос содержал от 150 до 300 слов
+              </p>
+              <InputGroup
+                  type="textarea"
+                  name="q1"
+                  placeholder="Чем заинтересовала данная программа обучения? Какие у вас ожидания от обучения? Почему вам важно пройти эту программу?"
+                  value={formData.q1}
+                  onChange={handleInputChange("q1")}
+              />
+              <InputGroup
+                  type="textarea"
+                  name="q2"
+                  placeholder="Какие вы ставите перед собой цели и задачи в рамках обучения? Какие навыки и компетенции хотите развить и для чего?"
+                  value={formData.q2}
+                  onChange={handleInputChange("q2")}
+              />
+              <InputGroup
+                  type="textarea"
+                  name="q3"
+                  placeholder="Как вы видите свое профессиональное и карьерное развитие через 3, 5, 10 лет? Опишите предпочитаемые пути развития вашей карьеры"
+                  value={formData.q3}
+                  onChange={handleInputChange("q3")}
+              />
+              <InputGroup
+                  type="textarea"
+                  name="q4"
+                  placeholder="Назовите ваши ключевые ценности и поясните их. Почему именно вас должны выбрать среди других соискателей?"
+                  value={formData.q4}
+                  onChange={handleInputChange("q4")}
+              />
               <InputGroup
                   type="textarea"
                   name="additionalInfo"

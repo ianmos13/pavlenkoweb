@@ -60,11 +60,18 @@ export async function POST(req) {
     const phone = formData.get("phone") || "";
     const mail = formData.get("mail") || "";
     const additionalInfo = formData.get("additionalInfo") || "";
+    const q1 = formData.get("q1") || "";
+    const q2 = formData.get("q2") || "";
+    const q3 = formData.get("q3") || "";
+    const q4 = formData.get("q4") || "";
     const howDidYouLearn = formData.get("howDidYouLearn") || "";
 
     const specialization = formData.getAll("specialization");
 
     const allFiles = formData.getAll("files");
+    const filesCertificate = formData.get("files_certificate") || "";
+    const filesResume = formData.get("files_resume") || "";
+    const filesDoc = formData.get("files_doc") || "";
 
     const attachments = [];
     for (const file of allFiles) {
@@ -104,8 +111,19 @@ export async function POST(req) {
 Телефон: ${phone}
 Email: ${mail}
 Выбранные направления: ${specialization.join(", ")}
+
+Чем заинтересовала данная программа обучения: ${q1}
+Какие вы ставите перед собой цели и задачи в рамках обучения: ${q2}
+Как вы видите свое профессиональное и карьерное развитие через 3, 5, 10 лет: ${q3}
+Назовите ваши ключевые ценности и поясните их: ${q4}
+
 Доп. информация: ${additionalInfo}
 Как узнали о Школе Павленко: ${howDidYouLearn}
+\n
+Прикрепленные файлы:
+- Сертификаты: ${filesCertificate || "—"}
+- Резюме: ${filesResume || "—"}
+- Прочие документы: ${filesDoc || "—"}
 `;
 
     const mailOptions = {
