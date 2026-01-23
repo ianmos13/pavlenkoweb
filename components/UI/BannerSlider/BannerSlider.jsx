@@ -49,7 +49,7 @@ export default function BannerSlider(props) {
                 loop={true}
                 modules={[Autoplay, EffectFade]}
                 autoplay={{
-                  delay: 3000,
+                  delay: 10000,
                   disableOnInteraction: false,
                 }}
             >
