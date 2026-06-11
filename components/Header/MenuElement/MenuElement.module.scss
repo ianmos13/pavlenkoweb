@@ -3,7 +3,10 @@
 .container {
     position: relative;
     padding: 4px;
-
+    @media (max-width: 1024px) {
+        padding: 0;
+        width: 100%;
+    }
     .link {
         display: flex;
         flex-direction: row;
@@ -11,12 +14,26 @@
         align-items: center;
         gap: 9px;
         cursor: pointer;
-
-        .linkImage {
+        @media (max-width: 1024px) {
+            padding: 15px 4px;
+            width: 100%;
+        }
+        span {
+            @media (max-width: 1024px) {
+                font-size: $p-desktop-primary-size;
+                line-height: $p-desktop-primary-line-height;
+            }
+        }
+        .icon {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("/images/icons/arrow-down-dark.svg");
+            transition: opacity 0.5s ease-in-out;
             width: 16px;
             height: 16px;
-            padding: 2px;
-            transition: opacity 0.5s ease-in-out;
+        }
+        .icon.active {
+            background-image: url("/images/icons/arrow-up-dark.svg");
         }
 
         &:hover {
@@ -24,7 +41,7 @@
                 color: $secondary-blue-2;
             }
 
-            img {
+            svg {
                 filter: invert(43%) sepia(19%) saturate(508%) hue-rotate(153deg) brightness(95%) contrast(93%);
             }
         }
@@ -38,20 +55,43 @@
         left: 0;
         top: 100%;
         z-index: 1001;
-
+        @media (max-width: 1024px) {
+            position: relative;
+            width: 100%;
+            padding: 0;
+            display: grid;
+            grid-template-rows: 0fr;
+            transition:
+                    grid-template-rows 0.5s ease-out,
+                    visibility 0.5s linear,
+                    opacity 0.5s cubic-bezier(0.5, 0.12, 0.46, 0.88);
+        }
         .dropdownMenu {
             overflow: hidden;
             width: 320px;
             border-radius: 16px;
             padding: 12px;
-
+            @media (max-width: 1024px) {
+                width: 100%;
+                padding: 0;
+            }
             .dropdownElement {
                 list-style: none;
                 padding: 4px;
-
+                @media (max-width: 1024px) {
+                    padding: 0;
+                    height: 56px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
                 .link {
                     text-decoration: none;
-
+                    @media (max-width: 1024px) {
+                        padding: 2px 4px 2px 16px;
+                        max-width: 320px;
+                    }
                     &:hover {
                         span {
                             color: $secondary-blue-2;
@@ -64,6 +104,10 @@
         &.active {
             opacity: 1;
             visibility: visible;
+            @media (max-width: 1024px) {
+                margin-bottom: 16px;
+                grid-template-rows: 1fr;
+            }
         }
     }
 
@@ -73,15 +117,29 @@
     .link {
         span {
             color: $primary-blue;
+            @media (max-width: 739px) {
+                color: $primary-blue;
+            }
         }
     }
 
     .dropdownMenu {
         background-color: $primary-blue;
-
+        @media (max-width: 1024px) {
+            background-color: $neutral-white;
+        }
+        @media (max-width: 739px) {
+            background-color: $neutral-white;
+        }
         .link {
             span {
                 color: $neutral-white;
+                @media (max-width: 1024px) {
+                    color: $primary-blue;
+                }
+                @media (max-width: 739px) {
+                    color: $primary-blue;
+                }
             }
         }
 
@@ -93,14 +151,25 @@
         span {
             color: $neutral-white;
         }
+        .icon {
+            background-image: url("/images/icons/arrow-down.svg");
+        }
+        .icon.active {
+            background-image: url("/images/icons/arrow-up.svg");
+        }
     }
 
     .dropdownMenu {
         background-color: $secondary-ultra-lite-blue;
-
+        @media (max-width: 1024px) {
+            background-color: $primary-blue;
+        }
         .link {
             span {
                 color: $primary-blue;
+                @media (max-width: 1024px) {
+                    color: $neutral-white;
+                }
             }
         }
 
@@ -111,15 +180,29 @@
     .link {
         span {
             color: $primary-blue;
+            @media (max-width: 739px) {
+                color: $primary-blue;
+            }
         }
     }
 
     .dropdownMenu {
         background-color: $primary-blue;
-
+        @media (max-width: 1024px) {
+            background-color: $secondary-ultra-lite-blue;
+        }
+        @media (max-width: 739px) {
+            background-color: $neutral-grey;
+        }
         .link {
             span {
                 color: $neutral-white;
+                @media (max-width: 1024px) {
+                    color: $primary-blue;
+                }
+                @media (max-width: 739px) {
+                    color: $primary-blue;
+                }
             }
         }
     }
@@ -129,110 +212,61 @@
     .link {
         span {
             color: $primary-blue;
+            @media (max-width: 739px) {
+                color: $primary-blue;
+            }
         }
     }
 
     .dropdownMenu {
         background-color: $primary-blue;
-
+        @media (max-width: 739px) {
+            background-color: $secondary-ultra-lite-blue;
+        }
         .link {
             span {
                 color: $neutral-white;
+                @media (max-width: 739px) {
+                    color: $primary-blue;
+                }
             }
         }
     }
 }
 
-@media (max-width: 1024px) {
-    .container {
-        padding: 0;
-        width: 100%;
-
-        .link {
-            padding: 15px 4px;
-            width: 100%;
-
-            span {
-                font-size: $p-desktop-primary-size;
-                line-height: $p-desktop-primary-line-height;
+.lightAndDarkContainer {
+    .link {
+        span {
+            color: $primary-blue;
+            @media (max-width: 739px) {
+                color: $neutral-white;
             }
         }
-
-        .dropdownMenuWrapper {
-            position: relative;
-            width: 100%;
-            padding: 0;
-            display: grid;
-            grid-template-rows: 0fr;
-            transition:
-                grid-template-rows 0.5s ease-out,
-                visibility 0.5s linear,
-                opacity 0.5s cubic-bezier(0.5, 0.12, 0.46, 0.88);
-
-            .dropdownMenu {
-                width: 100%;
-                padding: 0;
-
-                .dropdownElement {
-                    padding: 0;
-                    height: 56px;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
-
-                    .link {
-                        padding: 2px 4px 2px 16px;
-                        max-width: 320px;
-                    }
-                }
+        .icon {
+            @media (max-width: 739px) {
+                background-image: url("/images/icons/arrow-down.svg");
             }
-
-            &.active {
-                margin-bottom: 16px;
-                grid-template-rows: 1fr;
+        }
+        .icon.active {
+            @media (max-width: 739px) {
+                background-image: url("/images/icons/arrow-up.svg");
             }
         }
     }
 
-    .lightContainer {
-        .dropdownMenu {
-            background-color: $neutral-white;
-
-            .link {
-                span {
-                    color: $primary-blue;
-                }
-            }
-
-        }
-    }
-
-    .darkContainer {
-        .dropdownMenu {
-            background-color: $primary-blue;
-
-            .link {
-                span {
-                    color: $neutral-white;
-                }
-            }
-        }
-    }
-
-    .greyContainer {
-        .dropdownMenu {
+    .dropdownMenu {
+        background-color: $primary-blue;
+        @media (max-width: 739px) {
             background-color: $secondary-ultra-lite-blue;
-
-            .link {
-                span {
+        }
+        .link {
+            span {
+                color: $neutral-white;
+                @media (max-width: 739px) {
                     color: $primary-blue;
                 }
             }
-
         }
-    }
-}
 
-@media (max-width: 739px) {
+    }
 }

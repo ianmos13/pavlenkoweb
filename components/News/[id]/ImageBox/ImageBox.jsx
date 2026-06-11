@@ -1,12 +1,12 @@
 import ImageBlock from '@/components/UI/ImageBlock/ImageBlock'
 import styles from './ImageBox.module.scss'
 export default function ImageBox({
-									 textData,
-									 TopLeft,
-									 TopRight,
-									 BottomLeft,
-									 BottomRight,
-								 }) {
+	textData,
+	TopLeft,
+	TopRight,
+	BottomLeft,
+	BottomRight,
+}) {
 	return (
 		<section className={`${styles.container} container`}>
 			<div className={styles.textContainer}>

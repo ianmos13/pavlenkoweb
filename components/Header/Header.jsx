@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -8,64 +8,82 @@ import Menu from "@/components/Header/Menu/Menu";
 
 import Logo from "@/public/images/logo.svg";
 import LogoDark from "@/public/images/logo-dark.svg";
-import Burger from "@/public/images/icons/burger.svg";
-import BurgerDark from "@/public/images/icons/burger-dark.svg";
-import CloseIcon from "@/public/images/icons/close-icon.svg";
-import CloseIconDark from "@/public/images/icons/close-icon-dark.svg";
 import useIsPath501 from "@/services/hook/useIsPath501";
 
 import styles from "./Header.module.scss";
 import { useSelector } from "react-redux";
+import {useMediaQuery} from "react-responsive";
 
 const darkPages = [
   "/about-us",
   "/training-application-form",
   "/specialization-and-program",
-    "/information-about-educational-organization"
+  "/information-about-educational-organization",
 ];
-const ultraLitePages = ["/biography","/4surgeonsclub", "/video-atlas", "/for-partners", "/intelligent-volunteers"];
+const ultraLitePages = [
+  "/biography",
+  "/4surgeonsclub",
+  "/video-atlas",
+  "/for-partners",
+  "/intelligent-volunteers",
+];
 
 export default function Header() {
   const isPath501 = useIsPath501();
   const pathname = usePathname();
-  const bannerTheme = useSelector(state => state.header?.theme || 'dark')
-
+  const bannerTheme = useSelector((state) => state.header?.theme || "dark");
+  const isMobile = useMediaQuery({ query: '(max-width: 739px)' });
   const defaultTheme =
-      pathname === "/" || darkPages.includes(pathname)
-          ? "dark"
-          : ultraLitePages.includes(pathname)
-              ? "ultraLite"
-              : "light";
+    darkPages.includes(pathname)
+      ? "dark"
+      : ultraLitePages.includes(pathname)
+      ? "ultraLite"
+      : "light";
 
-  const [theme, setTheme] = useState(defaultTheme)
+  const [theme, setTheme] = useState(defaultTheme);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-  const [burgerImageSrc, setBurgerImageSrc] = useState(Burger);
   const burgerButtonRef = useRef(null);
 
   useEffect(() => {
-    if(pathname === "/") {
-      setTheme(bannerTheme ? bannerTheme : defaultTheme)
+    if (pathname === "/") {
+      setTheme(bannerTheme ? bannerTheme : defaultTheme);
     } else {
-      setTheme(defaultTheme)
+      setTheme(defaultTheme);
     }
-  }, [bannerTheme])
+  }, [bannerTheme]);
 
   useEffect(() => {
-    setTheme(defaultTheme)
-  }, [pathname])
-
+    setTheme(defaultTheme);
+  }, [pathname]);
 
   useEffect(() => {
-    if(theme === "dark") isBurgerOpen ? setBurgerImageSrc(CloseIcon) : setBurgerImageSrc(Burger)
-    else isBurgerOpen ? setBurgerImageSrc(CloseIconDark) : setBurgerImageSrc(BurgerDark)
-  }, [theme]);
+    if (isMobile) {
+      if (isBurgerOpen) {
+        const scrollY = window.scrollY;
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.left = "0";
+        document.body.style.right = "0";
+        document.body.style.width = "100%";
+      } else {
+        const scrollY = document.body.style.top;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      }
+    }
+  }, [isBurgerOpen]);
 
   return !isPath501 ? (
     <header className={`${styles.container} ${styles[`${theme}Container`]}`}>
       <div className={styles.headerBody}>
         <Link href="/" className={styles.logo}>
           <Image
-            src={theme === "dark" ? Logo : LogoDark}
+            src={(theme === "dark" || theme === "lightAndDark" && isMobile ) ? Logo : LogoDark}
             alt="Logo"
             className={styles.image}
           />
@@ -83,8 +101,9 @@ export default function Header() {
           <button
             ref={burgerButtonRef}
             className={styles.burgerButton}
-            onClick={() => setIsBurgerOpen(!isBurgerOpen)}>
-            <Image src={burgerImageSrc} alt="" />
+            onClick={() => setIsBurgerOpen(!isBurgerOpen)}
+          >
+            <svg className={`${styles.burgerIcon} ${isBurgerOpen ? styles.active : '' }`} />
           </button>
         </div>
       </div>

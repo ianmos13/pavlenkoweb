@@ -1,8 +1,10 @@
 "use client";
+
 import React from "react";
-import BannerSlider from "@/components/UI/BannerSlider/BannerSlider";
+
 import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
+import BannerSlider from "@/components/Index/BannersSection/BannerSlider/BannerSlider";
 
 const BannersSection = () => {
 
@@ -15,7 +17,7 @@ const BannersSection = () => {
 
     return bannersData.map((banner) => ({
       id: banner.id,
-      background: banner.theme?.name || "dark",
+      background: banner.theme?.name || "lightAndDark",
       headerData: banner.headerData ? banner.headerData.map((header, index) => ({
         id: index,
         text: header.text,
@@ -26,6 +28,8 @@ const BannersSection = () => {
         text: card.text,
         title: card.title,
       })) : [],
+      imageOverview: banner.imageOverview,
+      listData: banner.listData || [],
       image: banner.image?.url ? `${API_URL}${banner.image.url}` : "/images/default-banner.png",
       body: banner.body,
       buttonText: banner.buttonText,
@@ -41,7 +45,7 @@ const BannersSection = () => {
     <div>
       <Loader loading={loading}>
         {formattedBannersData.length > 0 ? (
-          <BannerSlider data={formattedBannersData} size={"large"} theme={"dark"} />
+          <BannerSlider data={formattedBannersData} size={"large"} theme={"lightAndDark"} />
         ) : (
           <p>Нет данных для отображения баннеров.</p>
         )}

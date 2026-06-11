@@ -24,15 +24,15 @@ const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
           key
         ] || [];
     return type === "TeachingStaff" ?
-        categoryItems.filter((value, index, self) =>
-            index === self.findIndex((t) => (
-                t.name === value.name && t.position === value.position && t.biography === value.biography
-            ))) :
+      categoryItems.filter((value, index, self) =>
+        index === self.findIndex((t) => (
+          t.name === value.name && t.position === value.position && t.biography === value.biography
+        ))) :
         (type === "NewsLibrary" ?
             useMemo(() => {
               return [...categoryItems].sort((a, b) => b.date - a.date);
             }, [categoryItems]) :
-            categoryItems)
+        categoryItems)
   };
 
   useEffect(() => {

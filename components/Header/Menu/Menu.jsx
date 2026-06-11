@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Важно! Используйте next/navigation
-
+import { useRouter } from 'next/navigation';
 import MenuElement from '@/components/Header/MenuElement/MenuElement';
 import ButtonBox from '@/components/UI/Buttons/ButtonBox/ButtonBox';
 import SupportButton from '@/components/UI/Buttons/SupportButton/SupportButton';

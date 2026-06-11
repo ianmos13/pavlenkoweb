@@ -20,15 +20,25 @@
         height: 32px;
         padding: 8px;
 
-        img {
+        .icon {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("/images/icons/heart.svg");
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
             width: 100%;
             height: 100%;
+        }
+        .icon.hovering {
+            background-image: url("/images/icons/heart-filled-white.svg");
         }
     }
 
     &:active {
         .buttonImage {
             padding: 4px;
+        }
+        .icon {
+            transform: scale(1.35);
         }
     }
 }
@@ -56,12 +66,49 @@
         color: $primary-blue;
     }
 
+    .buttonImage {
+        .icon {
+            background-image: url("/images/icons/heart-dark.svg");
+        }
+        .icon.hovering {
+            background-image: url("/images/icons/heart-filled-dark.svg");
+        }
+    }
+
     &:hover {
         background-color: $neutral-white;
     }
 
     &:active {
         background-color: $neutral-grey;
+    }
+}
+
+.lightAndDarkContainer {
+    background-color: $primary-blue;
+
+    @media (max-width: 739px) {
+        background-color: $secondary-ultra-lite-blue;
+    }
+    span {
+        color: $neutral-white;
+        @media (max-width: 739px) {
+            color: $primary-blue;
+        }
+    }
+
+    &:hover {
+        background-color: $secondary-blue-2;
+        @media (max-width: 739px) {
+            background-color: $neutral-white;
+        }
+    }
+
+    &:active {
+        background-color: $neutral-black;
+        @media (max-width: 739px) {
+            background-color: $neutral-grey;
+        }
     }
 }
 
@@ -110,11 +157,5 @@
 
     &:disabled {
         background-color: $neutral-grey;
-    }
-}
-
-@media (max-width: 739px) {
-    .buttonContainer {
-
     }
 }

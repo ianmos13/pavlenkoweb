@@ -8,10 +8,11 @@ import Image from "next/image";
 import styles from "./EducationApplication.module.scss";
 import { useRouter } from "next/navigation";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
+
 const data = {
   arrayList: [
     {
-      text: "Открыт набор по программам \"Онкоурология\" , \"Гепатобилиарная хирургия\" и \"Хирургия опухолей головы и шеи\""
+      text: "Открыт набор по программам \"Онкоурология\" , \"Гепатобилиарная хирургия\" и \"Хирургия опухолей головы и шеи\"",
     },
     // {
     //   text: "Скоро откроется прием заявок на обучение по специализации \"Хирургия опухолей головы и шеи\"",

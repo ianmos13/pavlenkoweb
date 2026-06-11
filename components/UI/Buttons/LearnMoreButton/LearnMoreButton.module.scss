@@ -4,7 +4,14 @@
   min-width: 320px;
   width: min-content;
   height: 72px;
-
+  @media (max-width: 1024px) {
+    min-width: 312px;
+  }
+  @media (max-width: 739px) {
+    min-width: 256px;
+    width: calc(100% - 2px);
+    height: 56px;
+  }
   & > div {
     position: relative;
     width: 100%;
@@ -47,6 +54,15 @@
   transition: background-color 0.3s ease-out;
   cursor: pointer;
 
+  @media (max-width: 1024px) {
+    min-width: 310px;
+  }
+  @media (max-width: 739px) {
+    min-width: 256px;
+    width: calc(100% - 2px);
+    height: 54px;
+    border-radius: 12px;
+  }
   .buttonText {
     color: $primary-blue;
   }
@@ -269,27 +285,5 @@
         background-color: #e1e5ed;
       }
     }
-  }
-}
-@media (max-width: 1024px) {
-  .container {
-    min-width: 312px;
-  }
-
-  .buttonContainer {
-    min-width: 310px;
-  }
-}
-
-@media (max-width: 739px) {
-  .container {
-    min-width: 288px;
-    width: calc(100% - 2px);
-    height: 64px;
-  }
-  .buttonContainer {
-    min-width: 286px;
-    width: calc(100% - 2px);
-    height: 62px;
   }
 }

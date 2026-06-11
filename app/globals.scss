@@ -24,7 +24,7 @@ body {
 }
 .custom-cluster-icon {
   position: relative;
-  width: 50px; 
+  width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@ body {
 }
 
 .custom-cluster-icon img {
-  width: 100%; 
+  width: 100%;
   height: 100%;
 }
 
@@ -44,7 +44,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -80%);
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .swiper-slide-active .feedback-container .feedbackImageContainer {
@@ -95,7 +95,8 @@ h2 {
   color: $h2-desktop-primary-color;
 }
 
-h2.secondary {
+h2.secondary,
+h2 .secondary {
   font-family: $h2-desktop-secondary-font;
   font-weight: $h2-desktop-secondary-weight;
   font-size: $h2-desktop-secondary-size;
@@ -112,7 +113,8 @@ h3 {
   //margin-bottom: $h3-desktop-primary-margin-bottom;
 }
 
-h3.secondary {
+h3.secondary,
+h3 .secondary {
   font-family: $h3-desktop-secondary-font;
   font-weight: $h3-desktop-secondary-weight;
   font-size: $h3-desktop-secondary-size;
@@ -240,13 +242,6 @@ button {
     line-height: $h1-tablet-primary-line-height;
     color: $h1-tablet-primary-color;
   }
-  h1 {
-    font-family: $h1-tablet-primary-font;
-    font-weight: $h1-tablet-primary-weight;
-    font-size: $h1-tablet-primary-size;
-    line-height: $h1-tablet-primary-line-height;
-    color: $h1-tablet-primary-color;
-  }
 
   h1.secondary,
   h1 .secondary {
@@ -264,15 +259,9 @@ button {
     line-height: $h2-tablet-primary-line-height;
     color: $h2-tablet-primary-color;
   }
-  h2 {
-    font-family: $h2-tablet-primary-font;
-    font-weight: $h2-tablet-primary-weight;
-    font-size: $h2-tablet-primary-size;
-    line-height: $h2-tablet-primary-line-height;
-    color: $h2-tablet-primary-color;
-  }
 
-  h2.secondary {
+  h2.secondary,
+  h2 .secondary {
     font-family: $h2-tablet-secondary-font;
     font-weight: $h2-tablet-secondary-weight;
     font-size: $h2-tablet-secondary-size;
@@ -289,7 +278,8 @@ button {
     //margin-bottom: $h3-tablet-primary-margin-bottom;
   }
 
-  h3.secondary {
+  h3.secondary,
+  h3 .secondary {
     font-family: $h3-tablet-secondary-font;
     font-weight: $h3-tablet-secondary-weight;
     font-size: $h3-tablet-secondary-size;
@@ -315,13 +305,6 @@ button {
     //margin-bottom: $h4-tablet-primary-margin-bottom;
   }
 
-  a {
-    font-family: $p-tablet-primary-font;
-    font-weight: $p-tablet-primary-weight;
-    font-size: $p-tablet-primary-size;
-    line-height: $p-tablet-primary-line-height;
-    color: $p-tablet-primary-color;
-  }
   a {
     font-family: $p-tablet-primary-font;
     font-weight: $p-tablet-primary-weight;
@@ -383,13 +366,6 @@ button {
     line-height: $p-tablet-small-link-line-height;
     color: $p-tablet-small-link-color;
   }
-  a .smallLink {
-    font-family: $p-tablet-small-link-font;
-    font-weight: $p-tablet-small-link-weight;
-    font-size: $p-tablet-small-link-size;
-    line-height: $p-tablet-small-link-line-height;
-    color: $p-tablet-small-link-color;
-  }
 
   p.primarySmall {
     font-family: $p-tablet-primary-small-font;
@@ -417,27 +393,12 @@ button {
     text-align: $button-tablet-text-align;
     color: $button-tablet-color;
   }
-  button {
-    font-family: $button-tablet-font;
-    font-weight: $button-tablet-weight;
-    font-size: $button-tablet-size;
-    line-height: $button-tablet-line-height;
-    text-align: $button-tablet-text-align;
-    color: $button-tablet-color;
-  }
 }
 
 @media (max-width: 739px) {
   container {
   }
 
-  h1 {
-    font-family: $h1-mobile-primary-font;
-    font-weight: $h1-mobile-primary-weight;
-    font-size: $h1-mobile-primary-size;
-    line-height: $h1-mobile-primary-line-height;
-    color: $h1-mobile-primary-color;
-  }
   h1 {
     font-family: $h1-mobile-primary-font;
     font-weight: $h1-mobile-primary-weight;
@@ -462,15 +423,9 @@ button {
     line-height: $h2-mobile-primary-line-height;
     color: $h2-mobile-primary-color;
   }
-  h2 {
-    font-family: $h2-mobile-primary-font;
-    font-weight: $h2-mobile-primary-weight;
-    font-size: $h2-mobile-primary-size;
-    line-height: $h2-mobile-primary-line-height;
-    color: $h2-mobile-primary-color;
-  }
 
-  h2.secondary {
+  h2.secondary,
+  h2 .secondary {
     font-family: $h2-mobile-secondary-font;
     font-weight: $h2-mobile-secondary-weight;
     font-size: $h2-mobile-secondary-size;
@@ -487,7 +442,8 @@ button {
     //margin-bottom: $h3-mobile-primary-margin-bottom;
   }
 
-  h3.secondary {
+  h3.secondary,
+  h3 .secondary {
     font-family: $h3-mobile-secondary-font;
     font-weight: $h3-mobile-secondary-weight;
     font-size: $h3-mobile-secondary-size;
@@ -513,13 +469,6 @@ button {
     //margin-bottom: $h4-mobile-primary-margin-bottom;
   }
 
-  a {
-    font-family: $p-mobile-primary-font;
-    font-weight: $p-mobile-primary-weight;
-    font-size: $p-mobile-primary-size;
-    line-height: $p-mobile-primary-line-height;
-    color: $p-mobile-primary-color;
-  }
   a {
     font-family: $p-mobile-primary-font;
     font-weight: $p-mobile-primary-weight;
@@ -581,13 +530,6 @@ button {
     line-height: $p-mobile-small-link-line-height;
     color: $p-mobile-small-link-color;
   }
-  a .smallLink {
-    font-family: $p-mobile-small-link-font;
-    font-weight: $p-mobile-small-link-weight;
-    font-size: $p-mobile-small-link-size;
-    line-height: $p-mobile-small-link-line-height;
-    color: $p-mobile-small-link-color;
-  }
 
   p.primarySmall {
     font-family: $p-mobile-primary-small-font;
@@ -607,14 +549,6 @@ button {
     //margin-bottom: $label-mobile-margin-bottom;
   }
 
-  button {
-    font-family: $button-mobile-font;
-    font-weight: $button-mobile-weight;
-    font-size: $button-mobile-size;
-    line-height: $button-mobile-line-height;
-    text-align: $button-mobile-text-align;
-    color: $button-mobile-color;
-  }
   button {
     font-family: $button-mobile-font;
     font-weight: $button-mobile-weight;

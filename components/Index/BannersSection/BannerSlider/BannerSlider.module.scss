@@ -1,0 +1,47 @@
+@import "/styles/variables";
+
+.container {
+  width: 100%;
+  padding: 16px 56px;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 16px 32px;
+  }
+  @media (max-width: 739px) {
+    padding: 0 16px;
+    border-radius: 0 0 24px 24px;
+  }
+  .swiperContainer {
+    max-width: 1328px;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    @media (max-width: 1024px) {
+      max-width: 1024px;
+    }
+    @media (max-width: 739px) {
+      max-width: unset;
+    }
+  }
+}
+
+.darkContainer {
+  background-color: $primary-blue;
+}
+
+.lightContainer {
+  background-color: $neutral-white;
+}
+
+.greyContainer {
+  background-color: $neutral-grey;
+}
+
+.lightAndDarkContainer {
+  background-color: $neutral-white;
+  @media (max-width: 739px) {
+    background-color: $primary-blue;
+  }
+}

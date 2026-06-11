@@ -70,10 +70,10 @@ const TrainingApplicationForm = () => {
     const certFiles = formData.files?.certificate;
     const resumeFiles = formData.files?.resume;
     if (
-        !certFiles ||
-        certFiles.length === 0 ||
-        !resumeFiles ||
-        resumeFiles.length === 0
+      !certFiles ||
+      certFiles.length === 0 ||
+      !resumeFiles ||
+      resumeFiles.length === 0
     ) {
       newErrors.files = "Загрузите сертификаты и резюме (оба обязательны).";
     }
@@ -81,7 +81,7 @@ const TrainingApplicationForm = () => {
       newErrors.files = `Общий размер всех файлов не должен превышать ${MAX_TOTAL_SIZE_MB} МБ`;
     if (!isConsentChecked)
       newErrors.consent =
-          "Необходимо согласие на обработку персональных данных";
+        "Необходимо согласие на обработку персональных данных";
     return newErrors;
   };
 
@@ -125,10 +125,10 @@ const TrainingApplicationForm = () => {
 
   const toggleSection = (section) => {
     setOpenSections((prev) =>
-        Object.keys(prev).reduce((acc, key) => {
-          acc[key] = key === section;
-          return acc;
-        }, {})
+      Object.keys(prev).reduce((acc, key) => {
+        acc[key] = key === section;
+        return acc;
+      }, {})
     );
   };
 
@@ -139,7 +139,7 @@ const TrainingApplicationForm = () => {
 
       setTimeout(() => {
         const errorElement = document.querySelector(
-            `[name="${firstErrorField}"], #${firstErrorField}`
+          `[name="${firstErrorField}"], #${firstErrorField}`
         );
         if (errorElement) {
           errorElement.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -239,8 +239,8 @@ const TrainingApplicationForm = () => {
     setFormData((prev) => ({
       ...prev,
       specialization: prev.specialization.includes(value)
-          ? prev.specialization.filter((spec) => spec !== value)
-          : [...prev.specialization, value],
+        ? prev.specialization.filter((spec) => spec !== value)
+        : [...prev.specialization, value],
     }));
   };
 
@@ -256,288 +256,288 @@ const TrainingApplicationForm = () => {
   };
 
   return (
-      <div className={styles.wrapper}>
-        {isPopupVisible && <FormPopup onClose={() => setIsPopupVisible(false)} />}
-        <h2>Подробно заполните представленные ниже пункты</h2>
+    <div className={styles.wrapper}>
+      {isPopupVisible && <FormPopup onClose={() => setIsPopupVisible(false)} />}
+      <h2>Подробно заполните представленные ниже пункты</h2>
 
-        <form className={styles.wrapperInner} onSubmit={handleSubmit}>
-          <div className={styles.container}>
-            <Section
-                title="1. Персональные данные"
-                isOpen={openSections.personal}
-                onToggle={() => toggleSection("personal")}>
-              <InputGroup
-                  name="name"
-                  placeholder="ФИО"
-                  value={formData.name}
-                  onChange={handleInputChange("name")}
-              />
-              {errors.name && <p className={styles.error}>{errors.name}</p>}
-
-              <InputGroup
-                  type="number"
-                  name="age"
-                  placeholder="Возраст"
-                  value={formData.age}
-                  onChange={handleInputChange("age")}
-              />
-              {errors.age && <p className={styles.error}>{errors.age}</p>}
-
-              <InputGroup
-                  name="city"
-                  placeholder="Город проживания"
-                  value={formData.city}
-                  onChange={handleInputChange("city")}
-              />
-              {errors.city && <p className={styles.error}>{errors.city}</p>}
-
-              <RadioGroup
-                  label="Гражданство России"
-                  name="citizenship"
-                  options={[
-                    { value: "yes", label: "Да" },
-                    { value: "no", label: "Нет" },
-                  ]}
-                  onChange={handleInputChange("citizenship")}
-                  selectedValue={formData.citizenship}
-              />
-
-              <RadioGroup
-                  label="Семейное положение"
-                  name="family"
-                  options={[
-                    { value: "free", label: "Холост" },
-                    { value: "substitute", label: "Замужем(женат)" },
-                    { value: "divorce", label: "В разводе" },
-                  ]}
-                  onChange={handleInputChange("family")}
-                  selectedValue={formData.family}
-              />
-
-              <RadioGroup
-                  label="Дети"
-                  name="children"
-                  options={[
-                    { value: "no", label: "Нет" },
-                    { value: "one", label: "1 ребенок" },
-                    { value: "morethanone", label: "более 1 ребенка" },
-                  ]}
-                  onChange={handleInputChange("children")}
-                  selectedValue={formData.children}
-              />
-            </Section>
-
-            <Section
-                title="2. Образование и карьера"
-                isOpen={openSections.education}
-                onToggle={() => toggleSection("education")}>
-              <InputGroup
-                  type="textarea"
-                  name="education"
-                  placeholder="Образование"
-                  value={formData.education}
-                  onChange={handleInputChange("education")}
-              />
-              <InputGroup
-                  type="textarea"
-                  name="work"
-                  placeholder="Место работы, должность"
-                  value={formData.work}
-                  onChange={handleInputChange("work")}
-              />
-              <InputGroup
-                  type="textarea"
-                  name="rewards"
-                  placeholder="Значимые достижения в карьере, награды, знаки отличия"
-                  value={formData.rewards}
-                  onChange={handleInputChange("rewards")}
-              />
-              <InputGroup
-                  name="operation"
-                  placeholder="Ссылка с видеозаписью вашей операции"
-                  spanText="Демонстрация мануальных навыков. Длительность видео не более 15 минут."
-                  value={formData.operation}
-                  onChange={handleInputChange("operation")}
-              />
-              {errors.operation && (
-                  <p className={styles.error}>{errors.operation}</p>
-              )}
-
-              <RadioGroup
-                  label="Знание английского языка"
-                  name="english"
-                  options={[
-                    { value: "beginner", label: "Начальный уровень" },
-                    { value: "intermediate", label: "Средний уровень" },
-                    { value: "uper_intermediate", label: "Продвинутый уровень" },
-                  ]}
-                  onChange={handleInputChange("english")}
-                  selectedValue={formData.english}
-              />
-
-              {[
-                {
-                  id: "certificate",
-                  label: "Загрузите ваш сертификат(-ы) хирурга / онколога",
-                },
-                {
-                  id: "resume",
-                  label: "Загрузите ваше резюме на русском и английском языках",
-                },
-                {
-                  id: "doc",
-                  label: "Документы, подтверждающие вашу квалификацию",
-                },
-              ].map(({ id, label }) => (
-                  <FileUploadArea
-                      key={id}
-                      label={label}
-                      fileId={id}
-                      onChange={handleFileUpload(id)}
-                      resetKey={resetKey}
-                  />
-              ))}
-              {errors.files && (
-                <p id="files" className={styles.error}>
-                  {errors.files}
-                </p>
-              )}
-            </Section>
-
-            <Section
-                title="3. Направление обучения"
-                isOpen={openSections.specialization}
-                onToggle={() => toggleSection("specialization")}>
-              <CheckboxGroup
-                  label="Какую специализацию (и город) вы хотите выбрать?"
-                  name="specialization"
-                  options={[
-                    "Хирургия опухолей головы и шеи - Уфа",
-                    "Хирургия опухолей головы и шеи - Челябинск",
-                    "Онкоурология - Уфа",
-                    "Онкоурология - Москва",
-                    "Гепатобилириарная хирургия - Казань",
-                    "Гепатобилириарная хирургия - Новосибирск",
-                  ]}
-                  value={formData.specialization}
-                  onChange={handleCheckboxChange}
-              />
-            </Section>
-
-            <Section
-                title="4. Расскажите подробнее"
-                isOpen={openSections.moreInfo}
-                onToggle={() => toggleSection("moreInfo")}>
-              <p className={styles.hint}>
-                Дайте развернутые ответы на вопросы ниже. Желательно, чтобы текст
-                ответа на каждый вопрос содержал от 150 до 300 слов
-              </p>
-              <InputGroup
-                  type="textarea"
-                  name="q1"
-                  placeholder="Чем заинтересовала данная программа обучения? Какие у вас ожидания от обучения? Почему вам важно пройти эту программу?"
-                  value={formData.q1}
-                  onChange={handleInputChange("q1")}
-              />
-              <InputGroup
-                  type="textarea"
-                  name="q2"
-                  placeholder="Какие вы ставите перед собой цели и задачи в рамках обучения? Какие навыки и компетенции хотите развить и для чего?"
-                  value={formData.q2}
-                  onChange={handleInputChange("q2")}
-              />
-              <InputGroup
-                  type="textarea"
-                  name="q3"
-                  placeholder="Как вы видите свое профессиональное и карьерное развитие через 3, 5, 10 лет? Опишите предпочитаемые пути развития вашей карьеры"
-                  value={formData.q3}
-                  onChange={handleInputChange("q3")}
-              />
-              <InputGroup
-                  type="textarea"
-                  name="q4"
-                  placeholder="Назовите ваши ключевые ценности и поясните их. Почему именно вас должны выбрать среди других соискателей?"
-                  value={formData.q4}
-                  onChange={handleInputChange("q4")}
-              />
-              <InputGroup
-                  type="textarea"
-                  name="additionalInfo"
-                  placeholder="Дополнительная информация"
-                  value={formData.additionalInfo}
-                  onChange={handleInputChange("additionalInfo")}
-              />
-            </Section>
-
-            <Section
-                title="5. Откуда узнали"
-                isOpen={openSections.howDidYouLearn}
-                onToggle={() => toggleSection("howDidYouLearn")}>
-              <InputGroup
-                  type="textarea"
-                  name="howDidYouLearn"
-                  placeholder="Как вы узнали о Школе Павленко?"
-                  value={formData.howDidYouLearn}
-                  onChange={handleInputChange("howDidYouLearn")}
-              />
-            </Section>
-
-            <Section
-                title="6. Контакты"
-                isOpen={openSections.contacts}
-                onToggle={() => toggleSection("contacts")}>
-              <InputGroup
-                  name="phone"
-                  placeholder="Телефон"
-                  value={formData.phone}
-                  onChange={handleInputChange("phone")}
-              />
-              {errors.phone && <p className={styles.error}>{errors.phone}</p>}
-
-              <InputGroup
-                  name="mail"
-                  placeholder="Электронная почта"
-                  value={formData.mail}
-                  onChange={handleInputChange("mail")}
-              />
-              {errors.mail && <p className={styles.error}>{errors.mail}</p>}
-            </Section>
-            {error && <p className={styles.error}>{error}</p>}
-
-            <ConsentSection
-                isLoading={isLoading}
-                isConsentChecked={isConsentChecked}
-                setIsConsentChecked={setIsConsentChecked}
-                handleSubmit={handleSubmit}
-                isFormValid={isFormValid}
-                errors={errors}
-                setErrors={setErrors}
+      <form className={styles.wrapperInner} onSubmit={handleSubmit}>
+        <div className={styles.container}>
+          <Section
+            title="1. Персональные данные"
+            isOpen={openSections.personal}
+            onToggle={() => toggleSection("personal")}>
+            <InputGroup
+              name="name"
+              placeholder="ФИО"
+              value={formData.name}
+              onChange={handleInputChange("name")}
             />
-          </div>
+            {errors.name && <p className={styles.error}>{errors.name}</p>}
 
-          <div className={styles.sidebar}>
-            <ul className={styles.navList}>
-              {[
-                { id: "personal", label: "Персональные данные" },
-                { id: "education", label: "Образование и карьера" },
-                { id: "specialization", label: "Направление обучения" },
-                { id: "moreInfo", label: "Расскажите подробнее" },
-                { id: "howDidYouLearn", label: "Откуда узнали" },
-                { id: "contacts", label: "Контакты" },
-              ].map((section) => (
-                  <li
-                      key={section.id}
-                      className={`${styles.navItem} ${
-                          openSections[section.id] ? styles.active : ""
-                      }`}
-                      onClick={() => toggleSection(section.id)}>
-                    <h5>{section.label}</h5>
-                  </li>
-              ))}
-            </ul>
-          </div>
-        </form>
-      </div>
+            <InputGroup
+              type="number"
+              name="age"
+              placeholder="Возраст"
+              value={formData.age}
+              onChange={handleInputChange("age")}
+            />
+            {errors.age && <p className={styles.error}>{errors.age}</p>}
+
+            <InputGroup
+              name="city"
+              placeholder="Город проживания"
+              value={formData.city}
+              onChange={handleInputChange("city")}
+            />
+            {errors.city && <p className={styles.error}>{errors.city}</p>}
+
+            <RadioGroup
+              label="Гражданство России"
+              name="citizenship"
+              options={[
+                { value: "yes", label: "Да" },
+                { value: "no", label: "Нет" },
+              ]}
+              onChange={handleInputChange("citizenship")}
+              selectedValue={formData.citizenship}
+            />
+
+            <RadioGroup
+              label="Семейное положение"
+              name="family"
+              options={[
+                { value: "free", label: "Холост" },
+                { value: "substitute", label: "Замужем(женат)" },
+                { value: "divorce", label: "В разводе" },
+              ]}
+              onChange={handleInputChange("family")}
+              selectedValue={formData.family}
+            />
+
+            <RadioGroup
+              label="Дети"
+              name="children"
+              options={[
+                { value: "no", label: "Нет" },
+                { value: "one", label: "1 ребенок" },
+                { value: "morethanone", label: "более 1 ребенка" },
+              ]}
+              onChange={handleInputChange("children")}
+              selectedValue={formData.children}
+            />
+          </Section>
+
+          <Section
+            title="2. Образование и карьера"
+            isOpen={openSections.education}
+            onToggle={() => toggleSection("education")}>
+            <InputGroup
+              type="textarea"
+              name="education"
+              placeholder="Образование"
+              value={formData.education}
+              onChange={handleInputChange("education")}
+            />
+            <InputGroup
+              type="textarea"
+              name="work"
+              placeholder="Место работы, должность"
+              value={formData.work}
+              onChange={handleInputChange("work")}
+            />
+            <InputGroup
+              type="textarea"
+              name="rewards"
+              placeholder="Значимые достижения в карьере, награды, знаки отличия"
+              value={formData.rewards}
+              onChange={handleInputChange("rewards")}
+            />
+            <InputGroup
+              name="operation"
+              placeholder="Ссылка с видеозаписью вашей операции"
+              spanText="Демонстрация мануальных навыков. Длительность видео не более 15 минут."
+              value={formData.operation}
+              onChange={handleInputChange("operation")}
+            />
+            {errors.operation && (
+              <p className={styles.error}>{errors.operation}</p>
+            )}
+
+            <RadioGroup
+              label="Знание английского языка"
+              name="english"
+              options={[
+                { value: "beginner", label: "Начальный уровень" },
+                { value: "intermediate", label: "Средний уровень" },
+                { value: "uper_intermediate", label: "Продвинутый уровень" },
+              ]}
+              onChange={handleInputChange("english")}
+              selectedValue={formData.english}
+            />
+
+            {[
+              {
+                id: "certificate",
+                label: "Загрузите ваш сертификат(-ы) хирурга / онколога",
+              },
+              {
+                id: "resume",
+                label: "Загрузите ваше резюме на русском и английском языках",
+              },
+              {
+                id: "doc",
+                label: "Документы, подтверждающие вашу квалификацию",
+              },
+            ].map(({ id, label }) => (
+              <FileUploadArea
+                key={id}
+                label={label}
+                fileId={id}
+                onChange={handleFileUpload(id)}
+                resetKey={resetKey}
+              />
+            ))}
+            {errors.files && (
+              <p id="files" className={styles.error}>
+                {errors.files}
+              </p>
+            )}
+          </Section>
+
+          <Section
+            title="3. Направление обучения"
+            isOpen={openSections.specialization}
+            onToggle={() => toggleSection("specialization")}>
+            <CheckboxGroup
+              label="Какую специализацию (и город) вы хотите выбрать?"
+              name="specialization"
+              options={[
+                "Хирургия опухолей головы и шеи - Уфа",
+                "Хирургия опухолей головы и шеи - Челябинск",
+                "Онкоурология - Уфа",
+                "Онкоурология - Москва",
+                "Гепатобилириарная хирургия - Казань",
+                "Гепатобилириарная хирургия - Новосибирск",
+              ]}
+              value={formData.specialization}
+              onChange={handleCheckboxChange}
+            />
+          </Section>
+
+          <Section
+            title="4. Расскажите подробнее"
+            isOpen={openSections.moreInfo}
+            onToggle={() => toggleSection("moreInfo")}>
+            <p className={styles.hint}>
+              Дайте развернутые ответы на вопросы ниже. Желательно, чтобы текст
+              ответа на каждый вопрос содержал от 150 до 300 слов
+            </p>
+            <InputGroup
+              type="textarea"
+              name="q1"
+              placeholder="Чем заинтересовала данная программа обучения? Какие у вас ожидания от обучения? Почему вам важно пройти эту программу?"
+              value={formData.q1}
+              onChange={handleInputChange("q1")}
+            />
+            <InputGroup
+              type="textarea"
+              name="q2"
+              placeholder="Какие вы ставите перед собой цели и задачи в рамках обучения? Какие навыки и компетенции хотите развить и для чего?"
+              value={formData.q2}
+              onChange={handleInputChange("q2")}
+            />
+            <InputGroup
+              type="textarea"
+              name="q3"
+              placeholder="Как вы видите свое профессиональное и карьерное развитие через 3, 5, 10 лет? Опишите предпочитаемые пути развития вашей карьеры"
+              value={formData.q3}
+              onChange={handleInputChange("q3")}
+            />
+            <InputGroup
+              type="textarea"
+              name="q4"
+              placeholder="Назовите ваши ключевые ценности и поясните их. Почему именно вас должны выбрать среди других соискателей?"
+              value={formData.q4}
+              onChange={handleInputChange("q4")}
+            />
+            <InputGroup
+              type="textarea"
+              name="additionalInfo"
+              placeholder="Дополнительная информация"
+              value={formData.additionalInfo}
+              onChange={handleInputChange("additionalInfo")}
+            />
+          </Section>
+
+          <Section
+            title="5. Откуда узнали"
+            isOpen={openSections.howDidYouLearn}
+            onToggle={() => toggleSection("howDidYouLearn")}>
+            <InputGroup
+              type="textarea"
+              name="howDidYouLearn"
+              placeholder="Как вы узнали о Школе Павленко?"
+              value={formData.howDidYouLearn}
+              onChange={handleInputChange("howDidYouLearn")}
+            />
+          </Section>
+
+          <Section
+            title="6. Контакты"
+            isOpen={openSections.contacts}
+            onToggle={() => toggleSection("contacts")}>
+            <InputGroup
+              name="phone"
+              placeholder="Телефон"
+              value={formData.phone}
+              onChange={handleInputChange("phone")}
+            />
+            {errors.phone && <p className={styles.error}>{errors.phone}</p>}
+
+            <InputGroup
+              name="mail"
+              placeholder="Электронная почта"
+              value={formData.mail}
+              onChange={handleInputChange("mail")}
+            />
+            {errors.mail && <p className={styles.error}>{errors.mail}</p>}
+          </Section>
+          {error && <p className={styles.error}>{error}</p>}
+
+          <ConsentSection
+            isLoading={isLoading}
+            isConsentChecked={isConsentChecked}
+            setIsConsentChecked={setIsConsentChecked}
+            handleSubmit={handleSubmit}
+            isFormValid={isFormValid}
+            errors={errors}
+            setErrors={setErrors}
+          />
+        </div>
+
+        <div className={styles.sidebar}>
+          <ul className={styles.navList}>
+            {[
+              { id: "personal", label: "Персональные данные" },
+              { id: "education", label: "Образование и карьера" },
+              { id: "specialization", label: "Направление обучения" },
+              { id: "moreInfo", label: "Расскажите подробнее" },
+              { id: "howDidYouLearn", label: "Откуда узнали" },
+              { id: "contacts", label: "Контакты" },
+            ].map((section) => (
+              <li
+                key={section.id}
+                className={`${styles.navItem} ${
+                  openSections[section.id] ? styles.active : ""
+                }`}
+                onClick={() => toggleSection(section.id)}>
+                <h5>{section.label}</h5>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </form>
+    </div>
   );
 };
 

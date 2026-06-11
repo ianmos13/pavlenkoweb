@@ -7,7 +7,6 @@ import useFetch from "@/services/hook/useFetch";
 import Loader from "@/components/UI/Loader/Loader";
 import declineWord from "decline-word";
 
-// Dynamically import LocationMap to disable SSR
 const LocationMap = dynamic(() => import("./LocationMap/LocationMap"), { ssr: false });
 
 const OurLocations = () => {
@@ -33,7 +32,6 @@ const OurLocations = () => {
 
   const clinicDetails = React.useMemo(() => {
     if (!citiesData || !clinicsData) return [];
-
     return citiesData.map((city) => ({
       city: city.city,
       clinics: clinicsData

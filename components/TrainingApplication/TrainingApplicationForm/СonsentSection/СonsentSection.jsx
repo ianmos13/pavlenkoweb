@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "./СonsentSection.module.scss"; 
+import styles from "./СonsentSection.module.scss";
 import ButtonBox from "@/components/UI/Buttons/ButtonBox/ButtonBox";
 import LearnMoreButton from "@/components/UI/Buttons/LearnMoreButton/LearnMoreButton";
 

@@ -7,6 +7,9 @@
     align-items: center;
     gap: 24px;
 
+    @media (max-width: 1240px) {
+        gap: 12px;
+    }
     .menuButton {
         width: 230px;
         height: 55px;
@@ -34,8 +37,15 @@
     background-color: $neutral-grey;
 }
 
-.ultraLiteContainer{
+.ultraLiteContainer {
     background-color: $secondary-ultra-lite-blue;
+}
+
+.lightAndDarkContainer {
+    background-color: $neutral-white;
+    @media (max-width: 739px) {
+        background-color: $primary-blue;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -64,6 +74,11 @@
         box-shadow: 0 6px 10px 0 rgba(34, 60, 80, 0.2);
     }
 
+    .lightAndDarkContainer {
+        -webkit-box-shadow: 0 6px 10px 0 rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: 0 6px 10px 0 rgba(34, 60, 80, 0.2);
+        box-shadow: 0 6px 10px 0 rgba(34, 60, 80, 0.2);
+    }
     .greyContainer {
         -webkit-box-shadow: 0 6px 10px 0 rgba(34, 60, 80, 0.2);
         -moz-box-shadow: 0 6px 10px 0 rgba(34, 60, 80, 0.2);
@@ -83,5 +98,8 @@
             max-height: 55px;
             margin: 16px auto;
         }
+    }
+    .lightAndDarkContainer {
+        box-shadow: unset;
     }
 }

@@ -1,0 +1,525 @@
+@import '/styles/variables';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+    }
+    @media (max-width: 739px) {
+        gap: 0;
+
+        align-items: stretch;
+    }
+
+    .infoContainer {
+        width: 57.831%;
+        padding: 56px 83px 56px 56px;
+        border-radius: 24px;
+        height: 100%;
+        position: relative;
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        @media (max-width: 739px) {
+            padding: 16px;
+            height: unset;
+            justify-content: unset;
+            min-height: 0;
+            flex: 1;
+        }
+
+        &.body {
+            justify-content: unset;
+        }
+        .titleContainer {
+            width: 100%;
+            h2 {
+                max-width: 100%;
+                white-space: normal;
+                overflow-wrap: break-word;
+                font-family: $h1-desktop-primary-font;
+                font-weight: $h1-desktop-primary-weight;
+                font-size: $h1-desktop-primary-size;
+                line-height: $h1-desktop-primary-line-height;
+                @media (max-width: 1024px) {
+                    line-height: 48px;
+                    font-family: $h1-tablet-primary-font;
+                    font-weight: $h1-tablet-primary-weight;
+                    font-size: $h1-tablet-primary-size;
+                }
+                @media (max-width: 739px) {
+                    line-height: 30px;
+                    font-family: $h1-mobile-primary-font;
+                    font-weight: $h1-mobile-primary-weight;
+                    font-size: $h1-mobile-primary-size;
+                }
+                .secondary {
+                    line-height: $h1-desktop-secondary-line-height;
+                    font-family: $h1-desktop-secondary-font;
+                    font-weight: $h1-desktop-secondary-weight;
+                    font-size: $h1-desktop-secondary-size;
+                    @media (max-width: 1024px) {
+                        line-height: 48px;
+                        font-family: $h1-tablet-secondary-font;
+                        font-weight: $h1-tablet-secondary-weight;
+                        font-size: $h1-tablet-secondary-size;
+                    }
+                    @media (max-width: 739px) {
+                        line-height: 30px;
+                        font-family: $h1-mobile-secondary-font;
+                        font-weight: $h1-mobile-secondary-weight;
+                        font-size: $h1-mobile-secondary-size;
+                    }
+                }
+            }
+        }
+
+        .infoImageContainer {
+            display: flex;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            right: 0;
+            @media (max-width: 739px) {
+                display: none;
+            }
+        }
+
+        .description {
+            margin-top: 24px;
+            z-index: 2;
+            @media (max-width: 739px) {
+                margin-top: 16px;
+            }
+
+            h4 {
+                color: $primary-blue;
+                @media (max-width: 739px) {
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+            }
+        }
+
+        .cardsContainer {
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            gap: 16px;
+            z-index: 2;
+
+            @media (max-width: 739px) {
+                flex-direction: column;
+            }
+
+            .cardContainer {
+                min-height: 125px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 11px;
+                padding: 32px 12px;
+                background-color: $secondary-ultra-lite-blue;
+                border-radius: 16px;
+
+                .cardTitleContainer {
+                    display: flex;
+                    align-items: center;
+                    min-height: 21px;
+
+                    h3 {
+                        line-height: 11px;
+                    }
+                }
+
+                .cardText {
+                    white-space: pre-wrap;
+                    color: $neutral-black;
+                }
+                @media (max-width: 1280px) {
+                    padding: 24px 12px;
+                    gap: 8px;
+                    .cardTitleContainer {
+                        h3 {
+                            line-height: 21px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .listDataContainer {
+            z-index: 2;
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            @media (max-width: 739px) {
+                margin-top: 16px;
+            }
+            .element {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+                font-family: $h4-desktop-primary-font;
+                font-weight: $h4-desktop-primary-weight;
+                font-size: $h4-desktop-primary-size;
+                line-height: $h4-desktop-primary-line-height;
+                color: $neutral-white;
+                @media (max-width: 1024px) {
+                    font-family: $h4-tablet-primary-font;
+                    font-weight: $h4-tablet-primary-weight;
+                    font-size: $h4-tablet-primary-size;
+                    line-height: $h4-tablet-primary-line-height;
+                }
+                @media (max-width: 739px) {
+                    font-family: $h4-mobile-primary-font;
+                    font-weight: $h4-mobile-primary-weight;
+                    font-size: $h4-mobile-primary-size;
+                    line-height: $h4-mobile-primary-line-height;
+                }
+                .liMarker {
+                    width: 16px;
+                    height: 16px;
+                    @media (max-width: 739px) {
+                        margin-top: 2px;
+                    }
+                }
+            }
+        }
+
+        .spaceForButton {
+            height: 112px;
+            @media (max-width: 739px) {
+                height: 76px
+            }
+        }
+        .button {
+            position: absolute;
+            left: 56px;
+            bottom: 56px;
+            z-index: 2;
+            @media (max-width: 1024px) {
+                left: 32px;
+                bottom: 32px;
+            }
+            @media (max-width: 739px) {
+                left: 16px;
+                bottom: 16px;
+            }
+        }
+    }
+
+    .imageContainer {
+        width: 40.9639%;
+        border-radius: 24px;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            min-height: 400px;
+            height: 400px;
+        }
+        @media (max-width: 739px) {
+            border-radius: 20px;
+            width: 100%;
+            min-height: 206px;
+            max-height: 450px;
+            aspect-ratio: 1.398;
+            height: auto;
+            flex-shrink: 0;
+            margin: 12px 0 16px 0;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            @media (max-width: 1024px) {
+                object-position: center;
+            }
+        }
+    }
+    .imageOverviewContainer {
+        @media (max-width: 739px) {
+            margin-bottom: 0;
+            aspect-ratio: 1.322314;
+            margin-left: -16px;
+            width: 100vw;
+            margin-top: -8px;
+            max-height: 550px;
+        }
+        img {
+            @media (max-width: 1024px) {
+                object-fit: contain;
+                object-position: center;
+            }
+            @media (max-width: 739px) {
+                object-fit: cover;
+                object-position: bottom;
+            }
+        }
+    }
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        width: 88px;
+        height: 32px;
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        z-index: 3;
+        @media (max-width: 739px) {
+            bottom: 24px;
+            right: 8px;
+        }
+        .navigation {
+            padding: 4px 8px;
+            width: 40px;
+            height: 32px;
+            backdrop-filter: blur(2.5px);
+            border-radius: 10px;
+            cursor: pointer;
+
+            &.disabled {
+                cursor: not-allowed;
+            }
+
+            .icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .navigationPrev {
+            .icon {
+                rotate: 180deg;
+            }
+        }
+    }
+}
+
+.greyContainer {
+    background-color: $neutral-grey;
+
+    .pagination {
+        background-color: $secondary-ultra-lite-blue;
+        opacity: 85%;
+
+        .paginationFraction {
+            span {
+                color: $secondary-blue-2
+            }
+
+            .paginationActive {
+                color: $neutral-black;
+            }
+        }
+
+        .navigation {
+            .icon {
+                background-image: url("/images/icons/right-arrow-pagination.svg");
+            }
+
+            &:hover:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+
+            &:active:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-black.svg");
+                }
+            }
+
+            &.disabled {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+        }
+    }
+}
+
+.lightContainer {
+    background-color: $neutral-white;
+
+    .infoContainer {
+        background-color: $primary-blue;
+        .titleContainer {
+            h2 {
+                .default {
+                    color: $neutral-white;
+                }
+            }
+        }
+
+        .description {
+            h4 {
+                color: $neutral-white;
+            }
+        }
+    }
+    .imageContainer {
+        background-color: $primary-blue;
+    }
+    .imageOverviewContainer {
+        background-color: $secondary-background-photo;
+    }
+    .pagination {
+        .navigation {
+            background: rgba(255, 255, 255, 0.2);
+            .icon {
+                background-image: url("/images/icons/right-arrow.svg");
+            }
+
+            &:hover:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+
+            &:active:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-black.svg");
+                }
+            }
+
+            &.disabled {
+                .icon {
+                    opacity: 50%;
+                    background-image: url("/images/icons/right-arrow.svg");
+                }
+            }
+        }
+    }
+}
+
+.darkContainer {
+    background-color: $primary-blue;
+
+    .infoContainer {
+        .titleContainer {
+            h2 {
+                .default {
+                    color: $neutral-white;
+                }
+            }
+        }
+
+        .description {
+            h4 {
+                color: $neutral-white;
+            }
+        }
+    }
+
+    .pagination {
+        background-color: $secondary-background-photo;
+
+        .navigation {
+            .icon {
+                background-image: url("/images/icons/right-arrow.svg");
+            }
+
+            &:hover:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+
+            &:active:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-black.svg");
+                }
+            }
+
+            &.disabled {
+                .icon {
+                    opacity: 50%;
+                    background-image: url("/images/icons/right-arrow.svg");
+                }
+            }
+        }
+    }
+}
+
+.lightAndDarkContainer {
+    background-color: $neutral-white;
+    @media (max-width: 739px) {
+        background-color: $primary-blue;
+    }
+    .infoContainer {
+        background-color: $primary-blue;
+        @media (max-width: 739px) {
+            background-color: $secondary-background-photo;
+        }
+        .titleContainer {
+            h2 {
+                .default {
+                    color: $neutral-white;
+                }
+            }
+        }
+
+        .description {
+            h4 {
+                color: $neutral-white;
+            }
+        }
+    }
+    .imageContainer {
+        background-color: $primary-blue;
+    }
+    .imageOverviewContainer {
+        background-color: $secondary-background-photo;
+        @media (max-width: 739px) {
+            background-color: unset;
+        }
+    }
+    .pagination {
+        .navigation {
+            background: rgba(255, 255, 255, 0.2);
+            .icon {
+                background-image: url("/images/icons/right-arrow.svg");
+            }
+
+            &:hover:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-grey.svg");
+                }
+            }
+
+            &:active:not(.disabled) {
+                .icon {
+                    background-image: url("/images/icons/right-arrow-black.svg");
+                }
+            }
+
+            &.disabled {
+                .icon {
+                    opacity: 50%;
+                    background-image: url("/images/icons/right-arrow.svg");
+                }
+            }
+        }
+    }
+}

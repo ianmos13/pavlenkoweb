@@ -1,20 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
-import ArrowUp from "@/public/images/icons/arrow-up.svg";
-import ArrowUpDark from "@/public/images/icons/arrow-up-dark.svg";
-import ArrowDown from "@/public/images/icons/arrow-down.svg";
-import ArrowDownDark from "@/public/images/icons/arrow-down-dark.svg";
-
 import styles from './MenuElement.module.scss'
 import {useEffect, useState} from "react";
 
 export default function MenuElement(props) {
     const { theme, element, isOpen, handleClickMenu } = props
     const [ready, setReady] = useState(false);
-
-    const linkImageSrc = theme === "dark" ?
-        isOpen ? ArrowUp : ArrowDown :
-        isOpen ? ArrowUpDark : ArrowDownDark
 
     useEffect(() => {
         setReady(true)
@@ -29,7 +19,7 @@ export default function MenuElement(props) {
                 <>
                     <p className={styles.link} >
                         <span>{element.title}</span>
-                        <Image className={styles.linkImage} src={linkImageSrc} alt="" />
+                        <svg className={`${styles.icon} ${isOpen ? styles.active : '' }`} />
                     </p>
                     {ready && (
                         <div className={`${styles.dropdownMenuWrapper} ${isOpen ? styles.active : '' }`}>
