@@ -115,7 +115,7 @@ const FundraisingLibrary = () => {
       )}
 
       {!error && cards.length > 0 && (
-        <AnimatedComponent>
+        <>
           <div className={styles.grid}>
             {currentItems.map((item) => (
               <FundraisingCardItem
@@ -135,7 +135,7 @@ const FundraisingLibrary = () => {
             currentPage={currentPage}
             onPageChange={handlePageChange}
           />
-        </AnimatedComponent>
+        </>
       )}
     </section>
   );

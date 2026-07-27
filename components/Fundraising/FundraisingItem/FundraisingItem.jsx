@@ -51,17 +51,13 @@ const FundraisingItem = ({ mode, data, goalsData, onBack, onPaymentSuccess }) =>
         data={bannerData}
         mode={mode}
       />
-      <AnimatedComponent>
-        <FundraisingInfo data={data} />
-      </AnimatedComponent>
-      <AnimatedComponent>
-        <DonationComponentFundraising
-          donationId="fundraising_dontaion"
-          mode={mode}
-          fundraisingSlug={data.slug}
-          onPaymentSuccess={onPaymentSuccess}
-        />
-      </AnimatedComponent>
+      <FundraisingInfo data={data} />
+      <DonationComponentFundraising
+        donationId="fundraising_dontaion"
+        mode={mode}
+        fundraisingSlug={data.slug}
+        onPaymentSuccess={onPaymentSuccess}
+      />
     </>
   );
 };

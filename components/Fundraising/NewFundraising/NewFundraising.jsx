@@ -62,15 +62,11 @@ export default function NewFundraising() {
           data={bannerData}
         />
         <ImportantExpenses />
-        <AnimatedComponent>
-          <InstructionForUse />
-        </AnimatedComponent>
-        <AnimatedComponent>
-          <InfoForm
-            onPreview={handlePreview}
-            goalsData={formattedGoalsData}
-          />
-        </AnimatedComponent>
+        <InstructionForUse />
+        <InfoForm
+          onPreview={handlePreview}
+          goalsData={formattedGoalsData}
+        />
       </div>
 
       {mode === "preview" && previewData && (
