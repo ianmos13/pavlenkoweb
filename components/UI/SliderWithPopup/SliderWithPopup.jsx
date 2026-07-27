@@ -8,10 +8,11 @@ import { EffectCoverflow } from "swiper/modules";
 import styles from "./SliderWithPopup.module.scss";
 import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlider";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 export default function SliderWithPopup() {
-  const { data: feedbackData, loading, error } = useFetch("/feedback-datas?sort=rank:asc&pagination[pageSize]=9999999");
+  const { data: feedbackData, loading, error } = useFetch(`/feedback-datas?sort=rank:asc&pagination[pageSize]=${PAGE_SIZE}`);
 
   const formattedData = feedbackData.map((item) => ({
     text: item.text

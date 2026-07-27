@@ -89,8 +89,8 @@ const PersonalDataProcessingPolicy = () => {
     <section className={styles.container}>
       <h1>Политика в отношении обработки персональных данных</h1>
       {Object.entries(data[0]).map(([sectionTitle, sectionContent]) => (
-        <AnimatedComponent>
-          <RenderSection key={sectionTitle} title={sectionTitle} content={sectionContent} />
+        <AnimatedComponent key={sectionTitle}>
+          <RenderSection title={sectionTitle} content={sectionContent} />
         </AnimatedComponent>
       ))}
     </section>

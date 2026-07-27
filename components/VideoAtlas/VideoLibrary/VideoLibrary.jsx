@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./VideoLibrary.module.scss";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -11,12 +12,12 @@ const VideoLibrary = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/video-categories?pagination[pageSize]=9999999");
+  } = useFetch(`/video-categories?pagination[pageSize]=${PAGE_SIZE}`);
   const {
     data: videosData,
     loading: videosLoading,
     error: videosError,
-  } = useFetch("/videos?populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/videos?populate=*&pagination[pageSize]=${PAGE_SIZE}`);
 
   const loading = categoriesLoading || videosLoading;
   const error = categoriesError || videosError;

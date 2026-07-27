@@ -1,7 +1,7 @@
 @import '/styles/variables';
 
 .block {
-	padding: 120px 56px 80px 56px;
+	padding: 0 56px 80px 56px;
 
 	.container {
 		display: flex;
@@ -64,7 +64,7 @@
 
 @media (max-width: 1024px) {
 	.block {
-		padding: 80px 32px 60px 32px;
+		padding: 0 32px 60px 32px;
 
 		.container {
 			padding: 32px;
@@ -89,7 +89,7 @@
 
 @media (max-width: 739px) {
 	.block {
-		padding: 60px 16px 40px 16px;
+		padding: 40px 16px;
 		background-color: $secondary-ultra-lite-blue;
 
 		.container {

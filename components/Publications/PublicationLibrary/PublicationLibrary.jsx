@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./PublicationLibrary.module.scss";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -12,12 +13,12 @@ const PublicationLibrary = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/publication-categories?pagination[pageSize]=9999999");
+  } = useFetch(`/publication-categories?pagination[pageSize]=${PAGE_SIZE}`);
   const {
     data: publicationsData,
     loading: publicationsLoading,
     error: publicationsError,
-  } = useFetch("/publications?populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/publications?populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const loading = categoriesLoading || publicationsLoading;

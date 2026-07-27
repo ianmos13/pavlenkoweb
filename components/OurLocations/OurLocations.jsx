@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
 import styles from "./OurLocations.module.scss";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import declineWord from "decline-word";
 
@@ -19,13 +20,13 @@ const OurLocations = () => {
     data: citiesData,
     loading: citiesLoading,
     error: citiesError,
-  } = useFetch("/our-locations-cities?pagination[pageSize]=9999999");
+  } = useFetch(`/our-locations-cities?pagination[pageSize]=${PAGE_SIZE}`);
 
   const {
     data: clinicsData,
     loading: clinicsLoading,
     error: clinicsError,
-  } = useFetch("/our-locations-clinics?populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/our-locations-clinics?populate=*&pagination[pageSize]=${PAGE_SIZE}`);
 
   const loading = citiesLoading || clinicsLoading;
   const error = citiesError || clinicsError;

@@ -17,22 +17,22 @@
     width: 100%;
     height: 100%;
     transition: background-color 0.3s ease-out;
-    background-color: #0f384a;
+    background-color: $primary-blue;
 
     &:before {
       transition: background-color 0.3s ease-out;
-      background-color: #ffffff;
+      background-color: $neutral-white;
     }
     &:hover {
-      background-color: #0f384a;
+      background-color: $primary-blue;
       &:before {
-        background-color: #577481;
+        background-color: $secondary-blue-2;
       }
     }
     &:active {
-      background-color: #0f384a;
+      background-color: $primary-blue;
       &:before {
-        background-color: #577481;
+        background-color: $secondary-blue-2;
       }
     }
   }

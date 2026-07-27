@@ -1,0 +1,107 @@
+@import "/styles/variables";
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: -6px;
+
+  @media (max-width: 1024px) {
+    margin-top: 18px;
+  }
+  @media (max-width: 739px) {
+    margin-top: 8px;
+    gap: 16px;
+  }
+
+  .consentCheckboxItem {
+    cursor: pointer;
+    input[type="checkbox"] {
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      appearance: none;
+      border: 2px solid $neutral-grey;
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+      background-color: white;
+      margin-bottom: -2px;
+      @media (max-width: 739px) {
+        border: 1px solid $neutral-grey;
+        border-radius: 2px;
+      }
+      &:hover {
+        border-color: $secondary-blue-2;
+      }
+
+      &:checked {
+        border-color: $secondary-blue-2;
+        background-color: $secondary-blue-2;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 10px;
+          height: 8px;
+          background-color: white;
+          mask: url("/images/icons/checkbox-icon.svg") no-repeat center;
+          mask-size: contain;
+        }
+      }
+    }
+    input[type="checkbox"]:checked + & {
+        color: $neutral-black;
+    }
+    span {
+      font-family: $primary-font-family;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 26px;
+      color: $neutral-black;
+      @media (max-width: 739px) {
+        font-size: 16px;
+      }
+    }
+  }
+  .link {
+    color: $secondary-blue-2;
+    border-bottom: 1px solid $secondary-blue-2;
+    @media (max-width: 1024px) {
+      font-size: 18px;
+      line-height: 26px;
+    }
+    @media (max-width: 739px) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .buttonsContainer {
+    margin-top: 6px;
+    display: flex;
+    gap: 24px;
+    @media (max-width: 739px) {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .buttonContainer {
+      @media (max-width: 1024px) {
+        min-width: 294px;
+        height: 72px;
+      }
+      @media (max-width: 739px) {
+        height: 64px;
+        min-width: 288px;
+        width: 288px;
+      }
+    }
+  }
+}

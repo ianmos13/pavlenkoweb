@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import SliderWithPiceOfNextSlide from "@/components/UI/SliderWithPiceOfNextSlide/SliderWithPiceOfNextSlide";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
@@ -10,7 +11,7 @@ const AboutUsSlider = () => {
     data: publicationsData,
     loading,
     error,
-  } = useFetch("/publications?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/publications?sort=rank:asc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const slideData = React.useMemo(() => {

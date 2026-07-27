@@ -4,8 +4,9 @@ import React, {useState} from "react";
 import styles from "./Modal.module.scss";
 
 const Modal = ({ isOpen, onClose, name, position, biography, photo }) => {
-  if (!isOpen) return null;
   const [isScroll, setIsScroll] = useState(false);
+
+  if (!isOpen) return null;
   const handleScroll = (e) => {
     const { scrollTop } = e.target;
     if(scrollTop > 0)

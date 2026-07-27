@@ -2,6 +2,7 @@
 
 import React from "react";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Image from "next/image";
 import styles from "./RQ.module.scss";
 import Link from "next/link";
@@ -12,7 +13,7 @@ import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
 export default function RQ() {
-  const { data, loading, error } = useFetch("/any-questions-link?pagination[pageSize]=9999999");
+  const { data, loading, error } = useFetch(`/any-questions-link?pagination[pageSize]=${PAGE_SIZE}`);
 
   if (error) {
     return <p>Ошибка загрузки данных: {error.message}</p>;

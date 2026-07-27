@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./TrainingApplicationForm.module.scss";
-import RadioGroup from "./RadioGroup/RadioGroup";
-import CheckboxGroup from "./CheckboxGroup/CheckboxGroup";
-import Section from "./Section/Section";
-import FileUploadArea from "./FileUploadArea/FileUploadArea";
-import InputGroup from "./InputGroup/InputGroup";
+import RadioGroup from "@/components/UI/FormElements/RadioGroup/RadioGroup";
+import CheckboxGroup from "@/components/UI/FormElements/CheckboxGroup/CheckboxGroup";
+import Section from "@/components/UI/FormElements/Section/Section";
+import FileUploadArea from "@/components/UI/FormElements/FileUploadArea/FileUploadArea";
+import InputGroup from "@/components/UI/FormElements/InputGroup/InputGroup";
 import ConsentSection from "./СonsentSection/СonsentSection";
-import FormPopup from "@/components/TrainingApplication/TrainingApplicationForm/FormPopup/FormPopup";
+import FormPopup from "@/components/UI/FormElements/FormPopup/FormPopup";
 
 const MAX_TOTAL_SIZE_MB = 30;
 const MAX_TOTAL_SIZE = MAX_TOTAL_SIZE_MB * 1024 * 1024;
@@ -257,7 +257,14 @@ const TrainingApplicationForm = () => {
 
   return (
     <div className={styles.wrapper}>
-      {isPopupVisible && <FormPopup onClose={() => setIsPopupVisible(false)} />}
+      {isPopupVisible &&
+        <FormPopup
+          onClose={() => setIsPopupVisible(false)}
+          data={{
+            title:"Сообщение успешно отправлено!"
+          }}
+        />
+      }
       <h2>Подробно заполните представленные ниже пункты</h2>
 
       <form className={styles.wrapperInner} onSubmit={handleSubmit}>

@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./TeachingStaff.module.scss";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -11,13 +12,13 @@ const TeachingStaff = ({ bottom, top, showonly }) => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/teaching-stuff-categories?pagination[pageSize]=9999999");
+  } = useFetch(`/teaching-stuff-categories?pagination[pageSize]=${PAGE_SIZE}`);
 
   const {
     data: staffData,
     loading: staffLoading,
     error: staffError,
-  } = useFetch("/teaching-stuffs?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/teaching-stuffs?sort=rank:asc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
   const loading = categoriesLoading || staffLoading;
   const error = categoriesError || staffError;

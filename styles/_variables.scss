@@ -12,6 +12,7 @@ $secondary-ultra-lite-blue-85: rgba(202, 219, 224, 0.85);
 $secondary-lite-red-1: #ffdbd9;
 $secondary-lite-red-2: #feeceb;
 $loader-color: #e57920;
+$popup-background: #FFF1E3;
 
 // Neutral Colors
 $neutral-black: #191c1f;
@@ -25,13 +26,6 @@ $system-success: #0abd7d;
 
 // ====== Typography ====== //
 
-// Font Families
-$primary-font-family: 'Nunito', sans-serif;
-$secondary-font-family: 'Gogol', sans-serif;
-
-// ====== Font Sizes ====== //
-
-// ====== Typography Settings ====== //
 // Font Families
 $primary-font-family: 'Nunito', sans-serif;
 $secondary-font-family: 'Gogol', sans-serif;
@@ -413,45 +407,3 @@ $button-mobile-size: 18px;
 $button-mobile-line-height: 24.55px;
 $button-mobile-text-align: center;
 $button-mobile-color: $neutral-black;
-
-// // ====== Mixin for Responsive Typography ====== //
-// @mixin responsive-text($font, $weight, $size, $line-height, $color) {
-// 	font-family: $font;
-// 	font-weight: $weight;
-// 	font-size: $size;
-// 	line-height: $line-height;
-// 	color: $color;
-// }
-
-// // Example usage for H1 on Desktop, Tablet, and Mobile
-// h1 {
-// 	@include responsive-text(
-// 		$h1-desktop-primary-font,
-// 		$h1-desktop-primary-weight,
-// 		$h1-desktop-primary-size,
-// 		$h1-desktop-primary-line-height,
-// 		$h1-desktop-primary-color
-// 	);
-
-// 	@media (max-width: $breakpoint-desktop) {
-// 		@include responsive-text(
-// 			$h1-tablet-primary-font,
-// 			$h1-tablet-primary-weight,
-// 			$h1-tablet-primary-size,
-// 			$h1-tablet-primary-line-height,
-// 			$h1-tablet-primary-color
-// 		);
-// 	}
-
-// 	@media (max-width: $breakpoint-tablet) {
-// 		@include responsive-text(
-// 			$h1-mobile-primary-font,
-// 			$h1-mobile-primary-weight,
-// 			$h1-mobile-primary-size,
-// 			$h1-mobile-primary-line-height,
-// 			$h1-mobile-primary-color
-// 		);
-// 	}
-// }
-
-// You can create similar mixins and usage for h2, p, and smaller text types

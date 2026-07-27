@@ -2,6 +2,7 @@
 import ContainerWithSidebarSchoolTeam from "./ContainerWithSidebarSchoolTeam";
 import Loader from "@/components/UI/Loader/Loader";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import React from "react";
 import styles from "./SchoolTeam.module.scss";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
@@ -12,7 +13,7 @@ const SchoolTeam = () => {
     loading: categoriesLoading,
     error: categoriesError,
   } = useFetch(
-    "/school-team-categories?sort=rank:asc&pagination[pageSize]=9999999&populate=*"
+    `/school-team-categories?sort=rank:asc&pagination[pageSize]=${PAGE_SIZE}&populate=*`
   );
 
   const {
@@ -20,7 +21,7 @@ const SchoolTeam = () => {
     loading: staffLoading,
     error: staffError,
   } = useFetch(
-    "/school-teams?sort=rank:asc&populate=*&pagination[pageSize]=9999999"
+    `/school-teams?sort=rank:asc&populate=*&pagination[pageSize]=${PAGE_SIZE}`
   );
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 

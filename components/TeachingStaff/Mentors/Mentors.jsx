@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./Mentors.module.scss";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -10,7 +11,7 @@ const Mentors = ({ bottom, top }) => {
     data: mentorsResponse,
     loading: mentorsLoading,
     error: mentorsError,
-  } = useFetch("/mentors?populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/mentors?populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const formattedMentorsData = React.useMemo(() => {

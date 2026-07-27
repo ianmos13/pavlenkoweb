@@ -3,6 +3,7 @@
 import React from "react";
 import SliderWithPiceOfNextSlide from "@/components/UI/SliderWithPiceOfNextSlide/SliderWithPiceOfNextSlide";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -11,7 +12,7 @@ const MostInteresting = () => {
     data: publicationsData,
     loading,
     error,
-  } = useFetch("/club-most-interestings?populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/club-most-interestings?populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const slideData = React.useMemo(() => {

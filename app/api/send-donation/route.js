@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { sendMailToAdmin } from "@/lib/mail/sendMail";
 
 export const runtime = "nodejs";
 
@@ -15,16 +15,6 @@ export async function POST(req) {
     const subscribeNews = formData.get("subscribeNews") || "";
     const showNameOnSite = formData.get("showNameOnSite") || "";
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.yandex.ru",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
     const messageText = `Новая заявка на пожертвование:
 
 ФИО: ${fullName}
@@ -36,14 +26,10 @@ Email: ${email}
 Согласен на размещение имени: ${showNameOnSite}
 `;
 
-    const mailOptions = {
-      from: `<${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO,
+    await sendMailToAdmin({
       subject: "Заполнена форма на пожертвование",
       text: messageText,
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 
     return NextResponse.json({
       success: true,

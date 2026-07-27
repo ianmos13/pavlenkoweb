@@ -2,6 +2,7 @@
 
 import CoverflowCardSwiper from "@/components/UI/CoverflowCardSwiper/CoverflowCardSwiper";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -10,7 +11,7 @@ export default function ExpertsSwiper() {
     data: expertData,
     loading,
     error,
-  } = useFetch("/video-atlas-expert-sliders?populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/video-atlas-expert-sliders?populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const parsedData =

@@ -3,7 +3,7 @@
 .container {
     position: relative;
     padding: 4px;
-    @media (max-width: 1024px) {
+    @media (max-width: 1180px) {
         padding: 0;
         width: 100%;
     }
@@ -14,12 +14,12 @@
         align-items: center;
         gap: 9px;
         cursor: pointer;
-        @media (max-width: 1024px) {
+        @media (max-width: 1180px) {
             padding: 15px 4px;
             width: 100%;
         }
         span {
-            @media (max-width: 1024px) {
+            @media (max-width: 1180px) {
                 font-size: $p-desktop-primary-size;
                 line-height: $p-desktop-primary-line-height;
             }
@@ -55,7 +55,7 @@
         left: 0;
         top: 100%;
         z-index: 1001;
-        @media (max-width: 1024px) {
+        @media (max-width: 1180px) {
             position: relative;
             width: 100%;
             padding: 0;
@@ -71,14 +71,14 @@
             width: 320px;
             border-radius: 16px;
             padding: 12px;
-            @media (max-width: 1024px) {
+            @media (max-width: 1180px) {
                 width: 100%;
                 padding: 0;
             }
             .dropdownElement {
                 list-style: none;
                 padding: 4px;
-                @media (max-width: 1024px) {
+                @media (max-width: 1180px) {
                     padding: 0;
                     height: 56px;
                     display: flex;
@@ -88,7 +88,7 @@
                 }
                 .link {
                     text-decoration: none;
-                    @media (max-width: 1024px) {
+                    @media (max-width: 1180px) {
                         padding: 2px 4px 2px 16px;
                         max-width: 320px;
                     }
@@ -104,7 +104,7 @@
         &.active {
             opacity: 1;
             visibility: visible;
-            @media (max-width: 1024px) {
+            @media (max-width: 1180px) {
                 margin-bottom: 16px;
                 grid-template-rows: 1fr;
             }
@@ -125,7 +125,7 @@
 
     .dropdownMenu {
         background-color: $primary-blue;
-        @media (max-width: 1024px) {
+        @media (max-width: 1180px) {
             background-color: $neutral-white;
         }
         @media (max-width: 739px) {
@@ -134,7 +134,7 @@
         .link {
             span {
                 color: $neutral-white;
-                @media (max-width: 1024px) {
+                @media (max-width: 1180px) {
                     color: $primary-blue;
                 }
                 @media (max-width: 739px) {
@@ -161,13 +161,13 @@
 
     .dropdownMenu {
         background-color: $secondary-ultra-lite-blue;
-        @media (max-width: 1024px) {
+        @media (max-width: 1180px) {
             background-color: $primary-blue;
         }
         .link {
             span {
                 color: $primary-blue;
-                @media (max-width: 1024px) {
+                @media (max-width: 1180px) {
                     color: $neutral-white;
                 }
             }
@@ -188,7 +188,7 @@
 
     .dropdownMenu {
         background-color: $primary-blue;
-        @media (max-width: 1024px) {
+        @media (max-width: 1180px) {
             background-color: $secondary-ultra-lite-blue;
         }
         @media (max-width: 739px) {
@@ -197,7 +197,7 @@
         .link {
             span {
                 color: $neutral-white;
-                @media (max-width: 1024px) {
+                @media (max-width: 1180px) {
                     color: $primary-blue;
                 }
                 @media (max-width: 739px) {

@@ -11,7 +11,7 @@
         padding: 24px 56px;
         margin: 0 auto;
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1180px) {
             position: relative;
             padding: 24px 32px;
             z-index: 1002;
@@ -34,14 +34,14 @@
         }
         .menu {
             display: block;
-            @media (max-width: 1024px) {
+            @media (max-width: 1180px) {
                 display: none;
             }
         }
 
         .mobileMenu {
             display: none;
-            @media (max-width: 1024px) {
+            @media (max-width: 1180px) {
                 display: block;
             }
             .burgerButton {
@@ -68,7 +68,7 @@
 
     .dropdownMenu {
         display: none;
-        @media (max-width: 1024px) {
+        @media (max-width: 1180px) {
             display: block;
             position: absolute;
             top: calc(-50% + 60px);

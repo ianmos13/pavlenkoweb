@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-      domains: ["localhost", "https://pavlenkostrp-production.up.railway.app"], // Add 'localhost' as an allowed domain
+      domains: [
+        "localhost",
+        "https://pavlenkostrp-production.up.railway.app",
+        "https://charming-belief-05eba5ddc0.strapiapp.com"
+      ],
     },
   };
   

@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import styles from "./AboutAdministration.module.scss";
 import PersonItem from "@/components/UI/PersonItem/PersonItem";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -11,7 +12,7 @@ const AboutAdministration = () => {
     data: teamData,
     loading,
     error,
-  } = useFetch("/school-teams?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/school-teams?sort=rank:asc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const administrators = useMemo(() => {

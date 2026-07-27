@@ -5,10 +5,11 @@ const InputGroup = ({
   type = "text",
   name,
   placeholder,
-  maxLength = 800,
+  maxLength = 850,
   spanText = "", 
   onChange,
-  value = "", 
+  value = "",
+  children
 }) => {
   const [charCount, setCharCount] = useState(value.length);
 
@@ -53,6 +54,7 @@ const InputGroup = ({
           {spanText && <span className={styles.note}>{spanText}</span>}
         </>
       )}
+      {children}
     </div>
   );
 };

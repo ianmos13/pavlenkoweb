@@ -1,5 +1,5 @@
 "use client";
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useState} from "react";
 import styles from "./ContainerWithSidebar.module.scss";
 import NewsLibrary from "@/components/UI/ContainerWithSidebar/NewsLibrary/NewsLibrary";
 import QuestionsList from "@/components/UI/ContainerWithSidebar/QuestionsList/QuestionsList";
@@ -23,16 +23,18 @@ const ContainerWithSidebar = ({ data, type, showAllCategoriesFilters }) => {
       : data.categories.find((category) => category.id === activeCategory)?.[
           key
         ] || [];
-    return type === "TeachingStaff" ?
-      categoryItems.filter((value, index, self) =>
+    if (type === "TeachingStaff") {
+      return categoryItems.filter((value, index, self) =>
         index === self.findIndex((t) => (
           t.name === value.name && t.position === value.position && t.biography === value.biography
-        ))) :
-        (type === "NewsLibrary" ?
-            useMemo(() => {
-              return [...categoryItems].sort((a, b) => b.date - a.date);
-            }, [categoryItems]) :
-        categoryItems)
+        )));
+    }
+
+    if (type === "NewsLibrary") {
+      return [...categoryItems].sort((a, b) => b.date - a.date);
+    }
+
+    return categoryItems;
   };
 
   useEffect(() => {

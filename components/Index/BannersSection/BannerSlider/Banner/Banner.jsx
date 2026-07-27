@@ -11,36 +11,25 @@ import bannerBackground from "@/assets/images/banner_background.svg";
 import liIcon from "@/assets/images/banner_li_icon.svg";
 
 export default function Banner(props) {
-    const { theme, data, swiperRef, currentSlide, totalSlide } = props
+    const { theme, data, swiperRef, currentSlide, totalSlide, isHeightReady, containerRef, onContentLoad } = props
     const router = useRouter();
 
     const [swiper, setSwiper] = useState(swiperRef.current)
-    const [swiperHeight, setSwiperHeight] = useState('100%');
 
     useEffect(() => {
-      if (!swiperRef.current) return;
-
-      setSwiper(swiperRef.current)
-      const handleWindowResize = () => {
-        requestAnimationFrame(() => {
-          if (swiperRef.current.height > 0) {
-            setSwiperHeight(swiperRef.current.height);
-          }
-        });
-      };
-      handleWindowResize();
-      window.addEventListener('resize', handleWindowResize);
-      return () => {
-        window.removeEventListener('resize', handleWindowResize);
-      };
+      if (swiperRef.current) {
+        setSwiper(swiperRef.current)
+      }
     }, [swiperRef]);
 
     const goToPage = () => {
         router.push(data.buttonLink);
     };
     return (
-        <div className={`${styles.container} ${styles[`${theme}Container`]}`}
-            style={{height: swiperHeight}}>
+        <div
+            ref={containerRef}
+            className={`${styles.container} ${styles[`${theme}Container`]}`}
+            style={{ height: isHeightReady ? '100%' : 'auto' }}>
             <div className={`${styles.infoContainer} ${data.body ? styles.body : '' }`}>
                 <div className={styles.titleContainer}>
                     <h2> <TitleBody data={data} /> </h2>
@@ -89,7 +78,13 @@ export default function Banner(props) {
                 )}
             </div>
             <div className={`${styles.imageContainer} ${data.imageOverview ? styles.imageOverviewContainer : ''}`}>
-                <img src={data.image} alt="" ></img>
+              { data.imageOverview ? (
+                <div className={styles.imageOverviewContainerInner}>
+                  <img src={data.image} alt="" onLoad={onContentLoad} />
+                </div>
+              ) : (
+                <img src={data.image} alt="" onLoad={onContentLoad} />
+              )}
             </div>
             <PaginationBlock swiper={swiper} current={currentSlide} total={totalSlide} />
         </div>

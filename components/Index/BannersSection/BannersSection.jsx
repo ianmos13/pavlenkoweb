@@ -3,15 +3,19 @@
 import React from "react";
 
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import BannerSlider from "@/components/Index/BannersSection/BannerSlider/BannerSlider";
 
+function normalizeMediaUrl(url, apiUrl) {
+  if(!url) return "/images/default-banner.png";
+
+  return `${apiUrl}${url}`;
+}
+
 const BannersSection = () => {
-
-  const { data: bannersData, loading, error } = useFetch("/index-banner-sliders?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+  const { data: bannersData, loading, error } = useFetch(`/index-banner-sliders?sort=rank:asc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
-
-
   const formattedBannersData = React.useMemo(() => {
     if (!bannersData) return [];
 
@@ -30,7 +34,7 @@ const BannersSection = () => {
       })) : [],
       imageOverview: banner.imageOverview,
       listData: banner.listData || [],
-      image: banner.image?.url ? `${API_URL}${banner.image.url}` : "/images/default-banner.png",
+      image: normalizeMediaUrl(banner.image?.url, API_URL),
       body: banner.body,
       buttonText: banner.buttonText,
       buttonLink: banner.buttonLink,

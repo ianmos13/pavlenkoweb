@@ -9,6 +9,7 @@ import VideoComponent from "@/components/News/[id]/VideoComponent/VideoComponent
 import EducationApplication from "@/components/UI/EducationApplication/EducationApplication";
 import Subscribe from "@/components/UI/Subscribe/Subscribe";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import TeachingStaff from "@/components/TeachingStaff/TeachingStaff";
 import CoverflowSwiper from "@/components/UI/CoverflowSwiper/CoverflowSwiper";
@@ -16,19 +17,15 @@ import TitleWithBackButton from "@/components/UI/TitleWithBackButton/TitleWithBa
 import ImageWithDescription from "@/components/UI/ImageWithDescription/ImageWithDescription";
 import ArticleInfo from "@/components/News/[id]/ArticleInfo/ArticleInfo";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
-import {useEffect} from "react";
 import useScrollToTop from "@/services/hook/useScrollToTop";
 export default function Page() {
     const { id } = useParams();
+    useScrollToTop();
     const {
         data: articlesData,
         loading,
         error,
-    } = useFetch("/articles?sort=date:desc&populate=*&pagination[pageSize]=9999999");
-
-    useEffect(() => {
-        useScrollToTop()
-    }, []);
+    } = useFetch(`/articles?sort=date:desc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
 
     const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
     const articleData = articlesData?.find((article) => article.link === id);

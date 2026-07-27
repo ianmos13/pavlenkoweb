@@ -39,11 +39,12 @@ const DocumentsLibrary = ({ documents = [] }) => {
       <div className={styles.grid}>
         {currentItems.map((document) => (
           <Link
+              key={document.id}
               href={document.file ? document.file : document.url}
               target="_blank"
               rel="noopener noreferrer"
           >
-            <div key={document.id} className={styles.documentItem}>
+            <div className={styles.documentItem}>
               <h3>{document.name}</h3>
               <img
                 alt=""

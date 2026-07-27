@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Documents.module.scss";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 
@@ -11,12 +12,12 @@ const Documents = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/documents-and-report-categories?sort=rank:asc&pagination[pageSize]=9999999");
+  } = useFetch(`/documents-and-report-categories?sort=rank:asc&pagination[pageSize]=${PAGE_SIZE}`);
   const {
     data: documentsData,
     loading: documentsLoading,
     error: documentsError,
-  } = useFetch("/documents-and-reports?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/documents-and-reports?sort=rank:asc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const loading = categoriesLoading || documentsLoading;

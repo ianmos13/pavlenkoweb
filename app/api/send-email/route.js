@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { sendMail, sendMailToAdmin } from "@/lib/mail/sendMail";
 
 export const runtime = "nodejs";
 
@@ -84,16 +84,6 @@ export async function POST(req) {
       }
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.yandex.ru",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
     const messageText = `
 Новая заявка на обучение:
 
@@ -126,15 +116,11 @@ Email: ${mail}
 - Прочие документы: ${filesDoc || "—"}
 `;
 
-    const mailOptions = {
-      from: ` <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO,
+    await sendMailToAdmin({
       subject: "Новая заявка на обучение",
       text: messageText,
       attachments,
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 
     if (mail) {
       const htmlTemplate = `
@@ -360,37 +346,33 @@ VK: https://vk.com/schoolpavlenko
 Если вы не подавали заявку, проигнорируйте это письмо.
       `;
 
-      const residentMailOptions = {
-        from: `"Школа Павленко" <${process.env.EMAIL_USER}>`,
-        to: mail,
-        subject: "Ваша заявка принята - Школа Павленко",
-        text: textVersion,
-        html: htmlTemplate,
-        headers: {
-          "X-Mailer": "Школа Павленко",
-          "X-Priority": "3",
-          "X-MSMail-Priority": "Normal",
-          Importance: "Normal",
-          "Reply-To": process.env.EMAIL_USER,
-        },
-      };
-
       try {
-        await transporter.sendMail(residentMailOptions);
+        await sendMail({
+          to: mail,
+          fromName: "Школа Павленко",
+          subject: "Ваша заявка принята - Школа Павленко",
+          text: textVersion,
+          html: htmlTemplate,
+          replyTo: process.env.EMAIL_USER,
+          headers: {
+            "X-Mailer": "Школа Павленко",
+            "X-Priority": "3",
+            "X-MSMail-Priority": "Normal",
+            Importance: "Normal",
+          },
+        });
         console.log(`Письмо резиденту отправлено на ${mail}`);
       } catch (residentError) {
         console.error("Ошибка при отправке письма резиденту:", residentError);
       }
     }
 
-
-
     return NextResponse.json({ success: true, message: "Письмо отправлено!" });
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-        { error: "Ошибка при отправке письма" },
-        { status: 500 }
+      { error: "Ошибка при отправке письма" },
+      { status: 500 }
     );
   }
 }

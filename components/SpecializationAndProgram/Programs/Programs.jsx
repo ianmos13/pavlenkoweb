@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./Programs.module.scss";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import {parseAnswerContent} from "@/services/parseAnswerContent";
@@ -11,13 +12,13 @@ export default function Programs() {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/program-categories?sort=rank:asc&pagination[pageSize]=9999999");
+  } = useFetch(`/program-categories?sort=rank:asc&pagination[pageSize]=${PAGE_SIZE}`);
 
   const {
     data: programsData,
     loading: programsLoading,
     error: programsError,
-  } = useFetch("/programs?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/programs?sort=rank:asc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
 
   const loading = categoriesLoading || programsLoading;
   const error = categoriesError || programsError;

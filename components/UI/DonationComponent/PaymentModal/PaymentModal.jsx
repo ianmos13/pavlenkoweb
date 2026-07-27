@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./PaymentModal.module.scss";
 
-
 const PUBLIC_ID_PAYMENT = process.env.NEXT_PUBLIC_PUBLIC_ID_PAYMENT;
 const ACCOUNT_ID_PAYMENT = process.env.NEXT_PUBLIC_ACCOUNT_ID_PAYMENT;
 
@@ -12,10 +11,17 @@ const PaymentModal = ({
   subscriptionConfig,
   isScriptLoaded,
   id,
-  onPaymentSuccess
+  onPaymentSuccess,
+  email = "",
+  fundraisingSlug = "",
 }) => {
   const paymentBlockRef = useRef(null);
+  const onPaymentSuccessRef = useRef(onPaymentSuccess);
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(true);
+
+  useEffect(() => {
+    onPaymentSuccessRef.current = onPaymentSuccess;
+  }, [onPaymentSuccess]);
 
   useEffect(() => {
     if (isOpen && isScriptLoaded && subscriptionConfig) {
@@ -24,6 +30,12 @@ const PaymentModal = ({
           paymentBlockRef.current.unmount();
           paymentBlockRef.current = null;
         }
+
+        const paymentData = {};
+        if (fundraisingSlug) {
+          paymentData.fundraisingSlug = fundraisingSlug;
+        }
+
         const paymentBlock = new cp.PaymentBlocks(
           {
             publicId: PUBLIC_ID_PAYMENT,
@@ -33,8 +45,8 @@ const PaymentModal = ({
             invoiceId: `invoice_${Date.now()}_${Math.floor(
               Math.random() * 1000
             )}`,
-            accountId: ACCOUNT_ID_PAYMENT,
-            email: "",
+            accountId: email || ACCOUNT_ID_PAYMENT,
+            email: email || "",
             requireEmail: false,
             language: "ru-RU",
             applePaySupport: true,
@@ -43,6 +55,9 @@ const PaymentModal = ({
             tinkoffPaySupport: true,
             sbpSupport: false,
             subscription: subscriptionConfig.subscription,
+            ...(Object.keys(paymentData).length > 0
+              ? { data: paymentData }
+              : {}),
           },
           {
             appearance: {
@@ -69,11 +84,13 @@ const PaymentModal = ({
             },
           }
         );
-        paymentBlock.mount(document.getElementById(`paymentBlockContainer_${id}`));
+        paymentBlock.mount(
+          document.getElementById(`paymentBlockContainer_${id}`)
+        );
         paymentBlock.on("destroy", () => console.log("destroy"));
         paymentBlock.on("success", (res) => {
           console.log("success", res);
-          onPaymentSuccess();
+          onPaymentSuccessRef.current?.(res);
         });
         paymentBlock.on("fail", (res) => console.log("fail", res));
         paymentBlockRef.current = paymentBlock;
@@ -88,7 +105,7 @@ const PaymentModal = ({
         paymentBlockRef.current = null;
       }
     };
-  }, [isOpen, isScriptLoaded, subscriptionConfig, onClose, id]);
+  }, [isOpen, isScriptLoaded, subscriptionConfig, id, email, fundraisingSlug]);
 
   if (!isOpen) return null;
 

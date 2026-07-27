@@ -2,11 +2,11 @@
 import styles from './CookieButton.module.scss'
 import {Squircle} from "corner-smoothing";
 
-const CookieButton = ({ text, isDisabled, onClick }) => {
+const CookieButton = ({ theme, text, isDisabled, onClick }) => {
 
 	return (
 		<div
-			className={`${styles.container} ${isDisabled ? styles.disabledContainer : ''}`}
+			className={`${styles.container} ${styles[`${theme}Container`]} ${isDisabled ? styles.disabledContainer : ''}`}
 		>
 			<Squircle
 				cornerRadius={16}

@@ -73,7 +73,7 @@ export default function SubscribeForm({ setIsPopupVisible, theme }) {
         <label>
           Нажимая на кнопку, вы даете согласие на{" "}
           <a
-              href="/ersonal-data-processing-policy"
+              href="/personal-data-processing-policy"
               className={styles.link}
               target="_blank">
             обработку персональных данных

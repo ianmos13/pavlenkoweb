@@ -5,6 +5,16 @@
 	width: min-content;
 	height: 72px;
 
+	@media (max-width: 1024px) {
+		width: 100%;
+		min-width: 312px;
+	}
+	@media (max-width: 739px) {
+		min-width: 288px;
+		width: calc(100% - 2px);
+		height: 64px;
+	}
+
 	& > div {
 		position: relative;
 		width: 100%;
@@ -45,6 +55,15 @@
 		transition: background-color 0.3s ease-out;
 		cursor: pointer;
 
+		@media (max-width: 1024px) {
+			min-width: 310px;
+			width: calc(100% - 2px);
+		}
+		@media (max-width: 739px) {
+			min-width: 286px;
+			width: calc(100% - 2px);
+			height: 62px;
+		}
 		.buttonText {
 			font-family: $button-desktop-font;
 			font-weight: $button-desktop-weight;
@@ -56,6 +75,20 @@
 			align-items: center;
 			gap: 16px;
 			transition: color 0.3s ease-in-out;
+			@media (max-width: 1024px) {
+				font-family: $button-tablet-font;
+				font-weight: $button-tablet-weight;
+				font-size: $button-tablet-size;
+				line-height: $button-tablet-line-height;
+				text-align: $button-tablet-text-align;
+			}
+			@media (max-width: 739px) {
+				font-family: $button-tablet-font;
+				font-weight: $button-tablet-weight;
+				font-size: $button-tablet-size;
+				line-height: $button-tablet-line-height;
+				text-align: $button-tablet-text-align;
+			}
 		}
 
 		&:hover:not(:disabled) {
@@ -88,15 +121,161 @@
 	}
 }
 
-.containerWithIcon {
-	& > div {
+.joinContainer {
+	@media (max-width: 1024px) {
+		width: 294px;
+		min-width: 294px;
+	}
+	@media (max-width: 739px) {
+		min-width: 288px;
+		width: 288px;
+	}
+	.buttonContainer {
+		@media (max-width: 1024px) {
+			min-width: 292px;
+			width: calc(100% - 2px);
+		}
+		@media (max-width: 739px) {
+			min-width: 288px;
+			width: calc(100% - 2px);
+		}
+
+		.buttonText {
+			@media (max-width: 1024px) {
+				font-size: $button-desktop-size;
+				line-height: $button-desktop-line-height;
+			}
+			@media (max-width: 739px) {
+				font-size: $button-mobile-size;
+				line-height: $button-mobile-line-height;
+			}
+		}
+	}
+}
+
+.joinBannerContainer {
+	min-width: 286px;
+	width: 100%;
+	@media (max-width: 1024px) {
+		max-width: 100%;
+	}
+	@media (max-width: 739px) {
+		min-width: 286px;
 		width: 100%;
-		height: 100%;
-		transition: background-color 0.3s ease-out;
+	}
+	.buttonContainer {
+		min-width: 284px;
+		width: calc(100% - 2px);
+		@media (max-width: 1024px) {
+			min-width: 284px;
+			width: calc(100% - 2px);
+		}
+		@media (max-width: 739px) {
+			min-width: 284px;
+			width: calc(100% - 2px);
+		}
+
+		.buttonText {
+			@media (max-width: 1024px) {
+				font-size: $button-desktop-size;
+				line-height: $button-desktop-line-height;
+			}
+			@media (max-width: 739px) {
+				font-size: $button-mobile-size;
+				line-height: $button-mobile-line-height;
+			}
+		}
+	}
+}
+
+.shareJoinBannerContainer {
+	min-width: 286px;
+	width: 100%;
+	@media (max-width: 1024px) {
+		max-width: 100%;
+	}
+	@media (max-width: 739px) {
+		min-width: 286px;
+		width: 100%;
+	}
+	& > div {
+		background-color: $neutral-white;
+
+		&:before {
+			background-color: $primary-blue;
+		}
+		&:hover {
+			background-color: $neutral-white;
+			&:before {
+				background-color: $neutral-white;
+			}
+		}
+		&:active {
+			background-color: $neutral-white;
+			&:before {
+				background-color: $neutral-white;
+			}
+		}
+	}
+
+	.buttonContainer {
+		min-width: 284px;
+		width: calc(100% - 2px);
+		background-color: $primary-blue;
+		@media (max-width: 1024px) {
+			min-width: 284px;
+			width: calc(100% - 2px);
+		}
+		@media (max-width: 739px) {
+			min-width: 284px;
+			width: calc(100% - 2px);
+		}
+
+		.buttonText {
+			color: $neutral-white;
+			@media (max-width: 1024px) {
+				font-size: $button-tablet-size;
+				line-height: $button-tablet-line-height;
+			}
+			@media (max-width: 739px) {
+				font-size: $button-tablet-size;
+				line-height: $button-tablet-line-height;
+			}
+		}
+		&:hover:not(:disabled) {
+			background-color: $neutral-white;
+
+			.buttonText {
+				color: $primary-blue;
+			}
+		}
+
+		&:active:not(:disabled) {
+			background-color: $neutral-white;
+			.buttonText {
+				color: $primary-blue;
+			}
+			.buttonImage {
+				padding: 0;
+			}
+		}
+
+		&:disabled {
+			background-color: $neutral-grey;
+
+			.buttonText {
+				color: $neutral-white;
+			}
+		}
+	}
+}
+
+.supportContainer,
+.footerContainer {
+	& > div {
 		background-color: $primary-red;
 
 		&:before {
-			transition: background-color 0.3s ease-out;
 			background-color: $primary-red;
 		}
 		&:hover {
@@ -114,6 +293,24 @@
 	}
 
 	.buttonContainer {
+		&:hover:not(:disabled) {
+			background-color: $primary-red;
+			.buttonText {
+				color: $neutral-white;
+			}
+		}
+
+		&:active:not(:disabled) {
+			background-color: $primary-red;
+			.buttonText {
+				color: $neutral-white;
+			}
+		}
+	}
+}
+
+.containerWithIcon {
+	.buttonContainer {
 		.buttonImage {
 			display: flex;
 			transition: padding 0.3s ease;
@@ -126,20 +323,7 @@
 				height: 100%;
 			}
 		}
-
-		&:hover:not(:disabled) {
-			background-color: $primary-red;
-
-			.buttonText {
-				color: $neutral-white;
-			}
-		}
-
 		&:active:not(:disabled) {
-			background-color: $primary-red;
-			.buttonText {
-				color: $neutral-white;
-			}
 			.buttonImage {
 				padding: 0;
 			}
@@ -164,71 +348,6 @@
 			background-color: $neutral-grey;
 			&:before {
 				background-color: $neutral-grey;
-			}
-		}
-	}
-}
-
-.disabledContainer {
-	cursor: not-allowed;
-  
-	& > div {
-	  background-color: $neutral-grey;
-  
-	  &:before {
-		background-color: $neutral-grey;
-	  }
-  
-	  &:hover {
-		background-color: $neutral-grey;
-		&:before {
-		  background-color: $neutral-grey;
-		}
-	  }
-	  &:active {
-		background-color: $neutral-grey;
-		&:before {
-		  background-color: $neutral-grey;
-		}
-	  }
-	}
-  }
-
-@media (max-width: 1024px) {
-	.container {
-		width: 100%;
-		min-width: 312px;
-
-		.buttonContainer {
-			min-width: 310px;
-			width: calc(100% - 2px);
-			.buttonText {
-				font-family: $button-tablet-font;
-				font-weight: $button-tablet-weight;
-				font-size: $button-tablet-size;
-				line-height: $button-tablet-line-height;
-				text-align: $button-tablet-text-align;
-			}
-		}
-	}
-}
-
-@media (max-width: 739px) {
-	.container {
-		min-width: 288px;
-		width: calc(100% - 2px);
-		height: 64px;
-
-		.buttonContainer {
-			min-width: 286px;
-			width: calc(100% - 2px);
-			height: 62px;
-			.buttonText {
-				font-family: $button-tablet-font;
-				font-weight: $button-tablet-weight;
-				font-size: $button-tablet-size;
-				line-height: $button-tablet-line-height;
-				text-align: $button-tablet-text-align;
 			}
 		}
 	}

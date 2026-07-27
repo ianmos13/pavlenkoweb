@@ -1,0 +1,62 @@
+@import '/styles/variables';
+
+.container {
+  padding: 80px 56px 40px 56px;
+  max-width: 1440px;
+  margin: 0 auto;
+  @media (max-width: 1024px) {
+    padding: 64px 32px 32px 32px;
+  }
+  @media (max-width: 739px) {
+    padding: 32px 16px;
+  }
+  h2 {
+    color: $neutral-black;
+  }
+}
+
+.cardsContainer {
+  margin-top: 40px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 1024px) {
+    margin-top: 24px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 739px) {
+    grid-template-columns: 1fr;
+  }
+  .block {
+    flex: 1 1 calc(25% - 24px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 16px;
+    background-color: $secondary-ultra-lite-blue;
+    border: none;
+    border-radius: 16px;
+    @media (max-width: 739px) {
+      flex: 1 1 100%;
+    }
+    h3 {
+      line-height: 21px;
+    }
+
+    .text {
+      color: $neutral-black;
+      @media (max-width: 1024px) {
+        font-size: 18px;
+        line-height: 26px;
+      }
+      @media (max-width: 739px) {
+        margin-bottom: unset;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+
+}

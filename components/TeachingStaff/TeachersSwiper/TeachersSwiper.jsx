@@ -2,6 +2,7 @@
 
 import CoverflowCardSwiper from "@/components/UI/CoverflowCardSwiper/CoverflowCardSwiper";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 import Loader from "@/components/UI/Loader/Loader";
 
@@ -10,7 +11,7 @@ export default function TeachersSwiper() {
         data: teachersData,
         loading,
         error,
-      } = useFetch("/teaching-staff-teacher-sliders?sort=rank:asc&populate=*&pagination[pageSize]=9999999");
+      } = useFetch(`/teaching-staff-teacher-sliders?sort=rank:asc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
       const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
       const parsedData =

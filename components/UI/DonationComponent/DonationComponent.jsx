@@ -424,6 +424,7 @@ const DonationComponent = ({ id }) => {
           subscriptionConfig={subscriptionConfig}
           isScriptLoaded={isScriptLoaded}
           id={id}
+          email={email}
           onPaymentSuccess={handlePaymentSuccess}
         />
       )}

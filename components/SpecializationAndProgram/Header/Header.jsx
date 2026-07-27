@@ -4,6 +4,7 @@ import React from "react";
 import RunningLine from "@/components/UI/RunningLines/RunningLine/RunningLine";
 import styles from "./Header.module.scss";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import declineWord from "decline-word";
 
@@ -13,7 +14,7 @@ const Header = () => {
     loading: categoriesLoading,
     error: categoriesError,
   } = useFetch(
-    "/program-categories?sort=rank:asc&pagination[pageSize]=9999999"
+    `/program-categories?sort=rank:asc&pagination[pageSize]=${PAGE_SIZE}`
   );
 
   const categories = React.useMemo(() => {

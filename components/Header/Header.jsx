@@ -16,6 +16,7 @@ import {useMediaQuery} from "react-responsive";
 
 const darkPages = [
   "/about-us",
+  "/fundraising",
   "/training-application-form",
   "/specialization-and-program",
   "/information-about-educational-organization",
@@ -33,10 +34,11 @@ export default function Header() {
   const pathname = usePathname();
   const bannerTheme = useSelector((state) => state.header?.theme || "dark");
   const isMobile = useMediaQuery({ query: '(max-width: 739px)' });
+  const basePathname = `/${pathname.split("/")[1]}`;
   const defaultTheme =
-    darkPages.includes(pathname)
+    darkPages.includes(basePathname)
       ? "dark"
-      : ultraLitePages.includes(pathname)
+      : ultraLitePages.includes(basePathname)
       ? "ultraLite"
       : "light";
 

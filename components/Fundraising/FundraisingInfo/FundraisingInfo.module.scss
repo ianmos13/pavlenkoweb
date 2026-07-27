@@ -1,0 +1,265 @@
+@import '/styles/variables';
+
+.block {
+  padding: 80px 56px 40px 56px;
+
+  @media (max-width: 1024px) {
+    padding: 80px 32px 40px 32px;
+  }
+  @media (max-width: 739px) {
+    padding: 40px 16px 20px 16px;
+    background-color: $secondary-ultra-lite-blue;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 56px;
+    background-color: $secondary-ultra-lite-blue;
+    border: none;
+    border-radius: 24px;
+    gap: 40px;
+
+    @media (max-width: 1024px) {
+      padding: 32px;
+      gap: 32px;
+    }
+    @media (max-width: 739px) {
+      gap: 24px;
+      padding: 0;
+      border-radius: unset;
+    }
+
+    h2 {
+      color: $neutral-black;
+    }
+
+    .textContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      @media (max-width: 1024px) {
+        width: 100%;
+        gap: 20px;
+      }
+      @media (max-width: 739px) {
+        gap: 16px;
+      }
+
+      .headerInfo, .footerInfo {
+        display: flex;
+        justify-content: space-between;
+
+        .organizerContainer, .endContainer {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          @media (max-width: 739px) {
+            gap: 0;
+          }
+        }
+        .endContainer {
+          text-align: end;
+          @media (max-width: 739px) {
+            display: none;
+          }
+        }
+        .label {
+          font-family: $primary-font-family;
+          font-weight: $h4-desktop-primary-weight;
+          font-size: $h4-desktop-primary-size;
+          line-height: $h4-desktop-primary-line-height;
+          color: $neutral-dark-grey;
+          @media (max-width: 1024px) {
+            font-size: $h4-tablet-primary-size;
+            line-height: $h4-tablet-primary-line-height;
+          }
+        }
+        .value {
+          font-family: $primary-font-family;
+          font-weight: 800;
+          font-size: 22px;
+          line-height: 30px;
+          color: $secondary-blue-2;
+          @media (max-width: 1024px) {
+            font-size: $h4-tablet-primary-size;
+            line-height: $h4-tablet-primary-line-height;
+          }
+        }
+      }
+
+      .footerInfo {
+        display: none;
+        @media (max-width: 739px) {
+          display: flex;
+        }
+
+        .organizerContainer {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+      }
+
+      .text {
+        white-space: pre-wrap;
+        color: $neutral-black;
+        font-family: $primary-font-family;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 44px;
+
+        @media (max-width: 1024px) {
+          font-size: 22px;
+          line-height: 30px;
+        }
+        @media (max-width: 739px) {
+          font-size: 18px;
+          line-height: 25px;
+        }
+      }
+    }
+
+    .fundraisingInfo {
+      padding: 24px 32px;
+      background-color: $neutral-white;
+      border: none;
+      border-radius: 24px;
+      @media (max-width: 739px) {
+        margin-top: 12px;
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .fundraisingInfoHeader {
+        display: flex;
+        flex-wrap: wrap;
+        h2 {
+          color: $primary-blue;
+        }
+
+        .heart {
+          margin-bottom: -4px;
+          width: 32px;
+          height: 32px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-image: url("/images/icons/big-heart-filled-dark.svg");
+
+          @media (max-width: 739px) {
+            display: none;
+
+            &:first-child {
+              display: unset;
+              width: 20px;
+              height: 20px;
+              background-image: url("/images/icons/medium-heart-filled-dark.svg");
+            }
+          }
+
+        }
+      }
+      .fundraisingInfoBody {
+        margin-top: 24px;
+
+        .resultInfo {
+          display: flex;
+          justify-content: space-between;
+
+          .item {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+            @media (max-width: 739px) {
+              flex-direction: column;
+              gap: 0;
+              align-items: flex-start;
+
+              &:last-child {
+                align-items: flex-end;
+              }
+            }
+
+            .label {
+              font-family: $primary-font-family;
+              font-weight: 600;
+              font-size: 20px;
+              line-height: 28px;
+              color: $primary-blue;
+              padding-bottom: 4px;
+              @media (max-width: 1024px) {
+                font-size: 16px;
+                line-height: 22px;
+                padding-bottom: 2px;
+              }
+            }
+            .value {
+              font-family: $primary-font-family;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 32px;
+              line-height: 44px;
+              color: $primary-blue;
+              @media (max-width: 1024px) {
+                font-size: 22px;
+                line-height: 30px;
+              }
+              @media (max-width: 739px) {
+                font-size: 18px;
+                line-height: 25px;
+              }
+            }
+          }
+        }
+
+        .resultLine {
+          overflow: hidden;
+          margin-top: 20px;
+          position: relative;
+          width: 100%;
+          height: 32px;
+          background: $secondary-ultra-lite-blue;
+          border-radius: 50px;
+          z-index: 1;
+          @media (max-width: 739px) {
+            margin-top: 12px;
+          }
+
+          .progressLine {
+            position: absolute;
+            width: 0;
+            height: 32px;
+            left: 0;
+            top: 0;
+            z-index: 2;
+
+            border-radius: 50px;
+            background: linear-gradient(90deg, $secondary-blue-2 0%, $secondary-ultra-lite-blue 100%);
+          }
+        }
+
+        .resultComment {
+          margin-top: 12px;
+          text-align: center;
+          font-family: $primary-font-family;
+          font-style: italic;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 26px;
+          color: $primary-blue;
+          @media (max-width: 1024px) {
+            font-size: 14px;
+            line-height: 18px;
+          }
+          @media (max-width: 739px) {
+            text-align: left;
+            margin-top: 8px;
+            font-size: 14px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+  }
+}

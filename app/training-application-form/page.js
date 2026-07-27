@@ -5,7 +5,7 @@ import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/Anima
 export default function page() {
   return (
     <>
-	  <TrainingApplicationHeader />
+	    <TrainingApplicationHeader />
       <AnimatedComponent>
         <TrainingApplicationForm />
       </AnimatedComponent>

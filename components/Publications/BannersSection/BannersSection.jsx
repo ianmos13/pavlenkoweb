@@ -2,11 +2,12 @@
 import React from "react";
 import BannerSlider from "@/components/UI/BannerSlider/BannerSlider";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 
 const BannersSection = () => {
 
-  const { data: bannersData, loading, error } = useFetch("/publications-banner-sliders?populate=*&pagination[pageSize]=9999999");
+  const { data: bannersData, loading, error } = useFetch(`/publications-banner-sliders?populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 

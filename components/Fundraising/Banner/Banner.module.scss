@@ -1,0 +1,283 @@
+@import '/styles/variables';
+
+.container {
+  position: relative;
+  background-color: $primary-blue;
+
+  .bannerContainer {
+    padding: 48px 56px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+
+    @media (max-width: 1024px) {
+      padding: 48px 32px;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    @media (max-width: 739px) {
+      padding: 24px 16px 0 16px;
+      gap: 32px;
+    }
+  }
+
+  .infoContainer {
+    width: 100%;
+
+    .tagInfo {
+      padding: 8px 24px;
+      width: 132px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      font-family: $primary-font-family;
+      font-weight: $p-desktop-small-weight;
+      font-size: $p-desktop-small-size;
+      line-height: $p-desktop-small-line-height;
+      color: $neutral-white;
+      margin-bottom: 16px;
+      @media (max-width: 739px) {
+        width: 116px;
+        height: 28px;
+        margin-bottom: 12px;
+        padding: 4px 16px;
+        border-radius: 6px;
+      }
+    }
+
+    .titleContainer {
+      @media (max-width: 1024px) {
+        max-width: 560px;
+      }
+      @media (max-width: 739px) {
+        max-width: 320px;
+      }
+      h2 {
+        font-family: $h1-desktop-primary-font;
+        font-weight: $h1-desktop-primary-weight;
+        font-size: $h1-desktop-primary-size;
+        line-height: $h1-desktop-primary-line-height;
+        color: $neutral-white;
+
+        @media (max-width: 1024px) {
+          font-family: $h1-tablet-primary-font;
+          font-weight: $h1-tablet-primary-weight;
+          font-size: $h1-tablet-primary-size;
+          line-height: $h1-tablet-primary-line-height;
+        }
+        @media (max-width: 739px) {
+          font-family: $h1-mobile-primary-font;
+          font-weight: $h1-mobile-primary-weight;
+          font-size: $h1-mobile-primary-size;
+          line-height: $h1-mobile-primary-line-height;
+        }
+      }
+    }
+
+    .description {
+      margin-top: 16px;
+
+      @media (max-width: 739px) {
+        margin-top: 16px;
+      }
+      h4 {
+        color: $neutral-white;
+
+        @media (max-width: 739px) {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+    }
+
+    .buttonsContainer {
+      display: flex;
+      justify-content: flex-start;
+      gap: 24px;
+      margin-top: 40px;
+      @media (max-width: 1180px) {
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+      }
+      @media (max-width: 1024px) {
+        flex-direction: row;
+        margin-top: 32px;
+        gap: 24px;
+      }
+      @media (max-width: 739px) {
+        flex-direction: column;
+        margin-top: 24px;
+        gap: 16px;
+      }
+      .supportButton {
+        min-width: 286px;
+        max-width: 286px;
+        width: 286px;
+        @media (max-width: 1024px) {
+          max-width: 350px;
+          min-width: unset;
+          width: 100%;
+        }
+        @media (max-width: 739px) {
+          height: 64px;
+        }
+      }
+      .shareButton {
+        max-width: 278px;
+        width: 278px;
+        min-width: unset;
+        @media (max-width: 1180px) {
+          max-width: 286px;
+          width: 286px;
+          min-width: unset;
+        }
+        @media (max-width: 1024px) {
+          max-width: 350px;
+          min-width: unset;
+          width: 100%;
+        }
+        @media (max-width: 739px) {
+          height: 64px;
+        }
+      }
+    }
+    .bannerButton {
+      margin-top: 40px;
+      @media (max-width: 1024px) {
+        max-width: 294px;
+        margin-top: 32px
+      }
+      @media (max-width: 739px) {
+        margin-top: 24px;
+        max-width: unset;
+        height: 64px;
+      }
+    }
+  }
+
+  .imageContainer {
+    border-radius: 24px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 1.64;
+    z-index: 2;
+
+    @media (max-width: 1024px) {
+      aspect-ratio: 2;
+    }
+
+    @media (max-width: 739px) {
+      border-radius: 16px;
+      margin: 0 -16px;
+      width: 100vw;
+      aspect-ratio: 1.64;
+    }
+
+    .imageBackground {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 2;
+      background: #5E8BFF26;
+    }
+
+    img {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: cover;
+
+      @media (max-width: 739px) {
+        max-width: unset;
+        max-height: unset;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .bannerContainerSecondary {
+    .infoContainer {
+      .buttonsContainer {
+        .supportButton {
+          min-width: 320px;
+          max-width: 320px;
+          width: 320px;
+          @media (max-width: 1024px) {
+            max-width: 350px;
+            min-width: unset;
+            width: 100%;
+          }
+          @media (max-width: 739px) {
+            height: 64px;
+          }
+        }
+        .shareButton {
+          max-width: 320px;
+          width: 320px;
+          min-width: unset;
+          @media (max-width: 1180px) {
+            max-width: 320px;
+            width: 320px;
+            min-width: unset;
+          }
+          @media (max-width: 1024px) {
+            max-width: 350px;
+            min-width: unset;
+            width: 100%;
+          }
+          @media (max-width: 739px) {
+            height: 64px;
+          }
+        }
+      }
+    }
+
+    .imageContainer {
+      max-width: 544px;
+      @media (max-width: 1024px) {
+        max-width: unset;
+      }
+    }
+  }
+
+  .mobileWhiteSpace {
+    display: none;
+    @media (max-width: 739px) {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background-color: $neutral-white;
+    }
+  }
+}
+
+.publishedContainer {
+  .infoContainer {
+    .titleContainer {
+      @media (max-width: 1024px) {
+        max-width: unset;
+      }
+    }
+  }
+  .mobileWhiteSpace {
+    display: none;
+    @media (max-width: 739px) {
+      display: block;
+      background-color: $secondary-ultra-lite-blue;
+    }
+  }
+}

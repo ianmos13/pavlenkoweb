@@ -1,0 +1,32 @@
+'use client'
+import styles from './PreviewButton.module.scss'
+import {Squircle} from "corner-smoothing";
+
+const PreviewButton = ({ text, isDisabled, onClick }) => {
+
+	return (
+		<div
+			className={`${styles.container} ${isDisabled ? styles.disabledContainer : ''}`}
+		>
+			<Squircle
+				cornerRadius={16}
+				cornerSmoothing={0.9}
+				borderWidth={1}
+			>
+				<button
+					type="button"
+					className={styles.buttonContainer}
+					onClick={onClick}
+					disabled={isDisabled}
+				>
+					<div className={styles.buttonText}>{text}</div>
+					<div className={styles.iconContainer}>
+						<svg className={styles.icon} />
+					</div>
+				</button>
+			</Squircle>
+		</div>
+	)
+}
+
+export default PreviewButton

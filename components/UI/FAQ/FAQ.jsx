@@ -3,6 +3,7 @@ import React from "react";
 import ContainerWithSidebar from "@/components/UI/ContainerWithSidebar/ContainerWithSidebar";
 import styles from "./FAQ.module.scss";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import {parseAnswerContent} from "@/services/parseAnswerContent";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
@@ -12,13 +13,13 @@ const FAQ = () => {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/faq-categories?pagination[pageSize]=9999999");
+  } = useFetch(`/faq-categories?pagination[pageSize]=${PAGE_SIZE}`);
 
   const {
     data: faqsData,
     loading: faqsLoading,
     error: faqsError,
-  } = useFetch("/faqs?populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/faqs?populate=*&pagination[pageSize]=${PAGE_SIZE}`);
 
   const loading = categoriesLoading || faqsLoading;
   const error = categoriesError || faqsError;

@@ -18,6 +18,20 @@
     display: block;
     margin: 0 auto;
     width: 100%;
+    overflow: hidden;
+
+    :global(.swiper-slide) {
+      height: 100%;
+    }
+
+    :global(.swiper-fade .swiper-slide) {
+      z-index: 0;
+    }
+
+    :global(.swiper-fade .swiper-slide-active) {
+      z-index: 1;
+    }
+
     @media (max-width: 1024px) {
       max-width: 1024px;
     }

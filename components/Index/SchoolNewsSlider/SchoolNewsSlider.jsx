@@ -9,6 +9,7 @@ import styles from "./SchoolNewsSlider.module.scss";
 import SectionWithSlider from "@/components/UI/SectionWithSlider/SectionWithSlider";
 import {EffectCoverflow, Pagination} from "swiper/modules";
 import useFetch from "@/services/hook/useFetch";
+import { PAGE_SIZE } from "@/lib/pagination";
 import Loader from "@/components/UI/Loader/Loader";
 import AnimatedComponent from "@/components/UI/Animation/AnimatedComponent/AnimatedComponent";
 import CustomCoverflowSlider from "@/components/Index/SchoolNewsSlider/CustomCoverflowSlider/CustomCoverflowSlider";
@@ -24,13 +25,13 @@ export default function SchoolNewsSlider() {
     data: categoriesData,
     loading: categoriesLoading,
     error: categoriesError,
-  } = useFetch("/article-categories?pagination[pageSize]=9999999");
+  } = useFetch(`/article-categories?pagination[pageSize]=${PAGE_SIZE}`);
 
   const {
     data: articlesData,
     loading: articlesLoading,
     error: articlesError,
-  } = useFetch("/articles?sort=date:desc&populate=*&pagination[pageSize]=9999999");
+  } = useFetch(`/articles?sort=date:desc&populate=*&pagination[pageSize]=${PAGE_SIZE}`);
   const API_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const loading = categoriesLoading || articlesLoading;
