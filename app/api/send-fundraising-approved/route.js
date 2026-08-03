@@ -77,7 +77,6 @@ export async function POST(req) {
     const entry = getEntryFromPayload(payload);
     const completeModeration = entry.completeModeration === true;
     if (!completeModeration) {
-      console.log(":completeModeration!!!!!!!!!!!!!", completeModeration)
       return NextResponse.json({
         success: true,
         skipped: true,
@@ -86,7 +85,6 @@ export async function POST(req) {
     }
 
     if (entry.moderationEmailSent === true) {
-      console.log(":moderationEmailSent!!!!!!!!!!!!!", entry.moderationEmailSent)
       return NextResponse.json({
         success: true,
         skipped: true,
@@ -96,7 +94,6 @@ export async function POST(req) {
 
     const organizerEmail = String(entry.organizerEmail || "").trim();
     if (!organizerEmail) {
-      console.log(":organizerEmail!!!!!!!!!!!!!", organizerEmail)
       return NextResponse.json(
         { error: "Email организатора обязателен" },
         { status: 400 }
@@ -271,7 +268,6 @@ https://shkolapavlenko.ru
       </body>
       </html>
     `;
-    console.log(":sendMail!!!!!!!!!!!!!")
     await sendMail({
       to: organizerEmail.toLowerCase(),
       fromName: "Школа Павленко",
@@ -286,9 +282,7 @@ https://shkolapavlenko.ru
         Importance: "Normal",
       },
     });
-    console.log(":sentMail!!!!!!!!!!!!!")
     await markModerationEmailSent(entry);
-    console.log(":markModerationEmailSent!!!!!!!!!!!!!")
     return NextResponse.json({
       success: true,
       message: "Письмо об одобрении сбора отправлено",
