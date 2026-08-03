@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import { sendMail } from "@/lib/mail/sendMail";
+import { strapiFetch } from "@/lib/strapi";
 
 export const runtime = "nodejs";
-
-const SCHOOL_MODERATION_EMAIL = "info@shkolapavlenko.ru";
 
 const getSiteUrl = () =>
   (process.env.NEXT_PUBLIC_SITE_URL || "https://shkolapavlenko.ru").replace(
@@ -11,47 +10,121 @@ const getSiteUrl = () =>
     ""
   );
 
-const getAdminEmail = () =>
-  process.env.EMAIL_TO?.trim() || SCHOOL_MODERATION_EMAIL;
+const getEntryFromPayload = (payload = {}) => {
+  // Strapi webhook: { event, model, entry }
+  if (payload.entry) {
+    return payload.entry.attributes
+      ? { id: payload.entry.id, documentId: payload.entry.documentId, ...payload.entry.attributes }
+      : payload.entry;
+  }
+
+  // Прямой вызов API / ручной тест
+  if (payload.data) {
+    return payload.data.attributes
+      ? { id: payload.data.id, documentId: payload.data.documentId, ...payload.data.attributes }
+      : payload.data;
+  }
+
+  return payload;
+};
+
+const isWebhookAuthorized = (req) => {
+  const expected = process.env.STRAPI_WEBHOOK_SECRET;
+  if (!expected) return true;
+
+  const authHeader = req.headers.get("authorization") || "";
+  const tokenHeader =
+    req.headers.get("x-strapi-webhook-token") ||
+    req.headers.get("X-Strapi-Webhook-Token") ||
+    "";
+
+  const bearer = authHeader.startsWith("Bearer ")
+    ? authHeader.slice(7).trim()
+    : "";
+
+  return bearer === expected || tokenHeader === expected;
+};
+
+const markModerationEmailSent = async (entry) => {
+  const id = entry.documentId ?? entry.id;
+  if (!id) return;
+
+  try {
+    await strapiFetch(`/fundraising-items/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        data: {
+          moderationEmailSent: true,
+        },
+      }),
+    });
+  } catch (error) {
+    // Поле может ещё не быть заведено в Strapi — не валим весь процесс
+    console.warn(
+      "[send-fundraising-approved] Не удалось сохранить moderationEmailSent:",
+      error.message
+    );
+  }
+};
 
 export async function POST(req) {
   try {
-    const {
-      organizerName = "",
-      organizerEmail = "",
-      organizerPhone = "",
-      fundraisingName = "",
-      fundraisingGoal = "",
-      fundraisingDescription = "",
-      fundraisingEnd = "",
-      slug = "",
-    } = await req.json();
+    if (!isWebhookAuthorized(req)) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-    if (!organizerEmail.trim()) {
+    const payload = await req.json().catch(() => ({}));
+    const entry = getEntryFromPayload(payload);
+    const completeModeration = entry.completeModeration === true;
+    if (!completeModeration) {
+      console.log(":completeModeration!!!!!!!!!!!!!", completeModeration)
+      return NextResponse.json({
+        success: true,
+        skipped: true,
+        reason: "completeModeration_is_not_true",
+      });
+    }
+
+    if (entry.moderationEmailSent === true) {
+      console.log(":moderationEmailSent!!!!!!!!!!!!!", entry.moderationEmailSent)
+      return NextResponse.json({
+        success: true,
+        skipped: true,
+        reason: "moderation_email_already_sent",
+      });
+    }
+
+    const organizerEmail = String(entry.organizerEmail || "").trim();
+    if (!organizerEmail) {
+      console.log(":organizerEmail!!!!!!!!!!!!!", organizerEmail)
       return NextResponse.json(
         { error: "Email организатора обязателен" },
         { status: 400 }
       );
     }
 
+    const organizerName = String(entry.organizerName || "").trim();
+    const fundraisingName = String(entry.name || entry.fundraisingName || "").trim();
+    const slug = String(entry.slug || "").trim();
+
     const siteUrl = getSiteUrl();
     const fundraisingUrl = slug
       ? `${siteUrl}/fundraising/${slug}`
       : `${siteUrl}/fundraising`;
-    const displayName = organizerName.trim() || "друг";
-    const campaignName = fundraisingName.trim() || "ваш сбор";
-    const adminEmail = getAdminEmail();
+    const displayName = organizerName || "друг";
+    const campaignName = fundraisingName || "ваш сбор";
 
     const textVersion = `
 ШКОЛА ПРАКТИЧЕСКОЙ ОНКОЛОГИИ им. Андрея Павленко
 
 Здравствуйте, ${displayName}!
 
-Ваш сбор «${campaignName}» успешно создан.
+Отличные новости: ваш сбор «${campaignName}» прошёл модерацию и опубликован.
 
-Сбор будет опубликован сразу после успешного прохождения модерации.
-После публикации страница будет доступна по ссылке:
+Страница сбора доступна по ссылке:
 ${fundraisingUrl}
+
+Теперь вы можете делиться этой ссылкой с друзьями и коллегами.
 
 Спасибо, что поддерживаете Школу Павленко!
 
@@ -71,7 +144,7 @@ https://shkolapavlenko.ru
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Сбор создан — Школа Павленко</title>
+        <title>Сбор одобрен — Школа Павленко</title>
         <style>
           body {
             margin: 0;
@@ -161,28 +234,28 @@ https://shkolapavlenko.ru
           <div class="content">
             <div class="greeting">Здравствуйте, ${displayName}!</div>
             <div class="message">
-              <p>Ваш сбор <strong>«${campaignName}»</strong> успешно создан.</p>
-              <p>Спасибо, что поддерживаете Школу Павленко и помогаете развивать проект!</p>
+              <p>Отличные новости: ваш сбор <strong>«${campaignName}»</strong> прошёл модерацию и опубликован.</p>
+              <p>Теперь страница сбора доступна всем, и вы можете делиться ссылкой с друзьями и коллегами.</p>
             </div>
 
             <div class="highlight">
-              <p>Что дальше?</p>
+              <p>Ваш сбор уже онлайн</p>
               <ul style="margin: 10px 0; padding-left: 20px; color: #141421;">
-                <li>Мы проверим сбор на модерации</li>
-                <li>После одобрения сбор сразу будет опубликован</li>
-                <li>Вы сможете делиться ссылкой на страницу сбора</li>
+                <li>Страница опубликована</li>
+                <li>Можно принимать поддержку</li>
+                <li>Делитесь ссылкой — это помогает сбору расти</li>
               </ul>
             </div>
 
             <div class="message">
               <a class="button" href="${fundraisingUrl}">Открыть страницу сбора</a>
               <p style="font-size: 13px; color: #717780;">
-                Ссылка станет доступна после успешной модерации:<br/>
                 ${fundraisingUrl}
               </p>
             </div>
 
             <div class="message">
+              <p>Спасибо, что поддерживаете Школу Павленко!</p>
               <p>С уважением,<br>Команда Школы Павленко</p>
             </div>
           </div>
@@ -198,64 +271,32 @@ https://shkolapavlenko.ru
       </body>
       </html>
     `;
-
-    const adminText = `
-Новый сбор требует модерации
-
-Название: ${campaignName}
-Slug: ${slug || "—"}
-Ссылка после публикации: ${fundraisingUrl}
-
-Организатор: ${organizerName || "—"}
-Email: ${organizerEmail}
-Телефон: ${organizerPhone || "—"}
-Цель: ${fundraisingGoal || "—"}
-Дата завершения: ${fundraisingEnd || "—"}
-
-Описание:
-${fundraisingDescription || "—"}
-
-Нужно проверить сбор в Strapi и при одобрении поставить completeModeration = true.
-`;
-
-    await Promise.all([
-      sendMail({
-        to: organizerEmail.trim().toLowerCase(),
-        fromName: "Школа Павленко",
-        subject: `Сбор «${campaignName}» успешно создан`,
-        text: textVersion,
-        html: htmlTemplate,
-        replyTo: process.env.EMAIL_USER,
-        headers: {
-          "X-Mailer": "Школа Павленко",
-          "X-Priority": "3",
-          "X-MSMail-Priority": "Normal",
-          Importance: "Normal",
-        },
-      }),
-      sendMail({
-        to: adminEmail,
-        fromName: "Школа Павленко",
-        subject: `Модерация: новый сбор «${campaignName}»`,
-        text: adminText,
-        replyTo: organizerEmail.trim().toLowerCase(),
-        headers: {
-          "X-Mailer": "Школа Павленко",
-          "X-Priority": "3",
-          "X-MSMail-Priority": "Normal",
-          Importance: "Normal",
-        },
-      }),
-    ]);
-
+    console.log(":sendMail!!!!!!!!!!!!!")
+    await sendMail({
+      to: organizerEmail.toLowerCase(),
+      fromName: "Школа Павленко",
+      subject: `Сбор «${campaignName}» одобрен и опубликован`,
+      text: textVersion,
+      html: htmlTemplate,
+      replyTo: process.env.EMAIL_USER,
+      headers: {
+        "X-Mailer": "Школа Павленко",
+        "X-Priority": "3",
+        "X-MSMail-Priority": "Normal",
+        Importance: "Normal",
+      },
+    });
+    console.log(":sentMail!!!!!!!!!!!!!")
+    await markModerationEmailSent(entry);
+    console.log(":markModerationEmailSent!!!!!!!!!!!!!")
     return NextResponse.json({
       success: true,
-      message: "Письма о создании сбора отправлены",
+      message: "Письмо об одобрении сбора отправлено",
     });
   } catch (error) {
-    console.error("[send-fundraising-created]", error);
+    console.error("[send-fundraising-approved]", error);
     return NextResponse.json(
-      { error: "Ошибка при отправке письма" },
+      { error: "Ошибка при отправке письма об одобрении сбора" },
       { status: 500 }
     );
   }

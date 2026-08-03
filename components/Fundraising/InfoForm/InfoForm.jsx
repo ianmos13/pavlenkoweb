@@ -59,7 +59,10 @@ const InfoForm = ({ onPreview, goalsData = [] }) => {
         return /\S+@\S+\.\S+/.test(value) ? "" : "Введите корректный email.";
       case "organizerPhone":
         if (!value.trim()) return "Введите номер телефона.";
-        return /^\d+$/.test(value) ? "" : "Введите корректный номер телефона.";
+        if (!/^8\d+$/.test(value)) {
+          return "Введите номер с цифры 8, только цифры.";
+        }
+        return "";
       case "fundraisingName":
         return value.trim() ? "" : "Введите название сбора.";
       case "fundraisingGoal":
@@ -157,7 +160,11 @@ const InfoForm = ({ onPreview, goalsData = [] }) => {
           body: JSON.stringify({
             organizerName: formData.organizerName,
             organizerEmail: formData.organizerEmail,
+            organizerPhone: formData.organizerPhone,
             fundraisingName: formData.fundraisingName,
+            fundraisingGoal: formData.fundraisingGoal,
+            fundraisingDescription: formData.fundraisingDescription,
+            fundraisingEnd: formData.fundraisingEnd,
             slug: createResult.slug || "",
           }),
         });
@@ -269,6 +276,7 @@ const InfoForm = ({ onPreview, goalsData = [] }) => {
             <InputGroup
               name="organizerPhone"
               placeholder="Телефон"
+              spanText="Введите номер с цифры 8, например: 89001234567"
               value={formData.organizerPhone}
               onChange={handleInputChange("organizerPhone")}
             >
